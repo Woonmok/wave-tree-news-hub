@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Wave Tree Project - News Hub</title>
+    <style>
+      :root {
+        --bg-dark: #1a1d2e;
+        --bg-card: #252938;
+        --bg-card-hover: #2d3348;
+        --text-primary: #ffffff;
+        --text-secondary: #a0aec0;
+        --accent-green: #00ff9f;
+        --accent-yellow: #ffeb3b;
+        --accent-cyan: #00e5ff;
+        --accent-pink: #ff006e;
+        --border-color: rgba(255, 255, 255, 0.1);
+      }
+
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+
+      body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #1a1d2e 0%, #2d1b3d 100%);
+        color: var(--text-primary);
+        padding: 20px;
+        min-height: 100vh;
+        overflow-x: hidden;
+      }
+
+      .header { display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; padding-bottom:20px; border-bottom:2px solid var(--border-color); }
+      .header h1 { font-size:2.2rem; color:var(--accent-cyan); text-shadow:0 0 20px rgba(0,229,255,0.5); flex: 1; }
+      .timestamp { color:var(--text-secondary); font-size:1.1rem; width: 260px; height: 1.5em; display: flex; align-items: center; flex-shrink: 0; overflow: hidden; justify-content:flex-end; }
+
+      .stats { display:flex; gap:20px; margin-bottom:20px; flex-wrap: wrap; }
+      .stat-card { background:var(--bg-card); padding:15px 25px; border-radius:12px; border:1px solid var(--border-color); display:flex; align-items:center; gap:12px; flex-shrink: 0; }
+      .stat-icon { font-size:1.5rem; }
+      .stat-value { font-size:1.8rem; font-weight:bold; color:var(--accent-green); min-width: 40px; min-height: 2em; }
+      .stat-label { font-size:0.9rem; color:var(--text-secondary); }
+
+      .toolbar { display:flex; gap:12px; align-items:center; flex-wrap:wrap; margin-bottom:18px; }
+      .search {
+        flex: 1;
+        min-width: 240px;
+        display:flex;
+        gap:10px;
+        align-items:center;
+        background:var(--bg-card);
+        border:1px solid var(--border-color);
+        border-radius:14px;
+        padding:10px 14px;
+      }
+      .search input {
+        width:100%;
+        background:transparent;
+        border:none;
+        outline:none;
+        color:var(--text-primary);
+        font-size:0.95rem;
+      }
+      .search small { color:var(--text-secondary); }
+
+      .select {
+        background:var(--bg-card);
+        border:1px solid var(--border-color);
+        color:var(--text-primary);
+        padding:10px 12px;
+        border-radius:14px;
+        cursor:pointer;
+        font-size:.95rem;
+      }
+
+      .pill {
+        background:rgba(0,229,255,.12);
+        border:1px solid rgba(0,229,255,.25);
+        color:var(--accent-cyan);
+        padding:8px 12px;
+        border-radius:999px;
+        font-size:.85rem;
+      }
+
+      .filter-bar { display:flex; gap:12px; margin-bottom:22px; flex-wrap:wrap; }
+      .filter-btn { background:var(--bg-card); border:2px solid var(--border-color); color:var(--text-primary); padding:10px 18px; border-radius:25px; cursor:pointer; font-size:.95rem; white-space: nowrap; }
+      .filter-btn:hover { background:var(--bg-card-hover); }
+      .filter-btn.active { background:var(--accent-cyan); color:var(--bg-dark); border-color:var(--accent-cyan); font-weight:bold; }
+
+      .news-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap:22px; margin-bottom:40px; }
+      .news-category { background:var(--bg-card); border-radius:15px; padding:22px; border:1px solid var(--border-color); }
+      .category-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:16px; padding-bottom:14px; border-bottom:2px solid var(--border-color); }
+      .category-title { font-size:1.2rem; font-weight:bold; display:flex; align-items:center; gap:10px; }
+      .category-icon { font-size:1.4rem; }
+      .category-count { background:var(--accent-green); color:var(--bg-dark); padding:4px 12px; border-radius:20px; font-size:.85rem; font-weight:bold; }
+
+      .news-item { background:rgba(255,255,255,0.03); padding:14px; border-radius:10px; margin-bottom:12px; border-left:3px solid var(--accent-green); cursor: default; }
+      .news-item:hover { background:rgba(255,255,255,0.08); border-left-width:5px; }
+      .news-item.saved { border-left-color:var(--accent-yellow); background:rgba(255,235,59,0.1); }
+      .news-title { font-size:1rem; margin-bottom:8px; line-height:1.4; }
+      .news-summary { color: var(--text-secondary); font-size:.88rem; line-height:1.45; margin-bottom:10px; }
+      .news-tags { display:flex; gap:6px; flex-wrap:wrap; margin-top: 8px; }
+      .tag { font-size:.75rem; color: var(--text-secondary); border:1px solid var(--border-color); padding:3px 8px; border-radius:999px; }
+      .news-meta { display:flex; justify-content:space-between; align-items:center; gap:10px; margin-top:10px; }
+      .news-source { color:var(--text-secondary); font-size:.85rem; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; max-width: 68%; }
+      .news-actions { display:flex; gap:8px; flex-shrink:0; }
+      .action-btn { background:transparent; border:1px solid var(--border-color); color:var(--text-primary); padding:5px 12px; border-radius:15px; cursor:pointer; font-size:.8rem; }
+      .action-btn:hover { background:var(--accent-cyan); color:var(--bg-dark); border-color:var(--accent-cyan); }
+      .action-btn.saved-btn { background:var(--accent-yellow); color:var(--bg-dark); border-color:var(--accent-yellow); }
+
+      .scrapbook-panel { position:fixed; right:-420px; top:0; width:420px; height:100vh; background:var(--bg-card); border-left:2px solid var(--border-color); padding:26px; overflow-y:auto; z-index:1000; box-shadow:-5px 0 20px rgba(0,0,0,.5); }
+      .scrapbook-panel.open { right:0; }
+      .scrapbook-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; padding-bottom:15px; border-bottom:2px solid var(--border-color); }
+      .close-btn { background:transparent; border:none; color:var(--text-primary); font-size:1.5rem; cursor:pointer; }
+      .scrapbook-toggle { position:fixed; right:20px; top:50%; transform:translateY(-50%); background:var(--accent-cyan); color:var(--bg-dark); border:none; padding:15px 20px; border-radius:25px 0 0 25px; cursor:pointer; font-weight:bold; z-index:999; box-shadow:-5px 0 15px rgba(0,229,255,.3); }
+
+      .scrapbook-item { background:rgba(255,255,255,0.05); padding:14px; border-radius:10px; margin-bottom:14px; border-left:3px solid var(--accent-yellow); }
+      .scrapbook-category { color:var(--accent-cyan); font-size:.8rem; margin-bottom:5px; font-weight:bold; }
+      .scrapbook-title { font-size:.95rem; margin-bottom:8px; line-height:1.35; }
+      .scrapbook-date { color:var(--text-secondary); font-size:.75rem; }
+      .remove-btn { background:var(--accent-pink); color:white; border:none; padding:5px 12px; border-radius:15px; cursor:pointer; font-size:.75rem; margin-top:8px; }
+      .empty-state { text-align:center; padding:40px; color:var(--text-secondary); }
+
+      @media (max-width:768px) {
+        .news-grid { grid-template-columns:1fr; }
+        .scrapbook-panel { width:100%; right:-100%; }
+        .header h1 { font-size:1.7rem; }
+        .timestamp { width: 190px; font-size: 1rem; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <h1>📰 The Wave Tree Intelligence Hub</h1>
+      <div class="timestamp" id="timestamp"></div>
+    </div>
+
+    <div class="stats">
+      <div class="stat-card">
+        <span class="stat-icon">📊</span>
+        <div>
+          <div class="stat-value" id="totalNews">0</div>
+          <div class="stat-label">Total News</div>
+        </div>
+      </div>
+
+      <div class="stat-card">
+        <span class="stat-icon">📌</span>
+        <div>
+          <div class="stat-value" id="savedCount">0</div>
+          <div class="stat-label">Saved</div>
+        </div>
+      </div>
+
+      <div class="stat-card">
+        <span class="stat-icon">🧭</span>
+        <div>
+          <div class="stat-value" id="shownNews">0</div>
+          <div class="stat-label">Shown</div>
+        </div>
+      </div>
+
+      <div class="stat-card">
+        <span class="stat-icon">🌍</span>
+        <div>
+          <div class="stat-value" id="categoryCount">5</div>
+          <div class="stat-label">Categories</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="toolbar">
+      <div class="search" title="제목/요약/소스/태그에서 검색">
+        <span>🔎</span>
+        <input id="searchInput" placeholder="검색: 예) FDA, Listeria, Rossini, Blackwell..." />
+        <small id="searchHint"></small>
+      </div>
+
+      <select id="sortSelect" class="select" title="정렬 기준">
+        <option value="published_desc">최신순</option>
+        <option value="published_asc">오래된순</option>
+        <option value="score_desc">중요도(Score) 높은순</option>
+        <option value="score_asc">중요도(Score) 낮은순</option>
+        <option value="source_asc">소스명 A→Z</option>
+      </select>
+
+      <span class="pill" id="dataStatus">data: 로딩중…</span>
+    </div>
+
+    <div class="filter-bar">
+      <button class="filter-btn active" data-filter="all">🌐 All News</button>
+      <button class="filter-btn" data-filter="listeria_free">🦠 Listeria Free</button>
+      <button class="filter-btn" data-filter="cultured_meat">🥩 Cultured Meat</button>
+      <button class="filter-btn" data-filter="high_end_audio">🎵 High-End Audio</button>
+      <button class="filter-btn" data-filter="computer_ai">🤖 Computer & AI</button>
+      <button class="filter-btn" data-filter="global_biz">🌍 Global Biz</button>
+    </div>
+
+    <div class="news-grid" id="newsGrid"></div>
+
+    <button class="scrapbook-toggle" onclick="WaveTree.toggleScrapbook()">📌 스크랩북 (<span id="scrapbookCount">0</span>)</button>
+
+    <div class="scrapbook-panel" id="scrapbookPanel">
+      <div class="scrapbook-header">
+        <h2>📌 저장된 뉴스</h2>
+        <button class="close-btn" onclick="WaveTree.toggleScrapbook()">✕</button>
+      </div>
+      <div id="scrapbookContent"></div>
+    </div>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
