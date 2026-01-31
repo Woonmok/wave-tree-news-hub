@@ -7,9 +7,8 @@
     
     <key>ProgramArguments</key>
     <array>
-        <string>bash</string>
-        <string>-c</string>
-        <string>cd /Users/seunghoonoh/Desktop/wave-tree-news-hub && /usr/bin/python3 -m http.server 8000</string>
+        <string>/bin/bash</string>
+        <string>/Users/seunghoonoh/Desktop/wave-tree-news-hub/start-http-server.sh</string>
     </array>
     
     <key>RunAtLoad</key>
