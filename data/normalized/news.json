@@ -1,30 +1,14 @@
 {
-  "generated_at": "2026-01-31T12:37:22Z",
+  "generated_at": "2026-01-31T14:52:08.561Z",
   "items": [
-    {
-      "id": "f3b2a1c4d5e6f7890abc1234567890abcdef5678",
-      "category": "food_safety",
-      "title": "한국, RTE 제품 수입·검사 강화 발표",
-      "source": "MFDS",
-      "url": "https://example.com/korea-rte-policy",
-      "published_at": "2026-01-31T13:30:00Z",
-      "summary": "정부가 RTE(즉시 섭취 식품)의 수입 검사와 환경 모니터링을 강화한다고 발표했습니다.",
-      "highlights": [],
-      "tags": [
-        "korea",
-        "policy",
-        "food-safety"
-      ],
-      "score": 0.85
-    },
     {
       "id": "8d9dc6e106cbcaecaaf2f8d9592e8b4ac5855eb8",
       "category": "listeria_free",
       "title": "미국 RTE 파스타 리스테리아 사망 사고로 \"제로 목표\" 관리 강화",
       "source": "CDC/FDA",
       "url": "https://example.com/listeria-rte",
-      "published_at": "2026-01-31T08:00:00Z",
-      "summary": "RTE 제품군에 대한 환경모니터링과 공정관리 강화 움직임.",
+      "published_at": "2026-01-31T08:00:00.000Z",
+      "summary": "RTE 파스타 식중독 사망 사고 이후 미국 내 리스테리아 관리 기준을 '사실상 제로' 수준으로 끌어올리려는 논의가 본격화됨.",
       "highlights": [],
       "tags": [
         "regulation",
@@ -38,8 +22,8 @@
       "title": "FDA, RTE 제품 위생설비·환경모니터링 지침 업데이트",
       "source": "FDA",
       "url": "https://example.com/fda-guidance",
-      "published_at": "2026-01-31T06:00:00Z",
-      "summary": "",
+      "published_at": "2026-01-31T06:00:00.000Z",
+      "summary": "RTE 생산설비 세척, 배수·배관 설계, 저온 환경 샘플링 등을 강화한 최신 가이드라인 초안이 공개됨.",
       "highlights": [],
       "tags": [
         "guidance",
@@ -48,33 +32,110 @@
       "score": 0.92
     },
     {
-      "id": "dfed8a749663e7db9d4a3ddfcb31b503e5ee16ed",
+      "id": "be9d67c6911cf9615b7884abbe03fa498eeab020",
+      "category": "listeria_free",
+      "title": "대형 유통체인, RTE 품목 자발적 리콜·공급망 실사 확대",
+      "source": "Industry News",
+      "url": "https://example.com/retail-audit",
+      "published_at": "2026-01-31T05:30:00.000Z",
+      "summary": "다수의 미국 유통사가 자체 위생 감사와 선제적 리콜을 통해 리스테리아 리스크를 줄이겠다고 발표.",
+      "highlights": [],
+      "tags": [
+        "retail",
+        "audit"
+      ],
+      "score": 0.78
+    },
+    {
+      "id": "9be9df8aae479d75a070422b47097981f1a2dbb4",
+      "category": "listeria_free",
+      "title": "식품기업들 HACCP·콜드체인 재점검, \"Listeria-free\" 라벨 마케팅 강화",
+      "source": "Food Safety News",
+      "url": "https://example.com/haccp-listeria",
+      "published_at": "2026-01-30T23:00:00.000Z",
+      "summary": "저온 유통 제품 중심으로 환경모니터링 빈도와 CCP 검증을 늘리며 무오염 라벨을 강조하는 움직임이 확산.",
+      "highlights": [],
+      "tags": [
+        "haccp",
+        "cold-chain"
+      ],
+      "score": 0.73
+    },
+    {
+      "id": "1471dbcd56f5c2e6ba57a06fe8a686d6603d1e5a",
       "category": "cultured_meat",
       "title": "배양육 시장 2034년 11억 달러 전망, 연평균 50.9% 성장",
-      "source": "Market Research",
+      "source": "Precedence Research",
       "url": "https://example.com/cultured-market",
-      "published_at": "2026-01-30T12:00:00Z",
-      "summary": "북미 비중과 승인국 확대가 핵심.",
+      "published_at": "2026-01-30T12:00:00.000Z",
+      "summary": "북미와 유럽이 초기 성장을 주도하고 소고기·가금육 카테고리가 매출의 대부분을 차지할 것으로 예상.",
       "highlights": [],
       "tags": [
         "market",
         "forecast"
       ],
+      "score": 0.82
+    },
+    {
+      "id": "ab7e5017452460e13da19d5e0c09ec6970c89bc8",
+      "category": "cultured_meat",
+      "title": "글로벌 배양육 시장, 2035년까지 40% 이상 CAGR 전망",
+      "source": "Research Nester",
+      "url": "https://example.com/lab-grown-forecast",
+      "published_at": "2026-01-30T09:00:00.000Z",
+      "summary": "규제 승인 국가 증가와 생산 단가 하락이 장기 성장의 핵심 동력으로 지목됨.",
+      "highlights": [],
+      "tags": [
+        "forecast",
+        "long-term"
+      ],
+      "score": 0.77
+    },
+    {
+      "id": "ec2c0cf8d6870a098a12e4cddc2f300c8fa1a063",
+      "category": "cultured_meat",
+      "title": "Vow, 538kg 규모 배양 메추라기 생산 성공…상업화 이정표",
+      "source": "Vow Food",
+      "url": "https://example.com/vow-538kg",
+      "published_at": "2026-01-29T10:00:00.000Z",
+      "summary": "호주 Vow가 파일럿 플랜트에서 500kg 이상 배양육 생산에 성공하며 프리미엄 외식 채널 공급을 준비 중.",
+      "highlights": [],
+      "tags": [
+        "scaleup",
+        "quail"
+      ],
+      "score": 0.81
+    },
+    {
+      "id": "93137714702d88278bcb632419a674a8f500c53b",
+      "category": "cultured_meat",
+      "title": "미국·싱가포르, 신규 배양육 제품 추가 승인 검토",
+      "source": "Global Report",
+      "url": "https://example.com/reg-approvals",
+      "published_at": "2026-01-29T07:00:00.000Z",
+      "summary": "기존 닭고기 제품에 더해 소고기·해산물 배양육에 대한 안전성 평가가 진행되고 있음.",
+      "highlights": [],
+      "tags": [
+        "regulation",
+        "usa",
+        "sg"
+      ],
       "score": 0.74
     },
     {
-      "id": "267ebe5c5e71738931e4dc1ffa8f38bdb13e6005",
+      "id": "55f51dc10534d74dc9179c568b662645aa11ad23",
       "category": "cultured_meat",
-      "title": "Vow, 538kg 배양 메추라기 생산 성공 - 상업화 이정표",
-      "source": "Vow Food",
-      "url": "https://example.com/vow-538kg",
-      "published_at": "2026-01-29T10:00:00Z",
-      "summary": "",
+      "title": "한국 농식품부, 2026년 배양육 R&D·인프라 예산 확대",
+      "source": "MAFRA",
+      "url": "https://example.com/korea-rnd",
+      "published_at": "2026-01-28T04:30:00.000Z",
+      "summary": "파일럿 플랜트 구축과 조리·관능평가 연구를 포함한 국가 차원의 기술 로드맵이 발표됨.",
       "highlights": [],
       "tags": [
-        "scaleup"
+        "korea",
+        "policy"
       ],
-      "score": 0.81
+      "score": 0.71
     },
     {
       "id": "c4dda9726443a4026924b14025ebb0e21bf66268",
@@ -82,8 +143,8 @@
       "title": "REL Acoustics 홈시어터 전용 서브우퍼 2종 공개",
       "source": "REL",
       "url": "https://example.com/rel-sub",
-      "published_at": "2026-01-31T02:00:00Z",
-      "summary": "",
+      "published_at": "2026-01-31T02:00:00.000Z",
+      "summary": "대형 리스닝룸과 소형 거실을 각각 겨냥한 두 모델로, 영화용 LFE 재생에 최적화된 설계를 내세움.",
       "highlights": [],
       "tags": [
         "product",
@@ -92,13 +153,73 @@
       "score": 0.62
     },
     {
+      "id": "2a22cbf8776698385bd8234bf30c456e1c67a50c",
+      "category": "high_end_audio",
+      "title": "DALI, 합리적 가격대의 SONIK 시리즈 발표",
+      "source": "DALI",
+      "url": "https://example.com/dali-sonik",
+      "published_at": "2026-01-30T11:00:00.000Z",
+      "summary": "엔트리급 가격에 상위 라인업의 튜닝 철학을 반영해 젊은 하이파이 입문자를 겨냥한 라인업.",
+      "highlights": [],
+      "tags": [
+        "speaker",
+        "new-release"
+      ],
+      "score": 0.69
+    },
+    {
+      "id": "ac76b8db40248c079a23e2721e764e40a1bbcd63",
+      "category": "high_end_audio",
+      "title": "오디오테크니카, MC 카트리지 AT33 시리즈 리뉴얼",
+      "source": "Audio-Technica",
+      "url": "https://example.com/at33-refresh",
+      "published_at": "2026-01-29T15:00:00.000Z",
+      "summary": "코일 구조와 댐핑 재질을 개선해 해상력과 노이즈 억제를 동시에 강화한 것이 특징.",
+      "highlights": [],
+      "tags": [
+        "analog",
+        "cartridge"
+      ],
+      "score": 0.71
+    },
+    {
+      "id": "34882a48d91f03dd5693ef57336c93f1795d66b6",
+      "category": "high_end_audio",
+      "title": "FiiO, R2R 구조 탑재 K 시리즈 헤드폰 앰프·CD 플레이어 공개",
+      "source": "FiiO",
+      "url": "https://example.com/fiio-r2r",
+      "published_at": "2026-01-29T09:30:00.000Z",
+      "summary": "엔트리 가격대에서 R2R 사운드를 경험하게 해 주는 데 초점을 맞춘 데스크톱 솔루션.",
+      "highlights": [],
+      "tags": [
+        "r2r",
+        "digital-audio"
+      ],
+      "score": 0.76
+    },
+    {
+      "id": "8e7807026ea7e174934ef13bdf1c74590ed9482c",
+      "category": "high_end_audio",
+      "title": "하이엔드 오디오 업계, \"새로운 세대 유입\"을 최우선 과제로",
+      "source": "Hi-Fi+ Magazine",
+      "url": "https://example.com/hifi-young",
+      "published_at": "2026-01-28T18:00:00.000Z",
+      "summary": "스트리밍·게임·홈시네마와의 결합을 통해 20~30대 고객층을 어떻게 끌어들일지가 논의됨.",
+      "highlights": [],
+      "tags": [
+        "market",
+        "demographic"
+      ],
+      "score": 0.58
+    },
+    {
       "id": "5e67ad2c3e2701f5a2f18ac124a1db75e11866d5",
       "category": "computer_ai",
       "title": "OpenAI 첫 AI 하드웨어, 럭스셰어→폭스콘 단독 전환",
       "source": "TrendForce",
       "url": "https://example.com/openai-foxconn",
-      "published_at": "2026-01-31T01:00:00Z",
-      "summary": "생산 파트너 변경 이슈.",
+      "published_at": "2026-01-31T01:00:00.000Z",
+      "summary": "초기 생산 파트너였던 중국 럭스셰어 대신 폭스콘이 단독 생산을 맡게 되며, 2026년 이후 출하 일정에 관심이 집중됨.",
       "highlights": [],
       "tags": [
         "supply-chain",
@@ -107,13 +228,28 @@
       "score": 0.88
     },
     {
+      "id": "ba0dd31ef4c589e6a4bb59d5f6082e2e125ff67e",
+      "category": "computer_ai",
+      "title": "OpenAI, 2026년 소비자용 AI 단말 출시 준비",
+      "source": "KuCoin News",
+      "url": "https://example.com/openai-device-2026",
+      "published_at": "2026-01-18T09:00:00.000Z",
+      "summary": "펜 형태의 스크린리스 단말을 시작으로, 스마트 글래스·스피커 등 다양한 폼팩터가 검토되고 있음.",
+      "highlights": [],
+      "tags": [
+        "consumer",
+        "ai-terminal"
+      ],
+      "score": 0.8
+    },
+    {
       "id": "c116df93e6b79f9e347ab2056c27003c9fa1c961",
       "category": "computer_ai",
       "title": "아날로그 AI 칩·에너지 효율형 딥러닝 하드웨어 논의",
       "source": "AI Hardware Summit",
       "url": "https://example.com/analog-ai",
-      "published_at": "2026-01-28T09:00:00Z",
-      "summary": "",
+      "published_at": "2026-01-28T09:00:00.000Z",
+      "summary": "메모리·전력 한계를 극복하기 위한 뉴로모픽·아날로그 가속기 사례가 공유되며 엣지 AI 적용 가능성이 주목받음.",
       "highlights": [],
       "tags": [
         "hardware",
@@ -122,19 +258,94 @@
       "score": 0.55
     },
     {
+      "id": "68057f05a3e496d46c7efcfbf6cc074adf20ef6a",
+      "category": "computer_ai",
+      "title": "폭스콘, 클라우드·엣지 AI 서버·단말 동시 수주 확대",
+      "source": "Foxconn Report",
+      "url": "https://example.com/foxconn-ai",
+      "published_at": "2026-01-27T06:30:00.000Z",
+      "summary": "대형 클라우드 고객과 신규 AI 단말 프로젝트를 동시에 확보하며 생산 포트폴리오를 다변화하고 있음.",
+      "highlights": [],
+      "tags": [
+        "manufacturing",
+        "ai"
+      ],
+      "score": 0.67
+    },
+    {
+      "id": "cbd7d08c1319479a3847f2a984c285bdf0196fd3",
+      "category": "computer_ai",
+      "title": "엔비디아 H200·B100 GPU 공급 부족, 2026년 상반기까지 지속 전망",
+      "source": "Supply Chain Brief",
+      "url": "https://example.com/h200-shortage",
+      "published_at": "2026-01-26T05:00:00.000Z",
+      "summary": "AI 데이터센터 투자 급증으로 차세대 GPU 리드타임이 수개월 수준으로 늘어나고 있다는 분석.",
+      "highlights": [],
+      "tags": [
+        "gpu",
+        "datacenter"
+      ],
+      "score": 0.7
+    },
+    {
       "id": "49ea127bc65ae54a1878e74c4fa0f660e69c4ae1",
       "category": "global_biz",
       "title": "유럽 식품안전청, 배양육 규제 프레임워크 최종안 발표",
       "source": "EFSA",
       "url": "https://example.com/efsa-framework",
-      "published_at": "2026-01-30T05:00:00Z",
-      "summary": "",
+      "published_at": "2026-01-30T05:00:00.000Z",
+      "summary": "위험평가·라벨 표기·추적관리 요건을 담은 통합 지침으로, EU 내 시장 진입 절차가 구체화됨.",
       "highlights": [],
       "tags": [
         "eu",
         "regulation"
       ],
       "score": 0.9
+    },
+    {
+      "id": "d0131d62edfd8486c708cf268b3f5e341f045c7d",
+      "category": "global_biz",
+      "title": "일본 소니, 360 Reality Audio 생태계 확장 발표",
+      "source": "Sony",
+      "url": "https://example.com/sony-360ra",
+      "published_at": "2026-01-29T08:00:00.000Z",
+      "summary": "스트리밍 플랫폼·헤드폰·사운드바 파트너를 확대해 몰입형 음향 포맷을 대중화하겠다는 전략을 밝힘.",
+      "highlights": [],
+      "tags": [
+        "japan",
+        "audio"
+      ],
+      "score": 0.72
+    },
+    {
+      "id": "a73da446a69107e60c9a17a254504ed8a435dda6",
+      "category": "global_biz",
+      "title": "글로벌 RTE 식품사, 연쇄 리콜 이후 리스크 커뮤니케이션 강화",
+      "source": "Global Food Biz",
+      "url": "https://example.com/global-rte-recall",
+      "published_at": "2026-01-29T03:30:00.000Z",
+      "summary": "유럽·북미 브랜드들이 투명한 정보 공개와 재발 방지 계획을 통해 소비자 신뢰 회복에 나서고 있음.",
+      "highlights": [],
+      "tags": [
+        "recall",
+        "communication"
+      ],
+      "score": 0.68
+    },
+    {
+      "id": "f971a698e0bb24bd4f0f89914f02b3eed3d3c0ca",
+      "category": "global_biz",
+      "title": "배양육·식물성 단백질 스타트업에 대한 2026년 투자, 전년 대비 회복 조짐",
+      "source": "Investment Monitor",
+      "url": "https://example.com/altprotein-invest",
+      "published_at": "2026-01-28T07:45:00.000Z",
+      "summary": "금리 고점 통과 이후 성장형 푸드테크에 대한 벤처 투자가 점진적으로 돌아오고 있다는 분석.",
+      "highlights": [],
+      "tags": [
+        "investment",
+        "alt-protein"
+      ],
+      "score": 0.7
     }
   ]
 }
