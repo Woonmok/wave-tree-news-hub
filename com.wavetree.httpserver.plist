@@ -7,14 +7,10 @@
     
     <key>ProgramArguments</key>
     <array>
-        <string>/usr/bin/python3</string>
-        <string>-m</string>
-        <string>http.server</string>
-        <string>8000</string>
+        <string>bash</string>
+        <string>-c</string>
+        <string>cd /Users/seunghoonoh/Desktop/wave-tree-news-hub && /usr/bin/python3 -m http.server 8000</string>
     </array>
-    
-    <key>WorkingDirectory</key>
-    <string>/Users/seunghoonoh/Desktop/wave-tree-news-hub</string>
     
     <key>RunAtLoad</key>
     <true/>
