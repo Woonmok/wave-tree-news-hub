@@ -1,0 +1,140 @@
+{
+  "generated_at": "2026-01-31T12:37:22Z",
+  "items": [
+    {
+      "id": "f3b2a1c4d5e6f7890abc1234567890abcdef5678",
+      "category": "food_safety",
+      "title": "한국, RTE 제품 수입·검사 강화 발표",
+      "source": "MFDS",
+      "url": "https://example.com/korea-rte-policy",
+      "published_at": "2026-01-31T13:30:00Z",
+      "summary": "정부가 RTE(즉시 섭취 식품)의 수입 검사와 환경 모니터링을 강화한다고 발표했습니다.",
+      "highlights": [],
+      "tags": [
+        "korea",
+        "policy",
+        "food-safety"
+      ],
+      "score": 0.85
+    },
+    {
+      "id": "8d9dc6e106cbcaecaaf2f8d9592e8b4ac5855eb8",
+      "category": "listeria_free",
+      "title": "미국 RTE 파스타 리스테리아 사망 사고로 \"제로 목표\" 관리 강화",
+      "source": "CDC/FDA",
+      "url": "https://example.com/listeria-rte",
+      "published_at": "2026-01-31T08:00:00Z",
+      "summary": "RTE 제품군에 대한 환경모니터링과 공정관리 강화 움직임.",
+      "highlights": [],
+      "tags": [
+        "regulation",
+        "usa"
+      ],
+      "score": 0.86
+    },
+    {
+      "id": "b40c68e2186533ab0de16131e1c06c6ec3ee2544",
+      "category": "listeria_free",
+      "title": "FDA, RTE 제품 위생설비·환경모니터링 지침 업데이트",
+      "source": "FDA",
+      "url": "https://example.com/fda-guidance",
+      "published_at": "2026-01-31T06:00:00Z",
+      "summary": "",
+      "highlights": [],
+      "tags": [
+        "guidance",
+        "fsma"
+      ],
+      "score": 0.92
+    },
+    {
+      "id": "dfed8a749663e7db9d4a3ddfcb31b503e5ee16ed",
+      "category": "cultured_meat",
+      "title": "배양육 시장 2034년 11억 달러 전망, 연평균 50.9% 성장",
+      "source": "Market Research",
+      "url": "https://example.com/cultured-market",
+      "published_at": "2026-01-30T12:00:00Z",
+      "summary": "북미 비중과 승인국 확대가 핵심.",
+      "highlights": [],
+      "tags": [
+        "market",
+        "forecast"
+      ],
+      "score": 0.74
+    },
+    {
+      "id": "267ebe5c5e71738931e4dc1ffa8f38bdb13e6005",
+      "category": "cultured_meat",
+      "title": "Vow, 538kg 배양 메추라기 생산 성공 - 상업화 이정표",
+      "source": "Vow Food",
+      "url": "https://example.com/vow-538kg",
+      "published_at": "2026-01-29T10:00:00Z",
+      "summary": "",
+      "highlights": [],
+      "tags": [
+        "scaleup"
+      ],
+      "score": 0.81
+    },
+    {
+      "id": "c4dda9726443a4026924b14025ebb0e21bf66268",
+      "category": "high_end_audio",
+      "title": "REL Acoustics 홈시어터 전용 서브우퍼 2종 공개",
+      "source": "REL",
+      "url": "https://example.com/rel-sub",
+      "published_at": "2026-01-31T02:00:00Z",
+      "summary": "",
+      "highlights": [],
+      "tags": [
+        "product",
+        "home-theater"
+      ],
+      "score": 0.62
+    },
+    {
+      "id": "5e67ad2c3e2701f5a2f18ac124a1db75e11866d5",
+      "category": "computer_ai",
+      "title": "OpenAI 첫 AI 하드웨어, 럭스셰어→폭스콘 단독 전환",
+      "source": "TrendForce",
+      "url": "https://example.com/openai-foxconn",
+      "published_at": "2026-01-31T01:00:00Z",
+      "summary": "생산 파트너 변경 이슈.",
+      "highlights": [],
+      "tags": [
+        "supply-chain",
+        "device"
+      ],
+      "score": 0.88
+    },
+    {
+      "id": "c116df93e6b79f9e347ab2056c27003c9fa1c961",
+      "category": "computer_ai",
+      "title": "아날로그 AI 칩·에너지 효율형 딥러닝 하드웨어 논의",
+      "source": "AI Hardware Summit",
+      "url": "https://example.com/analog-ai",
+      "published_at": "2026-01-28T09:00:00Z",
+      "summary": "",
+      "highlights": [],
+      "tags": [
+        "hardware",
+        "energy"
+      ],
+      "score": 0.55
+    },
+    {
+      "id": "49ea127bc65ae54a1878e74c4fa0f660e69c4ae1",
+      "category": "global_biz",
+      "title": "유럽 식품안전청, 배양육 규제 프레임워크 최종안 발표",
+      "source": "EFSA",
+      "url": "https://example.com/efsa-framework",
+      "published_at": "2026-01-30T05:00:00Z",
+      "summary": "",
+      "highlights": [],
+      "tags": [
+        "eu",
+        "regulation"
+      ],
+      "score": 0.9
+    }
+  ]
+}

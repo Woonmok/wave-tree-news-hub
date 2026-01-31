@@ -1,0 +1,31 @@
+# Dependencies
+node_modules/
+package-lock.json
+yarn.lock
+
+# Logs
+*.log
+logs/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Raw input (Perplexity responses) - can be large
+data/raw/*.txt
+data/raw/*.json
+!data/raw/perplexity.sample.txt
+
+# Build outputs (if any)
+dist/
+build/
+
+# Environment
+.env
+.env.local

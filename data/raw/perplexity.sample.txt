@@ -1,0 +1,17 @@
+[CATEGORY: listeria_free]
+- 미국 RTE 파스타 리스테리아 사망 사고로 "제로 목표" 관리 강화 | CDC/FDA | https://example.com/listeria-rte | 2026-01-31T08:00:00Z | score=0.86 | tags=regulation,usa | summary=RTE 제품군에 대한 환경모니터링과 공정관리 강화 움직임.
+- FDA, RTE 제품 위생설비·환경모니터링 지침 업데이트 | FDA | https://example.com/fda-guidance | 2026-01-31T06:00:00Z | score=0.92 | tags=guidance,fsma
+
+[CATEGORY: cultured_meat]
+- 배양육 시장 2034년 11억 달러 전망, 연평균 50.9% 성장 | Market Research | https://example.com/cultured-market | 2026-01-30T12:00:00Z | score=0.74 | tags=market,forecast | summary=북미 비중과 승인국 확대가 핵심.
+- Vow, 538kg 배양 메추라기 생산 성공 - 상업화 이정표 | Vow Food | https://example.com/vow-538kg | 2026-01-29T10:00:00Z | score=0.81 | tags=scaleup
+
+[CATEGORY: high_end_audio]
+- REL Acoustics 홈시어터 전용 서브우퍼 2종 공개 | REL | https://example.com/rel-sub | 2026-01-31T02:00:00Z | score=0.62 | tags=product,home-theater
+
+[CATEGORY: computer_ai]
+- OpenAI 첫 AI 하드웨어, 럭스셰어→폭스콘 단독 전환 | TrendForce | https://example.com/openai-foxconn | 2026-01-31T01:00:00Z | score=0.88 | tags=supply-chain,device | summary=생산 파트너 변경 이슈.
+- 아날로그 AI 칩·에너지 효율형 딥러닝 하드웨어 논의 | AI Hardware Summit | https://example.com/analog-ai | 2026-01-28T09:00:00Z | score=0.55 | tags=hardware,energy
+
+[CATEGORY: global_biz]
+- 유럽 식품안전청, 배양육 규제 프레임워크 최종안 발표 | EFSA | https://example.com/efsa-framework | 2026-01-30T05:00:00Z | score=0.9 | tags=eu,regulation
