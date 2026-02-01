@@ -126,39 +126,168 @@ function normalizeFromText(raw) {
   const lines = raw.split(/\r?\n/);
 
   let currentCategory = null;
+  let inNumberedList = false;
+  let itemBuffer = null;
   const out = [];
 
-  for (const lineRaw of lines) {
+  for (let i = 0; i < lines.length; i++) {
+    const lineRaw = lines[i];
     const line = lineRaw.trim();
-    if (!line) continue;
+    if (!line) {
+      // flush any buffered item on blank line
+      if (itemBuffer) {
+        const item = parseNumberedItem(itemBuffer, currentCategory);
+        if (item) out.push(item);
+        itemBuffer = null;
+      }
+      inNumberedList = false;
+      continue;
+    }
 
     // [CATEGORY: xxx]
     const m = line.match(/^\[CATEGORY:\s*([a-z0-9_]+)\s*\]$/i);
     if (m) {
+      if (itemBuffer) {
+        const item = parseNumberedItem(itemBuffer, currentCategory);
+        if (item) out.push(item);
+        itemBuffer = null;
+      }
       const cat = m[1].toLowerCase();
       currentCategory = ALLOWED_CATEGORY.has(cat) ? cat : null;
+      inNumberedList = false;
       continue;
     }
 
-    // Allow headings like "LISTERIA FREE:" etc.
-    if (!currentCategory) {
+    // Markdown heading like "## 🦠 Listeria Free (4)"
+    if (line.match(/^#+\s*.*\([0-9]+\)\s*$/)) {
+      if (itemBuffer) {
+        const item = parseNumberedItem(itemBuffer, currentCategory);
+        if (item) out.push(item);
+        itemBuffer = null;
+      }
       const guessed = guessCategory(line);
       if (guessed) {
         currentCategory = guessed;
-        continue;
+        inNumberedList = true;
       }
+      continue;
     }
 
-    // bullet item "- ..."
-    if (line.startsWith("-")) {
+    // Allow other headings like "LISTERIA FREE:" etc.
+    if (line.match(/^#+\s+/) && !currentCategory) {
+      if (itemBuffer) {
+        const item = parseNumberedItem(itemBuffer, currentCategory);
+        if (item) out.push(item);
+        itemBuffer = null;
+      }
+      const guessed = guessCategory(line);
+      if (guessed) {
+        currentCategory = guessed;
+        inNumberedList = true;
+      }
+      continue;
+    }
+
+    // numbered list item "1. **title**" in markdown
+    const numMatch = line.match(/^(\d+)\.\s*\*\*(.+?)\*\*\s*(.*)?$/);
+    if (numMatch && inNumberedList && currentCategory) {
+      // flush previous item
+      if (itemBuffer) {
+        const item = parseNumberedItem(itemBuffer, currentCategory);
+        if (item) out.push(item);
+      }
+      itemBuffer = {
+        title: numMatch[2].trim(),
+        lines: [line],
+      };
+      continue;
+    }
+
+    // continuation line "   - ..." (indented bullet under numbered item)
+    if ((line.startsWith("-") || line.startsWith("•")) && itemBuffer) {
+      itemBuffer.lines.push(line);
+      continue;
+    }
+
+    // bullet item "- ..." (old format)
+    if (line.startsWith("-") || line.startsWith("•")) {
       if (!currentCategory) continue;
-      const body = line.replace(/^-+\s*/, "");
+      const body = line.replace(/^[-•]+\s*/, "");
       const item = parseBullet(body, currentCategory);
       if (item) out.push(item);
+      continue;
     }
   }
 
+  // flush final buffer
+  if (itemBuffer) {
+    const item = parseNumberedItem(itemBuffer, currentCategory);
+    if (item) out.push(item);
+  }
+
   return dedup(out);
+}
+
+function parseNumberedItem(buffer, category) {
+  // buffer = { title: "...", lines: ["1. **title**", "   - content", "   - content", ...] }
+  if (!buffer || !buffer.title || !category) return null;
+
+  let summary = "";
+  let highlights = [];
+  let url = null;
+  let source = "";
+  let score = null;
+  let tags = [];
+
+  // parse continuation lines (indented bullet points)
+  for (let i = 1; i < buffer.lines.length; i++) {
+    const line = buffer.lines[i].trim();
+    if (!line) continue;
+
+    // remove leading bullet
+    const content = line.replace(/^[-•]\s*/, "");
+
+    // look for [web:XX] references for sources
+    const webMatch = content.match(/\[web:(\d+)\]/);
+    if (webMatch && !source) {
+      source = `web:${webMatch[1]}`;
+    }
+
+    // extract URL if present
+    if (!url) url = extractUrl(content);
+
+    // treat each bullet as a highlight/summary item
+    if (!summary) {
+      summary = content;
+    } else {
+      highlights.push(content);
+    }
+  }
+
+  // extract tags from summary if using [tag:...] format
+  if (summary) {
+    const tagMatches = summary.match(/\[tag:([^\]]+)\]/g);
+    if (tagMatches) {
+      tags = tagMatches.map((m) => m.replace(/\[tag:|\]/g, "").trim());
+    }
+  }
+
+  const title = String(buffer.title).trim();
+
+  if (!title) return null;
+
+  return {
+    id: makeId(category, title, url, source),
+    category,
+    title,
+    source,
+    url,
+    published_at: null,
+    summary,
+    highlights,
+    tags,
+    score,
+  };
 }
 
 function parseBullet(body, category) {
