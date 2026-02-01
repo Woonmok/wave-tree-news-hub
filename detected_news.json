@@ -320,5 +320,51 @@
       "blackwell"
     ],
     "analysis": "[분석 불가] ai, gpu, blackwell 포함"
+  },
+  {
+    "timestamp": "2026-02-01T20:29:28.674461",
+    "news": "미국 내 배양육 시장, 고비용 문제로 세포 배양 방식에서 균사체(Mycelium) 기반 발효 방식으로 급격한 이동 중",
+    "keywords": [
+      "균사체",
+      "mycelium",
+      "배양육",
+      "배양"
+    ],
+    "analysis": "[분석 불가] 균사체, mycelium, 배양육, 배양 포함"
+  },
+  {
+    "timestamp": "2026-02-01T20:29:28.829217",
+    "news": "2026년 푸드테크 트렌드: 'Precision Fermentation'과 버섯 균사체를 결합한 하이브리드 단백질 부상",
+    "keywords": [
+      "균사체",
+      "fermentation"
+    ],
+    "analysis": "[분석 불가] 균사체, fermentation 포함"
+  },
+  {
+    "timestamp": "2026-02-01T20:29:28.954853",
+    "news": "FDA 리스테리아 긴급 알림 발표 - 냉장 식품 관련",
+    "keywords": [
+      "리스테리아"
+    ],
+    "analysis": "[분석 불가] 리스테리아 포함"
+  },
+  {
+    "timestamp": "2026-02-01T20:29:29.106331",
+    "news": "고급 오디오 기술 최신 동향 - DSD 포맷 주류화",
+    "keywords": [
+      "고급 오디오"
+    ],
+    "analysis": "[분석 불가] 고급 오디오 포함"
+  },
+  {
+    "timestamp": "2026-02-01T20:29:29.213191",
+    "news": "NVIDIA Blackwell GPU, AI 인프라 혁신 주도",
+    "keywords": [
+      "ai",
+      "gpu",
+      "blackwell"
+    ],
+    "analysis": "[분석 불가] ai, gpu, blackwell 포함"
   }
 ]

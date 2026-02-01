@@ -1,11 +1,15 @@
 #!/usr/bin/env python3
 # news_hub.py (Gemini API 기반 뉴스 분석 + Daily Bridge)
 import os
+from dotenv import load_dotenv
 import google.generativeai as genai
 from datetime import datetime
 import json
 import shutil
 import requests
+
+# .env 파일 로드
+load_dotenv()
 
 # Gemini API 설정
 os.environ["GOOGLE_API_KEY"] = os.getenv("GOOGLE_API_KEY", "YOUR_GEMINI_API_KEY")
