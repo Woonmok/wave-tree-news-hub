@@ -14,7 +14,7 @@ load_dotenv()
 # Gemini API 설정
 os.environ["GOOGLE_API_KEY"] = os.getenv("GOOGLE_API_KEY", "YOUR_GEMINI_API_KEY")
 genai.configure(api_key=os.environ["GOOGLE_API_KEY"])
-model = genai.GenerativeModel('gemini-1.5-pro')
+model = genai.GenerativeModel('gemini-2.5-flash')
 
 # 경로 설정
 ANTIGRAVITY_PATH = "/Users/seunghoonoh/woonmok.github.io/Project_Radar.md"
