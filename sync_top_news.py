@@ -30,20 +30,9 @@ def load_top_news():
 
 
 def generate_news_html(top_news):
-    """Top 2 뉴스 HTML 생성"""
+    """Top 2 뉴스 HTML 생성 (새 구조)"""
     if not top_news or len(top_news) == 0:
-        return """
-        <section class="proposal-section glass" style="border-color: #ff3366; margin-bottom: 30px;">
-            <h2 style="color: #ff3366;">🔥 Intelligence Hub</h2>
-            <p style="opacity: 0.7;">뉴스를 불러오는 중...</p>
-        </section>
-"""
-    
-    html_parts = [
-        '<section class="proposal-section glass" style="border-color: #ff3366; margin-top: 0; margin-bottom: 30px;">',
-        '    <h2 style="color: #ff3366; font-size: 1.3em;">🔥 Intelligence Hub</h2>',
-        '    <div style="display: flex; flex-direction: column; gap: 15px;">'
-    ]
+        return ""
     
     category_icons = {
         "listeria_free": "🦠",
@@ -53,7 +42,9 @@ def generate_news_html(top_news):
         "global_biz": "🌍"
     }
     
-    for idx, news in enumerate(top_news, 1):
+    html_parts = []
+    
+    for news in top_news:
         title = news.get("title", "제목 없음")
         category = news.get("category", "")
         icon = category_icons.get(category, "📰")
@@ -61,49 +52,50 @@ def generate_news_html(top_news):
         summary = news.get("summary", "")
         url = news.get("url", "")
         
-        score_text = f"Score: {score:.2f}" if score else ""
+        score_display = f"Score: {score:.2f}" if score else "Score: -"
         
         # 제목 길이 제한
-        if len(title) > 80:
-            title = title[:80] + "..."
+        if len(title) > 75:
+            title = title[:75] + "..."
         
-        html_parts.append(f'''
-        <div style="background: rgba(255, 255, 255, 0.05); padding: 15px; border-radius: 10px; border-left: 4px solid #ff3366;">
-            <div style="display: flex; justify-content: space-between; align-items: start;">
-                <div style="flex: 1;">
-                    <div style="font-size: 1.3em; font-weight: 600; margin-bottom: 8px;">
-                        {icon} {idx}. {title}
-                    </div>
-                    {"<p style='font-size: 0.95em; opacity: 0.8; margin: 8px 0;'>" + summary + "</p>" if summary else ""}
-                </div>
-                {"<div style='color: #00ff9d; font-weight: 600; margin-left: 15px;'>" + score_text + "</div>" if score_text else ""}
-            </div>
-            {"<a href='" + url + "' target='_blank' style='color: #00ccff; text-decoration: none; font-size: 0.9em;'>🔗 원문 보기</a>" if url else ""}
-        </div>''')
+        summary_display = summary[:120] + "..." if len(summary) > 120 else summary
+        
+        html_item = f'''<div class="news-item">
+                        <div class="news-title">{icon} {title}</div>
+                        <div class="news-summary">{summary_display}</div>
+                        <div class="news-meta">
+                            <span>{category}</span>
+                            <span>{score_display}</span>
+                        </div>
+                        {f'<a href="{url}" target="_blank" style="color: #00ccff; font-size: 0.75em;">원문</a>' if url else ''}
+                    </div>'''
+        
+        html_parts.append(html_item)
     
-    html_parts.append('    </div>')
-    html_parts.append('</section>')
-    
-    return '\n'.join(html_parts)
+    return '\n                    '.join(html_parts)
 
 
 def update_html(news_html):
-    """index.html 업데이트"""
+    """index.html 업데이트 - Intelligence Hub 섹션에 주입"""
     try:
         with open(TARGET_HTML, "r", encoding="utf-8") as f:
             content = f.read()
         
-        # "연구 우선순위 조정안" 섹션을 Top 3 뉴스로 대체
-        pattern = r'<section class="proposal-section glass"[^>]*>.*?</section>'
+        # 먼저 기존 news-item들을 모두 제거하고 빈 상태로 복원
+        pattern_clean = r'<div class="section-content" id="intelligence-hub-content">.*?</div>\s*</section>'
         
-        # 첫 번째 proposal-section만 교체
-        new_content = re.sub(
-            pattern,
-            news_html,
-            content,
-            count=1,
-            flags=re.DOTALL
-        )
+        replacement_clean = '''<div class="section-content" id="intelligence-hub-content">
+                </div>
+            </section>'''
+        
+        content_clean = re.sub(pattern_clean, replacement_clean, content, count=1, flags=re.DOTALL)
+        
+        # 이제 새로운 뉴스를 주입
+        pattern_inject = r'(<div class="section-content" id="intelligence-hub-content">\s*)(\s*</div>)'
+        
+        replacement_inject = f'\\1{news_html}\\2'
+        
+        new_content = re.sub(pattern_inject, replacement_inject, content_clean, count=1, flags=re.DOTALL)
         
         with open(TARGET_HTML, "w", encoding="utf-8") as f:
             f.write(new_content)
