@@ -9,7 +9,7 @@ NEWS_JSON = "/Users/seunghoonoh/Desktop/wave-tree-news-hub/data/normalized/news.
 TARGET_HTML = "/Users/seunghoonoh/woonmok.github.io/index.html"
 
 def load_top_news():
-    """news.json에서 상위 3개 뉴스 로드 (score 기준)"""
+    """news.json에서 상위 2개 뉴스 로드 (score 기준)"""
     try:
         with open(NEWS_JSON, "r", encoding="utf-8") as f:
             data = json.load(f)
@@ -23,26 +23,26 @@ def load_top_news():
             reverse=True
         )
         
-        return sorted_items[:3]
+        return sorted_items[:2]
     except Exception as e:
         print(f"Error loading news: {e}")
         return []
 
 
 def generate_news_html(top_news):
-    """Top 3 뉴스 HTML 생성"""
+    """Top 2 뉴스 HTML 생성"""
     if not top_news or len(top_news) == 0:
         return """
         <section class="proposal-section glass" style="border-color: #ff3366; margin-bottom: 30px;">
-            <h2 style="color: #ff3366;">🔥 Top 3 News from Intelligence Hub</h2>
+            <h2 style="color: #ff3366;">🔥 Intelligence Hub</h2>
             <p style="opacity: 0.7;">뉴스를 불러오는 중...</p>
         </section>
 """
     
     html_parts = [
         '<section class="proposal-section glass" style="border-color: #ff3366; margin-bottom: 30px;">',
-        '    <h2 style="color: #ff3366;">🔥 Top 3 News from Intelligence Hub</h2>',
-        '    <div style="display: flex; flex-direction: column; gap: 20px;">'
+        '    <h2 style="color: #ff3366;">🔥 Intelligence Hub</h2>',
+        '    <div style="display: flex; flex-direction: column; gap: 15px;">'
     ]
     
     category_icons = {
@@ -117,9 +117,9 @@ def update_html(news_html):
 
 
 def main():
-    print("🔄 Top 3 뉴스 동기화 시작...")
+    print("🔄 Top 2 뉴스 동기화 시작...")
     
-    # Top 3 뉴스 로드
+    # Top 2 뉴스 로드
     top_news = load_top_news()
     print(f"📰 로드된 뉴스: {len(top_news)}개")
     
