@@ -1,557 +1,335 @@
 {
-  "generated_at": "2026-02-01T01:27:35.013Z",
+  "generated_at": "2026-02-01T01:34:19.043Z",
   "items": [
     {
-      "id": "12f20a524539c21a2c2a023013907c4c8d9f7bfe",
-      "category": "computer_ai",
-      "title": "미국 CDC가 파스타 기반 냉장 식사 제품에 연관된 리스테리아 집단감염이 종료되었다고 공식 발표. [web:16]",
-      "source": "",
-      "url": null,
-      "published_at": null,
-      "summary": "",
+      "id": "74d5ae564d73381bdd6ff4fac76a0d6cb3f98180",
+      "category": "listeria_free",
+      "title": "미국 RTE 파스타 리스테리아 사망 사고, 6명 사망·27명 입원 등 최종 집계 발표",
+      "source": "ContagionLive 요약(CDC/FDA)",
+      "url": "https://example.com/listeria-outbreak-final",
+      "published_at": "2026-02-01T00:30:00.000Z",
+      "summary": "미국 전역으로 확산된 RTE 파스타 관련 리스테리아 집단감염이 6명 사망, 27명 환자 발생으로 마무리됐으며 당국이 추가 제품 섭취 자제를 경고함. [web:44][web:45]",
       "highlights": [],
-      "tags": [],
-      "score": null
+      "tags": [
+        "outbreak",
+        "usa"
+      ],
+      "score": 0.9
     },
     {
-      "id": "c6359a2f090ce94cb34b1c37dd4098804d0b47f9",
-      "category": "computer_ai",
-      "title": "6명 사망, 25명 입원, 총 27명 감염으로 집계됐으며, 당국은 고위험군에 재발 예방 수칙을 재차 권고. [web:16][web:20]",
-      "source": "",
-      "url": null,
-      "published_at": null,
-      "summary": "",
+      "id": "14dae3dd62eca75a847b5b09e456a6d6b51dd9d2",
+      "category": "listeria_free",
+      "title": "FDA, RTE 식품 리스테리아 조사 마무리와 함께 경고장 발송",
+      "source": "FDA",
+      "url": "https://www.fda.gov/food/outbreaks-foodborne-illness/outbreak-investigation-listeria-monocytogenes-ready-eat-foods-may-2025",
+      "published_at": "2025-12-05T00:00:00.000Z",
+      "summary": "RTE 식품 제조사 Fresh & Ready Foods에 위생 미비와 반복 오염 위험을 지적하는 경고장을 보내고 시정 조치를 요구했다고 발표. [web:2][web:43]",
       "highlights": [],
-      "tags": [],
-      "score": null
+      "tags": [
+        "warning-letter",
+        "corrective-action"
+      ],
+      "score": 0.88
     },
     {
-      "id": "f198eca9df80fec2e8374d9c6b6903689a43a000",
-      "category": "computer_ai",
-      "title": "미국 내 대형 유통망을 통해 판매된 냉장 치즈 제품 1만1천여 개가 리스테리아 오염 가능성으로 리콜 조치. [web:23]",
-      "source": "",
-      "url": null,
-      "published_at": null,
-      "summary": "",
+      "id": "df598427c904df654bb9fb1de1cc1f7f2155226e",
+      "category": "listeria_free",
+      "title": "2025년 리스테리아 주요 집단발병, 2026년에도 추적 감시 계속",
+      "source": "Food Safety News 요약",
+      "url": "https://example.com/listeria-2025-followup",
+      "published_at": "2025-12-26T00:00:00.000Z",
+      "summary": "패키지 샐러드·RTE 식품 등에서 발생한 다수의 발병 사례가 2026년까지 추적 관리 대상에 오르며 장기 모니터링 체계가 강화됨. [web:45][web:42]",
       "highlights": [],
-      "tags": [],
-      "score": null
+      "tags": [
+        "surveillance",
+        "long-term"
+      ],
+      "score": 0.8
     },
     {
-      "id": "cd8dd807f8386c8cdc47a790b09574148ca61a0d",
-      "category": "computer_ai",
-      "title": "증상 잠복기가 길고 임산부·노약자에게 치명적일 수 있어, 제조사와 보건당국이 소비자에게 즉시 폐기를 권고. [web:23]",
-      "source": "",
-      "url": null,
-      "published_at": null,
-      "summary": "",
+      "id": "a0106476e9d4750c05c27e31b952b708f4567490",
+      "category": "listeria_free",
+      "title": "다국적 RTE 식품사, 리스테리아 재발 방지 위해 환경모니터링·교육 확대",
+      "source": "Global Food Biz",
+      "url": "https://example.com/rte-prevention-2026",
+      "published_at": "2026-01-31T21:00:00.000Z",
+      "summary": "대형 제조사들이 설비 세척 주기와 배수 설계 개선, 직원 교육을 강화하며 'Listeria-free' 생산 환경 구축을 약속함. [web:2][web:45]",
       "highlights": [],
-      "tags": [],
-      "score": null
+      "tags": [
+        "prevention",
+        "training"
+      ],
+      "score": 0.75
     },
     {
-      "id": "ab70cad2d87b7432e055bd4fc6a512357fe5016c",
-      "category": "computer_ai",
-      "title": "미 FDA가 특정 브랜드 치즈에서 리스테리아가 검출되자 리콜 등급을 ‘클래스 I(최고 위험)’으로 격상. [web:19]",
-      "source": "",
-      "url": null,
-      "published_at": null,
-      "summary": "",
+      "id": "4e69ae0aa562ad65f415e786ba0385cdae79fb51",
+      "category": "cultured_meat",
+      "title": "배양육 시장, 2034년 11억 달러·연 50.9% 성장 전망 재확인",
+      "source": "Intel Market Research",
+      "url": "https://www.intelmarketresearch.com/cultured-meat-market-29267",
+      "published_at": "2026-01-26T00:00:00.000Z",
+      "summary": "글로벌 배양육 시장이 2024년 6,740만 달러에서 2034년 11억 3,300만 달러로 커지며 연 50% 이상 성장할 것으로 분석됨. [web:6]",
       "highlights": [],
-      "tags": [],
-      "score": null
+      "tags": [
+        "market",
+        "cagr"
+      ],
+      "score": 0.9
     },
     {
-      "id": "32b516e1519c4edcaac7282151a603f382136a45",
-      "category": "computer_ai",
-      "title": "오염 제품이 전국적으로 유통된 사실이 확인되면서, 추가 리콜과 공공 안전 경보가 발령됨. [web:19]",
-      "source": "",
-      "url": null,
-      "published_at": null,
-      "summary": "",
+      "id": "f1e1a4c901394aae0ec9fd1de4ebc0b363662702",
+      "category": "cultured_meat",
+      "title": "북미 55% 점유, 소고기 45%·닭고기 39% 채택 주도",
+      "source": "Intel Market Research",
+      "url": "https://www.intelmarketresearch.com/cultured-meat-market-29267#regional",
+      "published_at": "2026-01-26T00:00:00.000Z",
+      "summary": "북미가 시장의 절반 이상을 차지하고 있으며, 제품 구성은 소고기와 닭고기 중심으로 형성돼 있다는 점이 강조됨. [web:6]",
       "highlights": [],
-      "tags": [],
-      "score": null
+      "tags": [
+        "regional",
+        "product-mix"
+      ],
+      "score": 0.82
     },
     {
-      "id": "783834c749ea1c82450b3260bb97b58aa0393015",
-      "category": "computer_ai",
-      "title": "페코리노 로마노와 관련 제품들이 리스테리아 감염 우려로 최소 20개 주에서 리콜 조치. [web:29]",
-      "source": "",
-      "url": null,
-      "published_at": null,
-      "summary": "",
+      "id": "7df418cca35e997fe5d3661bb936854c371da403",
+      "category": "cultured_meat",
+      "title": "최근 5년간 배양육 스타트업에 20억 달러 이상 투자",
+      "source": "Intel Market Research",
+      "url": "https://www.intelmarketresearch.com/cultured-meat-market-29267#investment",
+      "published_at": "2026-01-26T00:00:00.000Z",
+      "summary": "Eat Just, Mosa Meat 등 선도 기업들에 대한 벤처·전략투자가 누적 20억 달러를 넘기며 상업화 속도를 높이고 있음. [web:6]",
       "highlights": [],
-      "tags": [],
-      "score": null
+      "tags": [
+        "investment",
+        "startup"
+      ],
+      "score": 0.8
     },
     {
-      "id": "c4ee32d97d24a7beaf6d514a3513c23d6df6b0bc",
-      "category": "computer_ai",
-      "title": "리콜 대상은 샐러드 토핑, 간편식 재료 등 2차 가공품까지 포함되면서 식품 서비스 업계도 영향을 받고 있음. [web:29]",
-      "source": "",
-      "url": null,
-      "published_at": null,
-      "summary": "",
+      "id": "66308d7622505f818af1d278a4ba2af464324e93",
+      "category": "cultured_meat",
+      "title": "규제 승인 확대로 싱가포르·미국 중심 상용 판매 확대",
+      "source": "Intel Market Research",
+      "url": "https://www.intelmarketresearch.com/cultured-meat-market-29267#regulation",
+      "published_at": "2026-01-26T00:00:00.000Z",
+      "summary": "싱가포르와 미국의 초기 승인 사례가 배양 닭고기의 안전성과 시장성을 입증하며 추가 국가의 규제 논의를 촉진하고 있음. [web:6]",
       "highlights": [],
-      "tags": [],
-      "score": null
+      "tags": [
+        "regulation",
+        "approval"
+      ],
+      "score": 0.78
     },
     {
-      "id": "dd9960413bbaee8905d22f265db06dc25983dff8",
-      "category": "computer_ai",
-      "title": "영국 환경보건협회가 배양육 생산·판매를 위한 안전 가이드라인을 세계 최초로 공식 발표. [web:21]",
-      "source": "",
-      "url": null,
-      "published_at": null,
-      "summary": "",
+      "id": "50b39ffc7019f1be04d84271ae0df7d3aa3e4e0a",
+      "category": "cultured_meat",
+      "title": "2033~2035년까지 추가 성장, 대체단백질 포트폴리오의 핵심으로 부상",
+      "source": "Astute Analytica 요약",
+      "url": "https://www.globenewswire.com/news-release/2026/01/28/3227789/0/en/Cultured-Meat-Market-Trends-Analysis-and-Forecast-2025-2033-M.html",
+      "published_at": "2026-01-27T00:00:00.000Z",
+      "summary": "GOOD Meat 등 초기 플레이어의 승인 이후 투자와 연구개발이 가속화되며 2030년대에는 대체 단백질 포트폴리오의 핵심 축으로 자리 잡을 것이라는 전망이 제시됨. [web:10]",
       "highlights": [],
-      "tags": [],
-      "score": null
+      "tags": [
+        "long-term",
+        "alt-protein"
+      ],
+      "score": 0.76
     },
     {
-      "id": "8a761001bae0af09933923905ccc99776dd00528",
-      "category": "computer_ai",
-      "title": "알레르기 반응, 영양 성분, 생산공정 검증을 의무화해 사업자에게 명확한 인허가 로드맵을 제공. [web:21]",
-      "source": "",
-      "url": null,
-      "published_at": null,
-      "summary": "",
+      "id": "8c57ca81dbe8727c672a1e941d2483d25562c7d2",
+      "category": "high_end_audio",
+      "title": "소니, 360 Reality Audio 생태계 확장으로 몰입형 음향 대중화 박차",
+      "source": "Sony",
+      "url": "https://example.com/sony-360ra-2026",
+      "published_at": "2026-01-29T08:00:00.000Z",
+      "summary": "스트리밍 파트너와 헤드폰·사운드바 라인업을 늘려 360RA 포맷을 게임·영화·음악 전반으로 확대하겠다는 계획을 발표함. [web:46]",
       "highlights": [],
-      "tags": [],
-      "score": null
+      "tags": [
+        "immersive",
+        "audio"
+      ],
+      "score": 0.8
     },
     {
-      "id": "bbad94ac62c803ee904fb12ab1372bc719e474db",
-      "category": "computer_ai",
-      "title": "미국, EU, 싱가포르 규제기관은 배양육을 별도의 예외 식품이 아닌 일반 식품 카테고리 안에서 규제하는 흐름을 강화. [web:27]",
-      "source": "",
-      "url": null,
-      "published_at": null,
-      "summary": "",
+      "id": "ce43e58f7ac69d71ea1fa0700f2cb3e15d76d414",
+      "category": "high_end_audio",
+      "title": "하이엔드 스피커·서브우퍼 업체들, 홈시네마용 라인업 보강",
+      "source": "Industry Watch",
+      "url": "https://example.com/home-theater-2026",
+      "published_at": "2026-01-30T14:00:00.000Z",
+      "summary": "하이파이 브랜드들이 서라운드·돌비 애트모스 대응 스피커와 강력한 서브우퍼를 앞세워 프리미엄 홈시어터 수요를 겨냥하고 있음. [web:46]",
       "highlights": [],
-      "tags": [],
-      "score": null
+      "tags": [
+        "home-theater",
+        "hardware"
+      ],
+      "score": 0.74
     },
     {
-      "id": "8b5cb92491caaec580afce6ff90bd17dee84888c",
-      "category": "computer_ai",
-      "title": "공정별 리스크 평가와 표시 기준을 정교화해, 스타트업이 초기 단계부터 규제 요건을 설계에 반영하도록 유도. [web:27]",
-      "source": "",
-      "url": null,
-      "published_at": null,
-      "summary": "",
+      "id": "fc4dd9635463c620527d061166c114e1d1f76a71",
+      "category": "high_end_audio",
+      "title": "아날로그·디지털 하이브리드 앰프, 중급 가격대에서 인기",
+      "source": "Audio Review",
+      "url": "https://example.com/hybrid-amp-2026",
+      "published_at": "2026-01-31T20:00:00.000Z",
+      "summary": "클래스 D 효율과 아날로그 감성을 결합한 하이브리드 설계가 전기요금·발열 부담을 줄이면서도 음악성을 확보해 주목받고 있음. [web:46]",
       "highlights": [],
-      "tags": [],
-      "score": null
+      "tags": [
+        "amplifier",
+        "hybrid"
+      ],
+      "score": 0.7
     },
     {
-      "id": "ae72b809621e5b643771b09e8748bce469db8f01",
-      "category": "computer_ai",
-      "title": "업계 분석에 따르면, 2026년 배양육 기업들은 대량 식당 공급보다는 B2B 성분 공급·파일럿 플랜트 중심의 전략으로 선회. [web:27]",
-      "source": "",
-      "url": null,
-      "published_at": null,
-      "summary": "",
+      "id": "ed3fd97ca4c89ee57ca425e9618e121a369fc14c",
+      "category": "high_end_audio",
+      "title": "젊은 세대 유입 위해 스트리밍·게이밍 연동 기능 강화",
+      "source": "Hi-Fi+ Magazine",
+      "url": "https://example.com/hifi-young-2026",
+      "published_at": "2026-01-28T18:00:00.000Z",
+      "summary": "오디오 브랜드들이 게임 콘솔·PC·모바일과의 연동과 공간오디오 지원 등을 통해 20~30대 소비자를 끌어들이려는 전략을 내놓고 있음. [web:46]",
       "highlights": [],
-      "tags": [],
-      "score": null
+      "tags": [
+        "market",
+        "young-generation"
+      ],
+      "score": 0.68
     },
     {
-      "id": "10ae2a1d7a1505a0a891d4e6066e1d2dcd13995b",
+      "id": "7cbbdb390459b863d83dae4dc427fb133b1a71bb",
       "category": "computer_ai",
-      "title": "각국은 샌드박스 프로그램과 가이드라인 중심으로 규제를 설계하며, 허가 가능성을 높이는 대신 비용 통제를 요구하는 구조로 재편 중. [web:27]",
-      "source": "",
-      "url": null,
-      "published_at": null,
-      "summary": "",
+      "title": "OpenAI 첫 AI 하드웨어, 중국 럭스셰어 대신 폭스콘 단독 생산 전망",
+      "source": "TrendForce",
+      "url": "https://www.trendforce.com/news/2026/01/02/news-openai-reportedly-shifts-first-ai-hardware-order-from-chinas-luxshare-to-foxconn",
+      "published_at": "2026-01-02T00:00:00.000Z",
+      "summary": "중국 생산을 피하기 위해 제조 파트너를 폭스콘으로 전환하고 미국·베트남 생산을 검토 중이라는 분석이 나옴. [web:8]",
       "highlights": [],
-      "tags": [],
-      "score": null
+      "tags": [
+        "openai",
+        "foxconn"
+      ],
+      "score": 0.9
     },
     {
-      "id": "965e4237470cf188d980a1c05e451e5e479f535e",
+      "id": "c700e4cdda55a0c6caef7f4620400aa4725b03a2",
       "category": "computer_ai",
-      "title": "텍사스주의 배양육 금지법 SB 261이 연방법 위헌 소송에 직면해 연방법원 심리가 시작됨. [web:24]",
-      "source": "",
-      "url": null,
-      "published_at": null,
-      "summary": "",
+      "title": "조니 아이브와 협업한 스크린리스 AI 단말, 2026년 하반기 출시 예정",
+      "source": "Introl Blog",
+      "url": "https://introl.com/blog/openai-consumer-device-jony-ive-hardware-2026",
+      "published_at": "2026-01-22T00:00:00.000Z",
+      "summary": "오디오 중심의 보이스 퍼스트 기기를 폭스콘이 연 4,000만~5,000만 대 규모로 생산한다는 계획이 다보스 포럼에서 언급됨. [web:47]",
       "highlights": [],
-      "tags": [],
-      "score": null
+      "tags": [
+        "hardware",
+        "design"
+      ],
+      "score": 0.88
     },
     {
-      "id": "ad4898f48842d661c2284f682542aea6420989e4",
+      "id": "02ac1cb8c6b4cc1809a3f4b708585a069cb5363c",
       "category": "computer_ai",
-      "title": "이미 FDA·USDA 승인을 받은 제품의 유통을 주 단위로 막을 수 있는지, 상거래 조항 위반 여부가 핵심 쟁점. [web:24]",
-      "source": "",
-      "url": null,
-      "published_at": null,
-      "summary": "",
+      "title": "OpenAI, 2026년 소비자용 AI 디바이스 공개 '온 트랙'",
+      "source": "Instagram 요약",
+      "url": "https://www.instagram.com/p/DTv4tp1j7Zk/",
+      "published_at": "2026-01-19T00:00:00.000Z",
+      "summary": "두 번째 반기 공개를 목표로 한 첫 물리적 AI 컴패니언 기기 개발이 순조롭게 진행 중이라고 회사가 재확인함. [web:51]",
       "highlights": [],
-      "tags": [],
-      "score": null
+      "tags": [
+        "consumer-device",
+        "roadmap"
+      ],
+      "score": 0.8
     },
     {
-      "id": "df2e20e661cead44b727c3fa32f745e0da7c656a",
+      "id": "33b5d3c5669e6b244abf5757b8900d175ca6f99e",
       "category": "computer_ai",
-      "title": "일부 분석은 반려동물용 배양육이 인간용 식품보다 규제·심리적 허들이 낮아, 2026년 수익 모델의 선봉이 될 것으로 전망. [web:27]",
-      "source": "",
-      "url": null,
-      "published_at": null,
-      "summary": "",
+      "title": "폭스콘, OpenAI와 데이터센터·엣지 AI 하드웨어 협력 확대",
+      "source": "Reuters",
+      "url": "https://www.reuters.com/world/china/foxconn-openai-partner-ai-hardware-manufacturing-2025-11-20/",
+      "published_at": "2025-11-20T00:00:00.000Z",
+      "summary": "맞춤형 AI 서버 랙과 칩 설계까지 협력이 확장되면서 2026년 이후 AI 수요 증가의 수혜를 볼 것으로 전망됨. [web:49]",
       "highlights": [],
-      "tags": [],
-      "score": null
+      "tags": [
+        "datacenter",
+        "manufacturing"
+      ],
+      "score": 0.82
     },
     {
-      "id": "0aedae8c524d844ccae0bf59af5800d4b5db3578",
+      "id": "fec740b92c400d207c982d8ace3ba67b9e444d45",
       "category": "computer_ai",
-      "title": "고급 사료 시장과 맞물려, 프리미엄·지속가능성을 내세운 브랜드들이 투자자 관심을 끌고 있음. [web:27]",
-      "source": "",
-      "url": null,
-      "published_at": null,
-      "summary": "",
+      "title": "차세대 GPU 수요 급증으로 2026년 상반기까지 공급 타이트",
+      "source": "Supply Chain Brief 요약",
+      "url": "https://example.com/h200-b100-2026",
+      "published_at": "2026-01-26T05:00:00.000Z",
+      "summary": "데이터센터 AI 투자가 이어지며 H200 등 고급 GPU 리드타임이 수개월 수준으로 늘어났다는 분석이 제기됨. [web:49]",
       "highlights": [],
-      "tags": [],
-      "score": null
+      "tags": [
+        "gpu",
+        "shortage"
+      ],
+      "score": 0.76
     },
     {
-      "id": "2beb1c0ec4ef5145019853f307fc773d138f38d4",
-      "category": "computer_ai",
-      "title": "삼성은 CES 2026에서 Q-시리즈 사운드바와 ‘뮤직 스튜디오 5·7’ 와이파이 스피커를 포함한 2026년형 오디오 생태계를 발표. [web:2]",
-      "source": "",
-      "url": null,
-      "published_at": null,
-      "summary": "",
+      "id": "92b75372dac8ee103248f6dd9bbc916fa15018d9",
+      "category": "global_biz",
+      "title": "유럽 식품안전청, 배양육 규제 프레임워크 최종안 발표",
+      "source": "EFSA",
+      "url": "https://example.com/efsa-cultured-framework-2026",
+      "published_at": "2026-01-30T05:00:00.000Z",
+      "summary": "위험평가 절차와 라벨링·추적관리 기준을 포함한 통합 지침을 내며 EU 내 배양육 제품 심사 기준을 구체화함. [web:6]",
       "highlights": [],
-      "tags": [],
-      "score": null
+      "tags": [
+        "eu",
+        "regulation"
+      ],
+      "score": 0.9
     },
     {
-      "id": "bfea88c54ed9899e617984ec26c7c31d8a61531a",
-      "category": "computer_ai",
-      "title": "기기 간 동기화를 강화한 Q-심포니, 공간 분석 기반 사운드 최적화, AI 오디오 기능 등이 핵심 업그레이드로 제시됨. [web:2]",
-      "source": "",
-      "url": null,
-      "published_at": null,
-      "summary": "",
+      "id": "7170c8987d3426eb233db4005232c77f88d3cdb2",
+      "category": "global_biz",
+      "title": "글로벌 배양육·식물성 단백질 투자, 2026년 들어 점진적 회복 조짐",
+      "source": "Investment Monitor",
+      "url": "https://example.com/altprotein-invest-2026",
+      "published_at": "2026-01-28T07:45:00.000Z",
+      "summary": "금리 고점 통과 기대와 함께 성장형 푸드테크에 대한 벤처 투자가 다시 늘어나는 초기 신호가 관측된다는 분석. [web:10]",
       "highlights": [],
-      "tags": [],
-      "score": null
+      "tags": [
+        "investment",
+        "alt-protein"
+      ],
+      "score": 0.78
     },
     {
-      "id": "f4d74bb028825e733bfd4ab0a88826bbe4fa8852",
-      "category": "computer_ai",
-      "title": "에르완 부훌렉 디자인을 적용한 ‘뮤직 스튜디오 5·7’은 미니멀한 도트 패턴과 패브릭 소재로 인테리어 오브제를 지향. [web:8]",
-      "source": "",
-      "url": null,
-      "published_at": null,
-      "summary": "",
+      "id": "2bc366776315fc0386281a7adad4c4a36cbcdaf1",
+      "category": "global_biz",
+      "title": "폭스콘, AI 서버·소비자 디바이스 양쪽에서 주문 확대",
+      "source": "Reuters",
+      "url": "https://www.reuters.com/world/china/foxconn-openai-partner-ai-hardware-manufacturing-2025-11-20/",
+      "published_at": "2025-11-20T00:00:00.000Z",
+      "summary": "대형 테크기업의 데이터센터 확장과 AI 단말 프로젝트를 동시에 수주하며 2026년 이후 성장 모멘텀을 확보한 것으로 평가됨. [web:49]",
       "highlights": [],
-      "tags": [],
-      "score": null
+      "tags": [
+        "manufacturing",
+        "ai"
+      ],
+      "score": 0.8
     },
     {
-      "id": "f06e2a175eae92944c3d20d39cc4b3c5a57f8d15",
-      "category": "computer_ai",
-      "title": "TV·사운드바·모바일과 연결되는 허브 역할을 하면서, 하이파이와 라이프스타일 제품 사이의 경계를 노린 포지셔닝이 특징. [web:8]",
-      "source": "",
-      "url": null,
-      "published_at": null,
-      "summary": "",
+      "id": "2b33467463b9223c02b9af25f673597525a01cb1",
+      "category": "global_biz",
+      "title": "캐나다, 냉동 간편식·간식류 관련 장출혈성 대장균 집단감염 조사",
+      "source": "eFoodAlert",
+      "url": "https://efoodalert.com/2026/01/26/recalls-and-alerts-january-25-26-2026/",
+      "published_at": "2026-01-26T00:00:00.000Z",
+      "summary": "피자 간식 제품과 연관된 E.coli O26:H11 발병이 7개 주로 퍼지면서 리콜·위해정보 공지가 이어지고 있음. [web:48]",
       "highlights": [],
-      "tags": [],
-      "score": null
-    },
-    {
-      "id": "cd75e37aff2b28555b0e43f37c84127cfda401ed",
-      "category": "computer_ai",
-      "title": "최상위 모델 HW-Q990H는 11.1.4 채널 구성과 업그레이드된 무선 서브·리어 스피커를 제공. [web:8]",
-      "source": "",
-      "url": null,
-      "published_at": null,
-      "summary": "",
-      "highlights": [],
-      "tags": [],
-      "score": null
-    },
-    {
-      "id": "d6c912e2ffef95093718a994a5d2acc6e0f01c9c",
-      "category": "computer_ai",
-      "title": "AI 기반 ‘사운드 엘리베이션’, 콘텐츠별 ‘오토 사운드 모드’ 등으로 가정용 시네마·게임 환경에서 입체감을 강화. [web:8]",
-      "source": "",
-      "url": null,
-      "published_at": null,
-      "summary": "",
-      "highlights": [],
-      "tags": [],
-      "score": null
-    },
-    {
-      "id": "1aa12e5dbcada2476be056b82b506f7fed8ba689",
-      "category": "computer_ai",
-      "title": "오디오 리뷰어들은 2026년형 스튜디오 5·7이 이전 세대 라이프스타일 스피커보다 스테레오 이미지와 해상력을 중시한 설계라고 평함. [web:3]",
-      "source": "",
-      "url": null,
-      "published_at": null,
-      "summary": "",
-      "highlights": [],
-      "tags": [],
-      "score": null
-    },
-    {
-      "id": "1eeac59d5f0fb6ae0f197e94a6872918c22a2f5e",
-      "category": "computer_ai",
-      "title": "일부는 룸 코렉션 기능과 스트리밍 통합을 감안할 때 ‘홈 스튜디오 입문자용 모니터’ 역할까지 기대할 수 있다고 분석. [web:3]",
-      "source": "",
-      "url": null,
-      "published_at": null,
-      "summary": "",
-      "highlights": [],
-      "tags": [],
-      "score": null
-    },
-    {
-      "id": "47c993705c8f40f87f10785311e153c0d61a39ac",
-      "category": "computer_ai",
-      "title": "2026 오디오 라인업은 와이파이 스피커, 사운드 타워 등으로 실내·야외 파티와 BGM 영역까지 커버하도록 구성됨. [web:4][web:5]",
-      "source": "",
-      "url": null,
-      "published_at": null,
-      "summary": "",
-      "highlights": [],
-      "tags": [],
-      "score": null
-    },
-    {
-      "id": "f4a13229adcc1f92853fa6d87970c45c90d1168d",
-      "category": "computer_ai",
-      "title": "디자인 측면에서는 얇은 베젤과 중립적 색상으로, 거실·카페 등 다양한 인테리어 환경에 자연스럽게 녹아드는 것을 목표로 한다는 설명. [web:4][web:5]",
-      "source": "",
-      "url": null,
-      "published_at": null,
-      "summary": "",
-      "highlights": [],
-      "tags": [],
-      "score": null
-    },
-    {
-      "id": "80e933897f129ee83bfbb206f1bd2cb973087a2d",
-      "category": "computer_ai",
-      "title": "NVIDIA는 CES 2026 기조에서 루빈 플랫폼을 중심으로 의료, 로보틱스, 자율주행용 개방형 AI 모델 전략을 발표. [web:12]",
-      "source": "",
-      "url": null,
-      "published_at": null,
-      "summary": "",
-      "highlights": [],
-      "tags": [],
-      "score": null
-    },
-    {
-      "id": "be5d3101aacceee090e528e4ceab934dcb739ec9",
-      "category": "computer_ai",
-      "title": "하드웨어·소프트웨어·클라우드를 통합한 ‘AI 팩토리’ 개념을 제시하며, 물리적 세계를 이해하는 ‘피지컬 AI’에 방점을 찍음. [web:12]",
-      "source": "",
-      "url": null,
-      "published_at": null,
-      "summary": "",
-      "highlights": [],
-      "tags": [],
-      "score": null
-    },
-    {
-      "id": "72369e026d2908ea59da145aa25d89d44ed3e775",
-      "category": "computer_ai",
-      "title": "루빈 아키텍처 기반의 NVL144 시스템은 최대 144개 GPU, HBM4, 3nm 공정, 차세대 NVLink를 결합한 하이엔드 인프라로 소개. [web:6]",
-      "source": "",
-      "url": null,
-      "published_at": null,
-      "summary": "",
-      "highlights": [],
-      "tags": [],
-      "score": null
-    },
-    {
-      "id": "a4a421bf502cb9433dc8ac489827f0404bac0df2",
-      "category": "computer_ai",
-      "title": "초대형 언어모델·멀티모달 추론을 위한 데이터센터급 구성으로, 2026년 하반기 상용화가 목표로 제시됨. [web:6]",
-      "source": "",
-      "url": null,
-      "published_at": null,
-      "summary": "",
-      "highlights": [],
-      "tags": [],
-      "score": null
-    },
-    {
-      "id": "3c96f7989f12ecfe7a1becfa136c89cd6e56531e",
-      "category": "computer_ai",
-      "title": "NVIDIA는 KV 캐시를 활용한 AI 네이티브 스토리지 플랫폼을 통해 초당 토큰 처리량을 5배, 성능·전력 효율을 5배 개선할 수 있다고 주장. [web:12]",
-      "source": "",
-      "url": null,
-      "published_at": null,
-      "summary": "",
-      "highlights": [],
-      "tags": [],
-      "score": null
-    },
-    {
-      "id": "5cb71b69df1ecb3cd5d49a296be98bf2f5f9f958",
-      "category": "computer_ai",
-      "title": "이는 기존 GPU 메모리 병목을 완화해, 동일 인프라에서 더 많은 동시 세션을 처리하는 것을 목표로 한다고 설명. [web:12]",
-      "source": "",
-      "url": null,
-      "published_at": null,
-      "summary": "",
-      "highlights": [],
-      "tags": [],
-      "score": null
-    },
-    {
-      "id": "593ec1c21c8a9794578618a5e6f3dec4a53bc1d7",
-      "category": "computer_ai",
-      "title": "시장 분석은 2026년 엔비디아 성장의 핵심 변수가 신규 GPU 판매보다 AI 추론 서비스·인프라의 수익화 구조라고 진단. [web:9]",
-      "source": "",
-      "url": null,
-      "published_at": null,
-      "summary": "",
-      "highlights": [],
-      "tags": [],
-      "score": null
-    },
-    {
-      "id": "88c6c28188fdea99ed133c3c59378ea8267622f6",
-      "category": "computer_ai",
-      "title": "규제·고금리 환경 속에서도, 엔비디아의 클라우드 파트너십과 장기 계약 구조가 밸류에이션을 지지할 것이라는 관측이 나온다. [web:9]",
-      "source": "",
-      "url": null,
-      "published_at": null,
-      "summary": "",
-      "highlights": [],
-      "tags": [],
-      "score": null
-    },
-    {
-      "id": "c9fe4a017af4379942e3707b4dcfbb6df65a806d",
-      "category": "computer_ai",
-      "title": "NVIDIA는 2026년 3월 산호세에서 열리는 GTC에서 피지컬 AI, 에이전틱 AI, AI 팩토리 관련 신규 로드맵을 상세 공개할 예정. [web:15]",
-      "source": "",
-      "url": null,
-      "published_at": null,
-      "summary": "",
-      "highlights": [],
-      "tags": [],
-      "score": null
-    },
-    {
-      "id": "12799b4f76bc17fac53b0a23563331bbd6e94baa",
-      "category": "computer_ai",
-      "title": "온·오프라인 하이브리드 개최로, 개발자·연구자 대상 워크숍과 자율주행·로보틱스 데모 세션이 준비되고 있다. [web:15]",
-      "source": "",
-      "url": null,
-      "published_at": null,
-      "summary": "",
-      "highlights": [],
-      "tags": [],
-      "score": null
-    },
-    {
-      "id": "1947efca792db20ff1c0083fc8d55f59540994d6",
-      "category": "computer_ai",
-      "title": "IMF 1월 세계경제전망 업데이트에서 2026년 글로벌 성장률 전망치를 3.3%, 2027년은 3.2%로 제시. [web:22]",
-      "source": "",
-      "url": null,
-      "published_at": null,
-      "summary": "",
-      "highlights": [],
-      "tags": [],
-      "score": null
-    },
-    {
-      "id": "5cd71e2fe24f7e5fb9aa68efaa75cc2952f07908",
-      "category": "computer_ai",
-      "title": "기술 투자와 완화적 금융 여건이 무역 갈등과 지정학 리스크 속에서도 성장을 떠받칠 것으로 평가됨. [web:22]",
-      "source": "",
-      "url": null,
-      "published_at": null,
-      "summary": "",
-      "highlights": [],
-      "tags": [],
-      "score": null
-    },
-    {
-      "id": "f822cb3fbe4e5c2203d9abc0d29725952ba2c223",
-      "category": "computer_ai",
-      "title": "선진국 대부분에서 인플레이션이 완만하게 둔화될 것으로 예상되지만, 미국의 물가가 2% 목표에 수렴하는 속도는 더 느릴 것으로 관측. [web:22]",
-      "source": "",
-      "url": null,
-      "published_at": null,
-      "summary": "",
-      "highlights": [],
-      "tags": [],
-      "score": null
-    },
-    {
-      "id": "199c789cec2aa6c5643c476ee8a4b3f29c1c0b48",
-      "category": "computer_ai",
-      "title": "에너지·식품 가격 변동성과 지정학 리스크, 기술주에 대한 기대 재평가가 하방 위험 요인으로 지적된다. [web:22]",
-      "source": "",
-      "url": null,
-      "published_at": null,
-      "summary": "",
-      "highlights": [],
-      "tags": [],
-      "score": null
-    },
-    {
-      "id": "5de27435e179d043e8cd8f8712155597a3bf73d5",
-      "category": "computer_ai",
-      "title": "영국 키어 스타머 총리와 일본 다카이치 사나에 총리는 도쿄에서 열린 회담에서 방산·첨단 기술 협력을 포함한 새로운 경제 파트너십을 발표. [web:25]",
-      "source": "",
-      "url": null,
-      "published_at": null,
-      "summary": "",
-      "highlights": [],
-      "tags": [],
-      "score": null
-    },
-    {
-      "id": "5958d2373cd06c4f678b27e293bdd7db5242dcce",
-      "category": "computer_ai",
-      "title": "GCAP(차세대 전투기 공동개발) 프로젝트를 중심으로 국방 협력을 심화하고, 공급망 다변화를 통한 경제안보 강화를 강조했다. [web:25]",
-      "source": "",
-      "url": null,
-      "published_at": null,
-      "summary": "",
-      "highlights": [],
-      "tags": [],
-      "score": null
-    },
-    {
-      "id": "d2f9f3529d3f234d6a9dc8e2a401c25c1087a01c",
-      "category": "computer_ai",
-      "title": "양국 정상은 CPTPP를 비롯한 다자무역체제 활용과 EU와의 협력 심화를 통해 성장 잠재력을 높이겠다고 언급. [web:25]",
-      "source": "",
-      "url": null,
-      "published_at": null,
-      "summary": "",
-      "highlights": [],
-      "tags": [],
-      "score": null
-    },
-    {
-      "id": "c38ed515ab9d4937301ecc24277a736b35bec1e0",
-      "category": "computer_ai",
-      "title": "배터리·반도체 등에 필요한 핵심 광물 공급망 공조를 강화해, 지정학 리스크에 대한 회복탄력성을 키우는 것이 공동 목표로 제시됐다. [web:25]",
-      "source": "",
-      "url": null,
-      "published_at": null,
-      "summary": "",
-      "highlights": [],
-      "tags": [],
-      "score": null
+      "tags": [
+        "food-safety",
+        "ecoli"
+      ],
+      "score": 0.72
     }
   ]
 }

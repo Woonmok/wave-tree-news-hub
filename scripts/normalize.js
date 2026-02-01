@@ -64,7 +64,7 @@ fs.writeFileSync(outPath, JSON.stringify(out, null, 2), "utf-8");
 console.log(`OK: wrote ${items.length} items -> ${outPath}`);
 
 function parseInput(raw, filename) {
-  const isJson = filename.toLowerCase().endsWith(".json") || looksLikeJson(raw);
+  const isJson = filename.toLowerCase().endsWith(".json");
   if (isJson) return normalizeFromJson(raw);
 
   return normalizeFromText(raw);
