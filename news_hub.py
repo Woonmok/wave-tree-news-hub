@@ -1,10 +1,14 @@
 #!/usr/bin/env python3
-# news_hub.py (키워드 필터링 기능 포함)
-import requests
-from google.generativeai import GenerativeModel
+# news_hub.py (Gemini API 기반 뉴스 분석)
+import os
+import google.generativeai as genai
 from datetime import datetime
 import json
-import os
+
+# Gemini API 설정
+os.environ["GOOGLE_API_KEY"] = os.getenv("GOOGLE_API_KEY", "YOUR_GEMINI_API_KEY")
+genai.configure(api_key=os.environ["GOOGLE_API_KEY"])
+model = genai.GenerativeModel('gemini-1.5-pro')
 
 # ===== 설정 =====
 KEYWORDS = [
@@ -39,39 +43,45 @@ def filter_by_keywords(news_text, keywords=KEYWORDS, exclude=EXCLUDE_KEYWORDS):
 
 # 2. 정보 수집 (RSS/API)
 def fetch_news():
-    """뉴스 데이터 수집 (샘플 또는 실제 API)"""
-    # 실제로는 뉴스 API나 RSS 피드를 호출합니다.
+    """뉴스 데이터 수집 (2026년 시장 트렌드 시뮬레이션)"""
+    # 실제 운영 시: NewsAPI나 RSS 피드를 연동합니다.
     sample_news = [
-        "미국 시장 내 균사체(Mycelium) 기반 배양육 점유율 급증...",
-        "스타트업 광고: 새 제품 출시 스폰서됨",
-        "진안 POM 프로젝트, 세포 배양 기술 특허 획득",
-        "일반 소식: 날씨가 좋습니다",
-        "FDA 리스테리아 긴급 알림 발표",
-        "고급 오디오 기술 최신 동향",
-        "GPU 기술 혁신, AI 성능 향상",
+        "미국 내 배양육 시장, 고비용 문제로 세포 배양 방식에서 균사체(Mycelium) 기반 발효 방식으로 급격한 이동 중",
+        "Better Meat Co 및 Prime Roots, 산업용 연속 발효 시스템 도입으로 생산 단가 30% 절감 성공",
+        "2026년 푸드테크 트렌드: 'Precision Fermentation'과 버섯 균사체를 결합한 하이브리드 단백질 부상",
+        "FDA 리스테리아 긴급 알림 발표 - 냉장 식품 관련",
+        "고급 오디오 기술 최신 동향 - DSD 포맷 주류화",
+        "NVIDIA Blackwell GPU, AI 인프라 혁신 주도",
+        "스타트업 광고: 새 제품 출시 스폰서됨 (제외 대상)",
     ]
     return sample_news
 
 
 # 3. Gemini를 통한 전략적 필터링 (눈의 역할)
 def analyze_importance(news_text, matched_keywords):
-    """Gemini를 사용한 뉴스 중요도 분석 (선택사항)"""
+    """Gemini를 사용한 뉴스 중요도 분석"""
     try:
-        model = GenerativeModel('gemini-pro')
         keywords_str = ", ".join(matched_keywords)
-        prompt = f"""다음 뉴스가 프로젝트에 미치는 영향력을 1-10점으로 평가하고 요약해줘.
-    
+        prompt = f"""당신은 '진안 Farmerstree' 프로젝트의 전략 AI입니다.
+다음 뉴스를 분석하여 다음 정보를 제공하세요:
+1. 프로젝트(균사체 배양육, 고급 오디오, AI 인프라)와의 관련성 점수 (1-10)
+2. 전략적 평가 (2-3줄)
+3. 액션 아이템 (있으면)
+
 감지된 키워드: {keywords_str}
 
 뉴스: {news_text}
 
-형식: [점수/10] | [제목(한줄)] | [분석(2-3줄)]"""
+형식:
+[점수/10] | [제목 한줄] 
+분석: [내용]
+액션: [필요시]"""
         
         response = model.generate_content(prompt)
         return response.text
     except Exception as e:
-        # API 오류 시 기본 분석
-        return f"[분석 불가] {', '.join(matched_keywords)} 포함 뉴스"
+        print(f"   ⚠️ Gemini API 오류: {str(e)}")
+        return f"[분석 불가] {', '.join(matched_keywords)} 포함"
 
 
 # 4. 결과 저장 (Markdown)
@@ -117,14 +127,14 @@ def save_to_json(news_data):
 
 
 # 6. 메인 실행 함수
-def process_news(use_gemini=False):
+def process_news(use_gemini=True):
     """뉴스 필터링 및 분석 메인 함수"""
     news_list = fetch_news()
     processed_count = 0
     skipped_count = 0
     
     print("=" * 60)
-    print("🔍 뉴스 필터링 및 분석 시작")
+    print("🛰️ 외부 정보 감지 시스템 가동 중...")
     print("=" * 60)
     print(f"📋 감지 키워드 ({len(KEYWORDS)}개): {', '.join(KEYWORDS[:5])}...")
     print(f"🚫 제외 키워드 ({len(EXCLUDE_KEYWORDS)}개): {', '.join(EXCLUDE_KEYWORDS)}\n")
@@ -145,12 +155,13 @@ def process_news(use_gemini=False):
         print(f"   ✓ 필터 통과!")
         print(f"   🎯 감지된 키워드: {', '.join(matched_keywords)}")
         
-        # Gemini 분석 (선택사항)
+        # Gemini 분석 (기본 활성화)
         analysis = None
         if use_gemini:
             try:
+                print(f"   🔄 Gemini 분석 진행 중...")
                 analysis = analyze_importance(news, matched_keywords)
-                print(f"   📊 분석 완료")
+                print(f"   ✅ 분석 완료")
             except Exception as e:
                 print(f"   ⚠️ 분석 오류: {str(e)}")
         
@@ -175,7 +186,7 @@ def process_news(use_gemini=False):
         processed_count += 1
     
     print("\n" + "=" * 60)
-    print(f"✅ 처리 완료")
+    print(f"✅ 분석 완료. Project_Radar.md가 업데이트되었습니다.")
     print(f"   ✓ 저장됨: {processed_count}개")
     print(f"   ✗ 건너뜀: {skipped_count}개")
     print(f"   📁 생성 파일: Project_Radar.md, detected_news.json")
