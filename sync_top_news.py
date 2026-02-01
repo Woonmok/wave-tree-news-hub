@@ -40,7 +40,7 @@ def generate_news_html(top_news):
 """
     
     html_parts = [
-        '<section class="proposal-section glass" style="border-color: #ff3366; margin-bottom: 30px;">',
+        '<section class="proposal-section glass" style="border-color: #ff3366; margin-top: 0; margin-bottom: 30px;">',
         '    <h2 style="color: #ff3366;">🔥 Intelligence Hub</h2>',
         '    <div style="display: flex; flex-direction: column; gap: 15px;">'
     ]
