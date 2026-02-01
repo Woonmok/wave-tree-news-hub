@@ -4,11 +4,15 @@ import os
 import google.generativeai as genai
 from datetime import datetime
 import json
+import shutil
 
 # Gemini API 설정
 os.environ["GOOGLE_API_KEY"] = os.getenv("GOOGLE_API_KEY", "YOUR_GEMINI_API_KEY")
 genai.configure(api_key=os.environ["GOOGLE_API_KEY"])
 model = genai.GenerativeModel('gemini-1.5-pro')
+
+# Antigravity 동기화 경로 설정
+ANTIGRAVITY_PATH = "/Users/seunghoonoh/woonmok.github.io/Project_Radar.md"
 
 # ===== 설정 =====
 KEYWORDS = [
@@ -86,7 +90,7 @@ def analyze_importance(news_text, matched_keywords):
 
 # 4. 결과 저장 (Markdown)
 def save_to_radar(news_text, matched_keywords, analysis=None):
-    """Project_Radar.md에 결과 저장"""
+    """Project_Radar.md에 결과 저장 및 Antigravity로 자동 동기화"""
     timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     radar_file = "Project_Radar.md"
     
@@ -102,6 +106,13 @@ def save_to_radar(news_text, matched_keywords, analysis=None):
         if analysis:
             f.write(f"**분석**: {analysis}\n")
         f.write("\n---\n\n")
+    
+    # Antigravity로 자동 동기화
+    try:
+        shutil.copy2(radar_file, ANTIGRAVITY_PATH)
+        print(f"   🔄 Antigravity 동기화 완료: {ANTIGRAVITY_PATH}")
+    except Exception as e:
+        print(f"   ⚠️ Antigravity 동기화 실패: {str(e)}")
 
 
 # 5. JSON으로도 저장 (API 연동 용)
