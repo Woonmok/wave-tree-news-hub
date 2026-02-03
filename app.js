@@ -10,6 +10,8 @@
   const CONFIG = {
     dataUrl: "./data/normalized/news.json",
     savedStorageKey: "waveTreeSavedNews.v1",
+    lastBackupKey: "waveTreeLastBackup",
+    backupServerUrl: "http://localhost:3001/backup",
     maxPerCategory: 40, // UI에서 카테고리 당 렌더 상한(원하면 늘리세요)
   };
 
@@ -62,6 +64,9 @@
     bootstrapTimestamp();
     renderSavedCounters();
     renderScrapbook();
+    
+    // 매일 자정 이후 첫 방문 시 스크랩북 자동 백업
+    checkAndBackupScrapbook();
 
     fetchData()
       .then(() => {
@@ -397,4 +402,77 @@
     // safe for single-quoted inline handlers
     return String(s).replaceAll("\\", "\\\\").replaceAll("'", "\\'");
   }
+
+  // ---------- 자동 백업 시스템 ----------
+  async function checkAndBackupScrapbook() {
+    const today = getToday(); // YYYY-MM-DD
+    const lastBackup = localStorage.getItem(CONFIG.lastBackupKey);
+
+    // 이미 오늘 백업했으면 스킵
+    if (lastBackup === today) {
+      return;
+    }
+
+    // 어제 날짜 계산
+    const yesterday = getYesterday();
+    
+    // 저장된 항목이 있는지 확인
+    if (saved.length === 0) {
+      console.log(`📌 [${today}] 백업할 스크랩북 항목이 없습니다.`);
+      localStorage.setItem(CONFIG.lastBackupKey, today);
+      return;
+    }
+
+    console.log(`📌 [${today}] 스크랩북 자동 백업 시작... (${saved.length}개 항목)`);
+
+    try {
+      const response = await fetch(CONFIG.backupServerUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          date: yesterday, // 어제 날짜로 백업
+          items: saved
+        })
+      });
+
+      if (response.ok) {
+        const result = await response.json();
+        console.log(`✅ 백업 완료: ${result.filename} (${result.count}개 항목)`);
+        
+        // 백업 성공 후 스크랩북 초기화
+        saved = [];
+        localStorage.setItem(CONFIG.savedStorageKey, JSON.stringify(saved));
+        localStorage.setItem(CONFIG.lastBackupKey, today);
+        
+        // UI 업데이트
+        renderSavedCounters();
+        renderScrapbook();
+        
+        console.log(`🔄 스크랩북이 초기화되었습니다. 새로운 하루를 시작하세요!`);
+      } else {
+        console.warn(`⚠️  백업 실패: ${response.status}`);
+      }
+    } catch (error) {
+      // 서버가 실행되지 않으면 백업 실패하지만 앱은 정상 동작
+      console.warn(`⚠️  백업 서버 연결 실패 (localhost:3001). 수동 백업이 필요합니다.`, error.message);
+    }
+  }
+
+  function getToday() {
+    const now = new Date();
+    const yyyy = now.getFullYear();
+    const mm = String(now.getMonth() + 1).padStart(2, '0');
+    const dd = String(now.getDate()).padStart(2, '0');
+    return `${yyyy}-${mm}-${dd}`;
+  }
+
+  function getYesterday() {
+    const now = new Date();
+    now.setDate(now.getDate() - 1);
+    const yyyy = now.getFullYear();
+    const mm = String(now.getMonth() + 1).padStart(2, '0');
+    const dd = String(now.getDate()).padStart(2, '0');
+    return `${yyyy}-${mm}-${dd}`;
+  }
+
 })();
