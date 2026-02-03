@@ -108,6 +108,28 @@ def update_html(news_html):
         return False
 
 
+def sync_to_html():
+    """news_hub.py에서 호출할 함수"""
+    print("🔄 Intelligence Hub 동기화 시작...")
+    
+    # Top 2 뉴스 로드
+    top_news = load_top_news()
+    print(f"   📰 로드된 뉴스: {len(top_news)}개")
+    
+    # HTML 생성
+    news_html = generate_news_html(top_news)
+    
+    # HTML 업데이트
+    success = update_html(news_html)
+    
+    if success:
+        print("   🎉 Intelligence Hub 동기화 완료!")
+    else:
+        print("   ⚠️ Intelligence Hub 동기화 실패")
+    
+    return success
+
+
 def main():
     print("🔄 Top 2 뉴스 동기화 시작...")
     

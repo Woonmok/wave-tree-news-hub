@@ -370,6 +370,19 @@ def process_news(use_gemini=True):
     print("=" * 60)
     update_dashboard(processed_news_data)
     
+    # Intelligence Hub 업데이트 (index.html)
+    print("\n" + "=" * 60)
+    print("🌐 Intelligence Hub 업데이트 중...")
+    print("=" * 60)
+    try:
+        import sys
+        sys.path.append('/Users/seunghoonoh/Desktop/wave-tree-news-hub')
+        from sync_top_news import sync_to_html
+        sync_to_html()
+        print("   ✅ Intelligence Hub 업데이트 완료")
+    except Exception as e:
+        print(f"   ⚠️ Intelligence Hub 업데이트 오류: {str(e)}")
+    
     print("\n" + "=" * 60)
     print(f"✅ 분석 완료. 모든 파일이 업데이트되었습니다.")
     print(f"   ✓ 저장됨: {processed_count}개")
@@ -379,6 +392,7 @@ def process_news(use_gemini=True):
     print(f"      - detected_news.json (API 연동)")
     print(f"      - Daily_Bridge.md ⭐ (VS Code ↔ Antigravity 브릿지)")
     print(f"      - dashboard_data.json ⭐ (대시보드 동기화)")
+    print(f"      - index.html Intelligence Hub ⭐ (웹사이트 동기화)")
     print("=" * 60)
 
 
