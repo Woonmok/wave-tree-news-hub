@@ -226,6 +226,71 @@ def save_to_json(news_data):
         json.dump(data, f, ensure_ascii=False, indent=2)
 
 
+# Dashboard 업데이트 함수
+def update_dashboard(news_data_list):
+    """
+    dashboard_data.json의 intelligence 섹션을 최신 뉴스로 업데이트
+    """
+    DASHBOARD_PATH = "/Users/seunghoonoh/woonmok.github.io/dashboard_data.json"
+    
+    if not news_data_list:
+        print("   ⚠️ 업데이트할 뉴스가 없습니다.")
+        return
+    
+    try:
+        # 기존 dashboard_data.json 로드
+        if os.path.exists(DASHBOARD_PATH):
+            with open(DASHBOARD_PATH, 'r', encoding='utf-8') as f:
+                dashboard_data = json.load(f)
+        else:
+            dashboard_data = {
+                "todo_list": [],
+                "system_status": "NORMAL",
+                "intelligence": []
+            }
+        
+        # 상위 3개 뉴스 추출
+        top_news = []
+        for item in news_data_list[:3]:
+            title = item.get('text', '')[:100]  # 제목 추출
+            analysis = item.get('analysis', '')
+            
+            # 간단한 요약 추출 (첫 문장)
+            summary = analysis.split('.')[0] if analysis else "분석 중"
+            
+            # 카테고리 판단
+            keywords = item.get('keywords', [])
+            if any(kw in ['listeria', '리스테리아'] for kw in keywords):
+                tag = "긴급"
+                score = "0.95"
+            elif any(kw in ['배양육', 'cultured meat', '균사체'] for kw in keywords):
+                tag = "중요"
+                score = "0.85"
+            else:
+                tag = "정보"
+                score = "0.75"
+            
+            top_news.append({
+                "title": title,
+                "summary": summary[:150],
+                "tag": tag,
+                "score": score
+            })
+        
+        # intelligence 섹션 업데이트
+        dashboard_data["intelligence"] = top_news
+        dashboard_data["last_updated"] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        
+        # 저장
+        with open(DASHBOARD_PATH, 'w', encoding='utf-8') as f:
+            json.dump(dashboard_data, f, ensure_ascii=False, indent=2)
+        
+        print(f"   ✅ Dashboard 업데이트 완료: {len(top_news)}개 뉴스")
+        
+    except Exception as e:
+        print(f"   ⚠️ Dashboard 업데이트 오류: {str(e)}")
+
+
 # 6. 메인 실행 함수
 def process_news(use_gemini=True):
     """뉴스 필터링 및 분석 메인 함수 + Daily_Bridge.md 생성"""
@@ -299,6 +364,12 @@ def process_news(use_gemini=True):
     print("=" * 60)
     create_daily_bridge(processed_news_data)
     
+    # Dashboard 업데이트
+    print("\n" + "=" * 60)
+    print("📊 Dashboard 업데이트 중...")
+    print("=" * 60)
+    update_dashboard(processed_news_data)
+    
     print("\n" + "=" * 60)
     print(f"✅ 분석 완료. 모든 파일이 업데이트되었습니다.")
     print(f"   ✓ 저장됨: {processed_count}개")
@@ -307,6 +378,7 @@ def process_news(use_gemini=True):
     print(f"      - Project_Radar.md (Antigravity 동기화)")
     print(f"      - detected_news.json (API 연동)")
     print(f"      - Daily_Bridge.md ⭐ (VS Code ↔ Antigravity 브릿지)")
+    print(f"      - dashboard_data.json ⭐ (대시보드 동기화)")
     print("=" * 60)
 
 
