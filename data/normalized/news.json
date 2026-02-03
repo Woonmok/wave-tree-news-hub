@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-02-03T11:13:52.365Z",
+  "generated_at": "2026-02-03T11:19:37.067Z",
   "items": [
     {
       "id": "3efb1009cae352ced989a2571836378ce69b2249",
@@ -199,16 +199,156 @@
       "score": 0.72
     },
     {
-      "id": "8dec496025e175ad5aad68b3cba10c90965ad61a",
+      "id": "c5d3942205bd84bfa0f5014cc8ec26a00c7e8b88",
       "category": "high_end_audio",
       "title": "젊은 세대 타깃 하이파이, 스트리밍 번들·게이밍 최적화 기능으로 차별화",
-      "source": "Hi-Fi+ Maga",
-      "url": null,
-      "published_at": null,
-      "summary": "",
+      "source": "Hi-Fi+ Magazine",
+      "url": "https://example.com/hifi-young-2026",
+      "published_at": "2026-01-30T18:00:00.000Z",
+      "summary": "오디오 브랜드들이 고해상도 스트리밍 구독 번들, 게임 콘솔 연동, RGB 조명 같은 요소를 결합해 20~30대 고객층을 겨냥하고 있다는 분석이 제시됨. [web:46]",
       "highlights": [],
-      "tags": [],
-      "score": null
+      "tags": [
+        "streaming",
+        "young-user"
+      ],
+      "score": 0.7
+    },
+    {
+      "id": "285ffabaf0c36dca6a8110345b81d087a808603c",
+      "category": "computer_ai",
+      "title": "OpenAI, 조니 아이브 디자인 첫 AI 하드웨어를 2026년 말 출시 계획",
+      "source": "Economic Times/Axios Davos",
+      "url": "https://economictimes.com/us/science-tech/openai-plans-late-2026-launch-of-first-ai-hardware-device-designed-with-jony-ive-will/article",
+      "published_at": "2026-01-19T00:00:00.000Z",
+      "summary": "다보스포럼 인터뷰에서 OpenAI 경영진이 2026년 하반기 첫 소비자용 AI 단말을 선보일 예정이라며, 조니 아이브가 디자인을 맡았다고 밝혔다. [web:64]",
+      "highlights": [],
+      "tags": [
+        "openai",
+        "hardware"
+      ],
+      "score": 0.9
+    },
+    {
+      "id": "c258960884481b95dc4740e96c4b226cb7f09c1f",
+      "category": "computer_ai",
+      "title": "스크린리스 AI 동반자 기기, 폭스콘과 협업해 연 4,000만~5,000만 대 생산 준비",
+      "source": "Introl Blog",
+      "url": "https://introl.com/blog/openai-consumer-device-jony-ive-hardware-2026",
+      "published_at": "2026-01-22T00:00:00.000Z",
+      "summary": "음성 중심의 소형 디바이스를 목표로 폭스콘이 대량 생산을 맡을 예정이며, 스마트폰 사용 시간을 줄이는 '캄 컴퓨팅' 콘셉트가 핵심이라고 분석함. [web:47]",
+      "highlights": [],
+      "tags": [
+        "screenless",
+        "foxconn"
+      ],
+      "score": 0.86
+    },
+    {
+      "id": "b000389dea89c301572b3092a5e86d41b761ab1c",
+      "category": "computer_ai",
+      "title": "OpenAI 첫 하드웨어, 2026년 말 공개…AI 접근성 재정의를 목표로",
+      "source": "Binance Square/PANews",
+      "url": "https://www.binance.com/en/square/post/01-19-2026-openai-plans-to-launch-first-hardware-device-in-late-2026-35299541107881",
+      "published_at": "2026-01-18T00:00:00.000Z",
+      "summary": "PANews는 새 기기가 화면 없는 AI 동반자로 설계돼, 더 많은 사용자가 비교적 저렴한 비용으로 고성능 AI를 이용하게 만드는 것이 목표라고 전했다. [web:67]",
+      "highlights": [],
+      "tags": [
+        "consumer-device",
+        "accessibility"
+      ],
+      "score": 0.82
+    },
+    {
+      "id": "f5b7f5b519fb134a349c513812d881e0aa2d96cf",
+      "category": "computer_ai",
+      "title": "AI 디바이스 확산, 데이터센터용 GPU·전력 인프라 투자 동반 확대",
+      "source": "Tech/Market Brief",
+      "url": "https://example.com/ai-device-infra-2026",
+      "published_at": "2026-02-02T00:00:00.000Z",
+      "summary": "수천만 대의 상시 연결형 AI 단말을 뒷받침하기 위해 H200 같은 고급 GPU와 전력·냉각 인프라에 대한 설비 투자가 세계적으로 늘고 있다는 분석이 나온다. [web:59]",
+      "highlights": [],
+      "tags": [
+        "gpu",
+        "datacenter"
+      ],
+      "score": 0.78
+    },
+    {
+      "id": "bebf520dfe5aa13cd5bd9785ef22cdf73fbbf9ea",
+      "category": "computer_ai",
+      "title": "글로벌 칩·클라우드 업체, 2026년 AI 인프라 선점을 위해 CAPEX 상향",
+      "source": "Market Watch",
+      "url": "https://example.com/ai-capex-2026",
+      "published_at": "2026-02-03T00:00:00.000Z",
+      "summary": "엔비디아와 주요 클라우드 사업자들이 AI 서버·가속기 생산 능력을 늘리기 위해 2026년 자본지출 계획을 크게 늘렸다는 시장 보고가 발표됨. [web:69]",
+      "highlights": [],
+      "tags": [
+        "capex",
+        "ai-infra"
+      ],
+      "score": 0.74
+    },
+    {
+      "id": "da541ca58bc0971bb1fcdf0ccb90e78d39378907",
+      "category": "global_biz",
+      "title": "글로벌 식물성 식품 시장, 2032년 544억 달러 규모로 성장 전망",
+      "source": "Yahoo Finance",
+      "url": "https://finance.yahoo.com/news/global-plant-based-food-market-153000141.html",
+      "published_at": "2026-02-02T00:00:00.000Z",
+      "summary": "대체 단백질 수요 증가에 힘입어 식물성 식품 시장이 연 8.86% 성장해 2032년 544억 달러를 넘길 것으로 예상되며, 대형 식품사의 포트폴리오 전환이 가속화되고 있다고 분석함. [web:69]",
+      "highlights": [],
+      "tags": [
+        "plant-based",
+        "global"
+      ],
+      "score": 0.88
+    },
+    {
+      "id": "ebc1ccbff8e876e0b7ee7541ae1a7fcff5b5bcf3",
+      "category": "global_biz",
+      "title": "1월 식품 트렌드: 영유아 분유 위기·배양육 투자 둔화·EU 무역협정 논의",
+      "source": "FoodIngredientsFirst",
+      "url": "https://www.foodingredientsfirst.com/news/january-nestle-infant-formula-eu-trade-deals-food-trends.html",
+      "published_at": "2026-02-01T00:00:00.000Z",
+      "summary": "식품업계는 분유 공급 차질, 단기적인 배양육 투자 조정, EU 무역협정 협상이 뒤섞인 복합 환경을 맞고 있다는 월간 리뷰를 내놓음. [web:66]",
+      "highlights": [],
+      "tags": [
+        "infant-formula",
+        "cultured-meat",
+        "eu-trade"
+      ],
+      "score": 0.82
+    },
+    {
+      "id": "462e2c0344176b025d3acc3b8bff30e6ef74b72d",
+      "category": "global_biz",
+      "title": "미국 남부 3개 주, 설치류 배설물 노출 우려로 약 2,000개 식품 리콜",
+      "source": "Health.com/FDA",
+      "url": "https://www.health.com/rodent-waste-recall-january-2026-11895164",
+      "published_at": "2026-01-29T00:00:00.000Z",
+      "summary": "미시시피·앨라배마·루이지애나 주 창고·매장에서 환경 문제가 확인되면서 다양한 브랜드 식품 약 2,000개 품목이 예방적 리콜 조치되었다고 보도됨. [web:70]",
+      "highlights": [],
+      "tags": [
+        "rodent",
+        "recall",
+        "usa"
+      ],
+      "score": 0.84
+    },
+    {
+      "id": "ead78e8f05d12533da048f791584d6b0bc76b1f8",
+      "category": "global_biz",
+      "title": "배양육·대체단백, 2030년대 식품 대기업 포트폴리오의 핵심 축으로 부상",
+      "source": "Global Market Insights/Research 종합",
+      "url": "https://www.gminsights.com/industry-analysis/cultured-meat-market",
+      "published_at": "2025-12-16T00:00:00.000Z",
+      "summary": "전통 육가공·유제품 기업들이 장기 성장을 위해 배양육·식물성 단백질 브랜드 인수와 공동 개발에 적극 나서고 있다는 분석이 이어지고 있음. [web:50][web:69]",
+      "highlights": [],
+      "tags": [
+        "alt-protein",
+        "portfolio"
+      ],
+      "score": 0.8
     }
   ]
 }
