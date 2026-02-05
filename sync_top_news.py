@@ -5,7 +5,7 @@ import json
 import re
 from datetime import datetime
 
-NEWS_JSON = "/Users/seunghoonoh/Desktop/wave-tree-news-hub/data/normalized/news.json"
+NEWS_JSON = "/Volumes/AI DATA CENTRE/wave-tree-news-hub/data/normalized/news.json"
 TARGET_HTML = "/Users/seunghoonoh/woonmok.github.io/index.html"
 
 def load_top_news():
