@@ -108,6 +108,38 @@ def update_html(news_html):
         return False
 
 
+def update_dashboard_json(top_news):
+    """dashboard_data.json의 intelligence 필드를 탑 뉴스 2개로 갱신"""
+    DASHBOARD_JSON = "/Users/seunghoonoh/woonmok.github.io/dashboard_data.json"
+    try:
+        with open(DASHBOARD_JSON, "r", encoding="utf-8") as f:
+            dashboard = json.load(f)
+
+        # 기존 intelligence 필드 백업(선택)
+        dashboard["intelligence_backup"] = dashboard.get("intelligence", [])
+
+        # 탑 뉴스 2개를 intelligence 필드에 맞게 변환
+        dashboard["intelligence"] = [
+            {
+                "title": n.get("title", ""),
+                "summary": n.get("summary", ""),
+                "tag": n.get("category", ""),
+                "score": str(n.get("score", "")),
+                "url": n.get("url", "")
+            }
+            for n in top_news
+        ]
+        dashboard["last_updated"] = datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S")
+
+        with open(DASHBOARD_JSON, "w", encoding="utf-8") as f:
+            json.dump(dashboard, f, ensure_ascii=False, indent=2)
+        print("✅ dashboard_data.json intelligence 필드 동기화 완료!")
+        return True
+    except Exception as e:
+        print(f"❌ dashboard_data.json 동기화 실패: {e}")
+        return False
+
+
 def sync_to_html():
     """news_hub.py에서 호출할 함수"""
     print("🔄 Intelligence Hub 동기화 시작...")
@@ -122,10 +154,17 @@ def sync_to_html():
     # HTML 업데이트
     success = update_html(news_html)
     
-    if success:
+    # dashboard_data.json intelligence 필드 동기화
+    dash_success = update_dashboard_json(top_news)
+    
+    if success and dash_success:
         print("   🎉 Intelligence Hub 동기화 완료!")
+    elif success:
+        print("   ⚠️ index.html만 동기화, dashboard_data.json 실패")
+    elif dash_success:
+        print("   ⚠️ dashboard_data.json만 동기화, index.html 실패")
     else:
-        print("   ⚠️ Intelligence Hub 동기화 실패")
+        print("   ⚠️ 동기화 모두 실패")
     
     return success
 
@@ -141,13 +180,19 @@ def main():
     news_html = generate_news_html(top_news)
     
     # HTML 업데이트
-    success = update_html(news_html)
+    html_success = update_html(news_html)
     
-    if success:
-        print("🎉 동기화 완료!")
-        print("📍 확인: /Users/seunghoonoh/woonmok.github.io/index.html")
+    # dashboard_data.json intelligence 필드 동기화
+    dash_success = update_dashboard_json(top_news)
+    
+    if html_success and dash_success:
+        print("🎉 index.html + dashboard_data.json 동기화 완료!")
+    elif html_success:
+        print("⚠️ index.html만 동기화, dashboard_data.json 실패")
+    elif dash_success:
+        print("⚠️ dashboard_data.json만 동기화, index.html 실패")
     else:
-        print("⚠️ 동기화 실패")
+        print("⚠️ 동기화 모두 실패")
 
 
 if __name__ == "__main__":
