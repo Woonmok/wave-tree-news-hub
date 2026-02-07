@@ -1,43 +1,113 @@
-# Dependencies
+
+# --------------------
+# Node.js dependencies
 node_modules/
 package-lock.json
 yarn.lock
+pnpm-lock.yaml
+npm-debug.log*
+
+# Python environments & cache
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*.pyo
+.python-version
+.mypy_cache/
+.pytest_cache/
+.coverage*
+coverage.xml
+htmlcov/
 
 # Logs
-*.log
 logs/
+*.log
+*.log.*
+nohup.out
 
-# OS
-.DS_Store
-Thumbs.db
+# Build outputs
+dist/
+build/
+out/
+*.egg-info/
+*.spec
 
-# IDE
-.vscode/
-.idea/
-*.swp
-*.swo
-
-# Raw input (Perplexity responses) - can be large
+# Data (raw, backup, temp)
 data/raw/*.txt
 data/raw/*.json
 !data/raw/perplexity.sample.txt
+data/normalized/*.bak
+data/normalized/*.tmp
+*.bak
+*.tmp
+*.swp
+*.swo
 
-# Build outputs (if any)
-dist/
-build/
-
-# Environment
-.env
+# Environment & secrets
+.env*
+!.env.example
+.envrc
 .env.local
+.env.production
+.env.development
 
-# Python
-__pycache__/
-*.pyc
-*.pyo
-.venv/
-venv/
+# OS files
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Icon?
+._*
+.Spotlight-V100
+.Trashes
+.fseventsd
 
-# Sensitive files
+# IDE/editor
+.vscode/
+.idea/
+.history/
+.code-workspace
+.sublime*
+.project
+.settings/
+.classpath
+.c9/
+.sw?
+.editorconfig
+
+# JetBrains
+.idea/
+*.iml
+*.ipr
+*.iws
+out/
+
+# HTML/JS build artifacts
+*.min.js
+*.min.css
+*.map
+
+# Sensitive or generated files
 run-news-hub.sh
 Project_Radar.md
 detected_news.json
+dashboard_data.json
+antigravity_error.log
+antigravity.log
+news_hub.py.save
+update_news.py.save
+
+# Backup & temp
+*~
+*.bak
+*.tmp
+*.old
+*.orig
+
+# Misc
+SETUP_COMPLETE.md
+SCRAPBOOK_BACKUP.md
+TRANSFER_GUIDE.md
+
+# Exclude all markdown backups
+*.md.bak

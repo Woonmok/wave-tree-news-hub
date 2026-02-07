@@ -372,8 +372,21 @@
       const ok = confirm("스크랩북을 백업하고 초기화할까요? (백업 서버가 켜져 있어야 합니다)");
       if (!ok) return;
       el.scrapbookContent.innerHTML = '<div class="empty-state">⏳ 백업 및 리뉴 중...</div>';
-      await checkAndBackupScrapbook();
-      renderScrapbook();
+      try {
+        const result = await checkAndBackupScrapbook(true); // true: manual
+        if (result && result.status === 'success') {
+          el.scrapbookContent.innerHTML = '<div class="empty-state">✅ 백업 및 리뉴 완료!<br>새로운 하루를 시작하세요.</div>';
+        } else if (result && result.status === 'no-items') {
+          el.scrapbookContent.innerHTML = '<div class="empty-state">ℹ️ 백업할 스크랩북 항목이 없습니다.</div>';
+        } else if (result && result.status === 'fail') {
+          el.scrapbookContent.innerHTML = `<div class="empty-state">⚠️ 백업 실패: ${result.message || '알 수 없는 오류'}</div>`;
+        } else {
+          el.scrapbookContent.innerHTML = '<div class="empty-state">⚠️ 알 수 없는 오류가 발생했습니다.</div>';
+        }
+      } catch (e) {
+        el.scrapbookContent.innerHTML = `<div class="empty-state">⚠️ 예외 발생: ${e.message || e}</div>`;
+      }
+      setTimeout(renderScrapbook, 2500); // 2.5초 후 원래 화면 복구
     }
   }
 
@@ -428,23 +441,23 @@
   async function checkAndBackupScrapbook() {
     const today = getToday(); // YYYY-MM-DD
     const lastBackup = localStorage.getItem(CONFIG.lastBackupKey);
+    const isManual = arguments[0] === true;
 
-    // 이미 오늘 백업했으면 스킵
+    // 이미 오늘 백업했으면 스킵 (수동일 때는 안내)
     if (lastBackup === today) {
+      if (isManual) return { status: 'fail', message: '오늘 이미 백업/리뉴가 완료되었습니다.' };
       return;
     }
 
     // 어제 날짜 계산
     const yesterday = getYesterday();
-    
+
     // 저장된 항목이 있는지 확인
     if (saved.length === 0) {
-      console.log(`📌 [${today}] 백업할 스크랩북 항목이 없습니다.`);
       localStorage.setItem(CONFIG.lastBackupKey, today);
+      if (isManual) return { status: 'no-items' };
       return;
     }
-
-    console.log(`📌 [${today}] 스크랩북 자동 백업 시작... (${saved.length}개 항목)`);
 
     try {
       const response = await fetch(CONFIG.backupServerUrl, {
@@ -458,24 +471,20 @@
 
       if (response.ok) {
         const result = await response.json();
-        console.log(`✅ 백업 완료: ${result.filename} (${result.count}개 항목)`);
-        
-        // 백업 성공 후 스크랩북 초기화
         saved = [];
         localStorage.setItem(CONFIG.savedStorageKey, JSON.stringify(saved));
         localStorage.setItem(CONFIG.lastBackupKey, today);
-        
-        // UI 업데이트
         renderSavedCounters();
         renderScrapbook();
-        
-        console.log(`🔄 스크랩북이 초기화되었습니다. 새로운 하루를 시작하세요!`);
+        if (isManual) return { status: 'success', filename: result.filename, count: result.count };
+        return;
       } else {
-        console.warn(`⚠️  백업 실패: ${response.status}`);
+        if (isManual) return { status: 'fail', message: `백업 실패: ${response.status}` };
+        return;
       }
     } catch (error) {
-      // 서버가 실행되지 않으면 백업 실패하지만 앱은 정상 동작
-      console.warn(`⚠️  백업 서버 연결 실패 (localhost:3001). 수동 백업이 필요합니다.`, error.message);
+      if (isManual) return { status: 'fail', message: `백업 서버 연결 실패: ${error.message}` };
+      return;
     }
   }
 
