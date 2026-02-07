@@ -335,9 +335,10 @@
   function renderScrapbook() {
     if (!el.scrapbookContent) return;
 
-    // 수동 리뉴/백업 버튼 추가
-    const backupBtnHtml = `<div style="margin-bottom:10px; text-align:right;">
+    // 수동 리뉴/백업 + 백업 서버 상태 체크 버튼 추가
+    const backupBtnHtml = `<div style="margin-bottom:10px; text-align:right; display:flex; gap:8px; justify-content:flex-end;">
       <button class="action-btn" id="manualBackupBtn">수동 리뉴/백업</button>
+      <button class="action-btn" id="backupServerCheckBtn">백업 서버 상태</button>
     </div>`;
 
     if (!saved.length) {
@@ -366,7 +367,29 @@
     setTimeout(() => {
       const btn = document.getElementById("manualBackupBtn");
       if (btn) btn.onclick = manualBackupHandler;
+      const checkBtn = document.getElementById("backupServerCheckBtn");
+      if (checkBtn) checkBtn.onclick = backupServerCheckHandler;
     }, 0);
+      // 백업 서버 상태 체크 핸들러
+      async function backupServerCheckHandler() {
+        el.scrapbookContent.innerHTML = '<div class="empty-state">⏳ 백업 서버 상태 확인 중...</div>';
+        try {
+          const res = await fetch(CONFIG.backupServerUrl, { method: 'GET' });
+          if (res.ok) {
+            let msg = '✅ 백업 서버 연결 성공!';
+            try {
+              const data = await res.json();
+              if (data && data.status) msg += `<br>상태: ${data.status}`;
+            } catch {}
+            el.scrapbookContent.innerHTML = `<div class="empty-state">${msg}</div>`;
+          } else {
+            el.scrapbookContent.innerHTML = `<div class="empty-state">⚠️ 백업 서버 연결 실패<br>상태 코드: ${res.status}</div>`;
+          }
+        } catch (e) {
+          el.scrapbookContent.innerHTML = `<div class="empty-state">⚠️ 백업 서버 연결 실패<br>${e.message || e}</div>`;
+        }
+        setTimeout(renderScrapbook, 2500);
+      }
     // 수동 리뉴/백업 버튼 핸들러
     async function manualBackupHandler() {
       const ok = confirm("스크랩북을 백업하고 초기화할까요? (백업 서버가 켜져 있어야 합니다)");
