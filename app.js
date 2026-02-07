@@ -335,15 +335,24 @@
   function renderScrapbook() {
     if (!el.scrapbookContent) return;
 
+    // 수동 리뉴/백업 버튼 추가
+    const backupBtnHtml = `<div style="margin-bottom:10px; text-align:right;">
+      <button class="action-btn" id="manualBackupBtn">수동 리뉴/백업</button>
+    </div>`;
+
     if (!saved.length) {
-      el.scrapbookContent.innerHTML = '<div class="empty-state">저장된 뉴스가 없습니다</div>';
+      el.scrapbookContent.innerHTML = backupBtnHtml + '<div class="empty-state">저장된 뉴스가 없습니다</div>';
+      setTimeout(() => {
+        const btn = document.getElementById("manualBackupBtn");
+        if (btn) btn.onclick = manualBackupHandler;
+      }, 0);
       return;
     }
 
     // newest saved first
     const list = saved.slice().sort((a, b) => Date.parse(b.savedAt) - Date.parse(a.savedAt));
 
-    el.scrapbookContent.innerHTML = list.map((s) => `
+    el.scrapbookContent.innerHTML = backupBtnHtml + list.map((s) => `
       <div class="scrapbook-item">
         <div class="scrapbook-category">${escapeHtml(s.categoryTitle || s.category)}</div>
         <div class="scrapbook-title">${escapeHtml(s.title)}</div>
@@ -354,6 +363,18 @@
         </div>
       </div>
     `).join("");
+    setTimeout(() => {
+      const btn = document.getElementById("manualBackupBtn");
+      if (btn) btn.onclick = manualBackupHandler;
+    }, 0);
+    // 수동 리뉴/백업 버튼 핸들러
+    async function manualBackupHandler() {
+      const ok = confirm("스크랩북을 백업하고 초기화할까요? (백업 서버가 켜져 있어야 합니다)");
+      if (!ok) return;
+      el.scrapbookContent.innerHTML = '<div class="empty-state">⏳ 백업 및 리뉴 중...</div>';
+      await checkAndBackupScrapbook();
+      renderScrapbook();
+    }
   }
 
   function toggleScrapbook() {
