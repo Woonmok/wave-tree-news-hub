@@ -8,8 +8,10 @@
     <key>ProgramArguments</key>
     <array>
         <string>/usr/local/bin/ngrok</string>
-        <string>http</string>
-        <string>8000</string>
+        <string>start</string>
+        <string>--config</string>
+        <string>/Users/seunghoonoh/Library/Application Support/ngrok/ngrok.yml</string>
+        <string>wave-tree-news-hub</string>
     </array>
     
     <key>RunAtLoad</key>
