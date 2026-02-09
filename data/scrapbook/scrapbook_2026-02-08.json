@@ -1,3 +1,79 @@
 {
   "date": "2026-02-08",
-  "timestamp": "
+  "timestamp": "2026-02-09T04:54:10.266Z",
+  "count": 8,
+  "items": [
+    {
+      "id": "7e2337c032d6656658f28c1d7b16d95d07eb391f",
+      "category": "computer_ai",
+      "categoryTitle": "🤖 COMPUTER & AI",
+      "title": "OpenAI, 조니 아이브와 협업한 첫 AI 하드웨어를 2026년 하반기 공개 예정",
+      "source": "Economic Times/Axios Davos",
+      "url": "https://economictimes.com/us/science-tech/openai-plans-late-2026-launch-of-first-ai-hardware-device-designed-with-jony-ive-will/article",
+      "savedAt": "2026-02-07T15:42:55.042Z"
+    },
+    {
+      "id": "5907cc2ffb8ed9b934327d86decdb0e5d51831ee",
+      "category": "global_biz",
+      "categoryTitle": "🌍 GLOBAL BIZ",
+      "title": "‘새 현실’: 배양육 산업, 자본시장 위축 속에서 타임라인·전략 재조정",
+      "source": "Yahoo Finance",
+      "url": "https://finance.yahoo.com/news/reality-cultivated-meat-recalibrates-funding-123151471.html",
+      "savedAt": "2026-02-07T15:42:58.170Z"
+    },
+    {
+      "id": "a7acbab2cf9e2852f56137448b867c6167283b2e",
+      "category": "global_biz",
+      "categoryTitle": "🌍 GLOBAL BIZ",
+      "title": "2월 시카고 개최 ‘Cultivated Meat Symposium 2026’, 글로벌 투자자·식품사·규제당국 한자리에",
+      "source": "Cultivated Bites Substack",
+      "url": "https://cultivatedbites.substack.com/p/the-month-in-cultivated-meat-january",
+      "savedAt": "2026-02-07T15:43:00.019Z"
+    },
+    {
+      "id": "0c6fcc01fe7ecd90c6102deca36b7115594c7d3e",
+      "category": "high_end_audio",
+      "categoryTitle": "🎵 HIGH-END AUDIO",
+      "title": "돌비 애트모스 대응 사운드바, 프리미엄 홈시네마의 엔트리 솔루션으로 부상",
+      "source": "Home Theater Trends",
+      "url": "https://example.com/spatial-soundbar-2026",
+      "savedAt": "2026-02-07T15:43:01.306Z"
+    },
+    {
+      "id": "9c6bb7ed14932fe06c79ea5fc0d69f24189fa321",
+      "category": "cultured_meat",
+      "categoryTitle": "🥩 CULTURED MEAT",
+      "title": "2026년 배양육 업계, ‘환상은 줄고 실행력은 강화’…규제 성숙·하이브리드 제품 확산",
+      "source": "Protein Production Technology",
+      "url": "https://www.proteinproductiontechnology.com/post/cultivated-meat-in-2026-fewer-illusions-firmer-footing",
+      "savedAt": "2026-02-07T15:43:02.258Z"
+    },
+    {
+      "id": "fe4e1ffac6d3937a1a34214c91cc6e6755b38c01",
+      "category": "listeria_free",
+      "categoryTitle": "🦠 LISTERIA FREE",
+      "title": "Ambriola 치즈 리콜, FDA가 최고 위험 등급(Class I)으로 격상",
+      "source": "GMA/ABC News/FDA",
+      "url": "https://www.goodmorningamerica.com/food/story/fda-upgrades-voluntary-cheese-recall-highest-risk-level-129197174",
+      "savedAt": "2026-02-07T15:43:03.442Z"
+    },
+    {
+      "id": "9051a7db5bef514315120f3ceea33f1024522b6d",
+      "category": "listeria_free",
+      "categoryTitle": "🦠 LISTERIA FREE",
+      "title": "Boar’s Head·Member’s Mark 등 1만1,530개 치즈, 리스테리아 가능성으로 회수",
+      "source": "KSAT/FDA",
+      "url": "https://www.ksat.com/news/local/2026/01/14/cheese-products-recall-due-to-possible-listeria-contamination-upgraded-to-highest-risk-level/",
+      "savedAt": "2026-02-07T15:43:04.506Z"
+    },
+    {
+      "id": "17416cd87a37790eb1a367c5acc64b83709ea446",
+      "category": "computer_ai",
+      "categoryTitle": "🤖 COMPUTER & AI",
+      "title": "OpenAI 릴리즈 노트, GPT‑5.3‑Codex와 ‘생각 시간(Thinking time)’ 조정 등 업데이트 발표",
+      "source": "Releasebot",
+      "url": "https://releasebot.io/updates/openai",
+      "savedAt": "2026-02-07T15:43:09.972Z"
+    }
+  ]
+}
