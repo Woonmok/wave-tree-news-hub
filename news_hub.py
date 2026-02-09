@@ -2,7 +2,7 @@
 # news_hub.py (Gemini API 기반 뉴스 분석 + Daily Bridge)
 import os
 from dotenv import load_dotenv
-import google.generativeai as genai
+from google import genai
 from datetime import datetime
 import json
 import shutil
@@ -12,9 +12,12 @@ import requests
 load_dotenv()
 
 # Gemini API 설정
-os.environ["GOOGLE_API_KEY"] = os.getenv("GOOGLE_API_KEY", "YOUR_GEMINI_API_KEY")
-genai.configure(api_key=os.environ["GOOGLE_API_KEY"])
-model = genai.GenerativeModel('gemini-2.5-flash')
+API_KEY = os.getenv("GOOGLE_API_KEY", "").strip()
+if not API_KEY or API_KEY == "YOUR_GEMINI_API_KEY":
+    raise RuntimeError("GOOGLE_API_KEY is missing or invalid in .env")
+
+MODEL_NAME = "gemini-2.5-flash"
+client = genai.Client(api_key=API_KEY)
 
 # 경로 설정
 ANTIGRAVITY_PATH = "/Users/seunghoonoh/woonmok.github.io/Project_Radar.md"
@@ -33,6 +36,14 @@ KEYWORDS = [
 EXCLUDE_KEYWORDS = [
     "광고", "스폰서", "sponsored", "promo", "affiliate"
 ]
+
+
+def generate_text(prompt):
+    response = client.models.generate_content(
+        model=MODEL_NAME,
+        contents=prompt,
+    )
+    return response.text or ""
 
 # 1. 키워드 필터링 함수
 def filter_by_keywords(news_text, keywords=KEYWORDS, exclude=EXCLUDE_KEYWORDS):
@@ -88,8 +99,8 @@ def analyze_importance(news_text, matched_keywords):
 분석: [내용]
 액션: [필요시]"""
         
-        response = model.generate_content(prompt)
-        return response.text
+        response_text = generate_text(prompt)
+        return response_text if response_text else f"[분석 불가] {', '.join(matched_keywords)} 포함"
     except Exception as e:
         print(f"   ⚠️ Gemini API 오류: {str(e)}")
         return f"[분석 불가] {', '.join(matched_keywords)} 포함"
@@ -141,8 +152,9 @@ def create_daily_bridge(news_data_list):
 - 영향도: [점수/10]
 - 실행 인사이트: [구체적 액션]"""
         
-        response = model.generate_content(prompt)
-        bridge_content = response.text
+        bridge_content = generate_text(prompt)
+        if not bridge_content:
+            bridge_content = "## 레이더 감지 결과 (생성 오류)\n\nGemini 응답이 비어 있습니다."
         
     except Exception as e:
         print(f"   ⚠️ Daily Bridge 생성 오류: {str(e)}")
