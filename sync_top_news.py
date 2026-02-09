@@ -5,8 +5,8 @@ import json
 import re
 from datetime import datetime
 
-NEWS_JSON = "/Volumes/AI DATA CENTRE/wave-tree-news-hub/data/normalized/news.json"
-TARGET_HTML = "/Volumes/AI DATA CENTRE/woonmok.github.io/index.html"
+NEWS_JSON = "/Volumes/AI DATA CENTRE/AI_WORKSPACE/wave-tree-news-hub/data/normalized/news.json"
+TARGET_HTML = "/Volumes/AI DATA CENTRE/AI_WORKSPACE/woonmok.github.io/index.html"
 
 def load_top_news():
     """news.json에서 상위 2개 뉴스 로드 (score 기준)"""
@@ -110,7 +110,7 @@ def update_html(news_html):
 
 def update_dashboard_json(top_news):
     """dashboard_data.json의 intelligence 필드를 탑 뉴스 2개로 갱신"""
-    DASHBOARD_JSON = "/Volumes/AI DATA CENTRE/woonmok.github.io/dashboard_data.json"
+    DASHBOARD_JSON = "/Volumes/AI DATA CENTRE/AI_WORKSPACE/woonmok.github.io/dashboard_data.json"
     try:
         with open(DASHBOARD_JSON, "r", encoding="utf-8") as f:
             dashboard = json.load(f)
