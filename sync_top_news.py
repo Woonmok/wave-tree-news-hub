@@ -9,17 +9,17 @@ NEWS_JSON = "/Volumes/AI DATA CENTRE/AI_WORKSPACE/wave-tree-news-hub/data/normal
 TARGET_HTML = "/Volumes/AI DATA CENTRE/AI_WORKSPACE/woonmok.github.io/index.html"
 
 def load_top_news():
-    """news.json에서 상위 2개 뉴스 로드 (score 기준)"""
+    """news.json에서 최신 2개 뉴스 로드 (published_at 기준)"""
     try:
         with open(NEWS_JSON, "r", encoding="utf-8") as f:
             data = json.load(f)
         
         items = data.get("items", [])
         
-        # score가 있는 것 우선, 없으면 최신순
+        # 최신순 (published_at 기준, 없으면 빈 문자열)
         sorted_items = sorted(
-            items, 
-            key=lambda x: (x.get("score") or 0, x.get("published_at") or ""), 
+            items,
+            key=lambda x: (x.get("published_at") or ""),
             reverse=True
         )
         
