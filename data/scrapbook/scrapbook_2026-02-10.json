@@ -1,8 +1,17 @@
 {
   "date": "2026-02-10",
-  "timestamp": "2026-02-10T15:03:21.381Z",
-  "count": 8,
+  "timestamp": "2026-02-10T15:19:14.329Z",
+  "count": 2,
   "items": [
+    {
+      "id": "2dcb3d46afe1821dd164c7327b0f1938e8d765f0",
+      "category": "high_end_audio",
+      "categoryTitle": "🎵 HIGH-END AUDIO",
+      "title": "AI 룸 보정·업믹스 기능, 2026년형 하이엔드 AV 리시버의 기본 옵션으로 확산",
+      "source": "Hi-Fi Tech Journal",
+      "url": "https://example.com/ai-room-correction-2026",
+      "savedAt": "2026-02-10T15:06:38.853Z"
+    },
     {
       "id": "d5d07f038961f0792f02c766bc48b2838bc8b261",
       "category": "cultured_meat",
@@ -10,70 +19,7 @@
       "title": "2025년 배양육 투자, 1억7,700만~2억2,600만 달러…하락세 멈추고 선별적 회복",
       "source": "Protein Production Technology",
       "url": "https://www.proteinproductiontechnology.com/post/report-published-on-cultivated-meat-investment-landscape-in-2025-a-slow-recovery-or-a-true-resurgence",
-      "savedAt": "2026-02-09T07:47:22.614Z"
-    },
-    {
-      "id": "fe4e1ffac6d3937a1a34214c91cc6e6755b38c01",
-      "category": "listeria_free",
-      "categoryTitle": "🦠 LISTERIA FREE",
-      "title": "Ambriola 치즈 리콜, FDA가 최고 위험 등급(Class I)으로 격상",
-      "source": "GMA/ABC News/FDA",
-      "url": "https://www.goodmorningamerica.com/food/story/fda-upgrades-voluntary-cheese-recall-highest-risk-level-129197174",
-      "savedAt": "2026-02-09T07:47:23.900Z"
-    },
-    {
-      "id": "a9821d003421ab5f4111334c3e54f29dcbc9356b",
-      "category": "listeria_free",
-      "categoryTitle": "🦠 LISTERIA FREE",
-      "title": "Boar’s Head·Member’s Mark 등 1만1,530개 치즈, 리스테리아 가능성으로 회수",
-      "source": "KSAT/FDA",
-      "url": "https://www.ksat.com/news/local/2026/01/09/more-than-11000-cheese-products-recalled-due-to-possible-listeria-contamination/",
-      "savedAt": "2026-02-09T07:47:26.860Z"
-    },
-    {
-      "id": "fccd9e2c3ba7787a58b2822caefd3cb8208c2455",
-      "category": "listeria_free",
-      "categoryTitle": "🦠 LISTERIA FREE",
-      "title": "조지아 주, Ambriola 치즈·RTE 치킨 등 리스테리아 우려 식품 리콜 공지",
-      "source": "Georgia Dept. of Agriculture",
-      "url": "https://www.agr.georgia.gov/recalls",
-      "savedAt": "2026-02-09T07:47:30.356Z"
-    },
-    {
-      "id": "9b2fe83187ee7f7f4436853ccdd8214ccaea65a0",
-      "category": "cultured_meat",
-      "categoryTitle": "🥩 CULTURED MEAT",
-      "title": "2024년 주요 배양육 투자 라운드: Mosa Meat 4,300만 달러, 한국 Simple Planet 820만 달러 등",
-      "source": "GFI Funding the Build",
-      "url": "https://agfundernews.com/gfi-there-are-no-silver-bullets-to-fill-funding-gaps-in-cultivated-meat",
-      "savedAt": "2026-02-09T07:47:34.701Z"
-    },
-    {
-      "id": "df777e36a0eb63e7838d422084319bb0670a3fb6",
-      "category": "computer_ai",
-      "categoryTitle": "🤖 COMPUTER & AI",
-      "title": "AI 전용 디바이스 확산, 데이터센터 GPU·전력 인프라 투자를 자극",
-      "source": "Tech/Market Brief",
-      "url": "https://techcrunch.com/2026/01/21/openai-aims-to-ship-its-first-device-in-2026-and-it-could-be-earbuds/",
-      "savedAt": "2026-02-09T07:47:47.221Z"
-    },
-    {
-      "id": "172ca2abb019367b9ddfdc6b1f034ddb0625cbd0",
-      "category": "global_biz",
-      "categoryTitle": "🌍 GLOBAL BIZ",
-      "title": "호주, 배양육 안전성 평가 후 조건부 판매 승인…APAC 시장 확산 신호탄",
-      "source": "ABC Australia",
-      "url": "https://www.abc.net.au/news/2025-06-24/lab-grown-meat-approved-for-sale-australia/105448604",
-      "savedAt": "2026-02-09T07:47:51.660Z"
-    },
-    {
-      "id": "5907cc2ffb8ed9b934327d86decdb0e5d51831ee",
-      "category": "global_biz",
-      "categoryTitle": "🌍 GLOBAL BIZ",
-      "title": "‘새 현실’: 배양육 산업, 자본시장 위축 속에서 타임라인·전략 재조정",
-      "source": "Yahoo Finance",
-      "url": "https://finance.yahoo.com/news/reality-cultivated-meat-recalibrates-funding-123151471.html",
-      "savedAt": "2026-02-09T07:47:56.740Z"
+      "savedAt": "2026-02-10T15:06:39.740Z"
     }
   ]
 }
