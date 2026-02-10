@@ -248,7 +248,12 @@ def update_dashboard(news_data_list):
     """
     dashboard_data.json의 intelligence 섹션을 최신 뉴스로 업데이트
     """
-    DASHBOARD_PATH = "/Users/seunghoonoh/woonmok.github.io/dashboard_data.json"
+    dashboard_env = os.getenv("DASHBOARD_DATA_PATH", "").strip()
+    if dashboard_env:
+        DASHBOARD_PATH = dashboard_env
+    else:
+        workspace_root = os.path.abspath(os.path.join(BASE_DIR, ".."))
+        DASHBOARD_PATH = os.path.join(workspace_root, "woonmok.github.io", "dashboard_data.json")
     
     if not news_data_list:
         print("   ⚠️ 업데이트할 뉴스가 없습니다.")
@@ -392,8 +397,6 @@ def process_news(use_gemini=True):
     print("🌐 Intelligence Hub 업데이트 중...")
     print("=" * 60)
     try:
-        import sys
-        sys.path.append('/Users/seunghoonoh/Desktop/wave-tree-news-hub')
         from sync_top_news import sync_to_html
         sync_to_html()
         print("   ✅ Intelligence Hub 업데이트 완료")
