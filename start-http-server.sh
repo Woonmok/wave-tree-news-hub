@@ -1,11 +1,11 @@
 #!/bin/bash
-cd /Users/seunghoonoh/Desktop/wave-tree-news-hub
+cd /Volumes/AI_DATA_CENTRE/AI_WORKSPACE/wave-tree-news-hub
 /usr/bin/python3 << 'EOF'
 import http.server
 import socketserver
 import os
 
-os.chdir('/Users/seunghoonoh/Desktop/wave-tree-news-hub')
+os.chdir('/Volumes/AI_DATA_CENTRE/AI_WORKSPACE/wave-tree-news-hub')
 PORT = 8000
 
 Handler = http.server.SimpleHTTPRequestHandler

@@ -7,7 +7,7 @@
 	<key>ProgramArguments</key>
 	<array>
 		<string>/bin/bash</string>
-		<string>/Users/seunghoonoh/Desktop/wave-tree-news-hub/run_daily_bridge.sh</string>
+		<string>/Volumes/AI_DATA_CENTRE/AI_WORKSPACE/wave-tree-news-hub/run_daily_bridge.sh</string>
 	</array>
 	<key>StartCalendarInterval</key>
 	<dict>
@@ -17,9 +17,9 @@
 		<integer>0</integer>
 	</dict>
 	<key>StandardOutPath</key>
-	<string>/Users/seunghoonoh/Desktop/wave-tree-news-hub/logs/dailybridge.log</string>
+	<string>/Volumes/AI_DATA_CENTRE/AI_WORKSPACE/wave-tree-news-hub/logs/dailybridge.log</string>
 	<key>StandardErrorPath</key>
-	<string>/Users/seunghoonoh/Desktop/wave-tree-news-hub/logs/dailybridge_error.log</string>
+	<string>/Volumes/AI_DATA_CENTRE/AI_WORKSPACE/wave-tree-news-hub/logs/dailybridge_error.log</string>
 	<key>RunAtLoad</key>
 	<true/>
 </dict>
