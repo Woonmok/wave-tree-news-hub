@@ -9,7 +9,9 @@ fi
 SCRIPT_DIR=$(cd "$(dirname "$0")" && pwd)
 cd "$SCRIPT_DIR"
 
-if [ -x "$SCRIPT_DIR/.venv/bin/python" ]; then
+if [ -x "$SCRIPT_DIR/.venv312/bin/python" ]; then
+    PYTHON="$SCRIPT_DIR/.venv312/bin/python"
+elif [ -x "$SCRIPT_DIR/.venv/bin/python" ]; then
     PYTHON="$SCRIPT_DIR/.venv/bin/python"
 else
     PYTHON="python3"

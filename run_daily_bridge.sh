@@ -2,11 +2,14 @@
 # run_daily_bridge.sh
 # 매일 아침 뉴스 수집 및 Daily_Bridge.md 자동 생성 스크립트
 
-# 작업 디렉토리 이동
-cd /Users/seunghoonoh/Desktop/wave-tree-news-hub
+SCRIPT_DIR=$(cd "$(dirname "$0")" && pwd)
+cd "$SCRIPT_DIR"
 
-# 가상환경 활성화
-source .venv/bin/activate
+if [ -x "$SCRIPT_DIR/.venv312/bin/activate" ]; then
+    source "$SCRIPT_DIR/.venv312/bin/activate"
+elif [ -x "$SCRIPT_DIR/.venv/bin/activate" ]; then
+    source "$SCRIPT_DIR/.venv/bin/activate"
+fi
 
 # 백업: perplexity.txt를 날짜별로 저장
 BACKUP_DIR="data/raw/backups"
