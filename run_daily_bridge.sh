@@ -5,10 +5,13 @@
 SCRIPT_DIR=$(cd "$(dirname "$0")" && pwd)
 cd "$SCRIPT_DIR"
 
-if [ -x "$SCRIPT_DIR/.venv312/bin/activate" ]; then
+PYTHON_BIN="python3"
+if [ -f "$SCRIPT_DIR/.venv312/bin/activate" ]; then
     source "$SCRIPT_DIR/.venv312/bin/activate"
-elif [ -x "$SCRIPT_DIR/.venv/bin/activate" ]; then
+    PYTHON_BIN="$SCRIPT_DIR/.venv312/bin/python"
+elif [ -f "$SCRIPT_DIR/.venv/bin/activate" ]; then
     source "$SCRIPT_DIR/.venv/bin/activate"
+    PYTHON_BIN="$SCRIPT_DIR/.venv/bin/python"
 fi
 
 # 백업: perplexity.txt를 날짜별로 저장
@@ -26,7 +29,7 @@ fi
 
 # Python 실행 (Gemini 기반 분석 활성화)
 echo "🌅 $(date '+%Y-%m-%d %H:%M:%S') - Daily Bridge 자동 생성 시작..."
-python3 news_hub.py
+"$PYTHON_BIN" news_hub.py
 
 # 처리 완료 후 perplexity.txt 비우기
 > data/raw/perplexity.txt

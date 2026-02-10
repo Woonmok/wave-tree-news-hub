@@ -22,8 +22,13 @@ if [ -n "$RUNNING_PID" ]; then
   sleep 1
 fi
 
+NODE_BIN="/Users/seunghoonoh/.gemini/antigravity/scratch/node-v20/bin/node"
+if [ ! -x "$NODE_BIN" ]; then
+  NODE_BIN="node"
+fi
+
 # 서버 실행 (백그라운드)
-nohup node backup_server.js > "$LOGFILE" 2>&1 &
+nohup "$NODE_BIN" backup_server.js > "$LOGFILE" 2>&1 &
 
 sleep 1
 NEW_PID=$(ps aux | grep node | grep backup_server.js | grep -v grep | awk '{print $2}')

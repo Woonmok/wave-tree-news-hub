@@ -7,9 +7,8 @@
     
     <key>ProgramArguments</key>
     <array>
-        <string>/usr/bin/env</string>
-        <string>node</string>
-        <string>/Volumes/AI_DATA_CENTRE/AI_WORKSPACE/wave-tree-news-hub/backup_server.js</string>
+        <string>/bin/bash</string>
+        <string>/Volumes/AI_DATA_CENTRE/AI_WORKSPACE/wave-tree-news-hub/start-backup-server.sh</string>
     </array>
     
     <key>WorkingDirectory</key>
@@ -22,15 +21,15 @@
     <true/>
     
     <key>StandardOutPath</key>
-    <string>/Volumes/AI_DATA_CENTRE/AI_WORKSPACE/wave-tree-news-hub/logs/backup-server.log</string>
+    <string>/Users/seunghoonoh/Library/Logs/wave-tree-news-hub/backup-server.log</string>
     
     <key>StandardErrorPath</key>
-    <string>/Volumes/AI_DATA_CENTRE/AI_WORKSPACE/wave-tree-news-hub/logs/backup-server.error.log</string>
+    <string>/Users/seunghoonoh/Library/Logs/wave-tree-news-hub/backup-server.error.log</string>
     
     <key>EnvironmentVariables</key>
     <dict>
         <key>PATH</key>
-        <string>/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin</string>
+        <string>/Users/seunghoonoh/.gemini/antigravity/scratch/node-v20/bin:/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin</string>
     </dict>
 </dict>
 </plist>

@@ -1,23 +1,10 @@
-# 📡 Daily Bridge - 2026년 02월 10일 19:38:04
+# 📡 Daily Bridge - 2026년 02월 10일 20:00:12
 
 **이 파일은 VS Code와 Antigravity를 연결하는 인사이트 브릿지입니다.**
 
-## 레이더 감지 결과 (TOP 3)
+## 레이더 감지 결과 (생성 오류)
 
-### 1️⃣ 균사체(Mycelium) 기반 발효 방식으로의 전환 가속화
-- 원문: 미국 내 배양육 시장, 고비용 문제로 세포 배양 방식에서 균사체(Mycelium) 기반 발효 방식으로 급격한 이동 중
-- 영향도: 10/10
-- 실행 인사이트: 진안 Farmerstree의 균사체 연구 방향을 시장의 고비용 문제 해결 및 대규모 생산 효율 증대에 초점을 맞춰 재정립하고, 기존 세포 배양 기술과의 차별점을 강조한 연구 계획을 수립한다. 동시에 관련 데이터를 축적하고 분석하여 최적의 발효 공정을 위한 AI 모델 개발을 시작한다.
-
-### 2️⃣ 'Precision Fermentation'과 버섯 균사체 하이브리드 단백질 부상
-- 원문: 2026년 푸드테크 트렌드: 'Precision Fermentation'과 버섯 균사체를 결합한 하이브리드 단백질 부상
-- 영향도: 9/10
-- 실행 인사이트: 버섯 균사체를 활용한 하이브리드 단백질 개발 로드맵을 구축하고, 정밀 발효(Precision Fermentation) 기술 도입을 위한 연구 개발 투자를 확대한다. 이를 위해 발효 공정의 실시간 데이터 수집 및 분석을 위한 IoT 센서 및 강력한 서버 인프라(AI 연계) 구축 계획을 수립하고, 전문 인력을 확보한다.
-
-### 3️⃣ NVIDIA Blackwell GPU, AI 인프라 혁신 주도
-- 원문: NVIDIA Blackwell GPU, AI 인프라 혁신 주도
-- 영향도: 8/10
-- 실행 인사이트: 균사체 연구 및 정밀 발효 공정 최적화를 위한 AI/ML 모델 학습 가속화를 위해 NVIDIA Blackwell GPU 기반의 차세대 서버 인프라 도입을 검토한다. 이를 통해 연구 개발 시간과 비용을 절감하고, 더 복잡하고 정교한 데이터 분석 및 시뮬레이션 역량을 확보하기 위한 기술 스택 업그레이드 계획을 수립한다.
+분석 중 오류 발생: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash\nPlease retry in 46.987026456s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.5-flash'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '46s'}]}}
 
 ---
 
@@ -27,4 +14,4 @@
 > 이 데이터를 바탕으로 현재 Wave Tree Project Dashboard에서 
 > 수정하거나 새로 추가해야 할 To-Do 카드 3개를 뽑아줘."
 
-생성 시각: 2026년 02월 10일 19:38:04
+생성 시각: 2026년 02월 10일 20:00:12
