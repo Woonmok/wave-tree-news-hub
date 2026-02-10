@@ -6,5 +6,13 @@ if [ -f .env ]; then
     export $(cat .env | grep -v '^#' | xargs)
 fi
 
-cd /Users/seunghoonoh/Desktop/wave-tree-news-hub
-/Users/seunghoonoh/Desktop/wave-tree-news-hub/.venv/bin/python news_hub.py
+SCRIPT_DIR=$(cd "$(dirname "$0")" && pwd)
+cd "$SCRIPT_DIR"
+
+if [ -x "$SCRIPT_DIR/.venv/bin/python" ]; then
+    PYTHON="$SCRIPT_DIR/.venv/bin/python"
+else
+    PYTHON="python3"
+fi
+
+"$PYTHON" news_hub.py

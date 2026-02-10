@@ -20,9 +20,14 @@ MODEL_NAME = "gemini-2.5-flash"
 client = genai.Client(api_key=API_KEY)
 
 # 경로 설정
-ANTIGRAVITY_PATH = "/Users/seunghoonoh/woonmok.github.io/Project_Radar.md"
-DAILY_BRIDGE_PATH = "Daily_Bridge.md"
-WORK_DIR = "/Users/seunghoonoh/Desktop/wave-tree-news-hub"
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+WORK_DIR = BASE_DIR
+DAILY_BRIDGE_PATH = os.path.join(BASE_DIR, "Daily_Bridge.md")
+
+ANTIGRAVITY_PATH = os.getenv("ANTIGRAVITY_PATH", "").strip()
+if not ANTIGRAVITY_PATH:
+    workspace_root = os.path.abspath(os.path.join(BASE_DIR, ".."))
+    ANTIGRAVITY_PATH = os.path.join(workspace_root, "woonmok.github.io", "Project_Radar.md")
 
 # ===== 설정 =====
 KEYWORDS = [
