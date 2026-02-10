@@ -7,12 +7,12 @@
     
     <key>ProgramArguments</key>
     <array>
-        <string>/bin/bash</string>
-        <string>/Volumes/AI_DATA_CENTRE/AI_WORKSPACE/wave-tree-news-hub/start-backup-server.sh</string>
+        <string>/Users/seunghoonoh/.gemini/antigravity/scratch/node-v20/bin/node</string>
+        <string>/Users/seunghoonoh/Library/Application Support/wave-tree-news-hub/backup_server.js</string>
     </array>
     
     <key>WorkingDirectory</key>
-    <string>/Volumes/AI_DATA_CENTRE/AI_WORKSPACE/wave-tree-news-hub</string>
+    <string>/Users/seunghoonoh/Library/Application Support/wave-tree-news-hub</string>
     
     <key>RunAtLoad</key>
     <true/>

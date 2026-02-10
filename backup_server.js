@@ -9,7 +9,10 @@ const fs = require('fs');
 const path = require('path');
 
 const PORT = 3001;
-const BACKUP_DIR = path.join(__dirname, 'data', 'scrapbook');
+const backupDirEnv = process.env.BACKUP_DIR && process.env.BACKUP_DIR.trim();
+const BACKUP_DIR = backupDirEnv
+  ? path.resolve(backupDirEnv)
+  : path.join(__dirname, 'data', 'scrapbook');
 
 // 백업 디렉토리 확인/생성
 if (!fs.existsSync(BACKUP_DIR)) {
