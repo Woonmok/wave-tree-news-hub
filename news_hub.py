@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 # news_hub.py (Gemini API 기반 뉴스 분석 + Daily Bridge)
 import os
+import re
 from dotenv import load_dotenv
 from google import genai
 from datetime import datetime
@@ -199,6 +200,82 @@ def create_daily_bridge(news_data_list):
         return None
 
 
+def append_daily_bridge_to_news_json(bridge_path, category="global_biz"):
+    if not bridge_path or not os.path.exists(bridge_path):
+        print("   ⚠️ Daily Bridge 파일이 없어 news.json 추가를 건너뜁니다.")
+        return False
+
+    news_json_path = os.path.join(BASE_DIR, "data", "normalized", "news.json")
+
+    try:
+        with open(bridge_path, "r", encoding="utf-8") as f:
+            content = f.read()
+    except Exception as e:
+        print(f"   ⚠️ Daily Bridge 읽기 실패: {str(e)}")
+        return False
+
+    date_match = re.search(r"(\d{4})년\s*(\d{2})월\s*(\d{2})일", content)
+    if date_match:
+        date_str = f"{date_match.group(1)}-{date_match.group(2)}-{date_match.group(3)}"
+    else:
+        date_str = datetime.now().strftime("%Y-%m-%d")
+
+    bridge_id = f"daily_bridge_{date_str}"
+    title = f"Daily Bridge {date_str}"
+
+    bullets = []
+    for line in content.splitlines():
+        text = line.strip()
+        if text.startswith("*"):
+            bullets.append(text.lstrip("* ").strip())
+        if len(bullets) >= 3:
+            break
+
+    summary = " ".join(bullets).strip()
+    if not summary:
+        summary = content.replace("\n", " ")
+    summary = " ".join(summary.split()).strip()
+    summary = summary[:180]
+
+    try:
+        if os.path.exists(news_json_path):
+            with open(news_json_path, "r", encoding="utf-8") as f:
+                data = json.load(f)
+        else:
+            data = {"generated_at": datetime.now().isoformat(), "items": []}
+
+        items = data.get("items", [])
+        if any(str(item.get("id")) == bridge_id for item in items):
+            print("   ℹ️ Daily Bridge가 이미 news.json에 존재합니다.")
+            return False
+
+        items.insert(0, {
+            "id": bridge_id,
+            "category": category,
+            "title": title,
+            "source": "Daily_Bridge",
+            "url": None,
+            "published_at": datetime.now().isoformat(),
+            "summary": summary,
+            "highlights": [],
+            "tags": ["daily_bridge"],
+            "score": 0.95
+        })
+
+        data["generated_at"] = datetime.now().isoformat()
+        data["items"] = items
+
+        os.makedirs(os.path.dirname(news_json_path), exist_ok=True)
+        with open(news_json_path, "w", encoding="utf-8") as f:
+            json.dump(data, f, ensure_ascii=False, indent=2)
+
+        print(f"   ✅ Daily Bridge가 news.json에 추가되었습니다: {news_json_path}")
+        return True
+    except Exception as e:
+        print(f"   ⚠️ news.json 추가 실패: {str(e)}")
+        return False
+
+
 # 4. 결과 저장 (Markdown)
 def save_to_radar(news_text, matched_keywords, analysis=None):
     """Project_Radar.md에 결과 저장 및 Antigravity로 자동 동기화"""
@@ -389,7 +466,11 @@ def process_news(use_gemini=True):
     print("\n" + "=" * 60)
     print("🌉 Daily Bridge 생성 중...")
     print("=" * 60)
-    create_daily_bridge(processed_news_data)
+    bridge_path = create_daily_bridge(processed_news_data)
+
+    # Daily_Bridge.md -> news.json append
+    if bridge_path:
+        append_daily_bridge_to_news_json(bridge_path, category="global_biz")
     
     # Dashboard 업데이트
     print("\n" + "=" * 60)

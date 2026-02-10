@@ -51,6 +51,8 @@
     el.searchHint = document.getElementById("searchHint");
     el.sortSelect = document.getElementById("sortSelect");
     el.dataStatus = document.getElementById("dataStatus");
+    el.processorValue = document.getElementById("processorValue");
+    el.processorLabel = document.getElementById("processorLabel");
 
     // expose minimal API for inline onclick
     window.WaveTree = {
@@ -62,6 +64,7 @@
 
     wireEvents();
     bootstrapTimestamp();
+    renderProcessorSummary();
     renderSavedCounters();
     renderScrapbook();
     
@@ -116,6 +119,27 @@
   function bootstrapTimestamp() {
     const now = new Date();
     el.timestamp.textContent = formatKST(now);
+  }
+
+  function renderProcessorSummary() {
+    if (!el.processorValue || !el.processorLabel) return;
+
+    const cores = Number(navigator.hardwareConcurrency) || 0;
+    const memory = Number(navigator.deviceMemory) || 0;
+    const platform = (navigator.platform || navigator.userAgent || "").toLowerCase();
+
+    let platformLabel = "CPU";
+    if (platform.includes("mac")) platformLabel = "macOS CPU";
+    else if (platform.includes("win")) platformLabel = "Windows CPU";
+    else if (platform.includes("linux")) platformLabel = "Linux CPU";
+    else if (platform.includes("android")) platformLabel = "Android CPU";
+    else if (platform.includes("iphone") || platform.includes("ipad")) platformLabel = "iOS CPU";
+
+    const coreText = cores ? `${cores}-core` : "CPU";
+    const memText = memory ? `${memory}GB RAM` : "RAM ?";
+
+    el.processorValue.textContent = coreText;
+    el.processorLabel.textContent = `${platformLabel} · ${memText}`;
   }
 
   async function fetchData() {
