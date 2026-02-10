@@ -28,6 +28,10 @@
     
     <key>EnvironmentVariables</key>
     <dict>
+        <key>BACKUP_DIR</key>
+        <string>/Users/seunghoonoh/Library/Application Support/wave-tree-news-hub/data/scrapbook</string>
+        <key>SYNC_DIR</key>
+        <string>/Volumes/AI_DATA_CENTRE/AI_WORKSPACE/wave-tree-news-hub/data/scrapbook</string>
         <key>PATH</key>
         <string>/Users/seunghoonoh/.gemini/antigravity/scratch/node-v20/bin:/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin</string>
     </dict>

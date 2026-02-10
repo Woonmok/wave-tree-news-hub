@@ -10,9 +10,11 @@ const path = require('path');
 
 const PORT = 3001;
 const backupDirEnv = process.env.BACKUP_DIR && process.env.BACKUP_DIR.trim();
+const syncDirEnv = process.env.SYNC_DIR && process.env.SYNC_DIR.trim();
 const BACKUP_DIR = backupDirEnv
   ? path.resolve(backupDirEnv)
   : path.join(__dirname, 'data', 'scrapbook');
+const SYNC_DIR = syncDirEnv ? path.resolve(syncDirEnv) : null;
 
 // 백업 디렉토리 확인/생성
 if (!fs.existsSync(BACKUP_DIR)) {
@@ -61,6 +63,17 @@ const server = http.createServer((req, res) => {
         };
 
         fs.writeFileSync(filepath, JSON.stringify(backupData, null, 2), 'utf-8');
+
+        if (SYNC_DIR) {
+          try {
+            fs.mkdirSync(SYNC_DIR, { recursive: true });
+            const syncPath = path.join(SYNC_DIR, filename);
+            fs.copyFileSync(filepath, syncPath);
+            console.log(`🔄 외장 동기화 완료: ${syncPath}`);
+          } catch (syncError) {
+            console.warn('⚠️ 외장 동기화 실패:', syncError.message || syncError);
+          }
+        }
 
         console.log(`✅ [${new Date().toLocaleString('ko-KR')}] 백업 완료: ${filename} (${items.length}개 항목)`);
 

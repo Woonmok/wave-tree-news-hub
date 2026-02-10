@@ -1,0 +1,14 @@
+{
+  "date": "2026-02-10",
+  "timestamp": "2026-02-10T13:17:58.895Z",
+  "count": 1,
+  "items": [
+    {
+      "id": "sync-test-1",
+      "category": "test",
+      "title": "Sync Test Item",
+      "url": "https://example.com",
+      "saved_at": "2026-02-10T13:10:00Z"
+    }
+  ]
+}
