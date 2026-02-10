@@ -13,6 +13,9 @@ import requests
 # .env 파일 로드
 load_dotenv()
 
+# 환경 변수 충돌 방지: 새 GOOGLE_API_KEY만 사용
+os.environ.pop("GEMINI_API_KEY", None)
+
 # Gemini API 설정
 API_KEY = os.getenv("GOOGLE_API_KEY", "").strip()
 if not API_KEY or API_KEY == "YOUR_GEMINI_API_KEY":
