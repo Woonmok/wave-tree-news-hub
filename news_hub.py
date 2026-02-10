@@ -2,6 +2,7 @@
 # news_hub.py (Gemini API 기반 뉴스 분석 + Daily Bridge)
 import os
 import re
+import time
 from dotenv import load_dotenv
 from google import genai
 from datetime import datetime
@@ -50,6 +51,23 @@ def generate_text(prompt):
         contents=prompt,
     )
     return response.text or ""
+
+
+def generate_text_with_retry(prompt, max_retries=3, base_delay=20):
+    last_error = None
+    for attempt in range(1, max_retries + 1):
+        try:
+            return generate_text(prompt)
+        except Exception as e:
+            last_error = e
+            err_text = str(e)
+            if "RESOURCE_EXHAUSTED" in err_text or "429" in err_text:
+                delay = base_delay * attempt
+                print(f"   ⏳ 쿼터 대기 {delay}s 후 재시도 ({attempt}/{max_retries})")
+                time.sleep(delay)
+                continue
+            raise
+    raise last_error
 
 # 1. 키워드 필터링 함수
 def filter_by_keywords(news_text, keywords=KEYWORDS, exclude=EXCLUDE_KEYWORDS):
@@ -105,7 +123,7 @@ def analyze_importance(news_text, matched_keywords):
 분석: [내용]
 액션: [필요시]"""
         
-        response_text = generate_text(prompt)
+        response_text = generate_text_with_retry(prompt)
         return response_text if response_text else f"[분석 불가] {', '.join(matched_keywords)} 포함"
     except Exception as e:
         print(f"   ⚠️ Gemini API 오류: {str(e)}")
@@ -159,7 +177,7 @@ def create_daily_bridge(news_data_list):
 - 영향도: [점수/10]
 - 실행 인사이트: [구체적 액션]"""
         
-        bridge_content = generate_text(prompt)
+        bridge_content = generate_text_with_retry(prompt)
         if not bridge_content:
             failed = True
     except Exception as e:
