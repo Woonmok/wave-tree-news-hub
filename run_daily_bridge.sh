@@ -31,6 +31,21 @@ fi
 echo "🌅 $(date '+%Y-%m-%d %H:%M:%S') - Daily Bridge 자동 생성 시작..."
 "$PYTHON_BIN" news_hub.py
 
+# Daily Bridge Markdown -> JSON 변환
+INGEST_SCRIPT="$SCRIPT_DIR/tools/ingest_daily_bridge.js"
+if [ -f "$INGEST_SCRIPT" ]; then
+    NODE_BIN="/Users/seunghoonoh/.gemini/antigravity/scratch/node-v20/bin/node"
+    if [ ! -x "$NODE_BIN" ]; then
+        NODE_BIN="node"
+    fi
+    BRIDGE_DATE=$(date '+%Y-%m-%d')
+    OUT_JSON="$SCRIPT_DIR/data/daily_bridge_${BRIDGE_DATE}.json"
+    "$NODE_BIN" "$INGEST_SCRIPT" --date "$BRIDGE_DATE" --out "$OUT_JSON" < "$SCRIPT_DIR/Daily_Bridge.md"
+    echo "✅ $(date '+%Y-%m-%d %H:%M:%S') - Daily Bridge JSON 생성 완료: $OUT_JSON"
+else
+    echo "⚠️ $(date '+%Y-%m-%d %H:%M:%S') - ingest_daily_bridge.js 없음. JSON 생성 건너뜀"
+fi
+
 # 처리 완료 후 perplexity.txt 비우기
 > data/raw/perplexity.txt
 echo "✅ $(date '+%Y-%m-%d %H:%M:%S') - perplexity.txt 리셋 완료"

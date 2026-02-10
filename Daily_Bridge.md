@@ -1,30 +1,10 @@
-# 📡 Daily Bridge - 2026년 02월 10일 20:00:12
+# 📡 Daily Bridge - 2026년 02월 10일 22:35:19
 
 **이 파일은 VS Code와 Antigravity를 연결하는 인사이트 브릿지입니다.**
 
-## Ⅰ. [진안/농업] 지역 밀착 및 정책 동향
-Farmerstree와 Wave Tree Project의 거점인 진안군의 주요 소식입니다.
+## 레이더 감지 결과 (생성 오류)
 
-* **2026년도 신규 후계농업경영인 모집 마감 임박:** 2월 11일(내일)까지 접수가 진행됩니다. 만 18세~49세 청년 농업인을 대상으로 하며, 선정 시 최대 5억 원 한도의 창업 자금 융자 및 기술 교육이 지원됩니다. 스마트팜 확장을 계획 중이라면 인적 자원 확보 차원에서 주목할 지점입니다.
-* **생활 밀착형 농업 지원 확대:** 진안군이 올해부터 '고품질 내병계 고추종자 보급'과 '수박 강선 지원사업'을 강화합니다. 기후 변화에 대응한 내병성 종자 도입은 스마트팜 센서 데이터와 연동하여 병해충 예측 모델을 정교화하는 데 참고할 만한 데이터 포인트입니다.
-
-## Ⅱ. [오디오/미디어] 플랫폼 및 트렌드
-오디오와 미디어 산업은 이제 단순 시청을 넘어 **'참여'**와 '에이전트' 중심으로 재편되고 있습니다.
-
-* **참여형 스트리밍 엔터테인먼트의 부상:** 넷플릭스, 티빙 등 주요 OTT가 단순 영상 송출에서 벗어나 실시간 채팅, 투표, 라이브 스트리밍 기능을 강화하고 있습니다. '경험 루프'를 통해 유저를 플랫폼 내에 가두는 전략이 핵심입니다.
-* **제로 클릭(Zero-Click) 시대의 도래:** KT나스미디어 보고서에 따르면, 2026년은 AI 에이전트가 검색과 클릭을 대신하는 '제로 클릭'이 대세가 될 전망입니다. 이는 향후 Wave Tree 대시보드의 UX/UI 설계 시, 사용자가 직접 수치를 찾기보다 AI가 결론을 먼저 제시하는 방향의 중요성을 시사합니다.
-
-## Ⅲ. [AI/IT] 기술 및 산업 혁신
-IT 기술 전반에서 AI로의 완전한 전환(AX)이 가속화되고 있습니다.
-
-* **한국거래소(KRX)의 첫 스타트업 인수:** AI 데이터 분석 기업 '페어랩스'를 인수하며 금융권의 AI 전환이 본격화되었습니다. 이는 공신력 있는 기관들이 AI 기술을 단순 도구가 아닌 핵심 인프라로 내재화하고 있음을 보여줍니다.
-* **AI 인프라 수요 폭주:** AI 데이터센터 구축에 필수적인 광통신 부품 기업들의 주가가 급등 중입니다. 특히 구리선 기반 네트워크가 전력 소모 문제로 광통신으로 빠르게 대체되고 있어, 하드웨어 인프라 비용 및 효율성 측면에서 모니터링이 필요합니다.
-
-## Ⅳ. [글로벌 경제] 주요 지표 및 시장 흐름
-오늘의 시장 지표와 거시 경제 흐름입니다.
-
-* **미국 증시 기술주 반등:** 나스닥이 0.90% 상승하며 기술주 위주의 매수세가 유입되었습니다. 특히 엔비디아(+2.50%)가 강세를 보이며 AI 산업에 대한 낙관론을 유지했습니다.
-* **국내 성장률 전망 상향:** 글로벌 투자은행(IB)들이 한국의 올해 경제성장률 전망치를 평균 2.1%로 상향했습니다. 반도체 수출 호조가 주요 원인이지만, **원/달러 환율(1,460원대)**과 미국의 관세 정책은 여전히 변수로 작용하고 있습니다.
+분석 중 오류 발생: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash\nPlease retry in 40.764219571s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'model': 'gemini-2.5-flash', 'location': 'global'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '40s'}]}}
 
 ---
 
@@ -34,4 +14,4 @@ IT 기술 전반에서 AI로의 완전한 전환(AX)이 가속화되고 있습�
 > 이 데이터를 바탕으로 현재 Wave Tree Project Dashboard에서 
 > 수정하거나 새로 추가해야 할 To-Do 카드 3개를 뽑아줘."
 
-생성 시각: 2026년 02월 10일 20:00:12
+생성 시각: 2026년 02월 10일 22:35:19

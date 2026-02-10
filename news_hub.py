@@ -124,6 +124,7 @@ def create_daily_bridge(news_data_list):
     timestamp = datetime.now().strftime("%Y년 %m월 %d일 %H:%M:%S")
     
     # TOP 3 선정을 위해 Gemini 호출
+    failed = False
     try:
         all_news = "\n\n".join([f"- {item['text']}" for item in news_data_list])
         
@@ -159,11 +160,15 @@ def create_daily_bridge(news_data_list):
         
         bridge_content = generate_text(prompt)
         if not bridge_content:
-            bridge_content = "## 레이더 감지 결과 (생성 오류)\n\nGemini 응답이 비어 있습니다."
-        
+            failed = True
     except Exception as e:
         print(f"   ⚠️ Daily Bridge 생성 오류: {str(e)}")
-        bridge_content = f"## 레이더 감지 결과 (생성 오류)\n\n분석 중 오류 발생: {str(e)}"
+        failed = True
+        bridge_content = ""
+
+    if failed:
+        print("   ⚠️ Daily Bridge 생성 실패로 기존 파일을 유지합니다.")
+        return None
     
     # Daily_Bridge.md 생성
     full_content = f"""# 📡 Daily Bridge - {timestamp}
