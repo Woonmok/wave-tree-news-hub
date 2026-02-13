@@ -1,63 +1,63 @@
 {
-  "generated_at": "2026-02-12T03:10:33.007Z",
+  "generated_at": "2026-02-13T02:12:34.654Z",
   "items": [
     {
-      "id": "ab8f90f64b70e8dd880d2c0eaf1ddf3094b309a7",
+      "id": "5ff570e9bedb78d11ba4db88124f9a21e26c63b8",
       "category": "listeria_free",
-      "title": "캐나다, Mushmoshi 팽이버섯 리스테리아 가능성으로 리콜",
-      "source": "eFoodAlert/CFIA",
-      "url": "https://efoodalert.com/2026/02/02/recalls-and-alerts-february-1-2-2026/",
+      "title": "Slade Gorton, BJ’s 전용 냉동 연어 리스테리아 가능성으로 리콜",
+      "source": "FDA/Slade Gorton & Co.",
+      "url": "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/slade-gorton-co-inc-recalls-one-lot-wellsley-farms-farm-raised-atlantic-salmon-sold-bjs-wholesale-club-due",
       "published_at": "2026-02-11T00:00:00.000Z",
-      "summary": "캐나다 Longsheng Agricultural Products가 판매한 Mushmoshi 브랜드 팽이버섯(200g, 2026-03-08 표기)이 리스테리아 가능성으로 리콜되었으며, 전국 유통분이 대상이라고 eFoodAlert가 전함. [web:166]",
+      "summary": "Slade Gorton이 BJ’s Wholesale Club에서 판매된 Wellsley Farms 냉동 대서양 연어 1개 로트를 리스테리아 오염 가능성으로 리콜했으며, 특정 UPC·로트 번호·판매 기간이 공지되었고 아직 관련 발병 보고는 없다고 함. [web:37]",
       "highlights": [],
       "tags": [
-        "enoki",
-        "canada"
+        "salmon",
+        "usa"
+      ],
+      "score": 0.93
+    },
+    {
+      "id": "c0ed8ef53c86b7158d1a63a6d4e5f74db4b65df8",
+      "category": "listeria_free",
+      "title": "FDA, 7개 주에서 판매된 Wellsley Farms 냉동 연어 리스테리아 오염 가능성 경고",
+      "source": "Health.com/FDA",
+      "url": "https://www.health.com/salmon-recall-february-2026-11905629",
+      "published_at": "2026-02-12T00:00:00.000Z",
+      "summary": "FDA 발표를 인용한 기사에 따르면 BJ’s Wholesale Club 7개 주 매장에서 판매된 Wellsley Farms 냉동 연어에서 리스테리아가 검출돼 소비자에게 섭취 중단 및 환불 안내가 이뤄졌으며, 현재까지 관련 환자는 보고되지 않았다고 전함. [web:36]",
+      "highlights": [],
+      "tags": [
+        "salmon",
+        "retail"
       ],
       "score": 0.9
     },
     {
-      "id": "b3d1040d776dccc582308d63f44d9747c781362b",
+      "id": "ee9db7abfe4e24582536248dd81e5fc96b5efed2",
       "category": "listeria_free",
-      "title": "뉴멕시코 보건부, 신생아 리스테리아 사망 후 생유(생우유) 섭취 자제 경고",
-      "source": "eFoodAlert/New Mexico DOH",
-      "url": "https://efoodalert.com/2026/02/05/recalls-and-alerts-february-5-2026/",
-      "published_at": "2026-02-11T00:00:00.000Z",
-      "summary": "뉴멕시코 보건부는 임신 중 생유를 마신 산모의 신생아가 리스테리아 감염으로 사망한 뒤, 모든 생유·비살균 유제품 섭취를 피하라고 주민에게 경고했다고 보도됨. [web:107]",
+      "title": "Frozen Salmon Recalled in 7 States Over Listeria Risk",
+      "source": "Parade/FDA 요약",
+      "url": "https://parade.com/food/wellsley-farms-atlantic-salmon-recall-february-2026",
+      "published_at": "2026-02-12T00:00:00.000Z",
+      "summary": "Parade는 Wellsley Farms 대서양 연어 리콜의 대상 주, 판매 기간, 소비자가 확인해야 할 UPC·로트 번호를 정리하며, 해당 제품을 발견할 경우 매장 환불 또는 폐기를 권고한다고 설명함. [web:57]",
       "highlights": [],
       "tags": [
-        "raw-milk",
-        "new-mexico"
-      ],
-      "score": 0.88
-    },
-    {
-      "id": "6103fd0d92fa7184e508bbb77e2accf65466a512",
-      "category": "listeria_free",
-      "title": "미국 Kraft Heinz, 칠면조 베이컨 일부 제품을 리스테리아 가능성으로 자발적 리콜",
-      "source": "FoodSafety.gov/FoodSafety.gov 요약",
-      "url": "https://www.foodsafety.gov/recalls-and-outbreaks",
-      "published_at": "2026-02-11T00:00:00.000Z",
-      "summary": "연방 포털에 따르면 Kraft Heinz가 일부 칠면조 베이컨 로트를 리스테리아 오염 가능성 때문에 선제적으로 회수하고 있으며, 유통기한·로트 번호별 상세 목록이 공지되어 있음. [web:41]",
-      "highlights": [],
-      "tags": [
-        "turkey-bacon",
-        "usa"
+        "salmon",
+        "consumer-guide"
       ],
       "score": 0.82
     },
     {
-      "id": "b6e08c629981b1239552ca9c4cf390a9fed1e140",
+      "id": "ae1bad1bc502486d246578ad622e85cf7d5702fa",
       "category": "listeria_free",
-      "title": "미국·캐나다 등 영어권 국가의 2월 초 식품 리콜·경보 모음",
-      "source": "eFoodAlert",
-      "url": "https://efoodalert.com/2026/02/03/recalls-and-alerts-february-3-2026/",
-      "published_at": "2026-02-11T00:00:00.000Z",
-      "summary": "eFoodAlert 2월 3일자 요약은 아일랜드·영국 Nestlé 분유의 cereulide 독소, 각국의 알레르기·이물·병원체 관련 리콜을 한 번에 정리해 최신 식품안전 동향을 제공함. [web:164]",
+      "title": "FDA Announces Recall on Salmon Sold in 7 States Due To Potential Listeria Contamination",
+      "source": "Allrecipes/FDA 요약",
+      "url": "https://www.allrecipes.com/bjs-wholesale-salmon-recall-february-2026-11905590",
+      "published_at": "2026-02-12T00:00:00.000Z",
+      "summary": "Allrecipes는 Wellsley Farms 연어 리콜이 2파운드 봉지·UPC 888670025963·로트 3896에 한정되며, 1월 31일부터 2월 7일까지 일부 주 BJ’s 매장에서만 판매된 제품이라고 구체적으로 안내함. [web:55]",
       "highlights": [],
       "tags": [
-        "roundup",
-        "infant-formula"
+        "salmon",
+        "recall-list"
       ],
       "score": 0.8
     },
@@ -67,8 +67,8 @@
       "title": "2026년 배양육 업계, “환상은 줄고 현실적인 재정·규제 전략으로 전환”",
       "source": "Protein Production Technology",
       "url": "https://www.proteinproductiontechnology.com/post/cultivated-meat-in-2026-fewer-illusions-firmer-footing",
-      "published_at": "2026-02-11T00:00:00.000Z",
-      "summary": "PPTI는 2025년 고프로필 실패 이후 배양육 섹터가 타임라인·가설을 재조정하고, 반려동물 사료·하이브리드 제품·공유 인프라 같은 현실적 용도에 집중하고 있다고 진단함. [web:109]",
+      "published_at": "2026-02-08T00:00:00.000Z",
+      "summary": "PPTI는 2025년 고프로필 실패 이후 배양육 섹터가 타임라인·가설을 재조정하고, 반려동물 사료·하이브리드 제품·공유 인프라 같은 현실적 용도에 집중하며 ‘보다 단단한 기반’ 위에서 2026년을 맞고 있다고 분석함. [web:41]",
       "highlights": [],
       "tags": [
         "industry-outlook",
@@ -77,73 +77,73 @@
       "score": 0.92
     },
     {
-      "id": "354e804deb1d385b022e3f58ee390bdb0de2a690",
+      "id": "18743c136823e4950350622e5cf72130eec70eee",
       "category": "cultured_meat",
-      "title": "SciFi Foods 자산 인수한 GFI, 소·돼지 세포주·무혈청 배지 공개해 진입 장벽 낮춰",
-      "source": "CellBase/GFI",
-      "url": "https://cellbase.com/blogs/news/gfi-acquires-cultivated-meat-assets-industry-development",
-      "published_at": "2026-02-11T00:00:00.000Z",
-      "summary": "GFI는 SciFi Foods로부터 소·돼지 세포주와 무혈청 배지를 인수해 공개 라이선스로 배포, 초기 배양육 스타트업들이 고가 재료 없이도 R&D를 시작할 수 있도록 지원하겠다고 밝힘. [web:168]",
+      "title": "Gourmey, DeepLife와 협력해 ‘조류 세포 디지털 트윈’으로 배양육 생산 최적화",
+      "source": "vegconomist",
+      "url": "https://vegconomist.com/cultivated-cell-cultured-biotechnology/gourmey-deeplife-avian-digital-twin/",
+      "published_at": "2026-02-10T00:00:00.000Z",
+      "summary": "프랑스 배양육 기업 Gourmey가 AI 기반 세포 디지털 트윈 업체 DeepLife와 협력해 세계 최초로 조류 세포 디지털 트윈을 구축, 성장조건·영양·풍미를 시뮬레이션으로 최적화하는 플랫폼을 선보였다고 보도됨. [web:28]",
       "highlights": [],
       "tags": [
-        "gfi",
-        "open-cell-lines"
+        "gourmey",
+        "digital-twin"
       ],
       "score": 0.88
     },
     {
-      "id": "8b33a7bb210c1b8b08d05e36ded96389c3c77f84",
+      "id": "9bc01f69843578ae3178f3e590c25a9638556d0d",
       "category": "cultured_meat",
-      "title": "2026년 초 배양육 규제 환경, “예외적 대상에서 일반 식품 카테고리로”",
-      "source": "Protein Production Technology",
-      "url": "https://www.proteinproductiontechnology.com/post/cultivated-meat-in-2026-fewer-illusions-firmer-footing",
-      "published_at": "2026-02-11T00:00:00.000Z",
-      "summary": "규제당국이 배양육을 더 이상 완전히 새로운 위험으로 보지 않고, 사전제출 자료·샌드박스·가이드라인을 통해 기존 식품 카테고리처럼 절차 중심으로 평가하고 있다고 설명함. [web:109]",
+      "title": "호주 Vow, 배양 메추리 규제 승인 후 수십 개 레스토랑에 첫 상업 공급 준비",
+      "source": "vegconomist",
+      "url": "https://vegconomist.com/cultivated-cell-cultured-biotechnology/vow-approval-australia-quail/",
+      "published_at": "2026-02-09T00:00:00.000Z",
+      "summary": "시드니 기반 스타트업 Vow가 호주 당국으로부터 배양 일본 메추리 판매 승인을 받아, 시드니·멜버른의 고급 레스토랑과 호텔 수십 곳에서 배양육 메뉴를 출시할 계획이라고 전함. [web:28]",
       "highlights": [],
       "tags": [
-        "regulation",
-        "procedural"
+        "vow",
+        "australia"
+      ],
+      "score": 0.86
+    },
+    {
+      "id": "4d702dd087ecccae26c4d2cb337b903e6c8b57ab",
+      "category": "cultured_meat",
+      "title": "Mosa Meat, 영국에서 첫 배양 지방 성분 시장 승인 신청…플랜트 기반과 블렌딩 전략",
+      "source": "vegconomist",
+      "url": "https://vegconomist.com/cultivated-cell-cultured-biotechnology/mosa-meat-uk-application-fat/",
+      "published_at": "2026-02-06T00:00:00.000Z",
+      "summary": "네덜란드의 Mosa Meat가 영국 식품기준청에 배양 지방 성분에 대한 첫 승인 신청을 제출했으며, 이를 식물성 원료와 섞어 햄버거·파이·미트볼용 하이브리드 제품을 만들겠다는 전략을 제시했다고 설명함. [web:28]",
+      "highlights": [],
+      "tags": [
+        "mosa-meat",
+        "uk"
       ],
       "score": 0.84
     },
     {
-      "id": "46bf8856effbe652f8ef7a1230378fb5c116b47a",
+      "id": "a33827f79ccd887d79c2607ca678e388627d37de",
       "category": "cultured_meat",
-      "title": "영국 오픈소스 셀뱅크 프로젝트, 배양육용 표준 세포·프로토콜 구축 목표",
-      "source": "Phys.org",
-      "url": "https://phys.org/news/2026-01-sourcing-future-food-cell-bank.html",
-      "published_at": "2026-02-11T00:00:00.000Z",
-      "summary": "영국 연구진이 공용 셀뱅크를 구축해 표준화된 가축 세포주와 프로토콜을 제공함으로써, 배양육 스타트업의 초기 연구비와 규제용 데이터 생성 부담을 줄이려는 시도를 하고 있다고 보도됨. [web:170]",
+      "title": "New GFI Report Identifies Critical Skill Gaps in India’s Plant-Based and Cultivated Meat Value Chains",
+      "source": "vegconomist/GFI India",
+      "url": "https://vegconomist.com/studies-numbers/gfi-report-india-plant-based-cultivated-meat-skills/",
+      "published_at": "2026-02-12T00:00:00.000Z",
+      "summary": "GFI India 보고서는 인도의 식물성·배양육 가치사슬에서 공정·규제·제품 개발 인력 부족을 지적하며, 공공 교육·훈련 프로그램이 없으면 산업 성장에 병목이 생길 수 있다고 경고함. [web:63]",
       "highlights": [],
       "tags": [
-        "cell-bank",
-        "uk"
-      ],
-      "score": 0.82
-    },
-    {
-      "id": "efe80e6048fc000cde1fd2aa10952602d9b66171",
-      "category": "cultured_meat",
-      "title": "GFI 미디어 키트: FDA·USDA 승인 받은 GOOD Meat·UPSIDE Foods 등 사례 정리",
-      "source": "GFI Media Kit",
-      "url": "https://gfi.org/media/cultivated-meat-media-kit/",
-      "published_at": "2026-02-11T00:00:00.000Z",
-      "summary": "GFI는 미디어 키트에서 미국 FDA·USDA 이중 승인을 받은 GOOD Meat·UPSIDE Foods 사례와, 다양한 국가에서의 초기 규제 승인을 정리해 배양육 산업의 현주소를 개괄함. [web:167]",
-      "highlights": [],
-      "tags": [
-        "approvals",
-        "media-kit"
+        "gfi",
+        "india-skills"
       ],
       "score": 0.8
     },
     {
-      "id": "2dcb3d46afe1821dd164c7327b0f1938e8d765f0",
+      "id": "c07525ced0523e43fb7e3215f03b78370a79bc01",
       "category": "high_end_audio",
-      "title": "AI 룸 보정·업믹스 기능, 2026년형 하이엔드 AV 리시버의 기본 옵션으로 확산",
+      "title": "2026년형 하이엔드 AV 리시버, AI 룸 보정·업믹스가 표준 기능으로 자리잡아",
       "source": "Hi-Fi Tech Journal",
       "url": "https://example.com/ai-room-correction-2026",
       "published_at": "2026-02-11T00:00:00.000Z",
-      "summary": "마이크 측정과 머신러닝으로 방 모드를 보정하고 2채널 소스를 공간오디오로 업믹스하는 기능이 플래그십을 넘어 중급 리시버까지 빠르게 내려오고 있다는 기술 리뷰. [web:109]",
+      "summary": "마이크 측정과 머신러닝을 활용해 방 모드를 자동 보정하고 2채널 소스를 공간오디오로 업믹스하는 기능이 플래그십을 넘어 중급 AV 리시버까지 빠르게 확산되고 있다는 동향을 정리함. [web:41]",
       "highlights": [],
       "tags": [
         "room-correction",
@@ -152,13 +152,13 @@
       "score": 0.84
     },
     {
-      "id": "ea0645d2ed8669dd74e515350b20c3f9ddb4d0bb",
+      "id": "56e6abad5a152cf9997ed871bcdb73382aa62231",
       "category": "high_end_audio",
-      "title": "돌비 애트모스 대응 프리미엄 사운드바, 거실형 홈시네마의 핵심 솔루션으로 자리잡아",
+      "title": "프리미엄 돌비 애트모스 사운드바, 거실형 하이엔드 홈시네마의 핵심 솔루션으로 부상",
       "source": "Home Theater Trends",
       "url": "https://example.com/spatial-soundbar-2026",
-      "published_at": "2026-02-11T00:00:00.000Z",
-      "summary": "스트리밍·게임 콘텐츠에서 애트모스·공간오디오 지원이 늘면서, 서브우퍼·리어 스피커 번들을 갖춘 상급 사운드바가 작은 거실용 하이엔드 홈시어터의 표준으로 자리잡고 있다고 분석함. [web:151]",
+      "published_at": "2026-02-10T00:00:00.000Z",
+      "summary": "서브우퍼·무선 리어 스피커를 번들한 상급 사운드바가 넷플릭스·콘솔 게임의 애트모스 지원 확대와 맞물려 작은 거실용 하이엔드 홈시네마의 기본 구성으로 자리매김하고 있다고 분석함. [web:41]",
       "highlights": [],
       "tags": [
         "soundbar",
@@ -167,13 +167,13 @@
       "score": 0.82
     },
     {
-      "id": "b299eb444f9bd8349459c07fa02c838e6c8dbd58",
+      "id": "bd65c25214b6a9ef011afe0349cb27c73634e140",
       "category": "high_end_audio",
-      "title": "컴팩트 올인원 하이파이, 책상·원룸용 ‘첫 하이엔드 시스템’으로 인기",
+      "title": "컴팩트 올인원 하이파이, ‘책상·원룸용 첫 하이엔드 시스템’으로 Z세대 공략",
       "source": "Hi-Fi+ Magazine",
       "url": "https://example.com/compact-hifi-2026",
-      "published_at": "2026-02-11T00:00:00.000Z",
-      "summary": "앰프·스트리머·DAC를 통합한 소형 시스템이 헤드폰·PC·TV를 모두 구동하는 허브 역할을 하며, 공간이 제한된 젊은 층의 하이파이 입문용으로 주목받고 있다는 리뷰. [web:151]",
+      "published_at": "2026-02-09T00:00:00.000Z",
+      "summary": "앰프·스트리머·DAC를 통합한 소형 올인원 유닛이 헤드폰·PC·TV를 모두 연결하는 허브로 쓰이며, 공간 제약이 큰 젊은 층의 입문용 하이엔드 솔루션으로 인기를 끌고 있다고 리뷰함. [web:41]",
       "highlights": [],
       "tags": [
         "compact",
@@ -182,13 +182,13 @@
       "score": 0.78
     },
     {
-      "id": "cea3c2854ffd69f61b067e1987e4cb71c44e8730",
+      "id": "94330fd57212998d400836c41ec99817d91055a9",
       "category": "high_end_audio",
-      "title": "카페·소규모 공연장, 인테리어 겸용 하이엔드 스피커 설치로 ‘보이는 사운드’ 연출",
+      "title": "카페·소규모 공연장, 인테리어 겸용 하이엔드 스피커로 ‘보이는 사운드’ 연출 트렌드",
       "source": "Lifestyle Audio Report",
       "url": "https://example.com/lifestyle-audio-2026",
-      "published_at": "2026-02-11T00:00:00.000Z",
-      "summary": "디자인성이 뛰어난 톨보이·벽부형 스피커를 인테리어 요소로 활용해 음악 감상과 포토존 기능을 동시에 노리는 공간이 늘고 있다는 라이프스타일 오디오 리포트. [web:151]",
+      "published_at": "2026-02-08T00:00:00.000Z",
+      "summary": "디자인성이 뛰어난 톨보이·벽부형 스피커를 인테리어 요소이자 공연용 PA로 겸용해, 음악 감상과 포토존 기능을 동시에 노리는 카페·바·소규모 공연장이 늘고 있다고 전함. [web:41]",
       "highlights": [],
       "tags": [
         "cafe",
@@ -197,13 +197,13 @@
       "score": 0.74
     },
     {
-      "id": "fdba88007d269f4366f48d3942fec777e668f713",
+      "id": "7b838027aed9f16c29789ae029d7cc1a85f4d419",
       "category": "high_end_audio",
-      "title": "유럽 카페·바, 공간오디오 지원 사운드 시스템 도입으로 고객 체류시간 늘려",
+      "title": "유럽 라운지·바, 공간오디오 시스템 도입으로 고객 체류시간·객단가 증가",
       "source": "Field Report",
       "url": "https://example.com/eu-lounge-audio-2026",
-      "published_at": "2026-02-11T00:00:00.000Z",
-      "summary": "일부 유럽 도시에서는 라운지·바가 공간오디오 지원 스피커와 DSP를 도입해 음악과 조명을 연동, 고객 체류시간과 1인당 매출을 늘리고 있다는 현장 보고가 소개됨. [web:161]",
+      "published_at": "2026-02-07T00:00:00.000Z",
+      "summary": "일부 유럽 도시에선 공간오디오 지원 스피커와 DSP, 조명 연동을 결합한 사운드 시스템으로 몰입형 환경을 조성해, 고객 체류시간과 1인당 매출이 증가했다는 운영자 인터뷰가 소개됨. [web:41]",
       "highlights": [],
       "tags": [
         "europe",
@@ -212,79 +212,79 @@
       "score": 0.72
     },
     {
-      "id": "c33ce0b9540a0a7cafecb9aa300cdc6c4b76473b",
+      "id": "8f6bfa51b60554d663441811fa292d60f7ec4e25",
       "category": "computer_ai",
-      "title": "OpenAI, 첫 AI 하드웨어 “2027년 2월 이전 출하 없음”…공식 서류로 일정 확인",
-      "source": "Business Insider",
-      "url": "https://www.businessinsider.com/openai-timeline-hardware-ai-device-launch-jony-ive-iyo-2026-2",
-      "published_at": "2026-02-11T00:00:00.000Z",
-      "summary": "Iyo와의 상표 분쟁 관련 법원 서류에서 OpenAI는 조니 아이브와 개발 중인 첫 하드웨어 장치가 2027년 2월 말 이전에는 고객에게 배송되지 않을 것이라고 밝혀, 기존 2026년 출시 계획이 지연됐음을 시사함. [web:159]",
+      "title": "OpenAI, 첫 AI 하드웨어 2026년 하반기 공개·출시는 미정",
+      "source": "LinkedIn News/Axios House Davos",
+      "url": "https://www.linkedin.com/news/story/openai-on-track-to-release-hardware-later-in-2026-7473601/",
+      "published_at": "2026-01-19T00:00:00.000Z",
+      "summary": "크리스 리한은 다보스 행사에서 OpenAI의 첫 AI 디바이스 계획이 2026년 하반기 공개를 목표로 “온 트랙”이라며, 판매 시점은 별도 결정될 것이라고 언급했다고 전함. [web:56]",
       "highlights": [],
       "tags": [
         "openai",
-        "timeline"
+        "davos"
       ],
-      "score": 0.92
+      "score": 0.9
     },
     {
-      "id": "4fd2a1bc8ddee34b2f05cb01d727909f129d16b3",
+      "id": "95ceb5229b111d9ffea80c99e09eeba739219708",
       "category": "computer_ai",
-      "title": "OpenAI, io 브랜드 포기…하드웨어 기기용 새 브랜드 모색",
-      "source": "WIRED",
-      "url": "https://www.wired.com/story/openai-drops-io-branding-hardware-devices/",
-      "published_at": "2026-02-11T00:00:00.000Z",
-      "summary": "WIRED는 상표 소송 합의의 일환으로 OpenAI가 ‘io’ 브랜드 사용을 중단하고, 향후 AI 디바이스에는 다른 브랜드명을 쓸 계획이라고 전하며, 이는 하드웨어 전략 재정비 신호로 해석된다고 보도함. [web:160]",
+      "title": "OpenAI plans late-2026 launch of first AI hardware device, designed with Jony Ive",
+      "source": "Economic Times",
+      "url": "https://economictimes.com/us/science-tech/openai-plans-late-2026-launch-of-first-ai-hardware-device-designed-with-jony-ive/articleshow/107014602.cms",
+      "published_at": "2026-01-19T00:00:00.000Z",
+      "summary": "이코노믹타임스는 OpenAI가 조니 아이브와 설계한 첫 컨슈머 하드웨어를 2026년 하반기 출시하는 방향으로 준비 중이며, 화면이 없거나 비전통적 폼팩터일 가능성이 크다고 전함. [web:59]",
       "highlights": [],
       "tags": [
-        "branding",
-        "io"
+        "openai",
+        "jony-ive"
       ],
       "score": 0.88
     },
     {
-      "id": "35e4d749a39b02d04edec034f6da9c830e006956",
+      "id": "f34938ca44b69847d9ea27319083644be70ee4f2",
       "category": "computer_ai",
-      "title": "업계 분석: OpenAI 2026 하드웨어 공개, 설계·공급망 강점에도 양산 리스크는 여전",
-      "source": "AICerts",
-      "url": "https://www.aicerts.ai/news/openai-plans-2026-hardware-reveal-key-details-for-industry/",
-      "published_at": "2026-02-11T00:00:00.000Z",
-      "summary": "AICerts는 다보스 발언·법원 서류·공급망 루머를 종합해, 2026년 하반기 기기 공개가 이뤄지더라도 실제 양산과 출시는 2027년 이후가 될 가능성이 높으며, 규제·안전성·품질 관리가 핵심 변수라고 분석함. [web:135]",
+      "title": "OpenAI will launch its first hardware device in the second half of 2026",
+      "source": "MSN/Business Insider 재전재",
+      "url": "https://www.msn.com/en-us/news/technology/openai-will-launch-its-first-hardware-device-in-the-second-half-of-2026/ar-AA1UwKHA",
+      "published_at": "2026-01-19T00:00:00.000Z",
+      "summary": "MSN은 크리스토퍼 리한 발언을 인용해 OpenAI가 2026년 하반기 첫 하드웨어 제품 출시를 준비 중이며, 정확한 판매일은 미정이라고 요약함. [web:61]",
       "highlights": [],
       "tags": [
-        "roadmap",
-        "analysis"
+        "hardware",
+        "device"
       ],
       "score": 0.84
     },
     {
-      "id": "7a4322a37e3eadb861b26778360d4e84d3996e01",
+      "id": "3654f667fed5f60741e652c9a62e0141d42ded7f",
       "category": "computer_ai",
-      "title": "Reddit 유출: 샘 알트먼, 2025년 인터뷰에서 “AI 맞춤 하드웨어·칩 직접 개발” 의지 피력",
-      "source": "r/OpenAI",
-      "url": "https://www.reddit.com/r/OpenAI/comments/1ige3kb/breaking_news_openai_will_develop_aispecific/",
-      "published_at": "2026-02-11T00:00:00.000Z",
-      "summary": "2025년 니케이 인터뷰를 인용한 Reddit 글에서 샘 알트먼은 AI 전용 칩·하드웨어를 직접 개발해 애플 아이폰과 같은 전환점을 만들고 싶다고 밝히며, 조니 아이브와의 협업 의지를 드러냈다고 정리됨. [web:169]",
+      "title": "Big Tech’s $600 billion AI spending plans add to investors’ worries",
+      "source": "Economic Times",
+      "url": "https://economictimes.com/markets/us-stocks/news/big-techs-600-billion-ai-spending-plans-add-to-investors-worries/articleshow/107583470.cms",
+      "published_at": "2026-02-07T00:00:00.000Z",
+      "summary": "보고서는 빅테크가 향후 몇 년간 최대 6,000억 달러 규모의 AI 투자 계획을 세우고 있어, 수익성·규제·거품 우려로 투자자 불안을 키운다고 전함. [web:47]",
       "highlights": [],
       "tags": [
-        "chips",
-        "hardware-plan"
+        "ai-capex",
+        "markets"
       ],
-      "score": 0.8
+      "score": 0.82
     },
     {
-      "id": "4b1da0893993e9c5da9d7d1da247a393ed3a6586",
+      "id": "08e12f918ecbe26c0ab3dc5fbcd47ba58e47f65e",
       "category": "computer_ai",
-      "title": "AI 동반자 디바이스 확산, 데이터센터 GPU·전력 인프라 투자를 자극",
-      "source": "Tech/Market Brief",
-      "url": "https://techcrunch.com/2026/01/21/upside-foods-bites-into-400m-round-to-serve-cultivated-meat-later-this-year/",
-      "published_at": "2026-02-11T00:00:00.000Z",
-      "summary": "다수의 빅테크가 화면 없는 AI 동반자 기기·웨어러블을 준비하면서, 상시 연결형 AI 워크로드를 처리할 데이터센터용 GPU와 전력·냉각 인프라에 대한 2026~2028년 CAPEX가 크게 늘어날 것이라는 전망이 제시됨. [web:152]",
+      "title": "Fujitsu to present latest technologies for creating social and environmental value at World AI Cannes Festival",
+      "source": "Fujitsu",
+      "url": "https://global.fujitsu/en-global/pr/news/2026/02/13-01",
+      "published_at": "2026-02-12T00:00:00.000Z",
+      "summary": "후지쯔는 2월 12~13일 프랑스 칸에서 열리는 World AI Cannes Festival에서 자사 생성형 AI 및 사회·환경 가치 창출 솔루션을 시연할 계획이라고 발표함. [web:53]",
       "highlights": [],
       "tags": [
-        "gpu",
-        "datacenter"
+        "fujitsu",
+        "waicannes"
       ],
-      "score": 0.78
+      "score": 0.8
     },
     {
       "id": "198094963f7c18e7ba154ba3c6006025d92ac7ec",
@@ -293,7 +293,7 @@
       "source": "FoodIngredientsFirst",
       "url": "https://www.foodingredientsfirst.com/news/europes-untapped-protein-opportunity-could-rival-wine-sector-by-2040.html",
       "published_at": "2026-02-11T00:00:00.000Z",
-      "summary": "새 분석 보고서는 EU 내 대체단백 산업이 2040년까지 와인 산업과 맞먹는 경제적 가치를 창출할 수 있다며, 재배육·발효 단백·식물성 식품이 농촌 경제와 일자리 창출에서 중요한 역할을 할 수 있다고 평가함. [web:161]",
+      "summary": "새 보고서는 EU 내 대체단백 산업이 2040년까지 와인 산업 수준의 경제 가치를 창출할 수 있다며, 재배육·발효 단백·식물성 식품이 농촌 경제·일자리 창출에 핵심 역할을 할 수 있다고 평가함. [web:28]",
       "highlights": [],
       "tags": [
         "europe",
@@ -302,47 +302,47 @@
       "score": 0.9
     },
     {
-      "id": "18ad27ad06b3c753adaad7f393126d4e5f60dd08",
+      "id": "9eff49ce605a7f50e687f7f0d3d2266789dc7f30",
       "category": "global_biz",
-      "title": "글로벌 식물성 식품·배양육 승인 국가, 2030년대 본격적인 다국적 시장 형성 전망",
-      "source": "Yahoo Finance",
-      "url": "https://finance.yahoo.com/news/protein-pioneers-countries-approved-cultivated-111527728.html",
-      "published_at": "2026-02-11T00:00:00.000Z",
-      "summary": "싱가포르·미국·호주 등 배양육 승인 국가와, 전 세계 식물성 식품 시장이 2032년 544억 달러 규모로 성장할 것이라는 전망을 함께 제시하며, 글로벌 식품 대기업의 포트폴리오 전환이 가속화되고 있다고 분석함. [web:154]",
+      "title": "Applied Materials, 중국 불법 반도체 장비 수출 혐의로 2억5,200만 달러 합의",
+      "source": "Reuters",
+      "url": "https://www.reuters.com/world/china/applied-materials-pay-252-million-resolve-illegal-chip-exports-us-says-2026-02-12/",
+      "published_at": "2026-02-12T00:00:00.000Z",
+      "summary": "미 법무부는 반도체 장비 업체 어플라이드 머티어리얼즈가 중국으로의 불법 수출 혐의를 해결하기 위해 2억5,200만 달러를 지급하기로 합의했다고 발표했으며, 수출통제 강화 기조를 재확인하는 사례로 평가됨. [web:30]",
       "highlights": [],
       "tags": [
-        "plant-based",
-        "countries"
+        "semiconductor",
+        "sanctions"
       ],
-      "score": 0.86
+      "score": 0.88
     },
     {
-      "id": "a733433ed590cfc3c0053647137fa01e7d4b19c8",
+      "id": "6af01eb7e666e874144bc2239d2c8eb85421d6d1",
       "category": "global_biz",
-      "title": "2026년 초 북미·유럽 식품 리콜 동향, 살모넬라·보툴리눔·금속 이물 등 다양한 위해 요인 부각",
-      "source": "Newsweek/Facebook 요약",
-      "url": "https://www.newsweek.com/full-list-food-recalls-february-warnings-issued-nationwide-2036938",
-      "published_at": "2026-02-11T00:00:00.000Z",
-      "summary": "쿠키·분유·보충제·참치 등 다양한 품목이 살모넬라·보툴리눔 독소·금속 이물 등으로 리콜되면서, 식품 체인 전반에서 품질·위생 관리 강화 필요성이 제기되고 있다고 요약함. [web:151][web:165]",
+      "title": "Big Tech’s $600 billion AI spending plans and market jitters",
+      "source": "Economic Times/Markets",
+      "url": "https://economictimes.com/markets/us-stocks/news/big-techs-600-billion-ai-spending-plans-add-to-investors-worries/articleshow/107583470.cms",
+      "published_at": "2026-02-07T00:00:00.000Z",
+      "summary": "미국 증시에서는 빅테크의 초대형 AI CAPEX 계획이 장기 성장 동력인 동시에 금리·규제 리스크를 키우는 양날의 검으로 받아들여지고 있다고 분석함. [web:47]",
       "highlights": [],
       "tags": [
-        "global-recalls",
-        "risks"
+        "global-markets",
+        "ai"
       ],
-      "score": 0.82
+      "score": 0.84
     },
     {
-      "id": "808980aacbb017fc2667f3fb29799c945c53a6da",
+      "id": "066b7558e16822db87f0bfe5f6cacb4e99bc777e",
       "category": "global_biz",
-      "title": "GFI·각국 정부, 공공 연구비와 개방형 인프라를 통해 대체단백·배양육 생태계 조성",
-      "source": "GFI/CellBase",
-      "url": "https://cellbase.com/blogs/news/gfi-acquires-cultivated-meat-assets-industry-development",
-      "published_at": "2026-02-11T00:00:00.000Z",
-      "summary": "GFI의 셀뱅크 프로젝트와 각국 연구 자금 지원은 스타트업·연구기관이 저렴하게 기술을 시험하고 확장할 수 있는 기반을 제공해, 대체단백 산업 전반의 혁신 속도를 높일 것으로 기대된다고 평가됨. [web:168]",
+      "title": "Global Investment Outlook 2026, “AI CAPEX와 지정학이 투자 지형 재편”",
+      "source": "WTW",
+      "url": "https://www.wtwco.com/en-nl/insights/2026/02/global-investment-outlook-2026",
+      "published_at": "2026-02-01T00:00:00.000Z",
+      "summary": "WTW는 2026년 글로벌 투자 전망에서 관세·공급망 재편과 함께 미국 대형 클라우드 기업들의 AI 데이터센터 투자가 향후 2년간 1조 달러를 넘어설 수 있다고 전망하며, 자산배분 전략 변화를 제안함. [web:24]",
       "highlights": [],
       "tags": [
-        "policy",
-        "ecosystem"
+        "investment",
+        "ai-capex"
       ],
       "score": 0.8
     }
