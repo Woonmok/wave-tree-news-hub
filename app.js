@@ -10,8 +10,6 @@
   const CONFIG = {
     dataUrl: "./data/normalized/news.json",
     savedStorageKey: "waveTreeSavedNews.v1",
-    lastBackupKey: "waveTreeLastBackup",
-    backupServerUrl: "http://localhost:3001/backup",
     maxPerCategory: 40, // UI에서 카테고리 당 렌더 상한(원하면 늘리세요)
   };
 
@@ -67,9 +65,6 @@
     renderProcessorSummary();
     renderSavedCounters();
     renderScrapbook();
-    
-    // 매일 자정 이후 첫 방문 시 스크랩북 자동 백업
-    checkAndBackupScrapbook();
 
     fetchData()
       .then(() => {
@@ -359,25 +354,15 @@
   function renderScrapbook() {
     if (!el.scrapbookContent) return;
 
-    // 수동 리뉴/백업 + 백업 서버 상태 체크 버튼 추가
-    const backupBtnHtml = `<div style="margin-bottom:10px; text-align:right; display:flex; gap:8px; justify-content:flex-end;">
-      <button class="action-btn" id="manualBackupBtn">수동 리뉴/백업</button>
-      <button class="action-btn" id="backupServerCheckBtn">백업 서버 상태</button>
-    </div>`;
-
     if (!saved.length) {
-      el.scrapbookContent.innerHTML = backupBtnHtml + '<div class="empty-state">저장된 뉴스가 없습니다</div>';
-      setTimeout(() => {
-        const btn = document.getElementById("manualBackupBtn");
-        if (btn) btn.onclick = manualBackupHandler;
-      }, 0);
+      el.scrapbookContent.innerHTML = '<div class="empty-state">저장된 뉴스가 없습니다</div>';
       return;
     }
 
     // newest saved first
     const list = saved.slice().sort((a, b) => Date.parse(b.savedAt) - Date.parse(a.savedAt));
 
-    el.scrapbookContent.innerHTML = backupBtnHtml + list.map((s) => `
+    el.scrapbookContent.innerHTML = list.map((s) => `
       <div class="scrapbook-item">
         <div class="scrapbook-category">${escapeHtml(s.categoryTitle || s.category)}</div>
         <div class="scrapbook-title">${escapeHtml(s.title)}</div>
@@ -388,53 +373,6 @@
         </div>
       </div>
     `).join("");
-    setTimeout(() => {
-      const btn = document.getElementById("manualBackupBtn");
-      if (btn) btn.onclick = manualBackupHandler;
-      const checkBtn = document.getElementById("backupServerCheckBtn");
-      if (checkBtn) checkBtn.onclick = backupServerCheckHandler;
-    }, 0);
-      // 백업 서버 상태 체크 핸들러
-      async function backupServerCheckHandler() {
-        el.scrapbookContent.innerHTML = '<div class="empty-state">⏳ 백업 서버 상태 확인 중...</div>';
-        try {
-          const res = await fetch(CONFIG.backupServerUrl, { method: 'GET' });
-          if (res.ok) {
-            let msg = '✅ 백업 서버 연결 성공!';
-            try {
-              const data = await res.json();
-              if (data && data.status) msg += `<br>상태: ${data.status}`;
-            } catch {}
-            el.scrapbookContent.innerHTML = `<div class="empty-state">${msg}</div>`;
-          } else {
-            el.scrapbookContent.innerHTML = `<div class="empty-state">⚠️ 백업 서버 연결 실패<br>상태 코드: ${res.status}</div>`;
-          }
-        } catch (e) {
-          el.scrapbookContent.innerHTML = `<div class="empty-state">⚠️ 백업 서버 연결 실패<br>${e.message || e}</div>`;
-        }
-        setTimeout(renderScrapbook, 2500);
-      }
-    // 수동 리뉴/백업 버튼 핸들러
-    async function manualBackupHandler() {
-      const ok = confirm("스크랩북을 백업하고 초기화할까요? (백업 서버가 켜져 있어야 합니다)");
-      if (!ok) return;
-      el.scrapbookContent.innerHTML = '<div class="empty-state">⏳ 백업 및 리뉴 중...</div>';
-      try {
-        const result = await checkAndBackupScrapbook(true); // true: manual
-        if (result && result.status === 'success') {
-          el.scrapbookContent.innerHTML = '<div class="empty-state">✅ 백업 및 리뉴 완료!<br>새로운 하루를 시작하세요.</div>';
-        } else if (result && result.status === 'no-items') {
-          el.scrapbookContent.innerHTML = '<div class="empty-state">ℹ️ 백업할 스크랩북 항목이 없습니다.</div>';
-        } else if (result && result.status === 'fail') {
-          el.scrapbookContent.innerHTML = `<div class="empty-state">⚠️ 백업 실패: ${result.message || '알 수 없는 오류'}</div>`;
-        } else {
-          el.scrapbookContent.innerHTML = '<div class="empty-state">⚠️ 알 수 없는 오류가 발생했습니다.</div>';
-        }
-      } catch (e) {
-        el.scrapbookContent.innerHTML = `<div class="empty-state">⚠️ 예외 발생: ${e.message || e}</div>`;
-      }
-      setTimeout(renderScrapbook, 2500); // 2.5초 후 원래 화면 복구
-    }
   }
 
   function toggleScrapbook() {
@@ -484,72 +422,6 @@
     return String(s).replaceAll("\\", "\\\\").replaceAll("'", "\\'");
   }
 
-  // ---------- 자동 백업 시스템 ----------
-  async function checkAndBackupScrapbook() {
-    const today = getToday(); // YYYY-MM-DD
-    const lastBackup = localStorage.getItem(CONFIG.lastBackupKey);
-    const isManual = arguments[0] === true;
 
-    // 이미 오늘 백업했으면 스킵 (수동일 때는 안내)
-    if (lastBackup === today) {
-      if (isManual) return { status: 'fail', message: '오늘 이미 백업/리뉴가 완료되었습니다.' };
-      return;
-    }
-
-    // 어제 날짜 계산
-    const yesterday = getYesterday();
-
-    // 저장된 항목이 있는지 확인
-    if (saved.length === 0) {
-      localStorage.setItem(CONFIG.lastBackupKey, today);
-      if (isManual) return { status: 'no-items' };
-      return;
-    }
-
-    try {
-      const response = await fetch(CONFIG.backupServerUrl, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          date: yesterday, // 어제 날짜로 백업
-          items: saved
-        })
-      });
-
-      if (response.ok) {
-        const result = await response.json();
-        saved = [];
-        localStorage.setItem(CONFIG.savedStorageKey, JSON.stringify(saved));
-        localStorage.setItem(CONFIG.lastBackupKey, today);
-        renderSavedCounters();
-        renderScrapbook();
-        if (isManual) return { status: 'success', filename: result.filename, count: result.count };
-        return;
-      } else {
-        if (isManual) return { status: 'fail', message: `백업 실패: ${response.status}` };
-        return;
-      }
-    } catch (error) {
-      if (isManual) return { status: 'fail', message: `백업 서버 연결 실패: ${error.message}` };
-      return;
-    }
-  }
-
-  function getToday() {
-    const now = new Date();
-    const yyyy = now.getFullYear();
-    const mm = String(now.getMonth() + 1).padStart(2, '0');
-    const dd = String(now.getDate()).padStart(2, '0');
-    return `${yyyy}-${mm}-${dd}`;
-  }
-
-  function getYesterday() {
-    const now = new Date();
-    now.setDate(now.getDate() - 1);
-    const yyyy = now.getFullYear();
-    const mm = String(now.getMonth() + 1).padStart(2, '0');
-    const dd = String(now.getDate()).padStart(2, '0');
-    return `${yyyy}-${mm}-${dd}`;
-  }
 
 })();
