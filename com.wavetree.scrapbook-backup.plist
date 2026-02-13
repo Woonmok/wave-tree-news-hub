@@ -8,11 +8,11 @@
     <key>ProgramArguments</key>
     <array>
         <string>/Users/seunghoonoh/.gemini/antigravity/scratch/node-v20/bin/node</string>
-        <string>/Users/seunghoonoh/Library/Application Support/wave-tree-news-hub/backup_server.js</string>
+        <string>/Volumes/AI_DATA_CENTRE/AI_WORKSPACE/wave-tree-news-hub/backup_server.js</string>
     </array>
     
     <key>WorkingDirectory</key>
-    <string>/Users/seunghoonoh/Library/Application Support/wave-tree-news-hub</string>
+    <string>/Volumes/AI_DATA_CENTRE/AI_WORKSPACE/wave-tree-news-hub</string>
     
     <key>RunAtLoad</key>
     <true/>
@@ -29,7 +29,7 @@
     <key>EnvironmentVariables</key>
     <dict>
         <key>BACKUP_DIR</key>
-        <string>/Users/seunghoonoh/Library/Application Support/wave-tree-news-hub/data/scrapbook</string>
+        <string>/Volumes/AI_DATA_CENTRE/AI_WORKSPACE/wave-tree-news-hub/data/scrapbook</string>
         <key>SYNC_DIR</key>
         <string>/Volumes/AI_DATA_CENTRE/AI_WORKSPACE/wave-tree-news-hub/data/scrapbook</string>
         <key>PATH</key>
