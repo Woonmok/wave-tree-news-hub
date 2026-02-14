@@ -12,7 +12,7 @@
         <string>http.server</string>
         <string>8000</string>
         <string>--directory</string>
-        <string>/Users/seunghoonoh/Desktop/wave-tree-news-hub</string>
+        <string>/Volumes/AI_DATA_CENTRE/AI_WORKSPACE/wave-tree-news-hub</string>
     </array>
     
     <key>RunAtLoad</key>
