@@ -4,24 +4,72 @@
 import json
 import os
 import re
-from datetime import datetime
+from datetime import datetime, UTC
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 WORKSPACE_ROOT = os.path.abspath(os.path.join(BASE_DIR, ".."))
 
-NEWS_JSON = os.getenv(
-    "NEWS_JSON_PATH",
-    os.path.join(BASE_DIR, "data", "normalized", "news.json"),
-)
+DEFAULT_NEWS_JSON = os.path.join(BASE_DIR, "data", "normalized", "news.json")
 TARGET_HTML = os.getenv(
     "TARGET_HTML_PATH",
     os.path.join(WORKSPACE_ROOT, "woonmok.github.io", "index.html"),
 )
 
+
+def _parse_generated_at(data):
+    raw = data.get("generated_at")
+    if not raw:
+        return None
+    try:
+        return datetime.fromisoformat(raw.replace("Z", "+00:00"))
+    except Exception:
+        return None
+
+
+def resolve_news_json_path():
+    env_path = os.getenv("NEWS_JSON_PATH", "").strip()
+    candidates = [
+        env_path,
+        DEFAULT_NEWS_JSON,
+        os.path.join(BASE_DIR, "data", "news.json"),
+        os.path.join(WORKSPACE_ROOT, "woonmok.github.io", "news.json"),
+    ]
+
+    existing = []
+    for candidate in candidates:
+        if candidate and os.path.exists(candidate):
+            existing.append(candidate)
+
+    if not existing:
+        return DEFAULT_NEWS_JSON
+
+    best_path = existing[0]
+    best_time = datetime.min.replace(tzinfo=UTC)
+
+    for path in existing:
+        generated_at = None
+        try:
+            with open(path, "r", encoding="utf-8") as f:
+                data = json.load(f)
+            generated_at = _parse_generated_at(data)
+        except Exception:
+            generated_at = None
+
+        if generated_at is None:
+            generated_at = datetime.fromtimestamp(os.path.getmtime(path), tz=UTC)
+
+        if generated_at > best_time:
+            best_time = generated_at
+            best_path = path
+
+    return best_path
+
 def load_top_news():
     """news.json에서 최신 2개 뉴스 로드 (published_at 기준)"""
     try:
-        with open(NEWS_JSON, "r", encoding="utf-8") as f:
+        news_json_path = resolve_news_json_path()
+        print(f"   📥 뉴스 소스: {news_json_path}")
+        with open(news_json_path, "r", encoding="utf-8") as f:
             data = json.load(f)
         
         items = data.get("items", [])
@@ -142,7 +190,7 @@ def update_dashboard_json(top_news):
             }
             for n in top_news
         ]
-        dashboard["last_updated"] = datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S")
+        dashboard["last_updated"] = datetime.now(UTC).strftime("%Y-%m-%d %H:%M:%S")
 
         with open(DASHBOARD_JSON, "w", encoding="utf-8") as f:
             json.dump(dashboard, f, ensure_ascii=False, indent=2)
