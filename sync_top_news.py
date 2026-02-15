@@ -28,6 +28,11 @@ def _parse_generated_at(data):
 
 def resolve_news_json_path():
     env_path = os.getenv("NEWS_JSON_PATH", "").strip()
+    if env_path:
+        if os.path.exists(env_path):
+            return env_path
+        print(f"   ⚠️ NEWS_JSON_PATH 파일이 없어 자동 탐색으로 전환: {env_path}")
+
     candidates = [
         env_path,
         DEFAULT_NEWS_JSON,
