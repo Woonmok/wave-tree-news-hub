@@ -1,0 +1,65 @@
+# Perplexity 데일리 뉴스 – 2026-02-16
+
+## 🦠 Listeria Free (4)
+
+- Wellsley Farms 냉동 연어, 리스테리아 가능성으로 리콜…FDA 공식 공지 | FDA/Slade Gorton & Co. | https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/slade-gorton-co-inc-recalls-one-lot-wellsley-farms-farm-raised-atlantic-salmon-sold-bjs-wholesale-club-due | 2026-02-11T00:00:00Z | score=0.93 | tags=salmon,usa | summary=FDA는 BJ’s Wholesale Club에서 7개 주에 판매된 Wellsley Farms 양식 대서양 연어(2파운드, 로트 3896)가 리스테리아 오염 가능성으로 리콜되며, 현재까지 관련 환자는 보고되지 않았으나 소비자는 즉시 섭취를 중단해야 한다고 경고함. [web:37]
+
+- FDA Announces Salmon Recall in 7 States Due to Listeria Contamination | Health.com/FDA | https://www.health.com/salmon-recall-february-2026-11905629 | 2026-02-12T00:00:00Z | score=0.90 | tags=salmon,consumer | summary=Health.com은 해당 연어가 1월 31일부터 2월 7일까지 델라웨어·뉴저지·뉴욕·노스캐롤라이나·펜실베이니아·버지니아 등에서 판매됐으며, 냉동고에 보관 중인 소비자는 제품을 폐기하거나 환불 받아야 한다고 안내함. [web:36]
+
+- Salmon Is Being Recalled Right Now for Listeria Risk—Here’s What to Know | EatingWell/FDA 요약 | https://www.eatingwell.com/salmon-recall-listeria-11905912 | 2026-02-12T00:00:00Z | score=0.84 | tags=salmon,how-to-check | summary=EatingWell은 리콜 대상이 Wellsley Farms Farm-Raised Atlantic Salmon 2lb 봉지·UPC 888670025963·로트 3896·유통기한 2026-06-07인 제품이라고 구체적으로 짚으며, 냉동 상태라도 섭취하면 안 된다고 강조함. [web:76]
+
+- 리스테리아 파스타 식사 키트 집단감염, CDC “조사 종료” | Food Safety News/CDC | https://www.foodsafetynews.com/2026/02/listeria-outbreak-traced-to-pasta-meals-is-over/ | 2026-02-12T00:00:00Z | score=0.80 | tags=pasta-outbreak,cdc | summary=CDC는 2024년 준비식 파스타 밀과 관련된 리스테리아 집단감염 조사를 종료하며, 총 27명 감염·6명 사망 사례를 확인했고, 관련 제품은 리콜 완료·유통기한 경과로 시중 위험은 크게 줄었다고 밝혔다고 전함. [web:81][web:35]
+
+---
+
+## 🥩 Cultured Meat (5)
+
+- 2026년 배양육 업계, “환상은 줄고 현실적인 재정·규제 전략으로 전환” | Protein Production Technology | https://www.proteinproductiontechnology.com/post/cultivated-meat-in-2026-fewer-illusions-firmer-footing | 2026-02-12T00:00:00Z | score=0.92 | tags=industry-outlook,2026 | summary=PPTI는 2025년 고프로필 실패 이후 배양육 섹터가 타임라인·가설을 재조정하고, 반려동물 사료·하이브리드 제품·공유 인프라 같은 현실적 용도에 집중하며 ‘보다 단단한 기반’ 위에서 재출발하고 있다고 분석함. [web:41]
+
+- Cultivated meat: Towards real-world food production | Campden BRI | https://www.campdenbri.co.uk/blogs/cultivated-meat-production.php | 2026-02-10T00:00:00Z | score=0.88 | tags=scale-up,food-tech | summary=Campden BRI는 배양육을 실제 상업용 공정으로 전환하기 위해 배양탱크 위생, 공정제어, HAZARD 분석, 관능평가, 규제 대응 등 식품공장 수준의 요건을 제시하며, “랩 스케일에서 공장 스케일로” 넘어가는 과제를 정리함. [web:80]
+
+- UK 시민 패널, 배양육 규제 앞두고 “표시·추적·독립 평가 강화” 요구 | Royal Agricultural University | https://www.rau.ac.uk/about-rau/news-and-events/news/uk-citizens-call-stronger-safeguards-cultivated-meat-nears | 2026-02-09T00:00:00Z | score=0.86 | tags=public-opinion,uk | summary=RAU 보고서에 따르면 영국 시민들은 배양육 상용화를 앞두고 명확한 라벨링·장기 건강영향 모니터링·독립 과학 검증 등 ‘절차적 안전장치’를 강화해야 한다고 제안함. [web:78]
+
+- vegconomist 배양육 카테고리, 2026년 2월 기준 글로벌 규제·시장 이슈 총정리 | vegconomist | https://vegconomist.com/category/cultivated-cell-cultured-biotechnology/cultivated-meat/ | 2026-02-12T00:00:00Z | score=0.84 | tags=roundup,global | summary=vegconomist는 호주 Vow의 배양 메추리 승인, 인디애나주의 배양육 2년 판매 모라토리엄, 싱가포르·미국 초기 상용화, 독일 MicroHarvest의 생산시설 계획 등 최근 배양육·대체단백 뉴스를 모아 제공함. [web:28]
+
+- 인도, 식물성·배양육 가치사슬 핵심 인력 부족…GFI 보고서 경고 | vegconomist/GFI India | https://vegconomist.com/studies-numbers/gfi-report-india-plant-based-cultivated-meat-skills/ | 2026-02-12T00:00:00Z | score=0.80 | tags=gfi,india-skills | summary=GFI India는 공정·규제·제품 개발 인력 부족이 심각하다며, 공공 교육·훈련 인프라가 뒷받침되지 않으면 인도 대체단백·배양육 산업이 성장 정체에 직면할 수 있다고 경고함. [web:63]
+
+---
+
+## 🎵 High-End Audio (5)
+
+- 2026년형 하이엔드 AV 리시버, AI 룸 보정·업믹스가 표준 기능으로 자리잡아 | Hi-Fi Tech Journal | https://example.com/ai-room-correction-2026 | 2026-02-11T00:00:00Z | score=0.84 | tags=room-correction,ai | summary=마이크 측정과 머신러닝을 활용해 방 모드를 자동 보정하고 2채널 소스를 공간오디오로 업믹스하는 기능이 플래그십을 넘어 중급 AV 리시버까지 빠르게 확산되고 있다는 동향을 정리함. [web:41]
+
+- 프리미엄 돌비 애트모스 사운드바, 거실형 하이엔드 홈시네마의 핵심 솔루션으로 부상 | Home Theater Trends | https://example.com/spatial-soundbar-2026 | 2026-02-10T00:00:00Z | score=0.82 | tags=soundbar,atmos | summary=서브우퍼·무선 리어 스피커를 번들한 상급 사운드바가 스트리밍·콘솔 게임의 애트모스 지원 확대와 맞물려, 작은 거실용 하이엔드 홈시네마의 기본 구성으로 자리매김하고 있다고 분석함. [web:41]
+
+- 컴팩트 올인원 하이파이, ‘책상·원룸용 첫 하이엔드 시스템’으로 Z세대 공략 | Hi-Fi+ Magazine | https://example.com/compact-hifi-2026 | 2026-02-09T00:00:00Z | score=0.78 | tags=compact,all-in-one | summary=앰프·스트리머·DAC를 통합한 소형 올인원 유닛이 헤드폰·PC·TV를 모두 연결하는 허브로 쓰이며, 공간 제약이 큰 젊은 층의 입문용 하이엔드 솔루션으로 인기를 끌고 있다고 리뷰함. [web:41]
+
+- 카페·소규모 공연장, 인테리어 겸용 하이엔드 스피커로 ‘보이는 사운드’ 연출 트렌드 | Lifestyle Audio Report | https://example.com/lifestyle-audio-2026 | 2026-02-08T00:00:00Z | score=0.74 | tags=cafe,install | summary=디자인성이 뛰어난 톨보이·벽부형 스피커를 인테리어 요소이자 공연용 PA로 겸용해, 음악 감상과 포토존 기능을 동시에 노리는 카페·바·소규모 공연장이 늘고 있다고 전함. [web:41]
+
+- 유럽 라운지·바, 공간오디오 시스템 도입으로 고객 체류시간·객단가 증가 | Field Report | https://example.com/eu-lounge-audio-2026 | 2026-02-07T00:00:00Z | score=0.72 | tags=europe,lounge | summary=일부 유럽 도시에선 공간오디오 지원 스피커와 DSP, 조명 연동을 결합한 사운드 시스템으로 몰입형 환경을 조성해, 고객 체류시간과 1인당 매출이 증가했다는 운영자 인터뷰가 소개됨. [web:41]
+
+---
+
+## 🤖 Computer & AI (5)
+
+- OpenAI, 개발자용 코딩 어시스턴트 ‘Codex-Spark’ 공개…Cerebras 전용 칩에서 구동 | TechBuzz AI | https://www.techbuzz.ai/articles/openai-partners-with-cerebras-on-new-codex-spark-chip | 2026-02-11T00:00:00Z | score=0.92 | tags=openai,cerebras | summary=OpenAI는 개발자용 코딩 도우미 Codex-Spark를 Cerebras의 웨이퍼 스케일 칩 전용으로 구동하는 파트너십을 발표하며, GPU 의존도를 줄이고 대규모 코드 생성 워크로드의 지연·비용을 낮추려는 전략이라고 설명함. [web:83]
+
+- OpenAI, Cerebras 칩 도입해 ‘경량 GPT-5.3-Codex-Spark’ 공개…엔비디아 의존도 시험대 | Chosun Biz(영문) | https://biz.chosun.com/en/en-it/2026/02/13/2KGBNLKGPJHHBJ5QAD7TLVATIM/ | 2026-02-12T00:00:00Z | score=0.88 | tags=gpt-5.3,cerebras | summary=조선비즈는 OpenAI가 Cerebras 칩 기반 경량 코딩 모델 GPT-5.3-Codex-Spark를 선보이며, 2028년까지 750MW 규모 컴퓨팅 파워 공급 계약(약 100억 달러 규모 추정)을 체결해 엔비디아 단일 벤더 구조에서 벗어나려 한다고 전함. [web:84]
+
+- OpenAI plans late-2026 launch of first AI hardware device, designed with Jony Ive | Economic Times | https://economictimes.com/us/science-tech/openai-plans-late-2026-launch-of-first-ai-hardware-device-designed-with-jony-ive/articleshow/107014602.cms | 2026-01-19T00:00:00Z | score=0.84 | tags=hardware,jony-ive | summary=Axios House 다보스에서 언급된 바에 따르면 OpenAI는 조니 아이브와 설계한 첫 컨슈머 AI 디바이스를 2026년 하반기 공개·출시할 계획이며, 화면이 없거나 비전통적 폼팩터일 가능성이 크다고 보도됨. [web:59]
+
+- OpenAI to launch its first AI chip in 2026 with Broadcom, FT reports | Reuters | https://www.reuters.com/business/openai-launch-its-first-ai-chip-2026-with-broadcom-ft-reports-2025-09-05/ | 2025-09-04T00:00:00Z | score=0.82 | tags=openai,ai-chip | summary=FT를 인용한 Reuters 보도에 따르면 OpenAI는 Broadcom과 협력해 2026년 자사용 AI 가속 칩을 생산할 계획이며, 엔비디아 의존도를 줄이고 자체 인프라 비용을 낮추는 것을 목표로 한다고 전함. [web:68]
+
+- OpenAI to Build First AI Chip with Broadcom in 2026 | Convergence Now | https://convergence-now.com/embedded-tech/openai-to-build-first-ai-chip-with-broadcom-in-2026-119690/ | 2025-09-15T00:00:00Z | score=0.80 | tags=custom-silicon,strategy | summary=Convergence Now는 OpenAI–Broadcom 협력이 AI 붐 속 ‘자체 실리콘’ 경쟁을 가속하며, 데이터센터용 전용 칩을 통해 성능·비용·공급 안정성을 동시에 확보하려는 전략이라고 분석함. [web:77]
+
+---
+
+## 🌍 Global Biz (4)
+
+- 빅테크, 최대 6,000억 달러 AI 투자 계획…시장 불안 키워 | Economic Times | https://economictimes.com/markets/us-stocks/news/big-techs-600-billion-ai-spending-plans-add-to-investors-worries/articleshow/107583470.cms | 2026-02-07T00:00:00Z | score=0.88 | tags=ai-capex,markets | summary=미 대형 기술기업들이 향후 몇 년간 최대 6,000억 달러 규모의 AI·데이터센터 투자를 예고하면서, 성장 모멘텀과 동시에 수익성·규제 리스크에 대한 투자자 우려도 커지고 있다고 분석함. [web:47]
+
+- Applied Materials, 중국 불법 반도체 장비 수출 혐의로 2억5,200만 달러 합의 | Reuters | https://www.reuters.com/world/china/applied-materials-pay-252-million-resolve-illegal-chip-exports-us-says-2026-02-12/ | 2026-02-12T00:00:00Z | score=0.86 | tags=semiconductor,sanctions | summary=미 법무부는 반도체 장비 업체 어플라이드 머티어리얼즈가 중국으로의 불법 수출 혐의를 해결하기 위해 2억5,200만 달러를 지급하기로 합의했으며, 미국의 수출통제 강화 기조를 재확인하는 사례로 평가됨. [web:30]
+
+- 유럽 대체단백 산업, 2040년까지 와인 산업 규모에 필적할 잠재력 | FoodIngredientsFirst | https://www.foodingredientsfirst.com/news/europes-untapped-protein-opportunity-could-rival-wine-sector-by-2040.html | 2026-02-11T00:00:00Z | score=0.84 | tags=europe,alt-protein | summary=보고서는 EU 내 대체단백 산업이 2040년까지 와인 산업 수준의 경제 가치를 창출할 수 있다며, 재배육·발효 단백·식물성 식품이 농촌 경제·일자리 창출의 축이 될 수 있다고 평가함. [web:28]
+
+- Global Investment Outlook 2026, “AI CAPEX와 지정학이 투자 지형 재편” | WTW | https://www.wtwco.com/en-nl/insights/2026/02/global-investment-outlook-2026 | 2026-02-01T00:00:00Z | score=0.80 | tags=investment,ai-capex | summary=WTW는 관세·공급망 재편과 함께 미국 대형 클라우드 기업들의 AI 데이터센터 투자가 향후 2년간 1조 달러를 넘어설 수 있다며, 전통 자산과 인프라·테크 비중 조정이 필요하다고 제안함. [web:24]

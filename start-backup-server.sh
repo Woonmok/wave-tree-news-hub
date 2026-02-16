@@ -22,9 +22,10 @@ if [ -n "$RUNNING_PID" ]; then
   sleep 1
 fi
 
-NODE_BIN="/Users/seunghoonoh/.gemini/antigravity/scratch/node-v20/bin/node"
-if [ ! -x "$NODE_BIN" ]; then
-  NODE_BIN="node"
+NODE_BIN=$(command -v node || true)
+if [ -z "$NODE_BIN" ]; then
+  echo "node 실행 파일을 찾을 수 없습니다. Node.js 설치 상태를 확인하세요."
+  exit 1
 fi
 
 # 서버 실행 (백그라운드)

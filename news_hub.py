@@ -1,10 +1,8 @@
 #!/usr/bin/env python3
-# news_hub.py (Gemini API 기반 뉴스 분석 + Daily Bridge)
+# news_hub.py (로컬 규칙 기반 뉴스 분석 + Daily Bridge)
 import os
 import re
-import time
 from dotenv import load_dotenv
-from google import genai
 from datetime import datetime
 import json
 import shutil
@@ -12,17 +10,6 @@ import requests
 
 # .env 파일 로드
 load_dotenv()
-
-# 환경 변수 충돌 방지: 새 GOOGLE_API_KEY만 사용
-os.environ.pop("GEMINI_API_KEY", None)
-
-# Gemini API 설정
-API_KEY = os.getenv("GOOGLE_API_KEY", "").strip()
-if not API_KEY or API_KEY == "YOUR_GEMINI_API_KEY":
-    raise RuntimeError("GOOGLE_API_KEY is missing or invalid in .env")
-
-MODEL_NAME = "gemini-2.5-flash"
-client = genai.Client(api_key=API_KEY)
 
 # 경로 설정
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -48,29 +35,19 @@ EXCLUDE_KEYWORDS = [
 ]
 
 
-def generate_text(prompt):
-    response = client.models.generate_content(
-        model=MODEL_NAME,
-        contents=prompt,
-    )
-    return response.text or ""
+def score_news(news_text, matched_keywords):
+    """로컬 점수 계산"""
+    text_lower = news_text.lower()
+    score = 5.0
 
+    high_impact = ["절감", "효율", "혁신", "긴급", "fda", "blackwell", "배양육", "균사체"]
+    for keyword in high_impact:
+        if keyword.lower() in text_lower:
+            score += 0.8
 
-def generate_text_with_retry(prompt, max_retries=3, base_delay=20):
-    last_error = None
-    for attempt in range(1, max_retries + 1):
-        try:
-            return generate_text(prompt)
-        except Exception as e:
-            last_error = e
-            err_text = str(e)
-            if "RESOURCE_EXHAUSTED" in err_text or "429" in err_text:
-                delay = base_delay * attempt
-                print(f"   ⏳ 쿼터 대기 {delay}s 후 재시도 ({attempt}/{max_retries})")
-                time.sleep(delay)
-                continue
-            raise
-    raise last_error
+    score += min(len(matched_keywords) * 0.6, 2.0)
+    score = max(1.0, min(10.0, score))
+    return round(score, 1)
 
 # 1. 키워드 필터링 함수
 def filter_by_keywords(news_text, keywords=KEYWORDS, exclude=EXCLUDE_KEYWORDS):
@@ -106,31 +83,28 @@ def fetch_news():
     return sample_news
 
 
-# 3. Gemini를 통한 전략적 필터링 (눈의 역할)
+# 3. 전략적 필터링 (로컬 규칙 기반)
 def analyze_importance(news_text, matched_keywords):
-    """Gemini를 사용한 뉴스 중요도 분석"""
-    try:
-        keywords_str = ", ".join(matched_keywords)
-        prompt = f"""당신은 '진안 Farmerstree' 프로젝트의 전략 AI입니다.
-다음 뉴스를 분석하여 다음 정보를 제공하세요:
-1. 프로젝트(균사체 배양육, 고급 오디오, AI 인프라)와의 관련성 점수 (1-10)
-2. 전략적 평가 (2-3줄)
-3. 액션 아이템 (있으면)
+    """로컬 규칙 기반 뉴스 중요도 분석"""
+    score = score_news(news_text, matched_keywords)
+    title = news_text[:48] + ("..." if len(news_text) > 48 else "")
 
-감지된 키워드: {keywords_str}
+    actions = []
+    lower_text = news_text.lower()
+    if any(keyword in lower_text for keyword in ["절감", "효율", "발효"]):
+        actions.append("비용 절감 PoC 우선 검토")
+    if any(keyword in lower_text for keyword in ["리스테리아", "listeria", "fda", "긴급"]):
+        actions.append("식품안전 모니터링 카드 즉시 생성")
+    if any(keyword in lower_text for keyword in ["gpu", "blackwell", "ai", "인프라"]):
+        actions.append("인프라 투자/업그레이드 영향도 계산")
+    if not actions:
+        actions.append("주간 회의 안건으로 추적")
 
-뉴스: {news_text}
-
-형식:
-[점수/10] | [제목 한줄] 
-분석: [내용]
-액션: [필요시]"""
-        
-        response_text = generate_text_with_retry(prompt)
-        return response_text if response_text else f"[분석 불가] {', '.join(matched_keywords)} 포함"
-    except Exception as e:
-        print(f"   ⚠️ Gemini API 오류: {str(e)}")
-        return f"[분석 불가] {', '.join(matched_keywords)} 포함"
+    return (
+        f"[{score}/10] | {title}\n"
+        f"분석: 감지 키워드({', '.join(matched_keywords)}) 기준으로 프로젝트 관련성이 확인되었습니다.\n"
+        f"액션: {actions[0]}"
+    )
 
 
 # 3-1. Daily Bridge 생성 함수 (새로운 기능!)
@@ -145,52 +119,36 @@ def create_daily_bridge(news_data_list):
     
     timestamp = datetime.now().strftime("%Y년 %m월 %d일 %H:%M:%S")
     
-    # TOP 3 선정을 위해 Gemini 호출
-    failed = False
-    try:
-        all_news = "\n\n".join([f"- {item['text']}" for item in news_data_list])
-        
-        prompt = f"""당신은 Wave Tree 프로젝트의 뉴스 편집자입니다.
-다음 수집된 뉴스들 중에서 진안 Farmerstree의 균사체 연구와 서버 인프라에 **직접적인 영향**을 줄 만한 
-**핵심 정보 TOP 3개**를 선정해줘.
+    ranked = sorted(
+        news_data_list,
+        key=lambda item: score_news(item.get("text", ""), item.get("keywords", [])),
+        reverse=True,
+    )[:3]
 
-선정 기준:
-1. 균사체/배양육 기술 발전도
-2. 비용 효율성 개선 여부
-3. 서버 인프라/AI 기술과의 연계성
+    sections = ["## 레이더 감지 결과 (TOP 3)", ""]
+    for index, item in enumerate(ranked, 1):
+        text = item.get("text", "")
+        keywords = item.get("keywords", [])
+        score = score_news(text, keywords)
+        action_line = "주간 트래킹 유지"
+        lower_text = text.lower()
+        if any(keyword in lower_text for keyword in ["절감", "효율", "발효"]):
+            action_line = "비용 절감 실험 항목 우선 배치"
+        elif any(keyword in lower_text for keyword in ["리스테리아", "listeria", "fda", "긴급"]):
+            action_line = "식품안전 대응 시나리오 점검"
+        elif any(keyword in lower_text for keyword in ["gpu", "blackwell", "ai", "인프라"]):
+            action_line = "서버 인프라 대응 계획 업데이트"
 
-뉴스 목록:
-{all_news}
+        title = text[:45] + ("..." if len(text) > 45 else "")
+        sections.extend([
+            f"### {index}️⃣ {title}",
+            f"- 원문: {text}",
+            f"- 영향도: {score}/10",
+            f"- 실행 인사이트: {action_line}",
+            "",
+        ])
 
-응답 형식 (마크다운):
-## 레이더 감지 결과 (TOP 3)
-
-### 1️⃣ [제목]
-- 원문: [원본 뉴스 한줄]
-- 영향도: [점수/10]
-- 실행 인사이트: [구체적 액션]
-
-### 2️⃣ [제목]
-- 원문: [원본 뉴스 한줄]
-- 영향도: [점수/10]
-- 실행 인사이트: [구체적 액션]
-
-### 3️⃣ [제목]
-- 원문: [원본 뉴스 한줄]
-- 영향도: [점수/10]
-- 실행 인사이트: [구체적 액션]"""
-        
-        bridge_content = generate_text_with_retry(prompt)
-        if not bridge_content:
-            failed = True
-    except Exception as e:
-        print(f"   ⚠️ Daily Bridge 생성 오류: {str(e)}")
-        failed = True
-        bridge_content = ""
-
-    if failed:
-        print("   ⚠️ Daily Bridge 생성 실패로 기존 파일을 유지합니다.")
-        return None
+    bridge_content = "\n".join(sections).strip()
     
     # Daily_Bridge.md 생성
     full_content = f"""# 📡 Daily Bridge - {timestamp}
@@ -417,7 +375,7 @@ def update_dashboard(news_data_list):
 
 
 # 6. 메인 실행 함수
-def process_news(use_gemini=True):
+def process_news(use_local_analysis=True):
     """뉴스 필터링 및 분석 메인 함수 + Daily_Bridge.md 생성"""
     news_list = fetch_news()
     processed_count = 0
@@ -446,15 +404,14 @@ def process_news(use_gemini=True):
         print(f"   ✓ 필터 통과!")
         print(f"   🎯 감지된 키워드: {', '.join(matched_keywords)}")
         
-        # Gemini 분석 (기본 활성화)
+        # 로컬 분석
         analysis = None
-        if use_gemini:
-            try:
-                print(f"   🔄 Gemini 분석 진행 중...")
-                analysis = analyze_importance(news, matched_keywords)
-                print(f"   ✅ 분석 완료")
-            except Exception as e:
-                print(f"   ⚠️ 분석 오류: {str(e)}")
+        try:
+            print(f"   🔄 로컬 분석 진행 중...")
+            analysis = analyze_importance(news, matched_keywords)
+            print(f"   ✅ 분석 완료")
+        except Exception as e:
+            print(f"   ⚠️ 분석 오류: {str(e)}")
         
         # Markdown 저장
         try:
@@ -525,11 +482,4 @@ def process_news(use_gemini=True):
 
 # 실행
 if __name__ == "__main__":
-    # use_gemini=True로 설정하면 Gemini API 사용 (API 키 필요)
-    # 자동 스케줄러(Daily Bridge)에서 항상 Gemini=True로 실행됨
-    import sys
-    use_gemini = True
-    if len(sys.argv) > 1 and sys.argv[1] == "--no-gemini":
-        use_gemini = False
-    
-    process_news(use_gemini=use_gemini)
+    process_news(use_local_analysis=True)

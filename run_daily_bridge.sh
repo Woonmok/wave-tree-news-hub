@@ -27,7 +27,7 @@ if [ -f "data/raw/perplexity.txt" ] && [ -s "data/raw/perplexity.txt" ]; then
     echo "✅ $(date '+%Y-%m-%d %H:%M:%S') - 백업 완료: $BACKUP_FILE"
 fi
 
-# Python 실행 (Gemini 기반 분석 활성화)
+# Python 실행 (로컬 규칙 기반 분석)
 echo "🌅 $(date '+%Y-%m-%d %H:%M:%S') - Daily Bridge 자동 생성 시작..."
 "$PYTHON_BIN" news_hub.py
 
@@ -38,9 +38,10 @@ echo "🔄 $(date '+%Y-%m-%d %H:%M:%S') - dashboard 동기화 실행..."
 # Daily Bridge Markdown -> JSON 변환
 INGEST_SCRIPT="$SCRIPT_DIR/tools/ingest_daily_bridge.js"
 if [ -f "$INGEST_SCRIPT" ]; then
-    NODE_BIN="/Users/seunghoonoh/.gemini/antigravity/scratch/node-v20/bin/node"
-    if [ ! -x "$NODE_BIN" ]; then
-        NODE_BIN="node"
+    NODE_BIN="node"
+    if ! command -v "$NODE_BIN" >/dev/null 2>&1; then
+        echo "⚠️ $(date '+%Y-%m-%d %H:%M:%S') - node 실행 파일을 찾을 수 없어 JSON 생성을 건너뜁니다"
+        exit 0
     fi
     BRIDGE_DATE=$(date '+%Y-%m-%d')
     OUT_JSON="$SCRIPT_DIR/data/daily_bridge_${BRIDGE_DATE}.json"

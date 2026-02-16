@@ -1,6 +1,20 @@
 {
-  "generated_at": "2026-02-16T03:59:24.889Z",
+  "generated_at": "2026-02-16T22:20:11.371336",
   "items": [
+    {
+      "id": "daily_bridge_2026-02-16",
+      "category": "global_biz",
+      "title": "Daily Bridge 2026-02-16",
+      "source": "Daily_Bridge",
+      "url": null,
+      "published_at": "2026-02-16T22:20:11.371326",
+      "summary": "이 파일은 VS Code와 Antigravity를 연결하는 인사이트 브릿지입니다.**",
+      "highlights": [],
+      "tags": [
+        "daily_bridge"
+      ],
+      "score": 0.95
+    },
     {
       "id": "8296cb776f4248ce518cebdfe330bd52dd38e0a9",
       "category": "listeria_free",

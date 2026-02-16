@@ -41,9 +41,9 @@ if command -v python3 &> /dev/null; then
     
     # 필요한 패키지 설치
     echo "   📦 필요한 Python 패키지 확인 중..."
-    if ! python3 -c "import google.generativeai" 2>/dev/null; then
-        echo "   ⏳ google-generativeai 설치 중..."
-        pip3 install google-generativeai
+    if ! python3 -c "import dotenv" 2>/dev/null; then
+        echo "   ⏳ python-dotenv 설치 중..."
+        pip3 install python-dotenv
     fi
 else
     echo "   ⚠️  Python3가 설치되어 있지 않습니다."
@@ -93,14 +93,8 @@ echo ""
 
 # 8. 환경 변수 확인
 echo "8️⃣  환경 변수 확인..."
-if [ -z "$GEMINI_API_KEY" ]; then
-    echo "   ⚠️  GEMINI_API_KEY가 설정되어 있지 않습니다."
-    echo "   💡 설정 방법:"
-    echo "      export GEMINI_API_KEY='your-api-key'"
-    echo "      또는 ~/.zshrc 또는 ~/.bash_profile에 추가"
-else
-    echo "   ✅ GEMINI_API_KEY 설정됨"
-fi
+echo "   ℹ️  외부 AI API 키는 더 이상 필요하지 않습니다."
+echo "   ✅ 로컬 규칙 기반 분석 모드 사용"
 echo ""
 
 # 완료 메시지

@@ -1,10 +1,23 @@
-# 📡 Daily Bridge - 2026년 02월 10일 22:35:19
+# 📡 Daily Bridge - 2026년 02월 16일 22:20:11
 
 **이 파일은 VS Code와 Antigravity를 연결하는 인사이트 브릿지입니다.**
 
-## 레이더 감지 결과 (생성 오류)
+## 레이더 감지 결과 (TOP 3)
 
-분석 중 오류 발생: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash\nPlease retry in 40.764219571s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'model': 'gemini-2.5-flash', 'location': 'global'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '40s'}]}}
+### 1️⃣ 미국 내 배양육 시장, 고비용 문제로 세포 배양 방식에서 균사체(Mycelium)...
+- 원문: 미국 내 배양육 시장, 고비용 문제로 세포 배양 방식에서 균사체(Mycelium) 기반 발효 방식으로 급격한 이동 중
+- 영향도: 8.6/10
+- 실행 인사이트: 비용 절감 실험 항목 우선 배치
+
+### 2️⃣ NVIDIA Blackwell GPU, AI 인프라 혁신 주도
+- 원문: NVIDIA Blackwell GPU, AI 인프라 혁신 주도
+- 영향도: 8.4/10
+- 실행 인사이트: 서버 인프라 대응 계획 업데이트
+
+### 3️⃣ FDA 리스테리아 긴급 알림 발표 - 냉장 식품 관련
+- 원문: FDA 리스테리아 긴급 알림 발표 - 냉장 식품 관련
+- 영향도: 7.2/10
+- 실행 인사이트: 식품안전 대응 시나리오 점검
 
 ---
 
@@ -14,4 +27,4 @@
 > 이 데이터를 바탕으로 현재 Wave Tree Project Dashboard에서 
 > 수정하거나 새로 추가해야 할 To-Do 카드 3개를 뽑아줘."
 
-생성 시각: 2026년 02월 10일 22:35:19
+생성 시각: 2026년 02월 16일 22:20:11

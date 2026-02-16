@@ -25,7 +25,7 @@ launchctl list | grep wavetree
 ### 매일 아침 자동으로 일어나는 일
 - **07:00** - LaunchAgent가 `run_daily_bridge.sh` 자동 실행
 - **뉴스 수집** - news_hub.py가 최신 뉴스 가져오기
-- **Gemini 분석** - 모든 뉴스를 자동 필터링 및 분석
+- **로컬 분석** - 규칙 기반으로 자동 필터링 및 분석
 - **Daily_Bridge.md 생성** - TOP 3 핵심 정보만 정제
 - **로그 기록** - logs/dailybridge.log에 기록
 
@@ -74,7 +74,7 @@ VS Code에서 `Daily_Bridge.md` 파일을 열고 생성된 내용 확인
 ```
 [07:00] 자동 뉴스 수집 (news_hub.py)
     ↓
-[자동] Gemini API로 필터링 + 분석
+[자동] 로컬 규칙 기반 필터링 + 분석
     ↓
 [자동] Daily_Bridge.md 생성 (TOP 3)
     ↓
@@ -130,9 +130,9 @@ VS Code에서 `Daily_Bridge.md` 파일을 열고 생성된 내용 확인
 ### 수정 필요시
 **키워드 변경**: news_hub.py의 `KEYWORDS` 섹션 수정
 **실행 시간 변경**: com.wavetree.dailybridge.plist의 `<integer>7</integer>` 수정 (0-23 시간)
-**API 키 설정**: 환경변수 `GOOGLE_API_KEY` 설정
+**분석 엔진 설정**: 로컬 규칙 기반(기본값) 사용
 
 ---
 
 생성: 2026년 2월 1일
-최종 업데이트: 2026년 2월 1일
+최종 업데이트: 2026년 2월 16일
