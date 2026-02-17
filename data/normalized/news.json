@@ -1,20 +1,6 @@
 {
-  "generated_at": "2026-02-16T22:20:11.371336",
+  "generated_at": "2026-02-17T01:10:31.731Z",
   "items": [
-    {
-      "id": "daily_bridge_2026-02-16",
-      "category": "global_biz",
-      "title": "Daily Bridge 2026-02-16",
-      "source": "Daily_Bridge",
-      "url": null,
-      "published_at": "2026-02-16T22:20:11.371326",
-      "summary": "이 파일은 VS Code와 Antigravity를 연결하는 인사이트 브릿지입니다.**",
-      "highlights": [],
-      "tags": [
-        "daily_bridge"
-      ],
-      "score": 0.95
-    },
     {
       "id": "8296cb776f4248ce518cebdfe330bd52dd38e0a9",
       "category": "listeria_free",
@@ -52,7 +38,7 @@
       "source": "EatingWell/FDA 요약",
       "url": "https://www.eatingwell.com/salmon-recall-listeria-11905912",
       "published_at": "2026-02-12T00:00:00.000Z",
-      "summary": "EatingWell은 리콜 대상이 Wellsley Farms Farm-Raised Atlantic Salmon 2lb 봉지·UPC 888670025963·로트 3896·유통기한 2026-06-07인 제품이라고 구체적으로 짚으며, 냉동 상태라도 섭취하면 안 된다고 강조함. [web:76]",
+      "summary": "EatingWell은 리콜 대상이 Wellsley Farms Farm-Raised Atlantic Salmon 2lb 봉지·UPC 888670025963·로트 3896·유통기한 2026-06-07인 제품이라고 구체적으로 짚으며, 냉동 상태라도 섭취하면 안 된다고 강조함. [web:36][web:76]",
       "highlights": [],
       "tags": [
         "salmon",
@@ -67,7 +53,7 @@
       "source": "Food Safety News/CDC",
       "url": "https://www.foodsafetynews.com/2026/02/listeria-outbreak-traced-to-pasta-meals-is-over/",
       "published_at": "2026-02-12T00:00:00.000Z",
-      "summary": "CDC는 2024년 준비식 파스타 밀과 관련된 리스테리아 집단감염 조사를 종료하며, 총 27명 감염·6명 사망 사례를 확인했고, 관련 제품은 리콜 완료·유통기한 경과로 시중 위험은 크게 줄었다고 밝혔다고 전함. [web:81][web:35]",
+      "summary": "CDC는 준비식 치킨 페투치니 알프레도 밀과 관련된 리스테리아 집단감염 조사를 종료하며, 2024년 8월 이후 27명 감염·6명 사망을 확인했고, 관련 제품은 리콜·유통기한 경과로 현재 시중 위험은 크게 줄었다고 발표함. [web:81][web:35]",
       "highlights": [],
       "tags": [
         "pasta-outbreak",
@@ -81,8 +67,8 @@
       "title": "2026년 배양육 업계, “환상은 줄고 현실적인 재정·규제 전략으로 전환”",
       "source": "Protein Production Technology",
       "url": "https://www.proteinproductiontechnology.com/post/cultivated-meat-in-2026-fewer-illusions-firmer-footing",
-      "published_at": "2026-02-12T00:00:00.000Z",
-      "summary": "PPTI는 2025년 고프로필 실패 이후 배양육 섹터가 타임라인·가설을 재조정하고, 반려동물 사료·하이브리드 제품·공유 인프라 같은 현실적 용도에 집중하며 ‘보다 단단한 기반’ 위에서 재출발하고 있다고 분석함. [web:41]",
+      "published_at": "2026-02-15T00:00:00.000Z",
+      "summary": "PPTI는 2025년 고프로필 실패 이후 배양육 섹터가 “폭발적 성장” 기대를 접고, 반려동물 사료·하이브리드 제품·공유 인프라 같은 현실적 유즈케이스에 집중하는 방향으로 재편되고 있다고 분석함. [web:41]",
       "highlights": [],
       "tags": [
         "industry-outlook",
@@ -97,7 +83,7 @@
       "source": "Campden BRI",
       "url": "https://www.campdenbri.co.uk/blogs/cultivated-meat-production.php",
       "published_at": "2026-02-10T00:00:00.000Z",
-      "summary": "Campden BRI는 배양육을 실제 상업용 공정으로 전환하기 위해 배양탱크 위생, 공정제어, HAZARD 분석, 관능평가, 규제 대응 등 식품공장 수준의 요건을 제시하며, “랩 스케일에서 공장 스케일로” 넘어가는 과제를 정리함. [web:80]",
+      "summary": "Campden BRI는 배양육을 실험실 규모에서 식품공장 수준으로 확대하기 위한 공정 제어·살균·HAZARD 분석·규제 적합성 과제를 정리하며, “현실 세계용 생산”으로 가는 단계별 로드맵을 제시함. [web:80]",
       "highlights": [],
       "tags": [
         "scale-up",
@@ -112,7 +98,7 @@
       "source": "Royal Agricultural University",
       "url": "https://www.rau.ac.uk/about-rau/news-and-events/news/uk-citizens-call-stronger-safeguards-cultivated-meat-nears",
       "published_at": "2026-02-09T00:00:00.000Z",
-      "summary": "RAU 보고서에 따르면 영국 시민들은 배양육 상용화를 앞두고 명확한 라벨링·장기 건강영향 모니터링·독립 과학 검증 등 ‘절차적 안전장치’를 강화해야 한다고 제안함. [web:78]",
+      "summary": "RAU 보고서에 따르면 영국 시민들은 배양육 상용화를 앞두고 명확한 라벨링·장기 건강영향 모니터링·독립 과학 검증 등 공공 신뢰를 위한 절차적 안전장치 강화를 요구하고 있음. [web:78]",
       "highlights": [],
       "tags": [
         "public-opinion",
@@ -127,7 +113,7 @@
       "source": "vegconomist",
       "url": "https://vegconomist.com/category/cultivated-cell-cultured-biotechnology/cultivated-meat/",
       "published_at": "2026-02-12T00:00:00.000Z",
-      "summary": "vegconomist는 호주 Vow의 배양 메추리 승인, 인디애나주의 배양육 2년 판매 모라토리엄, 싱가포르·미국 초기 상용화, 독일 MicroHarvest의 생산시설 계획 등 최근 배양육·대체단백 뉴스를 모아 제공함. [web:28]",
+      "summary": "vegconomist는 호주 Vow의 배양 메추리 승인, 인디애나주의 배양육 2년 판매 모라토리엄, 싱가포르·미국 초기 상용화, 독일 MicroHarvest의 생산시설 계획 등 최근 배양육·대체단백 뉴스를 모아 전함. [web:28]",
       "highlights": [],
       "tags": [
         "roundup",
@@ -142,7 +128,7 @@
       "source": "vegconomist/GFI India",
       "url": "https://vegconomist.com/studies-numbers/gfi-report-india-plant-based-cultivated-meat-skills/",
       "published_at": "2026-02-12T00:00:00.000Z",
-      "summary": "GFI India는 공정·규제·제품 개발 인력 부족이 심각하다며, 공공 교육·훈련 인프라가 뒷받침되지 않으면 인도 대체단백·배양육 산업이 성장 정체에 직면할 수 있다고 경고함. [web:63]",
+      "summary": "GFI India는 공정·규제·제품 개발 인력 부족이 심각하다며, 교육·훈련 인프라가 뒷받침되지 않으면 인도 대체단백·배양육 산업 성장에 심각한 병목이 생길 수 있다고 경고함. [web:63]",
       "highlights": [],
       "tags": [
         "gfi",
@@ -226,13 +212,13 @@
       "score": 0.72
     },
     {
-      "id": "97d941020a1c458e4972f599d8ec443a8aed584c",
+      "id": "300ceb68bc77b2e37ace16aa3f4a781f3fab0fd4",
       "category": "computer_ai",
-      "title": "OpenAI, 개발자용 코딩 어시스턴트 ‘Codex-Spark’ 공개…Cerebras 전용 칩에서 구동",
-      "source": "TechBuzz AI",
-      "url": "https://www.techbuzz.ai/articles/openai-partners-with-cerebras-on-new-codex-spark-chip",
+      "title": "OpenAI unveils first model running on Cerebras silicon",
+      "source": "The Register",
+      "url": "https://www.theregister.com/2026/02/12/openai_model_cerebras/",
       "published_at": "2026-02-11T00:00:00.000Z",
-      "summary": "OpenAI는 개발자용 코딩 도우미 Codex-Spark를 Cerebras의 웨이퍼 스케일 칩 전용으로 구동하는 파트너십을 발표하며, GPU 의존도를 줄이고 대규모 코드 생성 워크로드의 지연·비용을 낮추려는 전략이라고 설명함. [web:83]",
+      "summary": "OpenAI는 Cerebras의 waferscale CS-3 가속기에서 동작하는 첫 모델 GPT-5.3-Codex-Spark를 공개했으며, 초당 1,000 토큰 이상 응답을 목표로 하는 경량 코딩 어시스턴트라고 설명함. [web:86]",
       "highlights": [],
       "tags": [
         "openai",
@@ -241,19 +227,34 @@
       "score": 0.92
     },
     {
-      "id": "1bc90480cc4e9bb1d5f1d11732f2a0673434cfb0",
+      "id": "dae299989ec4a6649d3b2f3ecabb338bd497dd29",
       "category": "computer_ai",
-      "title": "OpenAI, Cerebras 칩 도입해 ‘경량 GPT-5.3-Codex-Spark’ 공개…엔비디아 의존도 시험대",
-      "source": "Chosun Biz(영문)",
-      "url": "https://biz.chosun.com/en/en-it/2026/02/13/2KGBNLKGPJHHBJ5QAD7TLVATIM/",
-      "published_at": "2026-02-12T00:00:00.000Z",
-      "summary": "조선비즈는 OpenAI가 Cerebras 칩 기반 경량 코딩 모델 GPT-5.3-Codex-Spark를 선보이며, 2028년까지 750MW 규모 컴퓨팅 파워 공급 계약(약 100억 달러 규모 추정)을 체결해 엔비디아 단일 벤더 구조에서 벗어나려 한다고 전함. [web:84]",
+      "title": "OpenAI, Cerebras와 750MW 규모 AI 컴퓨팅 계약…규모 100억 달러 이상",
+      "source": "Bloomberg",
+      "url": "https://www.bloomberg.com/news/articles/2026-01-14/openai-forges-10-billion-deal-with-cerebras-for-ai-computing",
+      "published_at": "2026-01-14T00:00:00.000Z",
+      "summary": "블룸버그는 OpenAI가 2028년까지 단계적으로 Cerebras 인프라 750MW를 활용하기로 합의했으며, 계약 규모는 100억 달러 이상으로 추정된다고 보도함. [web:87]",
       "highlights": [],
       "tags": [
-        "gpt-5.3",
-        "cerebras"
+        "cerebras",
+        "deal"
       ],
       "score": 0.88
+    },
+    {
+      "id": "2860d50efecb086dc4c2b2848b485cdcbabf8cf1",
+      "category": "computer_ai",
+      "title": "OpenAI to buy compute capacity from Cerebras in latest AI deal",
+      "source": "Reuters",
+      "url": "https://www.reuters.com/technology/openai-buy-compute-capacity-startup-cerebras-around-10-billion-wsj-reports-2026-01-14/",
+      "published_at": "2026-01-14T00:00:00.000Z",
+      "summary": "Reuters는 OpenAI가 향후 3년 동안 Cerebras로부터 최대 750MW의 컴퓨팅 파워를 구매하는 계약을 체결했으며, 와퍼스케일 엔진을 활용해 챗봇·대형 모델 성능을 높이려 한다고 전함. [web:88]",
+      "highlights": [],
+      "tags": [
+        "cerebras",
+        "capacity"
+      ],
+      "score": 0.86
     },
     {
       "id": "95ceb5229b111d9ffea80c99e09eeba739219708",
@@ -262,13 +263,13 @@
       "source": "Economic Times",
       "url": "https://economictimes.com/us/science-tech/openai-plans-late-2026-launch-of-first-ai-hardware-device-designed-with-jony-ive/articleshow/107014602.cms",
       "published_at": "2026-01-19T00:00:00.000Z",
-      "summary": "Axios House 다보스에서 언급된 바에 따르면 OpenAI는 조니 아이브와 설계한 첫 컨슈머 AI 디바이스를 2026년 하반기 공개·출시할 계획이며, 화면이 없거나 비전통적 폼팩터일 가능성이 크다고 보도됨. [web:59]",
+      "summary": "이코노믹타임스는 OpenAI가 조니 아이브와 설계한 첫 컨슈머 AI 디바이스를 2026년 하반기 공개·출시할 계획이며, 스마트폰을 보완하는 비전통적 폼팩터가 될 가능성이 크다고 전함. [web:59]",
       "highlights": [],
       "tags": [
         "hardware",
         "jony-ive"
       ],
-      "score": 0.84
+      "score": 0.82
     },
     {
       "id": "96621d5878b1aeef22ec4b60bc2e432212d0cccd",
@@ -282,21 +283,6 @@
       "tags": [
         "openai",
         "ai-chip"
-      ],
-      "score": 0.82
-    },
-    {
-      "id": "10291378f3766212398e1558e0d8afa75ec0d7bc",
-      "category": "computer_ai",
-      "title": "OpenAI to Build First AI Chip with Broadcom in 2026",
-      "source": "Convergence Now",
-      "url": "https://convergence-now.com/embedded-tech/openai-to-build-first-ai-chip-with-broadcom-in-2026-119690/",
-      "published_at": "2025-09-15T00:00:00.000Z",
-      "summary": "Convergence Now는 OpenAI–Broadcom 협력이 AI 붐 속 ‘자체 실리콘’ 경쟁을 가속하며, 데이터센터용 전용 칩을 통해 성능·비용·공급 안정성을 동시에 확보하려는 전략이라고 분석함. [web:77]",
-      "highlights": [],
-      "tags": [
-        "custom-silicon",
-        "strategy"
       ],
       "score": 0.8
     },
