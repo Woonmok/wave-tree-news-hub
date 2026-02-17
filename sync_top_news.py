@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# sync_top_news.py - Top 3 뉴스를 The Wave Tree Project에 동기화
+# sync_top_news.py - Top 2 뉴스를 The Wave Tree Project에 동기화
 
 import json
 import os
@@ -22,6 +22,19 @@ def _parse_generated_at(data):
         return None
     try:
         parsed = datetime.fromisoformat(raw.replace("Z", "+00:00"))
+        if parsed.tzinfo is None:
+            parsed = parsed.replace(tzinfo=UTC)
+        return parsed
+    except Exception:
+        return None
+
+
+def _parse_published_at(item):
+    raw = item.get("published_at")
+    if not raw:
+        return None
+    try:
+        parsed = datetime.fromisoformat(str(raw).replace("Z", "+00:00"))
         if parsed.tzinfo is None:
             parsed = parsed.replace(tzinfo=UTC)
         return parsed
@@ -73,7 +86,7 @@ def resolve_news_json_path():
     return best_path
 
 def load_top_news():
-    """news.json에서 최신 2개 뉴스 로드 (published_at 기준)"""
+    """news.json에서 오늘자 우선 Top 2 뉴스 로드 (없으면 최신순 fallback)"""
     try:
         news_json_path = resolve_news_json_path()
         print(f"   📥 뉴스 소스: {news_json_path}")
@@ -81,13 +94,23 @@ def load_top_news():
             data = json.load(f)
         
         items = data.get("items", [])
+
+        generated_at = _parse_generated_at(data)
+        if generated_at:
+            today_date = generated_at.astimezone(UTC).date()
+        else:
+            today_date = datetime.now(UTC).date()
+
+        today_items = []
+        for item in items:
+            published = _parse_published_at(item)
+            if published and published.astimezone(UTC).date() == today_date:
+                today_items.append(item)
+
+        target_items = today_items if today_items else items
         
         # 최신순 (published_at 기준, 없으면 빈 문자열)
-        sorted_items = sorted(
-            items,
-            key=lambda x: (x.get("published_at") or ""),
-            reverse=True
-        )
+        sorted_items = sorted(target_items, key=lambda x: (x.get("published_at") or ""), reverse=True)
         
         return sorted_items[:2]
     except Exception as e:
