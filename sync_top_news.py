@@ -4,6 +4,8 @@
 import json
 import os
 import re
+import urllib.parse
+import urllib.request
 from datetime import datetime, UTC
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -14,6 +16,83 @@ TARGET_HTML = os.getenv(
     "TARGET_HTML_PATH",
     os.path.join(WORKSPACE_ROOT, "woonmok.github.io", "index.html"),
 )
+
+
+def _read_env_file(path):
+    values = {}
+    if not path or not os.path.exists(path):
+        return values
+    try:
+        with open(path, "r", encoding="utf-8") as f:
+            for raw in f:
+                line = raw.strip()
+                if not line or line.startswith("#") or "=" not in line:
+                    continue
+                key, val = line.split("=", 1)
+                key = key.strip()
+                val = val.strip().strip('"').strip("'")
+                if key:
+                    values[key] = val
+    except Exception:
+        return {}
+    return values
+
+
+def _get_telegram_credentials():
+    token = os.getenv("TELEGRAM_BOT_TOKEN", "").strip()
+    chat_id = os.getenv("TELEGRAM_CHAT_ID", "").strip()
+    if token and chat_id:
+        return token, chat_id
+
+    env_candidates = [
+        os.path.join(BASE_DIR, ".env"),
+        os.path.join(WORKSPACE_ROOT, "woonmok.github.io", ".env"),
+    ]
+    merged = {}
+    for p in env_candidates:
+        merged.update(_read_env_file(p))
+
+    token = token or str(merged.get("TELEGRAM_BOT_TOKEN", "")).strip()
+    chat_id = chat_id or str(merged.get("TELEGRAM_CHAT_ID", "")).strip()
+    return token, chat_id
+
+
+def send_sync_notification(top_news, html_success, dash_success):
+    token, chat_id = _get_telegram_credentials()
+    if not token or not chat_id:
+        print("ℹ️ Telegram 알림 건너뜀: TELEGRAM_BOT_TOKEN/TELEGRAM_CHAT_ID 없음")
+        return False
+
+    status = "성공" if (html_success and dash_success) else "부분 성공"
+    lines = [
+        f"✅ Intelligence Hub Top2 동기화 {status}",
+        f"- 시각: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}",
+        f"- index.html: {'OK' if html_success else 'FAIL'}",
+        f"- dashboard_data.json: {'OK' if dash_success else 'FAIL'}",
+    ]
+
+    if top_news:
+        lines.append("- 오늘 Top2")
+        for idx, item in enumerate(top_news[:2], 1):
+            category = item.get("category", "-")
+            title = str(item.get("title", "")).strip()
+            if len(title) > 80:
+                title = title[:80] + "..."
+            lines.append(f"  {idx}) [{category}] {title}")
+
+    msg = "\n".join(lines)
+    payload = urllib.parse.urlencode({"chat_id": chat_id, "text": msg}).encode("utf-8")
+    url = f"https://api.telegram.org/bot{token}/sendMessage"
+
+    try:
+        req = urllib.request.Request(url, data=payload, method="POST")
+        with urllib.request.urlopen(req, timeout=10) as resp:
+            if 200 <= resp.status < 300:
+                print("✅ Telegram Top2 동기화 알림 전송 완료")
+                return True
+    except Exception as e:
+        print(f"⚠️ Telegram 알림 전송 실패: {e}")
+    return False
 
 
 def _parse_generated_at(data):
@@ -257,6 +336,8 @@ def sync_to_html():
         print("   ⚠️ dashboard_data.json만 동기화, index.html 실패")
     else:
         print("   ⚠️ 동기화 모두 실패")
+
+    send_sync_notification(top_news, success, dash_success)
     
     return success
 
@@ -285,6 +366,8 @@ def main():
         print("⚠️ dashboard_data.json만 동기화, index.html 실패")
     else:
         print("⚠️ 동기화 모두 실패")
+
+    send_sync_notification(top_news, html_success, dash_success)
 
 
 if __name__ == "__main__":
