@@ -186,7 +186,11 @@ def load_top_news():
             if published and published.astimezone(timezone.utc).date() == today_date:
                 today_items.append(item)
 
-        target_items = today_items if today_items else items
+        # 오늘 뉴스가 2개 미만이면 전체 뉴스에서 최신순으로 가져오기
+        if len(today_items) < 2:
+            target_items = items
+        else:
+            target_items = today_items
         
         # 최신순 (published_at 기준, 없으면 빈 문자열)
         sorted_items = sorted(target_items, key=lambda x: (x.get("published_at") or ""), reverse=True)
