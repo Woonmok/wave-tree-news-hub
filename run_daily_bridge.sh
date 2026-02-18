@@ -2,8 +2,97 @@
 # run_daily_bridge.sh
 # 매일 아침 뉴스 수집 및 Daily_Bridge.md 자동 생성 스크립트
 
+set -Eeuo pipefail
+
 SCRIPT_DIR=$(cd "$(dirname "$0")" && pwd)
 cd "$SCRIPT_DIR"
+
+PATH="/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:${PATH:-}"
+
+LOG_DIR="$SCRIPT_DIR/logs"
+LOCK_DIR="$SCRIPT_DIR/.locks"
+LOCK_FILE="$LOCK_DIR/run_daily_bridge.lock"
+RUN_DATE=$(date '+%Y-%m-%d')
+LOG_FILE="$LOG_DIR/dailybridge_${RUN_DATE}.log"
+ERR_LOG_FILE="$LOG_DIR/dailybridge_error_${RUN_DATE}.log"
+
+mkdir -p "$LOG_DIR" "$LOCK_DIR"
+
+if [ -f "$LOCK_FILE" ]; then
+    OLD_PID=$(cat "$LOCK_FILE" 2>/dev/null || true)
+    if [ -n "$OLD_PID" ] && kill -0 "$OLD_PID" 2>/dev/null; then
+        echo "⛔ $(date '+%Y-%m-%d %H:%M:%S') - 이미 실행 중(PID: $OLD_PID). 중복 실행 차단"
+        exit 0
+    fi
+    rm -f "$LOCK_FILE"
+fi
+
+echo $$ > "$LOCK_FILE"
+
+exec > >(tee -a "$LOG_FILE") 2> >(tee -a "$ERR_LOG_FILE" >&2)
+
+SUCCESS=0
+
+read_env_value() {
+    local key="$1"
+    local file="$2"
+    [ -f "$file" ] || return 1
+    grep -E "^${key}=" "$file" | tail -n 1 | cut -d '=' -f2- | sed -e 's/^"//' -e 's/"$//' -e "s/^'//" -e "s/'$//"
+}
+
+get_telegram_credentials() {
+    local token="${TELEGRAM_BOT_TOKEN:-}"
+    local chat_id="${TELEGRAM_CHAT_ID:-}"
+
+    if [ -z "$token" ] || [ -z "$chat_id" ]; then
+        token="${token:-$(read_env_value TELEGRAM_BOT_TOKEN "$SCRIPT_DIR/.env" || true)}"
+        chat_id="${chat_id:-$(read_env_value TELEGRAM_CHAT_ID "$SCRIPT_DIR/.env" || true)}"
+    fi
+
+    if [ -z "$token" ] || [ -z "$chat_id" ]; then
+        token="${token:-$(read_env_value TELEGRAM_BOT_TOKEN "$SCRIPT_DIR/../woonmok.github.io/.env" || true)}"
+        chat_id="${chat_id:-$(read_env_value TELEGRAM_CHAT_ID "$SCRIPT_DIR/../woonmok.github.io/.env" || true)}"
+    fi
+
+    echo "$token|$chat_id"
+}
+
+send_telegram_failure() {
+    local reason="$1"
+    local creds
+    creds=$(get_telegram_credentials)
+    local token="${creds%%|*}"
+    local chat_id="${creds##*|}"
+
+    if [ -z "$token" ] || [ -z "$chat_id" ]; then
+        echo "ℹ️ $(date '+%Y-%m-%d %H:%M:%S') - Telegram 알림 건너뜀: TELEGRAM_BOT_TOKEN/TELEGRAM_CHAT_ID 없음"
+        return 0
+    fi
+
+    local text
+    text="❌ Daily Bridge 실패%0A- 시각: $(date '+%Y-%m-%d %H:%M:%S')%0A- 호스트: $(hostname)%0A- 원인: ${reason}%0A- 로그: ${LOG_FILE}"
+    curl -fsS -X POST "https://api.telegram.org/bot${token}/sendMessage" \
+        -d "chat_id=${chat_id}" \
+        -d "text=${text}" >/dev/null || true
+}
+
+cleanup() {
+    local exit_code=$?
+    if [ "$exit_code" -ne 0 ] || [ "$SUCCESS" -ne 1 ]; then
+        echo "❌ $(date '+%Y-%m-%d %H:%M:%S') - 비정상 종료 (exit: $exit_code)"
+        send_telegram_failure "exit_code_${exit_code}"
+    fi
+    rm -f "$LOCK_FILE"
+}
+
+trap cleanup EXIT INT TERM
+
+for cmd in cp mkdir date tee; do
+    if ! command -v "$cmd" >/dev/null 2>&1; then
+        echo "❌ $(date '+%Y-%m-%d %H:%M:%S') - 필수 명령어 누락: $cmd"
+        exit 1
+    fi
+done
 
 PYTHON_BIN="python3"
 if [ -f "$SCRIPT_DIR/.venv312/bin/activate" ]; then
@@ -55,5 +144,6 @@ fi
 > data/raw/perplexity.txt
 echo "✅ $(date '+%Y-%m-%d %H:%M:%S') - perplexity.txt 리셋 완료"
 
+SUCCESS=1
 echo "✅ $(date '+%Y-%m-%d %H:%M:%S') - 완료!"
 echo "📄 Daily_Bridge.md를 확인하고 Antigravity에 복사하세요."
