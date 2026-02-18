@@ -94,14 +94,15 @@ for cmd in cp mkdir date tee; do
     fi
 done
 
+# 시스템 python3 사용 (가상환경 비활성화)
 PYTHON_BIN="python3"
-if [ -f "$SCRIPT_DIR/.venv312/bin/activate" ]; then
-    source "$SCRIPT_DIR/.venv312/bin/activate"
-    PYTHON_BIN="$SCRIPT_DIR/.venv312/bin/python"
-elif [ -f "$SCRIPT_DIR/.venv/bin/activate" ]; then
-    source "$SCRIPT_DIR/.venv/bin/activate"
-    PYTHON_BIN="$SCRIPT_DIR/.venv/bin/python"
-fi
+# if [ -f "$SCRIPT_DIR/.venv312/bin/activate" ]; then
+#     source "$SCRIPT_DIR/.venv312/bin/activate"
+#     PYTHON_BIN="$SCRIPT_DIR/.venv312/bin/python"
+# elif [ -f "$SCRIPT_DIR/.venv/bin/activate" ]; then
+#     source "$SCRIPT_DIR/.venv/bin/activate"
+#     PYTHON_BIN="$SCRIPT_DIR/.venv/bin/python"
+# fi
 
 # 백업: perplexity.txt를 날짜별로 저장
 BACKUP_DIR="data/raw/backups"

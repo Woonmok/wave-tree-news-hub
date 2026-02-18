@@ -6,7 +6,7 @@ import os
 import re
 import urllib.parse
 import urllib.request
-from datetime import datetime, UTC
+from datetime import datetime, timezone
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 WORKSPACE_ROOT = os.path.abspath(os.path.join(BASE_DIR, ".."))
@@ -102,7 +102,7 @@ def _parse_generated_at(data):
     try:
         parsed = datetime.fromisoformat(raw.replace("Z", "+00:00"))
         if parsed.tzinfo is None:
-            parsed = parsed.replace(tzinfo=UTC)
+            parsed = parsed.replace(tzinfo=timezone.utc)
         return parsed
     except Exception:
         return None
@@ -115,7 +115,7 @@ def _parse_published_at(item):
     try:
         parsed = datetime.fromisoformat(str(raw).replace("Z", "+00:00"))
         if parsed.tzinfo is None:
-            parsed = parsed.replace(tzinfo=UTC)
+            parsed = parsed.replace(tzinfo=timezone.utc)
         return parsed
     except Exception:
         return None
