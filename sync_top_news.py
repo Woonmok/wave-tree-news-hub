@@ -144,7 +144,7 @@ def resolve_news_json_path():
         return DEFAULT_NEWS_JSON
 
     best_path = existing[0]
-    best_time = datetime.min.replace(tzinfo=UTC)
+    best_time = datetime.min.replace(tzinfo=timezone.utc)
 
     for path in existing:
         generated_at = None
@@ -156,7 +156,7 @@ def resolve_news_json_path():
             generated_at = None
 
         if generated_at is None:
-            generated_at = datetime.fromtimestamp(os.path.getmtime(path), tz=UTC)
+            generated_at = datetime.fromtimestamp(os.path.getmtime(path), tz=timezone.utc)
 
         if generated_at > best_time:
             best_time = generated_at
@@ -176,14 +176,14 @@ def load_top_news():
 
         generated_at = _parse_generated_at(data)
         if generated_at:
-            today_date = generated_at.astimezone(UTC).date()
+            today_date = generated_at.astimezone(timezone.utc).date()
         else:
-            today_date = datetime.now(UTC).date()
+            today_date = datetime.now(timezone.utc).date()
 
         today_items = []
         for item in items:
             published = _parse_published_at(item)
-            if published and published.astimezone(UTC).date() == today_date:
+            if published and published.astimezone(timezone.utc).date() == today_date:
                 today_items.append(item)
 
         target_items = today_items if today_items else items
@@ -300,7 +300,7 @@ def update_dashboard_json(top_news):
             }
             for n in top_news
         ]
-        dashboard["last_updated"] = datetime.now(UTC).strftime("%Y-%m-%d %H:%M:%S")
+        dashboard["last_updated"] = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%S")
 
         with open(DASHBOARD_JSON, "w", encoding="utf-8") as f:
             json.dump(dashboard, f, ensure_ascii=False, indent=2)
