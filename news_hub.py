@@ -34,6 +34,14 @@ EXCLUDE_KEYWORDS = [
     "광고", "스폰서", "sponsored", "promo", "affiliate"
 ]
 
+CATEGORY_RULES = {
+    "listeria_free": ["리스테리아", "listeria", "fda", "긴급", "식품안전"],
+    "cultured_meat": ["배양육", "cultured meat", "균사체", "mycelium", "fermentation", "발효", "cell-based"],
+    "high_end_audio": ["고급 오디오", "하이엔드", "dsd", "audio", "오디오"],
+    "computer_ai": ["ai", "gpu", "blackwell", "computer", "인프라"],
+    "global_biz": ["규제", "시장", "정책", "관세", "수출", "비즈니스", "투자", "글로벌", "market", "regulation", "policy", "trade", "economy", "approval"],
+}
+
 
 def score_news(news_text, matched_keywords):
     """로컬 점수 계산"""
@@ -48,6 +56,20 @@ def score_news(news_text, matched_keywords):
     score += min(len(matched_keywords) * 0.6, 2.0)
     score = max(1.0, min(10.0, score))
     return round(score, 1)
+
+
+def classify_news_category(news_text, matched_keywords=None):
+    matched_keywords = matched_keywords or []
+    probe = f"{news_text} {' '.join(matched_keywords)}".lower()
+
+    for category in ["listeria_free", "cultured_meat", "high_end_audio", "computer_ai"]:
+        if any(needle.lower() in probe for needle in CATEGORY_RULES[category]):
+            return category
+
+    if any(needle.lower() in probe for needle in CATEGORY_RULES["global_biz"]):
+        return "global_biz"
+
+    return "global_biz"
 
 # 1. 키워드 필터링 함수
 def filter_by_keywords(news_text, keywords=KEYWORDS, exclude=EXCLUDE_KEYWORDS):
@@ -120,22 +142,17 @@ def create_daily_bridge(news_data_list):
     timestamp = datetime.now().strftime("%Y년 %m월 %d일 %H:%M:%S")
     
     chapter_defs = [
-        ("listeria_free", "리스테리아/식품안전", ["리스테리아", "listeria", "fda", "긴급", "식품안전"]),
-        ("cultured_meat", "배양육/균사체", ["배양육", "cultured meat", "균사체", "mycelium", "fermentation", "발효", "cell-based"]),
-        ("high_end_audio", "하이엔드 오디오", ["고급 오디오", "하이엔드", "dsd", "audio", "오디오"]),
-        ("computer_ai", "컴퓨터/AI", ["ai", "gpu", "blackwell", "computer", "인프라"]),
-        ("global_biz", "글로벌 비즈니스/규제", ["규제", "시장", "정책", "관세", "수출", "비즈니스", "투자", "글로벌", "market", "regulation", "policy", "trade", "economy", "approval"]),
+        ("listeria_free", "리스테리아/식품안전", CATEGORY_RULES["listeria_free"]),
+        ("cultured_meat", "배양육/균사체", CATEGORY_RULES["cultured_meat"]),
+        ("high_end_audio", "하이엔드 오디오", CATEGORY_RULES["high_end_audio"]),
+        ("computer_ai", "컴퓨터/AI", CATEGORY_RULES["computer_ai"]),
+        ("global_biz", "글로벌 비즈니스/규제", CATEGORY_RULES["global_biz"]),
     ]
 
     def classify_category(item):
         text = item.get("text", "")
         keywords = item.get("keywords", [])
-        probe = f"{text} {' '.join(keywords)}".lower()
-
-        for category, _, needles in chapter_defs[:-1]:
-            if any(needle.lower() in probe for needle in needles):
-                return category
-        return "global_biz"
+        return classify_news_category(text, keywords)
 
     def has_global_signal(item):
         text = item.get("text", "")
@@ -269,7 +286,9 @@ def append_daily_bridge_to_news_json(bridge_path, category="global_biz"):
     bullets = []
     for line in content.splitlines():
         text = line.strip()
-        if text.startswith("*"):
+        if text.startswith("- 원문:") or text.startswith("- 실행 인사이트:"):
+            bullets.append(text.split(":", 1)[1].strip())
+        elif text.startswith("*"):
             bullets.append(text.lstrip("* ").strip())
         if len(bullets) >= 3:
             break
@@ -278,6 +297,7 @@ def append_daily_bridge_to_news_json(bridge_path, category="global_biz"):
     if not summary:
         summary = content.replace("\n", " ")
     summary = " ".join(summary.split()).strip()
+    summary = summary.replace("**", "")
     summary = summary[:180]
 
     try:
@@ -316,6 +336,68 @@ def append_daily_bridge_to_news_json(bridge_path, category="global_biz"):
         return True
     except Exception as e:
         print(f"   ⚠️ news.json 추가 실패: {str(e)}")
+        return False
+
+
+def save_processed_news_to_normalized_json(news_data_list):
+    news_json_path = os.path.join(BASE_DIR, "data", "normalized", "news.json")
+    now = datetime.now()
+    today_prefix = now.strftime("%Y-%m-%d")
+
+    normalized_items = []
+    for index, item in enumerate(news_data_list, 1):
+        text = item.get("text", "").strip()
+        if not text:
+            continue
+
+        keywords = item.get("keywords", [])
+        category = item.get("category") or classify_news_category(text, keywords)
+        score10 = score_news(text, keywords)
+        summary = item.get("analysis", "")
+        if "\n" in summary:
+            summary = summary.split("\n", 1)[1].strip()
+        if not summary:
+            summary = text
+
+        normalized_items.append({
+            "id": f"radar_{today_prefix}_{index:02d}",
+            "category": category,
+            "title": text[:100],
+            "source": "LocalRadar",
+            "url": None,
+            "published_at": now.isoformat(),
+            "summary": summary[:180],
+            "highlights": [],
+            "tags": [str(kw).lower().replace(" ", "_") for kw in keywords[:6]],
+            "score": round(score10 / 10.0, 2),
+        })
+
+    try:
+        if os.path.exists(news_json_path):
+            with open(news_json_path, "r", encoding="utf-8") as f:
+                data = json.load(f)
+        else:
+            data = {"generated_at": now.isoformat(), "items": []}
+
+        preserved = []
+        for existing in data.get("items", []):
+            source = str(existing.get("source", ""))
+            published_at = str(existing.get("published_at", ""))
+            if source == "LocalRadar" and published_at.startswith(today_prefix):
+                continue
+            preserved.append(existing)
+
+        data["generated_at"] = now.isoformat()
+        data["items"] = normalized_items + preserved
+
+        os.makedirs(os.path.dirname(news_json_path), exist_ok=True)
+        with open(news_json_path, "w", encoding="utf-8") as f:
+            json.dump(data, f, ensure_ascii=False, indent=2)
+
+        print(f"   ✅ normalized/news.json 갱신 완료: {len(normalized_items)}개")
+        return True
+    except Exception as e:
+        print(f"   ⚠️ normalized/news.json 갱신 실패: {str(e)}")
         return False
 
 
@@ -499,7 +581,8 @@ def process_news(use_local_analysis=True):
         processed_news_data.append({
             "text": news,
             "keywords": matched_keywords,
-            "analysis": analysis
+            "analysis": analysis,
+            "category": classify_news_category(news, matched_keywords),
         })
         
         processed_count += 1
@@ -509,6 +592,9 @@ def process_news(use_local_analysis=True):
     print("🌉 Daily Bridge 생성 중...")
     print("=" * 60)
     bridge_path = create_daily_bridge(processed_news_data)
+
+    # 카테고리별 news.json 갱신 (News Hub 렌더링 소스)
+    save_processed_news_to_normalized_json(processed_news_data)
 
     # Daily_Bridge.md -> news.json append
     if bridge_path:
