@@ -2,7 +2,7 @@
   "schema_version": "1.0",
   "kind": "daily_bridge",
   "date": "2026-02-19",
-  "generated_at": "2026-02-19T02:52:44.361Z",
+  "generated_at": "2026-02-19T02:54:14.933Z",
   "language": "ko-KR",
   "owner": "운목(Woonmok)",
   "sections": [
@@ -82,6 +82,14 @@
         {
           "title": "미국 내 배양육 시장, 고비용 문제로 세포 배양 방식에서 균사체(Mycelium)...",
           "summary": "미국 내 배양육 시장, 고비용 문제로 세포 배양 방식에서 균사체(Mycelium) 기반 발효 방식으로 급격한 이동 중 비용 절감 실험 항목 우선 배치",
+          "keywords": [],
+          "importance": 2,
+          "source": null,
+          "url": null
+        },
+        {
+          "title": "NVIDIA Blackwell GPU, AI 인프라 혁신 주도",
+          "summary": "NVIDIA Blackwell GPU, AI 인프라 혁신 주도 서버 인프라 대응 계획 업데이트",
           "keywords": [],
           "importance": 2,
           "source": null,

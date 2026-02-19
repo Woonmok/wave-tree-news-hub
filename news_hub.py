@@ -164,13 +164,17 @@ def create_daily_bridge(news_data_list):
             reverse=True,
         )[:3]
 
-    if not buckets["global_biz"] and news_data_list:
-        fallback = sorted(
+    min_global_items = 2
+    if len(buckets["global_biz"]) < min_global_items and news_data_list:
+        ranked_all = sorted(
             news_data_list,
             key=lambda item: score_news(item.get("text", ""), item.get("keywords", [])),
             reverse=True,
-        )[:2]
-        buckets["global_biz"] = list(fallback)
+        )
+        for candidate in ranked_all:
+            add_unique(buckets["global_biz"], candidate)
+            if len(buckets["global_biz"]) >= min_global_items:
+                break
 
     sections = ["## 레이더 감지 결과 (5챕터)", ""]
     for chapter_index, (category, chapter_title, _) in enumerate(chapter_defs, 1):
