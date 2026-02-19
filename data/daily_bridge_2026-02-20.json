@@ -1,0 +1,101 @@
+{
+  "schema_version": "1.0",
+  "kind": "daily_bridge",
+  "date": "2026-02-20",
+  "generated_at": "2026-02-19T18:48:38.806Z",
+  "language": "ko-KR",
+  "owner": "운목(Woonmok)",
+  "sections": [
+    {
+      "id": "S1",
+      "tag": "listeria_free",
+      "title": "리스테리아/식품안전",
+      "items": [
+        {
+          "title": "FDA 리스테리아 긴급 알림 발표 - 냉장 식품 관련",
+          "summary": "FDA 리스테리아 긴급 알림 발표 - 냉장 식품 관련 식품안전 대응 시나리오 점검",
+          "keywords": [],
+          "importance": 4,
+          "source": null,
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "S2",
+      "tag": "cultured_meat",
+      "title": "배양육/균사체",
+      "items": [
+        {
+          "title": "미국 내 배양육 시장, 고비용 문제로 세포 배양 방식에서 균사체(Mycelium)...",
+          "summary": "미국 내 배양육 시장, 고비용 문제로 세포 배양 방식에서 균사체(Mycelium) 기반 발효 방식으로 급격한 이동 중 비용 절감 실험 항목 우선 배치",
+          "keywords": [],
+          "importance": 2,
+          "source": null,
+          "url": null
+        },
+        {
+          "title": "2026년 푸드테크 트렌드: 'Precision Fermentation'과 버섯 ...",
+          "summary": "2026년 푸드테크 트렌드: 'Precision Fermentation'과 버섯 균사체를 결합한 하이브리드 단백질 부상 주간 트래킹 유지",
+          "keywords": [],
+          "importance": 2,
+          "source": null,
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "S3",
+      "tag": "high_end_audio",
+      "title": "하이엔드 오디오",
+      "items": [
+        {
+          "title": "고급 오디오 기술 최신 동향 - DSD 포맷 주류화",
+          "summary": "고급 오디오 기술 최신 동향 - DSD 포맷 주류화 주간 트래킹 유지",
+          "keywords": [],
+          "importance": 2,
+          "source": null,
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "S4",
+      "tag": "computer_ai",
+      "title": "컴퓨터/AI",
+      "items": [
+        {
+          "title": "NVIDIA Blackwell GPU, AI 인프라 혁신 주도",
+          "summary": "NVIDIA Blackwell GPU, AI 인프라 혁신 주도 서버 인프라 대응 계획 업데이트",
+          "keywords": [],
+          "importance": 2,
+          "source": null,
+          "url": null
+        }
+      ]
+    },
+    {
+      "id": "S5",
+      "tag": "global_biz",
+      "title": "글로벌 비즈니스/규제",
+      "items": [
+        {
+          "title": "미국 내 배양육 시장, 고비용 문제로 세포 배양 방식에서 균사체(Mycelium)...",
+          "summary": "미국 내 배양육 시장, 고비용 문제로 세포 배양 방식에서 균사체(Mycelium) 기반 발효 방식으로 급격한 이동 중 비용 절감 실험 항목 우선 배치",
+          "keywords": [],
+          "importance": 2,
+          "source": null,
+          "url": null
+        },
+        {
+          "title": "NVIDIA Blackwell GPU, AI 인프라 혁신 주도",
+          "summary": "NVIDIA Blackwell GPU, AI 인프라 혁신 주도 서버 인프라 대응 계획 업데이트",
+          "keywords": [],
+          "importance": 2,
+          "source": null,
+          "url": null
+        }
+      ]
+    }
+  ]
+}
