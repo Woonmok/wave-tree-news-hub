@@ -124,7 +124,7 @@ def create_daily_bridge(news_data_list):
         ("cultured_meat", "배양육/균사체", ["배양육", "cultured meat", "균사체", "mycelium", "fermentation", "발효", "cell-based"]),
         ("high_end_audio", "하이엔드 오디오", ["고급 오디오", "하이엔드", "dsd", "audio", "오디오"]),
         ("computer_ai", "컴퓨터/AI", ["ai", "gpu", "blackwell", "computer", "인프라"]),
-        ("global_biz", "글로벌 비즈니스/규제", ["규제", "시장", "정책", "관세", "수출", "비즈니스", "투자", "글로벌"]),
+        ("global_biz", "글로벌 비즈니스/규제", ["규제", "시장", "정책", "관세", "수출", "비즈니스", "투자", "글로벌", "market", "regulation", "policy", "trade", "economy", "approval"]),
     ]
 
     def classify_category(item):
@@ -137,10 +137,25 @@ def create_daily_bridge(news_data_list):
                 return category
         return "global_biz"
 
+    def has_global_signal(item):
+        text = item.get("text", "")
+        keywords = item.get("keywords", [])
+        probe = f"{text} {' '.join(keywords)}".lower()
+        global_needles = chapter_defs[-1][2]
+        return any(needle.lower() in probe for needle in global_needles)
+
+    def add_unique(bucket_list, item):
+        text = item.get("text", "")
+        if any(existing.get("text", "") == text for existing in bucket_list):
+            return
+        bucket_list.append(item)
+
     buckets = {category: [] for category, _, _ in chapter_defs}
     for item in news_data_list:
         category = classify_category(item)
-        buckets[category].append(item)
+        add_unique(buckets[category], item)
+        if category != "global_biz" and has_global_signal(item):
+            add_unique(buckets["global_biz"], item)
 
     for category in buckets:
         buckets[category] = sorted(
@@ -155,7 +170,7 @@ def create_daily_bridge(news_data_list):
             key=lambda item: score_news(item.get("text", ""), item.get("keywords", [])),
             reverse=True,
         )[:2]
-        buckets["global_biz"] = fallback
+        buckets["global_biz"] = list(fallback)
 
     sections = ["## 레이더 감지 결과 (5챕터)", ""]
     for chapter_index, (category, chapter_title, _) in enumerate(chapter_defs, 1):
