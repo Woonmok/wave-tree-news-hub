@@ -339,65 +339,41 @@ def append_daily_bridge_to_news_json(bridge_path, category="global_biz"):
         return False
 
 
-def save_processed_news_to_normalized_json(news_data_list):
-    news_json_path = os.path.join(BASE_DIR, "data", "normalized", "news.json")
-    now = datetime.now()
-    today_prefix = now.strftime("%Y-%m-%d")
+def sync_news_hub_source_from_canonical():
+    target_path = os.path.join(BASE_DIR, "data", "normalized", "news.json")
+    source_candidates = [
+        os.path.join(os.path.abspath(os.path.join(BASE_DIR, "..")), "woonmok.github.io", "news.json"),
+        target_path,
+    ]
 
-    normalized_items = []
-    for index, item in enumerate(news_data_list, 1):
-        text = item.get("text", "").strip()
-        if not text:
+    chosen_data = None
+    chosen_path = None
+    for candidate in source_candidates:
+        if not os.path.exists(candidate):
+            continue
+        try:
+            with open(candidate, "r", encoding="utf-8") as f:
+                loaded = json.load(f)
+            items = loaded.get("items", [])
+            if isinstance(items, list) and len(items) >= 20:
+                chosen_data = loaded
+                chosen_path = candidate
+                break
+        except Exception:
             continue
 
-        keywords = item.get("keywords", [])
-        category = item.get("category") or classify_news_category(text, keywords)
-        score10 = score_news(text, keywords)
-        summary = item.get("analysis", "")
-        if "\n" in summary:
-            summary = summary.split("\n", 1)[1].strip()
-        if not summary:
-            summary = text
-
-        normalized_items.append({
-            "id": f"radar_{today_prefix}_{index:02d}",
-            "category": category,
-            "title": text[:100],
-            "source": "LocalRadar",
-            "url": None,
-            "published_at": now.isoformat(),
-            "summary": summary[:180],
-            "highlights": [],
-            "tags": [str(kw).lower().replace(" ", "_") for kw in keywords[:6]],
-            "score": round(score10 / 10.0, 2),
-        })
+    if not chosen_data:
+        print("   ⚠️ canonical news.json을 찾지 못해 기존 normalized/news.json 유지")
+        return False
 
     try:
-        if os.path.exists(news_json_path):
-            with open(news_json_path, "r", encoding="utf-8") as f:
-                data = json.load(f)
-        else:
-            data = {"generated_at": now.isoformat(), "items": []}
-
-        preserved = []
-        for existing in data.get("items", []):
-            source = str(existing.get("source", ""))
-            published_at = str(existing.get("published_at", ""))
-            if source == "LocalRadar" and published_at.startswith(today_prefix):
-                continue
-            preserved.append(existing)
-
-        data["generated_at"] = now.isoformat()
-        data["items"] = normalized_items + preserved
-
-        os.makedirs(os.path.dirname(news_json_path), exist_ok=True)
-        with open(news_json_path, "w", encoding="utf-8") as f:
-            json.dump(data, f, ensure_ascii=False, indent=2)
-
-        print(f"   ✅ normalized/news.json 갱신 완료: {len(normalized_items)}개")
+        os.makedirs(os.path.dirname(target_path), exist_ok=True)
+        with open(target_path, "w", encoding="utf-8") as f:
+            json.dump(chosen_data, f, ensure_ascii=False, indent=2)
+        print(f"   ✅ normalized/news.json 동기화 완료: {chosen_path} ({len(chosen_data.get('items', []))}개)")
         return True
     except Exception as e:
-        print(f"   ⚠️ normalized/news.json 갱신 실패: {str(e)}")
+        print(f"   ⚠️ normalized/news.json 동기화 실패: {str(e)}")
         return False
 
 
@@ -593,12 +569,8 @@ def process_news(use_local_analysis=True):
     print("=" * 60)
     bridge_path = create_daily_bridge(processed_news_data)
 
-    # 카테고리별 news.json 갱신 (News Hub 렌더링 소스)
-    save_processed_news_to_normalized_json(processed_news_data)
-
-    # Daily_Bridge.md -> news.json append
-    if bridge_path:
-        append_daily_bridge_to_news_json(bridge_path, category="global_biz")
+    # News Hub 데이터 소스는 canonical news.json(23개) 기준으로 유지
+    sync_news_hub_source_from_canonical()
     
     # Dashboard 업데이트
     print("\n" + "=" * 60)
