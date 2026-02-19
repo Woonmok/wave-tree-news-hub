@@ -141,6 +141,20 @@ else
     echo "⚠️ $(date '+%Y-%m-%d %H:%M:%S') - ingest_daily_bridge.js 없음. JSON 생성 건너뜀"
 fi
 
+# GitHub Pages 경로(woonmok.github.io/wave-tree-news-hub)로 정적 파일 동기화
+PAGES_DIR="$SCRIPT_DIR/../woonmok.github.io/wave-tree-news-hub"
+mkdir -p "$PAGES_DIR/data/normalized"
+
+cp "$SCRIPT_DIR/index.html" "$PAGES_DIR/index.html"
+cp "$SCRIPT_DIR/app.js" "$PAGES_DIR/app.js"
+cp "$SCRIPT_DIR/data/normalized/news.json" "$PAGES_DIR/data/normalized/news.json"
+
+if [ -f "$SCRIPT_DIR/data/daily_bridge_${BRIDGE_DATE}.json" ]; then
+    cp "$SCRIPT_DIR/data/daily_bridge_${BRIDGE_DATE}.json" "$PAGES_DIR/data/daily_bridge_${BRIDGE_DATE}.json"
+fi
+
+echo "✅ $(date '+%Y-%m-%d %H:%M:%S') - GitHub Pages 경로 동기화 완료: $PAGES_DIR"
+
 # 처리 완료 후 perplexity.txt 비우기
 > data/raw/perplexity.txt
 echo "✅ $(date '+%Y-%m-%d %H:%M:%S') - perplexity.txt 리셋 완료"

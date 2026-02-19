@@ -138,8 +138,9 @@
   }
 
   async function fetchData() {
-    const res = await fetch(CONFIG.dataUrl, { cache: "no-store" });
-    if (!res.ok) throw new Error(`Failed to fetch: ${CONFIG.dataUrl} (${res.status})`);
+    const requestUrl = `${CONFIG.dataUrl}?v=${Date.now()}`;
+    const res = await fetch(requestUrl, { cache: "no-store" });
+    if (!res.ok) throw new Error(`Failed to fetch: ${requestUrl} (${res.status})`);
     const data = await res.json();
 
     generatedAt = data.generated_at ? new Date(data.generated_at) : null;
