@@ -44,20 +44,58 @@ function parseDailyBridge(md, dateStr) {
   };
 
   let current = null;
+  let currentItem = null;
 
   // 예: ## I. [진안/농업] 지역 밀착 및 정책 동향
   const sectionRe = /^##\s+([IⅤVXLCDM]+)\.\s+\[([^\]]+)\]\s*(.+)\s*$/;
+  const chapterRe = /^##\s*(\d+)\s*장\.\s*(.+?)(?:\s*\(([^)]+)\))?\s*$/;
 
   // 예: * **제목:** 내용
   const bulletRe = /^\*\s+\*\*(.+?)\*\*:\s*(.+)\s*$/;
+  const itemHeaderRe = /^###\s+\d+\.\s+(.+)\s*$/;
+  const itemFieldRe = /^-\s*(원문|영향도|실행 인사이트):\s*(.+)\s*$/;
+
+  function flushItem() {
+    if (!current || !currentItem || !currentItem.title) return;
+
+    const summaryParts = [];
+    if (currentItem.raw) summaryParts.push(currentItem.raw);
+    if (currentItem.insight) summaryParts.push(currentItem.insight);
+
+    current.items.push({
+      title: currentItem.title,
+      summary: summaryParts.join(" ").replace(/\s+/g, " ").trim(),
+      keywords: extractKeywords(currentItem.title, summaryParts.join(" ")),
+      importance: guessImportance(`${currentItem.scoreText || ""} ${summaryParts.join(" ")}`),
+      source: null,
+      url: null
+    });
+
+    currentItem = null;
+  }
 
   for (let i = 0; i < lines.length; i++) {
     const raw = lines[i];
     const line = raw.trim();
     if (!line) continue;
 
+    const chap = line.match(chapterRe);
+    if (chap) {
+      flushItem();
+      const [, chapterNo, chapterTitle, chapterTag] = chap;
+      current = {
+        id: `S${chapterNo}`,
+        tag: (chapterTag || chapterTitle).trim(),
+        title: chapterTitle.trim(),
+        items: []
+      };
+      doc.sections.push(current);
+      continue;
+    }
+
     const sec = line.match(sectionRe);
     if (sec) {
+      flushItem();
       const [, roman, tag, title] = sec;
       current = {
         id: `S${roman}`,
@@ -69,8 +107,30 @@ function parseDailyBridge(md, dateStr) {
       continue;
     }
 
+    const itemHeader = line.match(itemHeaderRe);
+    if (itemHeader && current) {
+      flushItem();
+      currentItem = {
+        title: itemHeader[1].trim(),
+        raw: "",
+        scoreText: "",
+        insight: ""
+      };
+      continue;
+    }
+
+    const itemField = line.match(itemFieldRe);
+    if (itemField && current && currentItem) {
+      const [, key, value] = itemField;
+      if (key === "원문") currentItem.raw = value.trim();
+      if (key === "영향도") currentItem.scoreText = value.trim();
+      if (key === "실행 인사이트") currentItem.insight = value.trim();
+      continue;
+    }
+
     const b = line.match(bulletRe);
     if (b && current) {
+      flushItem();
       const [, headline, body] = b;
 
       // 다음 줄들이 같은 아이템의 연속 문장일 수 있으니, 다음 섹션/불릿 전까지 합치기
@@ -101,6 +161,8 @@ function parseDailyBridge(md, dateStr) {
       continue;
     }
   }
+
+  flushItem();
 
   return doc;
 }

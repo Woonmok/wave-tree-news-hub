@@ -119,34 +119,79 @@ def create_daily_bridge(news_data_list):
     
     timestamp = datetime.now().strftime("%Y년 %m월 %d일 %H:%M:%S")
     
-    ranked = sorted(
-        news_data_list,
-        key=lambda item: score_news(item.get("text", ""), item.get("keywords", [])),
-        reverse=True,
-    )[:3]
+    chapter_defs = [
+        ("listeria_free", "리스테리아/식품안전", ["리스테리아", "listeria", "fda", "긴급", "식품안전"]),
+        ("cultured_meat", "배양육/균사체", ["배양육", "cultured meat", "균사체", "mycelium", "fermentation", "발효", "cell-based"]),
+        ("high_end_audio", "하이엔드 오디오", ["고급 오디오", "하이엔드", "dsd", "audio", "오디오"]),
+        ("computer_ai", "컴퓨터/AI", ["ai", "gpu", "blackwell", "computer", "인프라"]),
+        ("global_biz", "글로벌 비즈니스/규제", ["규제", "시장", "정책", "관세", "수출", "비즈니스", "투자", "글로벌"]),
+    ]
 
-    sections = ["## 레이더 감지 결과 (TOP 3)", ""]
-    for index, item in enumerate(ranked, 1):
+    def classify_category(item):
         text = item.get("text", "")
         keywords = item.get("keywords", [])
-        score = score_news(text, keywords)
-        action_line = "주간 트래킹 유지"
-        lower_text = text.lower()
-        if any(keyword in lower_text for keyword in ["절감", "효율", "발효"]):
-            action_line = "비용 절감 실험 항목 우선 배치"
-        elif any(keyword in lower_text for keyword in ["리스테리아", "listeria", "fda", "긴급"]):
-            action_line = "식품안전 대응 시나리오 점검"
-        elif any(keyword in lower_text for keyword in ["gpu", "blackwell", "ai", "인프라"]):
-            action_line = "서버 인프라 대응 계획 업데이트"
+        probe = f"{text} {' '.join(keywords)}".lower()
 
-        title = text[:45] + ("..." if len(text) > 45 else "")
-        sections.extend([
-            f"### {index}️⃣ {title}",
-            f"- 원문: {text}",
-            f"- 영향도: {score}/10",
-            f"- 실행 인사이트: {action_line}",
-            "",
-        ])
+        for category, _, needles in chapter_defs[:-1]:
+            if any(needle.lower() in probe for needle in needles):
+                return category
+        return "global_biz"
+
+    buckets = {category: [] for category, _, _ in chapter_defs}
+    for item in news_data_list:
+        category = classify_category(item)
+        buckets[category].append(item)
+
+    for category in buckets:
+        buckets[category] = sorted(
+            buckets[category],
+            key=lambda item: score_news(item.get("text", ""), item.get("keywords", [])),
+            reverse=True,
+        )[:3]
+
+    if not buckets["global_biz"] and news_data_list:
+        fallback = sorted(
+            news_data_list,
+            key=lambda item: score_news(item.get("text", ""), item.get("keywords", [])),
+            reverse=True,
+        )[:2]
+        buckets["global_biz"] = fallback
+
+    sections = ["## 레이더 감지 결과 (5챕터)", ""]
+    for chapter_index, (category, chapter_title, _) in enumerate(chapter_defs, 1):
+        sections.append(f"## {chapter_index}장. {chapter_title} ({category})")
+        chapter_items = buckets.get(category, [])
+
+        if not chapter_items:
+            sections.extend([
+                "- 원문: 해당 카테고리 감지 뉴스 없음",
+                "- 영향도: 0/10",
+                "- 실행 인사이트: 다음 수집 주기에 재확인",
+                "",
+            ])
+            continue
+
+        for item_index, item in enumerate(chapter_items, 1):
+            text = item.get("text", "")
+            keywords = item.get("keywords", [])
+            score = score_news(text, keywords)
+            action_line = "주간 트래킹 유지"
+            lower_text = text.lower()
+            if any(keyword in lower_text for keyword in ["절감", "효율", "발효"]):
+                action_line = "비용 절감 실험 항목 우선 배치"
+            elif any(keyword in lower_text for keyword in ["리스테리아", "listeria", "fda", "긴급"]):
+                action_line = "식품안전 대응 시나리오 점검"
+            elif any(keyword in lower_text for keyword in ["gpu", "blackwell", "ai", "인프라"]):
+                action_line = "서버 인프라 대응 계획 업데이트"
+
+            title = text[:45] + ("..." if len(text) > 45 else "")
+            sections.extend([
+                f"### {item_index}. {title}",
+                f"- 원문: {text}",
+                f"- 영향도: {score}/10",
+                f"- 실행 인사이트: {action_line}",
+                "",
+            ])
 
     bridge_content = "\n".join(sections).strip()
     
