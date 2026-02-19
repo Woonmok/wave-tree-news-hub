@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Label</key>
+	<string>com.wavetree.perplexity-auto</string>
+	<key>ProgramArguments</key>
+	<array>
+		<string>/bin/bash</string>
+		<string>/Volumes/AI_DATA_CENTRE/AI_WORKSPACE/wave-tree-news-hub/run_perplexity_auto.sh</string>
+	</array>
+	<key>StartCalendarInterval</key>
+	<dict>
+		<key>Hour</key>
+		<integer>7</integer>
+		<key>Minute</key>
+		<integer>0</integer>
+	</dict>
+	<key>RunAtLoad</key>
+	<true/>
+	<key>StandardOutPath</key>
+	<string>/Volumes/AI_DATA_CENTRE/AI_WORKSPACE/wave-tree-news-hub/logs/perplexity_auto.log</string>
+	<key>StandardErrorPath</key>
+	<string>/Volumes/AI_DATA_CENTRE/AI_WORKSPACE/wave-tree-news-hub/logs/perplexity_auto_error.log</string>
+	<key>WorkingDirectory</key>
+	<string>/Volumes/AI_DATA_CENTRE/AI_WORKSPACE/wave-tree-news-hub</string>
+</dict>
+</plist>
