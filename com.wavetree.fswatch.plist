@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Label</key>
+	<string>com.wavetree.fswatch</string>
+	<key>ProgramArguments</key>
+	<array>
+		<string>/bin/bash</string>
+		<string>/Volumes/AI_DATA_CENTRE/AI_WORKSPACE/wave-tree-news-hub/scripts/auto_sync_news_fswatch.sh</string>
+	</array>
+	<key>KeepAlive</key>
+	<true/>
+	<key>RunAtLoad</key>
+	<true/>
+	<key>StandardOutPath</key>
+	<string>/Volumes/AI_DATA_CENTRE/AI_WORKSPACE/wave-tree-news-hub/logs/fswatch.log</string>
+	<key>StandardErrorPath</key>
+	<string>/Volumes/AI_DATA_CENTRE/AI_WORKSPACE/wave-tree-news-hub/logs/fswatch_error.log</string>
+	<key>WorkingDirectory</key>
+	<string>/Volumes/AI_DATA_CENTRE/AI_WORKSPACE/wave-tree-news-hub</string>
+</dict>
+</plist>
