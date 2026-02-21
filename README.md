@@ -4,6 +4,8 @@
 
 ## 🚀 빠른 시작
 
+> 2026-02-21 기준 운영 모드: 외장 볼륨 경로 권한 이슈로 LaunchAgent 대신 cron 기반 자동화 사용
+
 ### 로컬 개발
 ```bash
 # 웹 서버 시작 (포트 8000)
@@ -36,29 +38,28 @@ wave-tree-news-hub/
 └── README.md
 ```
 
-## 🔄 자동 업데이트 (macOS launchd)
+## 🔄 자동 업데이트 (cron 운영)
 
-30분마다 자동으로 `data/raw/perplexity.txt`를 읽고 `news.json`을 업데이트합니다.
+현재 자동화는 아래 순서로 동작합니다.
 
-**설정 파일:**
-- `~/Library/LaunchAgents/com.wavetree.normalize.plist`
+- `06:50` → `run_perplexity_auto.sh` (Perplexity 수집/정규화/Top2 동기화)
+- `07:00` → `run_daily_bridge.sh` (Daily_Bridge 생성/대시보드 동기화/아카이브 생성)
 
-**로그 확인:**
+**현재 cron 확인:**
 ```bash
-tail -f ~/Library/Logs/wavetree-normalize.log
-tail -f ~/Library/Logs/wavetree-normalize-error.log
+crontab -l
 ```
 
-**수동 로드/언로드:**
+**운영 로그 확인:**
 ```bash
-# 로드
-launchctl load ~/Library/LaunchAgents/com.wavetree.normalize.plist
+tail -f /Volumes/AI_DATA_CENTRE/AI_WORKSPACE/wave-tree-news-hub/logs/cron_perplexity_auto.log
+tail -f /Volumes/AI_DATA_CENTRE/AI_WORKSPACE/wave-tree-news-hub/logs/cron_daily_bridge.log
+```
 
-# 언로드
-launchctl unload ~/Library/LaunchAgents/com.wavetree.normalize.plist
-
-# 상태 확인
-launchctl list | grep wavetree
+**수동 실행 테스트:**
+```bash
+/bin/bash /Volumes/AI_DATA_CENTRE/AI_WORKSPACE/wave-tree-news-hub/run_perplexity_auto.sh
+/bin/bash /Volumes/AI_DATA_CENTRE/AI_WORKSPACE/wave-tree-news-hub/run_daily_bridge.sh
 ```
 
 ## 📊 뉴스 데이터 포맷
