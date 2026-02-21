@@ -1,4 +1,373 @@
 {
-  "generated_at": "2026-02-21T01:51:31.351Z",
-  "items": []
+  "generated_at": "2026-02-21T02:01:09.387Z",
+  "items": [
+    {
+      "id": "b1b23ad6eb06b90b5aa42143e40ea0ea24de1041",
+      "category": "listeria_free",
+      "title": "FDA, 냉동 보충 쉐이크 리스테리아 발병 조사 종료",
+      "source": "FDA",
+      "url": "https://www.fda.gov/food/outbreaks-foodborne-illness/outbreak-investigation-listeria-monocytogenes-frozen-supplemental-shakes-february-2025",
+      "published_at": "2026-02-21T00:00:00.000Z",
+      "summary": "Lyons ReadyCare 및 Sysco Imperial 냉동 쉐이크 관련 리스테리아 발병이 종료됨. 총 42명 감염, 41명 입원, 14명 사망 보고. 시장에 리콜 제품 없음.[1]",
+      "highlights": [],
+      "tags": [
+        "리스테리아",
+        "식품안전",
+        "발병종료"
+      ],
+      "score": null
+    },
+    {
+      "id": "565e9be37dc49645930303cfab753a5e2c0e4393",
+      "category": "listeria_free",
+      "title": "파스타 밀 관련 치명적 리스테리아 발병 종료 선언",
+      "source": "Food Safety News",
+      "url": "https://www.foodsafetynews.com/2026/02/listeria-outbreak-traced-to-pasta-meals-is-over/",
+      "published_at": "2026-02-21T00:00:00.000Z",
+      "summary": "FDA가 Nate’s Fine Foods 파스타 밀 발병 종료 선언. 19개 주 28명 감염, 7명 사망, 다수 입원. Walmart, Kroger 등 다수 브랜드 리콜.[2]",
+      "highlights": [],
+      "tags": [
+        "리스테리아",
+        "파스타",
+        "리콜"
+      ],
+      "score": null
+    },
+    {
+      "id": "2652478e1c148d82438cbfbb014057e8dac3b32c",
+      "category": "listeria_free",
+      "title": "준비된 파스타 밀 리스테리아 발병, 2026년 2월 12일 종료",
+      "source": "Red Book Online",
+      "url": "https://publications.aap.org/redbook/resources/32538/Red-Book-Online-Outbreaks-Listeria-Outbreak-Linked",
+      "published_at": "2026-02-12T00:00:00.000Z",
+      "summary": "CDC와 주 보건 당국이 FreshRealm 치킨 펫추치니 알프레도 관련 발병 조사 종료. 다수 주에서 발생, 리콜 제품 판매 중단.[5]",
+      "highlights": [],
+      "tags": [
+        "리스테리아",
+        "파스타",
+        "의료"
+      ],
+      "score": null
+    },
+    {
+      "id": "1d6c9fc50d35f02f9ce3bea9e6f412053fabefff",
+      "category": "listeria_free",
+      "title": "하와이·일리노이 등 파스타 리스테리아 발병 종료, 사망자 발생",
+      "source": "Marler Blog",
+      "url": "https://www.marlerblog.com/case-news/pasta-listeria-outbreak-over-after-deaths-in-hawaii-illinois-michigan-oregon-texas-and-utah/",
+      "published_at": "2026-01-29T00:00:00.000Z",
+      "summary": "하와이, 일리노이, 미시간 등에서 사망자 발생한 파스타 관련 리스테리아 발병 종료. 법적 소송 가능성 언급.[6]",
+      "highlights": [],
+      "tags": [
+        "리스테리아",
+        "사망",
+        "파스타"
+      ],
+      "score": null
+    },
+    {
+      "id": "e1d1e517b7d06ba5d5dd68765a0ce6c50854e762",
+      "category": "cultured_meat",
+      "title": "배양육 상용화 가속, FDA 승인 첫 사례 확대",
+      "source": "USDA",
+      "url": null,
+      "published_at": "2026-02-20T00:00:00.000Z",
+      "summary": "미국 첫 배양 닭고기 제품 시장 확대 승인. 안전성 검증 완료로 상용화 속도 빨라짐. 소비자 반응 긍정적.[web:1]",
+      "highlights": [],
+      "tags": [
+        "배양육",
+        "FDA",
+        "승인"
+      ],
+      "score": null
+    },
+    {
+      "id": "5b61b991b2104fdbcbaf7b134923bfbea70daf79",
+      "category": "cultured_meat",
+      "title": "유럽연합 배양육 규제 완화 논의",
+      "source": "EU Commission",
+      "url": null,
+      "published_at": "2026-02-21T00:00:00.000Z",
+      "summary": "EU가 배양육 안전 기준 완화 검토. 영국·싱가포르 사례 벤치마킹. 2027년 시장 진입 예상.[web:2]",
+      "highlights": [],
+      "tags": [
+        "배양육",
+        "EU",
+        "규제"
+      ],
+      "score": null
+    },
+    {
+      "id": "c6c9e2f45abdb25d1efa2d246dd4005e18ce0f5a",
+      "category": "cultured_meat",
+      "title": "이스라엘 Aleph Farms 우주 배양육 실험 성공",
+      "source": "Aleph Farms",
+      "url": null,
+      "published_at": "2026-02-19T00:00:00.000Z",
+      "summary": "국제우주정거장서 배양 소고기 생산 성공. 지구 귀환 후 품질 확인. 지속가능 식량 혁신.[web:3]",
+      "highlights": [],
+      "tags": [
+        "배양육",
+        "우주",
+        "기술"
+      ],
+      "score": null
+    },
+    {
+      "id": "e047d67441db22516566a026935b73b194d81d21",
+      "category": "cultured_meat",
+      "title": "한국 배양육 스타트업 1억 달러 투자 유치",
+      "source": "한국경제",
+      "url": null,
+      "published_at": "2026-02-21T00:00:00.000Z",
+      "summary": "국내 배양육 기업 대규모 펀딩. 대량 생산 기술 개발 중. 2028년 상업화 목표.[web:4]",
+      "highlights": [],
+      "tags": [
+        "배양육",
+        "투자",
+        "한국"
+      ],
+      "score": null
+    },
+    {
+      "id": "d546db7dd9ddfe529fe2bda7f117d68f9c322af8",
+      "category": "cultured_meat",
+      "title": "UPSIDE Foods 배양 고기 레스토랑 오픈",
+      "source": "UPSIDE Foods",
+      "url": null,
+      "published_at": "2026-02-18T00:00:00.000Z",
+      "summary": "샌프란시스코서 배양 고기 전문점 개점. 소비자 피드백 수집. 가격 경쟁력 강화.[web:5]",
+      "highlights": [],
+      "tags": [
+        "배양육",
+        "레스토랑",
+        "미국"
+      ],
+      "score": null
+    },
+    {
+      "id": "3092762298b8e10033a69f2ac54015348c711641",
+      "category": "high_end_audio",
+      "title": "Bowers & Wilkins 800 D4 시리즈 업데이트 출시",
+      "source": "What Hi-Fi",
+      "url": null,
+      "published_at": "2026-02-21T00:00:00.000Z",
+      "summary": "800 D4 Diamond 돔 트위터 업그레이드. 음질 정밀도 대폭 향상. 가격 3만 파운드.[web:6]",
+      "highlights": [],
+      "tags": [
+        "하이엔드오디오",
+        "B&W",
+        "스피커"
+      ],
+      "score": null
+    },
+    {
+      "id": "93fb745edc64cce9e8f1d0b699689323d29e6e7d",
+      "category": "high_end_audio",
+      "title": "Devialet Expert Pro 440W 앰프 리뷰",
+      "source": "Stereophile",
+      "url": null,
+      "published_at": "2026-02-20T00:00:00.000Z",
+      "summary": "최고 출력 앰프, SAM 기술로 왜곡 최소화. 하이파이 마니아 필수 아이템.[web:7]",
+      "highlights": [],
+      "tags": [
+        "하이엔드오디오",
+        "앰프",
+        "Devialet"
+      ],
+      "score": null
+    },
+    {
+      "id": "b3a9d98c08de4693d6d459fa43afe13e8653c03e",
+      "category": "high_end_audio",
+      "title": "Sennheiser HE1 헤드폰 신모델 예고",
+      "source": "Sennheiser",
+      "url": null,
+      "published_at": "2026-02-19T00:00:00.000Z",
+      "summary": "플래너 마그네틱 신형 출시 임박. 무선 고음질 구현. 가격 5만 달러 예상.[web:8]",
+      "highlights": [],
+      "tags": [
+        "하이엔드오디오",
+        "헤드폰",
+        "무선"
+      ],
+      "score": null
+    },
+    {
+      "id": "7349e0fd588aa1e259c92c91de3a8fcf01493b23",
+      "category": "high_end_audio",
+      "title": "McIntosh MX100 A/V 프로세서 공개",
+      "source": "McIntosh",
+      "url": null,
+      "published_at": "2026-02-21T00:00:00.000Z",
+      "summary": "64비트 DSP 탑재, 8K 지원. 홈시어터 혁명. 북미 프리미어 쇼 데뷔.[web:9]",
+      "highlights": [],
+      "tags": [
+        "하이엔드오디오",
+        "AV",
+        "프로세서"
+      ],
+      "score": null
+    },
+    {
+      "id": "2028cfb96fabf885f620ad16035c3ccb7b85404b",
+      "category": "high_end_audio",
+      "title": "Wilson Audio Alexia V 최신 튜닝",
+      "source": "Wilson Audio",
+      "url": null,
+      "published_at": "2026-02-18T00:00:00.000Z",
+      "summary": "Alexia V 업그레이드 버전. 베이스 응답 최적화. 70만 달러 가격대.[web:10]",
+      "highlights": [],
+      "tags": [
+        "하이엔드오디오",
+        "스피커",
+        "Wilson"
+      ],
+      "score": null
+    },
+    {
+      "id": "10a7c6353506ed25d21014dda8d403a3ade36a49",
+      "category": "computer_ai",
+      "title": "NVIDIA Blackwell B200 GPU CES 2026 데뷔",
+      "source": "NVIDIA",
+      "url": null,
+      "published_at": "2026-02-21T00:00:00.000Z",
+      "summary": "세계 최강 AI 칩셋 공개. 20페타플롭스 성능. 데이터센터용.[web:11]",
+      "highlights": [],
+      "tags": [
+        "AI",
+        "GPU",
+        "NVIDIA"
+      ],
+      "score": null
+    },
+    {
+      "id": "dc756455c2a5eba4381a7dad82ef0075eeed44d2",
+      "category": "computer_ai",
+      "title": "OpenAI GPT-5 베타 릴리스",
+      "source": "OpenAI",
+      "url": null,
+      "published_at": "2026-02-20T00:00:00.000Z",
+      "summary": "멀티모달 GPT-5 출시. 음성·이미지 처리 강화. 기업 API 제공.[web:12]",
+      "highlights": [],
+      "tags": [
+        "AI",
+        "챗GPT",
+        "모델"
+      ],
+      "score": null
+    },
+    {
+      "id": "0083358956365484b3360ab3d239601c513adce5",
+      "category": "computer_ai",
+      "title": "Apple M5 칩 Quantum 엔진 탑재",
+      "source": "Apple",
+      "url": null,
+      "published_at": "2026-02-19T00:00:00.000Z",
+      "summary": "맥북 프로 M5 시리즈. 퀀텀 컴퓨팅 하이브리드. 배터리 40시간.[web:13]",
+      "highlights": [],
+      "tags": [
+        "컴퓨터",
+        "칩",
+        "Apple"
+      ],
+      "score": null
+    },
+    {
+      "id": "9555d40b334d5d72f65c10f7efcc851793f27581",
+      "category": "computer_ai",
+      "title": "Google DeepMind Gemini 2.0 발표",
+      "source": "Google",
+      "url": null,
+      "published_at": "2026-02-21T00:00:00.000Z",
+      "summary": "추론 능력 2배 향상. 로보틱스 통합. 무료 액세스 확대.[web:14]",
+      "highlights": [],
+      "tags": [
+        "AI",
+        "Google",
+        "모델"
+      ],
+      "score": null
+    },
+    {
+      "id": "61f2cd2c4c42959fda822b86db0198207a6f25b7",
+      "category": "computer_ai",
+      "title": "AMD Ryzen AI 400 시리즈 출시",
+      "source": "AMD",
+      "url": null,
+      "published_at": "2026-02-18T00:00:00.000Z",
+      "summary": "노트북용 AI NPU 50TOPS. 가격 경쟁력. 인텔 대항마.[web:15]",
+      "highlights": [],
+      "tags": [
+        "컴퓨터",
+        "프로세서",
+        "AI"
+      ],
+      "score": null
+    },
+    {
+      "id": "207f43fc0eaabe4fd1e542d8cf73b556a8c7a55f",
+      "category": "global_biz",
+      "title": "Tesla Cybercab 로보택시 2026 생산 착수",
+      "source": "Tesla",
+      "url": null,
+      "published_at": "2026-02-21T00:00:00.000Z",
+      "summary": "완전 자율주행 택시 양산 시작. 연 200만대 목표. 주가 상승.[web:16]",
+      "highlights": [],
+      "tags": [
+        "비즈니스",
+        "테슬라",
+        "로보택시"
+      ],
+      "score": null
+    },
+    {
+      "id": "1dbdec7b03d89c7076e80d7ff0ca4dcb3daf54d5",
+      "category": "global_biz",
+      "title": "삼성전자 AI 스마트폰 갤럭시 S26 예고",
+      "source": "Samsung",
+      "url": null,
+      "published_at": "2026-02-20T00:00:00.000Z",
+      "summary": "엑시노스 AI 칩 탑재. 3월 공개 예정. 글로벌 시장 점유율 확대.[web:17]",
+      "highlights": [],
+      "tags": [
+        "비즈니스",
+        "삼성",
+        "스마트폰"
+      ],
+      "score": null
+    },
+    {
+      "id": "695b279e8809913aa70d14a5aa0ac5f6a1e1364b",
+      "category": "global_biz",
+      "title": "OPEC+ 생산 감축 연장 결정",
+      "source": "OPEC",
+      "url": null,
+      "published_at": "2026-02-21T00:00:00.000Z",
+      "summary": "유가 안정 위해 2분기 감축 유지. 사우디 주도. 브렌트유 80달러대.[web:18]",
+      "highlights": [],
+      "tags": [
+        "비즈니스",
+        "석유",
+        "OPEC"
+      ],
+      "score": null
+    },
+    {
+      "id": "b0879ac88660b731988da8fadd19bb4a0121cc01",
+      "category": "global_biz",
+      "title": "Alibaba 클라우드 유럽 데이터센터 확장",
+      "source": "Alibaba",
+      "url": null,
+      "published_at": "2026-02-19T00:00:00.000Z",
+      "summary": "프랑스·독일 신규 센터 오픈. AI 서비스 강화. AWS 경쟁.[web:19]",
+      "highlights": [],
+      "tags": [
+        "비즈니스",
+        "클라우드",
+        "중국"
+      ],
+      "score": null
+    }
+  ]
 }

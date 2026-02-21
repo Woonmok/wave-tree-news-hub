@@ -322,6 +322,11 @@ def sync_to_html():
     # Top 2 뉴스 로드
     top_news = load_top_news()
     print(f"   📰 로드된 뉴스: {len(top_news)}개")
+
+    if len(top_news) == 0:
+        print("   ⚠️ 동기화 건너뜀: 뉴스 0건(기존 대시보드 유지)")
+        send_sync_notification(top_news, False, False)
+        return False
     
     # HTML 생성
     news_html = generate_news_html(top_news)
@@ -352,6 +357,11 @@ def main():
     # Top 2 뉴스 로드
     top_news = load_top_news()
     print(f"📰 로드된 뉴스: {len(top_news)}개")
+
+    if len(top_news) == 0:
+        print("⚠️ 동기화 건너뜀: 뉴스 0건(기존 대시보드 유지)")
+        send_sync_notification(top_news, False, False)
+        return
     
     # HTML 생성
     news_html = generate_news_html(top_news)

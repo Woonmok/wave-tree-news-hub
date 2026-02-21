@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+DEPRECATED (2026-02-21)
+- LaunchAgent 기반 운영 중단: 외장 볼륨 경로 접근 시 Operation not permitted 발생 가능
+- 현재 운영 기준: cron (06:50 run_perplexity_auto.sh, 07:00 run_daily_bridge.sh)
+- 참고 문서: /Volumes/AI_DATA_CENTRE/AI_WORKSPACE/wave-tree-news-hub/AUTOMATION_STATUS.md
+-->
 <plist version="1.0">
 <dict>
 	<key>Label</key>
