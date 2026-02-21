@@ -4,30 +4,33 @@
 
 ## 🚀 시스템 자동화 설정
 
+> 2026-02-21 기준: 외장 볼륨 경로 LaunchAgent 권한 이슈(`Operation not permitted`)로 핵심 자동화는 cron으로 운영
+
 ### 초기 설정 (최초 1회)
 ```bash
-cd /Users/seunghoonoh/Desktop/wave-tree-news-hub
+cd /Volumes/AI_DATA_CENTRE/AI_WORKSPACE/wave-tree-news-hub
 
 # 1. 로그 디렉토리 생성
 mkdir -p logs
 
 # 2. 실행 권한 부여
-chmod +x run_daily_bridge.sh
+chmod +x run_daily_bridge.sh run_perplexity_auto.sh
 
-# 3. LaunchAgent 등록 (매일 아침 7시 자동 실행)
-cp com.wavetree.dailybridge.plist ~/Library/LaunchAgents/
-launchctl load ~/Library/LaunchAgents/com.wavetree.dailybridge.plist
+# 3. cron 등록 확인
+crontab -l
 
-# 4. 제대로 등록되었는지 확인
-launchctl list | grep wavetree
+# 4. 수동 테스트
+/bin/bash run_perplexity_auto.sh
+/bin/bash run_daily_bridge.sh
 ```
 
 ### 매일 아침 자동으로 일어나는 일
-- **07:00** - LaunchAgent가 `run_daily_bridge.sh` 자동 실행
+- **06:50** - cron이 `run_perplexity_auto.sh` 자동 실행
+- **07:00** - cron이 `run_daily_bridge.sh` 자동 실행
 - **뉴스 수집** - news_hub.py가 최신 뉴스 가져오기
 - **로컬 분석** - 규칙 기반으로 자동 필터링 및 분석
 - **Daily_Bridge.md 생성** - TOP 3 핵심 정보만 정제
-- **로그 기록** - logs/dailybridge.log에 기록
+- **로그 기록** - logs/cron_perplexity_auto.log, logs/cron_daily_bridge.log 및 일자 로그
 
 ---
 
@@ -72,7 +75,7 @@ VS Code에서 `Daily_Bridge.md` 파일을 열고 생성된 내용 확인
 ## 📡 시스템 워크플로우 한눈에 보기
 
 ```
-[07:00] 자동 뉴스 수집 (news_hub.py)
+[06:50/07:00] cron 자동 수집/브릿지 생성
     ↓
 [자동] 로컬 규칙 기반 필터링 + 분석
     ↓
@@ -123,16 +126,17 @@ VS Code에서 `Daily_Bridge.md` 파일을 열고 생성된 내용 확인
 ## 🔧 매뉴얼 유지보수
 
 ### 매일 확인 사항
-- [ ] logs/dailybridge.log 확인 (에러 없음?)
+- [ ] logs/cron_perplexity_auto.log 확인 (에러 없음?)
+- [ ] logs/cron_daily_bridge.log 확인 (에러 없음?)
 - [ ] Daily_Bridge.md 생성됨 (TOP 3 정제됨?)
 - [ ] Antigravity와 연동 정상?
 
 ### 수정 필요시
 **키워드 변경**: news_hub.py의 `KEYWORDS` 섹션 수정
-**실행 시간 변경**: com.wavetree.dailybridge.plist의 `<integer>7</integer>` 수정 (0-23 시간)
+**실행 시간 변경**: `crontab -e`에서 06:50/07:00 스케줄 수정
 **분석 엔진 설정**: 로컬 규칙 기반(기본값) 사용
 
 ---
 
 생성: 2026년 2월 1일
-최종 업데이트: 2026년 2월 16일
+최종 업데이트: 2026년 2월 21일

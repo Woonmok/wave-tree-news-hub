@@ -13,8 +13,9 @@
 
 ### 3️⃣ 매일 아침 자동 실행 스케줄러
 - `run_daily_bridge.sh` 실행
-- `com.wavetree.dailybridge.plist`로 LaunchAgent 등록
-- 매일 07:00 자동 실행
+- cron 등록으로 자동 실행
+- 06:50 `run_perplexity_auto.sh`
+- 07:00 `run_daily_bridge.sh`
 
 ---
 
@@ -22,8 +23,8 @@
 
 ### Step 1: 시스템 상태 확인
 ```bash
-launchctl list | grep wavetree
-tail -f /Users/seunghoonoh/Desktop/wave-tree-news-hub/logs/dailybridge.log
+crontab -l
+tail -f /Volumes/AI_DATA_CENTRE/AI_WORKSPACE/wave-tree-news-hub/logs/cron_daily_bridge.log
 ```
 
 ### Step 2: 매일 운영
@@ -36,7 +37,8 @@ tail -f /Users/seunghoonoh/Desktop/wave-tree-news-hub/logs/dailybridge.log
 ## 🎓 처리 흐름
 
 ```text
-[LaunchAgent 07:00]
+[cron 06:50/07:00]
+  -> [run_perplexity_auto.sh]
   -> [run_daily_bridge.sh]
   -> [news_hub.py 로컬 분석]
   -> [Daily_Bridge.md 생성]
@@ -49,17 +51,17 @@ tail -f /Users/seunghoonoh/Desktop/wave-tree-news-hub/logs/dailybridge.log
 
 ### 생성 실패 시
 ```bash
-tail -100 /Users/seunghoonoh/Desktop/wave-tree-news-hub/logs/dailybridge.log
-cd /Users/seunghoonoh/Desktop/wave-tree-news-hub
+tail -100 /Volumes/AI_DATA_CENTRE/AI_WORKSPACE/wave-tree-news-hub/logs/cron_daily_bridge.log
+cd /Volumes/AI_DATA_CENTRE/AI_WORKSPACE/wave-tree-news-hub
 python3 news_hub.py
 ```
 
 ### 설정 포인트
-- 실행 시간: `com.wavetree.dailybridge.plist`
+- 실행 시간: `crontab -e`
 - 키워드: `news_hub.py`의 `KEYWORDS`
 
 ---
 
 **생성**: 2026년 2월 1일  
-**최종 업데이트**: 2026년 2월 16일  
-**상태**: ✅ 로컬 분석 모드로 자동화 완료
+**최종 업데이트**: 2026년 2월 21일  
+**상태**: ✅ cron 기반 자동화로 운영 중

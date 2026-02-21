@@ -1,6 +1,11 @@
 # 🤖 Wave Tree 자동화 시스템 현황
 
-**최종 업데이트**: 2026년 2월 18일
+**최종 업데이트**: 2026년 2월 21일
+
+> ⚠️ **운영 모드 변경 (2026-02-21)**
+> - 외장 볼륨 경로(`/Volumes/AI_DATA_CENTRE/...`)에서 macOS LaunchAgent가 `Operation not permitted`로 실패하는 이슈 확인
+> - 핵심 자동화는 **LaunchAgent → cron**으로 전환 완료
+> - 전환 대상: `dailybridge`, `perplexity-auto`, `antigravity`
 
 ---
 
@@ -10,8 +15,8 @@
 
 **실행 방식**:
 - cron: `0 7 * * *`
-- LaunchAgent: `com.wavetree.dailybridge.plist`
 - 스크립트: `/Volumes/AI_DATA_CENTRE/AI_WORKSPACE/wave-tree-news-hub/run_daily_bridge.sh`
+- cron 로그: `logs/cron_daily_bridge.log`
 
 **주요 역할**:
 1. Perplexity 뉴스 자동 수집
@@ -39,18 +44,18 @@
 - 에러: `logs/dailybridge_error_YYYY-MM-DD.log`
 
 **최근 실행**:
-- 2026-02-18 07:00 - 자동 실행
-- 2026-02-18 14:59 - 수동 실행 (top 2 뉴스 동기화 수정)
+- 2026-02-20 03:48 - 자동 실행(기존 트리거)
+- 2026-02-21 10:34 - 수동 복구 실행
+- 2026-02-21 10:40 - cron 환경 시뮬레이션 테스트 성공
 
 ---
 
-### 2️⃣ Antigravity Bot (24시간 상주) 🚀
+### 2️⃣ Antigravity Bot (상시 감시 복구) 🚀
 
 **실행 방식**:
-- LaunchAgent: `com.wavetree.antigravity.plist`
-- KeepAlive: true (자동 재시작)
-- RestartDelay: 10초
+- cron watchdog: `*/2 * * * * /bin/zsh .../scripts/ensure_antigravity.sh`
 - 스크립트: `/Volumes/AI_DATA_CENTRE/AI_WORKSPACE/woonmok.github.io/antigravity.py`
+- watchdog 로그: `/Volumes/AI_DATA_CENTRE/AI_WORKSPACE/woonmok.github.io/logs/ensure_antigravity_cron.log`
 
 **주요 기능**:
 1. **매일 09:00 자동 브리핑**
@@ -125,6 +130,20 @@
 
 ## ❌ 비활성화된 자동화
 
+### LaunchAgent 기반 외장볼륨 작업 (중단)
+
+**중단 대상**:
+- `com.wavetree.dailybridge`
+- `com.wavetree.perplexity-auto`
+- `com.wavetree.antigravity`
+
+**중단 이유**:
+- 외장 볼륨 경로 접근 시 LaunchAgent에서 `Operation not permitted` 발생
+- 결과적으로 `EX_CONFIG(78)`로 즉시 종료되는 사례 다수 확인
+
+**대체 방식**:
+- 동일 스크립트를 cron으로 운영 전환
+
 ### update_news.py (매일 09:00)
 
 **이전 설정**:
@@ -140,13 +159,15 @@
 
 ---
 
-## 📊 오늘의 자동화 실적 (2026-02-18)
+## 📊 오늘의 자동화 실적 (2026-02-21)
 
 | 시각 | 작업 | 상태 |
 |------|------|------|
-| 07:00 | Daily Bridge 자동 실행 | ✅ 성공 |
-| 14:59 | Top 2 뉴스 동기화 (수동) | ✅ 성공 |
-| 매 10분 | 날씨 자동 업데이트 | ✅ 진행 중 |
+| 06:50 | Perplexity Auto (cron 등록) | ✅ 설정 완료 |
+| 07:00 | Daily Bridge (cron 등록) | ✅ 설정 완료 |
+| 10:34 | Daily Bridge 수동 복구 실행 | ✅ 성공 |
+| 10:40 | cron 환경 시뮬레이션 실행 | ✅ 성공 |
+| */2분 | Antigravity watchdog (cron) | ✅ 동작 중 |
 
 **주요 성과**:
 - Daily_Bridge.md 생성 완료
@@ -192,21 +213,19 @@ tail -n 100 /Volumes/AI_DATA_CENTRE/AI_WORKSPACE/wave-tree-news-hub/logs/dailybr
 tail -n 50 /Volumes/AI_DATA_CENTRE/AI_WORKSPACE/wave-tree-news-hub/logs/dailybridge_error_$(date +%Y-%m-%d).log
 ```
 
-### LaunchAgent 관리
+### cron/프로세스 관리
 ```bash
-# 실행 중인 서비스 확인
-launchctl list | grep wavetree
+# cron 설정 확인
+crontab -l
 
-# Antigravity 재시작
-launchctl stop com.wavetree.antigravity
-launchctl start com.wavetree.antigravity
+# Antigravity 수동 복구 실행
+/bin/zsh /Volumes/AI_DATA_CENTRE/AI_WORKSPACE/woonmok.github.io/scripts/ensure_antigravity.sh
 
-# 로그 확인
-tail -f /tmp/com.wavetree.antigravity.out.log
-tail -f /tmp/com.wavetree.antigravity.err.log
+# Antigravity 프로세스 확인
+pgrep -af antigravity.py
 
-# Antigravity 로그
-tail -f /Volumes/AI_DATA_CENTRE/AI_WORKSPACE/woonmok.github.io/logs/antigravity.log
+# watchdog 로그
+tail -f /Volumes/AI_DATA_CENTRE/AI_WORKSPACE/woonmok.github.io/logs/ensure_antigravity_cron.log
 ```
 
 ### 시스템 상태 확인
@@ -251,10 +270,11 @@ ANTIGRAVITY_AUTO_BRIEFING=true
 4. 수동 실행 테스트: `./run_daily_bridge.sh`
 
 ### Antigravity 봇이 응답하지 않을 때
-1. 실행 상태 확인: `launchctl list | grep antigravity`
-2. 에러 로그 확인: `tail -50 /tmp/com.wavetree.antigravity.err.log`
-3. 수동 재시작: `launchctl stop com.wavetree.antigravity && launchctl start com.wavetree.antigravity`
-4. 환경 변수 확인: `.env` 파일 토큰 유효성 검증
+1. 실행 상태 확인: `pgrep -af antigravity.py`
+2. watchdog 로그 확인: `tail -50 /Volumes/AI_DATA_CENTRE/AI_WORKSPACE/woonmok.github.io/logs/ensure_antigravity_cron.log`
+3. 수동 복구: `/bin/zsh /Volumes/AI_DATA_CENTRE/AI_WORKSPACE/woonmok.github.io/scripts/ensure_antigravity.sh`
+4. 에러 로그 확인: `tail -50 /Volumes/AI_DATA_CENTRE/AI_WORKSPACE/woonmok.github.io/logs/antigravity_error.log`
+5. 환경 변수 확인: `.env` 파일 토큰 유효성 검증
 
 ### Intelligence Hub에 뉴스가 표시되지 않을 때
 1. dashboard_data.json 확인: `jq .intelligence dashboard_data.json`
@@ -280,4 +300,4 @@ ANTIGRAVITY_AUTO_BRIEFING=true
 
 ---
 
-**마지막 점검**: 2026-02-18 ✅ 모든 핵심 시스템 정상 작동 중
+**마지막 점검**: 2026-02-21 ✅ cron 기반 핵심 자동화 정상 작동 중

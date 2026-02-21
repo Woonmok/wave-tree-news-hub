@@ -1,5 +1,7 @@
 # Daily Bridge cron 운영 가이드 (Mac mini)
 
+> 2026-02-21 기준: 외장 볼륨 LaunchAgent 권한 이슈로 cron 단일 운영
+
 ## 1) 1회 설정
 
 ```bash
@@ -8,7 +10,9 @@ chmod +x run_daily_bridge.sh setup_daily_bridge_cron.sh
 ./setup_daily_bridge_cron.sh
 ```
 
-기본 등록 스케줄: `매일 07:00`
+기본 등록 스케줄:
+- `06:50` Perplexity 자동 수집 (`run_perplexity_auto.sh`)
+- `07:00` Daily Bridge 생성/동기화 (`run_daily_bridge.sh`)
 
 ---
 
@@ -45,6 +49,7 @@ TELEGRAM_CHAT_ID=123456789
 
 - 표준 로그: `logs/dailybridge_YYYY-MM-DD.log`
 - 에러 로그: `logs/dailybridge_error_YYYY-MM-DD.log`
+- cron 실행 로그: `logs/cron_perplexity_auto.log`, `logs/cron_daily_bridge.log`
 
 실행 시 자동 생성되며, 별도 로그 파일 생성 작업이 필요 없습니다.
 
