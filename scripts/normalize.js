@@ -59,6 +59,21 @@ const out = {
   items,
 };
 
+const allowEmptyWrite = String(process.env.ALLOW_EMPTY_NEWS_WRITE || "").toLowerCase() === "true";
+
+if (items.length === 0 && !allowEmptyWrite && fs.existsSync(outPath)) {
+  try {
+    const prevRaw = fs.readFileSync(outPath, "utf-8");
+    const prevData = JSON.parse(prevRaw);
+    const prevCount = Array.isArray(prevData?.items) ? prevData.items.length : 0;
+    if (prevCount > 0) {
+      console.warn(`WARN: parsed 0 items; keep existing output with ${prevCount} items -> ${outPath}`);
+      process.exit(0);
+    }
+  } catch (_) {
+  }
+}
+
 fs.mkdirSync(path.dirname(outPath), { recursive: true });
 fs.writeFileSync(outPath, JSON.stringify(out, null, 2), "utf-8");
 console.log(`OK: wrote ${items.length} items -> ${outPath}`);
