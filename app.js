@@ -162,6 +162,10 @@
       highlights: Array.isArray(it.highlights) ? it.highlights.map(String) : [],
       tags: Array.isArray(it.tags) ? it.tags.map(String) : [],
       score: typeof it.score === "number" ? it.score : null,
+      decision: (it.decision && typeof it.decision === "object") ? it.decision : null,
+      mode: it.mode ? String(it.mode) : null,
+      status: it.status ? String(it.status) : null,
+      decision_generated_at: it.decision_generated_at ? String(it.decision_generated_at) : null,
     })).filter((it) => it.id && it.category && it.title);
 
     // stats
