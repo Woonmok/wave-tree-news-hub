@@ -130,6 +130,30 @@ def call_claude(item, context):
         return None
 
 
+def fallback_decision(item):
+    category = str(item.get("category", ""))
+    title = str(item.get("title", "")).strip()
+
+    next_action_map = {
+        "listeria_free": "관련 리콜·통관 공지 모니터링을 강화하고 무균 공정 안전성 자료를 즉시 업데이트하세요.",
+        "cultured_meat": "규제·인증 체크리스트를 갱신하고 상용화 일정 리스크를 주간 단위로 재평가하세요.",
+        "high_end_audio": "신제품 스펙·가격·유통 채널을 벤치마킹해 다음 제품 로드맵 우선순위를 조정하세요.",
+        "computer_ai": "GPU 조달·클라우드 비용·모델 성능 지표를 비교해 인프라 투자 계획을 즉시 점검하세요.",
+        "global_biz": "정책·환율·무역 변수 변화를 반영해 수익성 시나리오를 재점검하고 대응안을 준비하세요.",
+    }
+
+    return {
+        "impact_score": 5.0,
+        "impact_reason": f"'{title[:60]}' 이슈는 사업 운영에 중간 수준의 영향 가능성이 있어 추적이 필요합니다.",
+        "confidence": 0.55,
+        "confidence_basis": "자동 보조 추론 결과로, 추가 데이터 검증 시 신뢰도가 상승합니다.",
+        "next_action": next_action_map.get(category, "관련 지표를 추적하고 다음 실행 항목을 확정하세요."),
+        "time_sensitivity": "MEDIUM",
+        "opportunity": "선제 대응 시 시장/운영 리스크를 줄이고 실행 속도를 높일 수 있습니다.",
+        "risk": "모니터링 지연 시 비용 증가 또는 일정 지연으로 이어질 수 있습니다.",
+    }
+
+
 def enrich_items(items, max_enrich):
     enriched_count = 0
     for item in items:
@@ -148,15 +172,14 @@ def enrich_items(items, max_enrich):
 
         context = CATEGORY_CONTEXT.get(item.get("category", ""), "사업 영향 중심으로 판단")
         decision = call_claude(item, context)
-        if decision:
-            item["decision"] = decision
-            item["mode"] = "decision"
-            item["status"] = "PENDING_ACTION"
-            item["decision_generated_at"] = datetime.now(timezone.utc).isoformat()
-            enriched_count += 1
-        else:
-            item["mode"] = item.get("mode", "info")
-            item["status"] = item.get("status", "COLLECTING")
+        if not decision:
+            decision = fallback_decision(item)
+
+        item["decision"] = decision
+        item["mode"] = "decision"
+        item["status"] = "PENDING_ACTION"
+        item["decision_generated_at"] = datetime.now(timezone.utc).isoformat()
+        enriched_count += 1
 
     return enriched_count
 

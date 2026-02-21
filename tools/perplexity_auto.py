@@ -84,7 +84,7 @@ def run_pipeline(output_path: str) -> None:
         "--out",
         normalized_path,
         "--max-enrich",
-        str(os.getenv("CLAUDE_ENRICH_MAX_ITEMS", "20")),
+        str(os.getenv("CLAUDE_ENRICH_MAX_ITEMS", "100")),
     ]
     subprocess.run(enrich, cwd=BASE_DIR, check=True)
 

@@ -18,11 +18,23 @@ TARGET_COUNTS = {
 }
 
 PROMPTS = {
+    "listeria_free": """최근 30일 이내 리스테리아/식품안전 뉴스만 수집해. 주제: 리콜, FDA/CDC 경보, 발병 보고, 오염 조사.
+반드시 실제 기사 원문 URL(https://...)만 사용.
+JSON 배열만 출력:
+[{"title":"", "source":"", "url":"https://...", "published_at":"YYYY-MM-DD", "tags":["",""], "summary":"한국어 1~2문장"}]""",
+    "cultured_meat": """최근 45일 이내 배양육/대체단백질 뉴스만 수집해. 주제: 투자, 규제, 상용화, 생산기술, 기업 동향.
+반드시 실제 기사 원문 URL(https://...)만 사용.
+JSON 배열만 출력:
+[{"title":"", "source":"", "url":"https://...", "published_at":"YYYY-MM-DD", "tags":["",""], "summary":"한국어 1~2문장"}]""",
     "high_end_audio": """최근 45일 이내 High-End Audio 뉴스만 수집해. 주제: DAC, 하이엔드 앰프, 하이파이 스트리밍, 오디오 쇼/전시회, 플래그십 신제품.
 반드시 실제 기사 원문 URL(https://...)만 사용.
 JSON 배열만 출력:
 [{"title":"", "source":"", "url":"https://...", "published_at":"YYYY-MM-DD", "tags":["",""], "summary":"한국어 1~2문장"}]""",
     "computer_ai": """최근 45일 이내 Computer & AI 뉴스만 수집해. 주제: GPU, AI 인프라, 데이터센터, 모델 릴리즈, 클라우드 단가/정책.
+반드시 실제 기사 원문 URL(https://...)만 사용.
+JSON 배열만 출력:
+[{"title":"", "source":"", "url":"https://...", "published_at":"YYYY-MM-DD", "tags":["",""], "summary":"한국어 1~2문장"}]""",
+    "global_biz": """최근 45일 이내 글로벌 비즈니스/정책/무역/거시경제 뉴스만 수집해. 주제: 환율, 무역규제, 금리, 공급망, 글로벌 정책 변화.
 반드시 실제 기사 원문 URL(https://...)만 사용.
 JSON 배열만 출력:
 [{"title":"", "source":"", "url":"https://...", "published_at":"YYYY-MM-DD", "tags":["",""], "summary":"한국어 1~2문장"}]""",
@@ -107,6 +119,24 @@ def main() -> int:
     if not isinstance(items, list):
         items = []
 
+    # 1) 카테고리 내부 URL 중복 제거: 같은 섹션에서 같은 링크 반복 방지
+    cleaned = []
+    seen_by_category = {k: set() for k in TARGET_COUNTS}
+    for item in items:
+        if not isinstance(item, dict):
+            continue
+        category = item.get("category")
+        url = str(item.get("url") or "").strip()
+        if category not in TARGET_COUNTS:
+            continue
+        if not re.match(r"^https?://", url):
+            continue
+        if url in seen_by_category[category]:
+            continue
+        seen_by_category[category].add(url)
+        cleaned.append(item)
+    items = cleaned
+
     by_cat = {cat: [] for cat in TARGET_COUNTS}
     for item in items:
         cat = item.get("category")
@@ -119,14 +149,14 @@ def main() -> int:
     client = Perplexity(api_key=api_key)
 
     added = 0
-    for cat in ("high_end_audio", "computer_ai"):
+    for cat in ("listeria_free", "cultured_meat", "high_end_audio", "computer_ai", "global_biz"):
         need = TARGET_COUNTS[cat]
         have = len(by_cat.get(cat, []))
         if have >= need:
             continue
 
         # 최대 4회 재시도하면서 누락 슬롯 채우기
-        for attempt in range(1, 5):
+        for attempt in range(1, 7):
             if len(by_cat[cat]) >= need:
                 break
 
@@ -143,7 +173,7 @@ def main() -> int:
                 messages=[
                     {
                         "role": "system",
-                        "content": "너는 사실 기반 뉴스 큐레이터다. URL은 실제 기사 원문만 사용하고, 중복 URL을 절대 내지 마라.",
+                        "content": "너는 사실 기반 뉴스 큐레이터다. URL은 실제 기사 원문만 사용하고, 중복 URL/홈페이지/검색결과 링크를 절대 내지 마라.",
                     },
                     {"role": "user", "content": user_prompt},
                 ],
