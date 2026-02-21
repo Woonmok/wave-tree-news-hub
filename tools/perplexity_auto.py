@@ -66,6 +66,18 @@ def run_pipeline(output_path: str) -> None:
     ]
     subprocess.run(normalize, cwd=BASE_DIR, check=True)
 
+    enrich = [
+        sys.executable,
+        os.path.join(BASE_DIR, "tools", "enrich_with_claude.py"),
+        "--in",
+        os.path.join(BASE_DIR, "data", "normalized", "news.json"),
+        "--out",
+        os.path.join(BASE_DIR, "data", "normalized", "news.json"),
+        "--max-enrich",
+        str(os.getenv("CLAUDE_ENRICH_MAX_ITEMS", "20")),
+    ]
+    subprocess.run(enrich, cwd=BASE_DIR, check=True)
+
     sync = [sys.executable, os.path.join(BASE_DIR, "sync_top_news.py")]
     subprocess.run(sync, cwd=BASE_DIR, check=True)
 

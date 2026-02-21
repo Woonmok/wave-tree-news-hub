@@ -1,371 +1,211 @@
 {
-  "generated_at": "2026-02-21T03:06:12.531Z",
+  "generated_at": "2026-02-21T03:26:50.719Z",
   "items": [
     {
-      "id": "6092f0a93f6314c3cfc155778b06a20aad773085",
+      "id": "c409f5fbe797e7e4acbb8cda41a126293a5ace48",
       "category": "listeria_free",
-      "title": "FDA와 CDC, 리스테리아 파스타 식사 오염 발병 최종 집계 발표",
-      "source": "eFoodAlert",
-      "url": "https://efoodalert.com/2026/02/12/recalls-and-alerts-february-12-2026/",
-      "published_at": "2026-02-12T00:00:00.000Z",
-      "summary": "FDA와 CDC가 Nate’s Fine Foods 파스타 포함 준비 파스타 식사 관련 리스테리아 발병을 종료 선언. 19개 주 28명 확진, 27명 입원, 7명 사망. 조사 종료.",
+      "title": "파스타 식사 리스테리아 발병 종료 선언",
+      "source": "Food Safety News",
+      "url": "https://www.foodsafetynews.com/2026/02/listeria-outbreak-traced-to-pasta-meals-is-over/",
+      "published_at": "2026-02-21T00:00:00.000Z",
+      "summary": "FDA가 파스타 식사 관련 치명적 리스테리아 발병을 종료 선언했다. 19개 주 28명 감염, 7명 사망, 대부분 입원하며 임신부 사산 사례도 발생했다. Nate’s Fine Foods 제품이 원인으로, Walmart 등 다수 매장에서 리콜됐다.[1]",
       "highlights": [],
       "tags": [
         "리스테리아",
         "파스타",
-        "발병"
+        "발병종료"
       ],
       "score": null
     },
     {
-      "id": "7e36ed350a476ffb658dd5886b665485fe55092a",
+      "id": "62a9af1423b19b77c0f977636c16a2917dcd9f67",
       "category": "listeria_free",
-      "title": "리스테리아 파스타 식사 발병 공식 종료",
-      "source": "Food Safety News",
-      "url": "https://www.foodsafetynews.com/2026/02/listeria-outbreak-traced-to-pasta-meals-is-over/",
-      "published_at": "2026-02-01T00:00:00.000Z",
-      "summary": "FDA가 치명적 리스테리아 발병 종료 선언. 19개 주 28명 감염, 7명 사망, 임산부 1명 태아 손실. Walmart, Kroger 등 다수 브랜드 파스타 회수.",
+      "title": "사우스캐롤라이나 리스테리아 발병 사망 보고",
+      "source": "South Carolina DPH",
+      "url": "https://dph.sc.gov/news/dph-reports-south-carolina-deaths-linked-us-listeria-outbreak",
+      "published_at": "2026-02-21T00:00:00.000Z",
+      "summary": "사우스캐롤라이나에서 Boar’s Head 델리 육 제품 리스테리아 발병으로 2명 사망 확인됐다. CDC 조사 중 13개 주 43명 입원, 3명 사망하며 리콜 제품 버리기와 냉장고 청소 권고했다.[2]",
       "highlights": [],
       "tags": [
         "리스테리아",
-        "파스타",
+        "델리육",
         "사망"
       ],
       "score": null
     },
     {
-      "id": "144020dd3c3ac7bbcd0f8cebc0b992d1ee2b8d90",
+      "id": "6fa697c6b4a5e34963bacf25466f502f1acda5ad",
       "category": "listeria_free",
-      "title": "준비 파스타 식사 리스테리아 발병 조사 업데이트",
-      "source": "CDC",
-      "url": "https://www.cdc.gov/listeria/outbreaks/chicken-fettuccine-alfredo-06-25/investigation.html",
-      "published_at": "2026-02-12T00:00:00.000Z",
-      "summary": "CDC 조사로 FreshRealm 치킨 페투치네 알프레도 식사 확인, 28명 감염. Walmart와 Kroger 판매 제품 회수, 오염 원인 지속 조사 중.",
+      "title": "스노호미시 카운티 여성 리스테리아 입원",
+      "source": "Snohomish County Health Dept",
+      "url": "https://www.snohd.org/CivicAlerts.aspx?AID=887",
+      "published_at": "2026-02-21T00:00:00.000Z",
+      "summary": "스노호미시 카운티 여성 1명이 파스타 식사 관련 리스테리아 발병으로 입원 후 회복 중이다. Sprouts, Walmart 등 제품 리콜, 18개 주 27명 감염 6명 사망으로 CDC 조사 중이다.[3]",
       "highlights": [],
       "tags": [
         "리스테리아",
-        "치킨페투치네",
-        "조사"
+        "파스타",
+        "입원"
       ],
       "score": null
     },
     {
-      "id": "79db47176922f98bf7b7f3bde18e7bae51ed2867",
+      "id": "80c295e8409da956b70345558f6908869739e2a0",
       "category": "listeria_free",
-      "title": "Wellsley Farms 연어 리스테리아 오염 회수",
+      "title": "준비 파스타 리스테리아 발병 타임라인",
+      "source": "CDC",
+      "url": "https://www.cdc.gov/listeria/outbreaks/chicken-fettuccine-alfredo-06-25/timeline.html",
+      "published_at": "2026-02-21T00:00:00.000Z",
+      "summary": "치킨 펫투치네 알프레도 등 파스타 식사 리스테리아 발병 종료, 리콜 제품 판매 중단됐다. 17명 이상 감염 확인, 실제 환자 수는 더 많을 수 있으며 3-4주 지연 보고 가능하다.[4]",
+      "highlights": [],
+      "tags": [
+        "리스테리아",
+        "파스타",
+        "타임라인"
+      ],
+      "score": null
+    },
+    {
+      "id": "0f4a2c040a0e7ef1e93bc00bdbdadfd13e1146b9",
+      "category": "cultured_meat",
+      "title": "USDA 리스테리아 규제 강화 계획",
+      "source": "Food Safety",
+      "url": "https://www.food-safety.com/articles/11056-regulatory-response-to-boars-head-mcdonalds-outbreaks-reveal-areas-for-improvement",
+      "published_at": "2026-02-21T00:00:00.000Z",
+      "summary": "Boar’s Head 리스테리아 발병 후 USDA가 리스테리아 규칙 검토 및 샘플링 강화 발표했다. 배양육 안전 기준 강화로 이어질 전망이다.[5]",
+      "highlights": [],
+      "tags": [
+        "배양육",
+        "리스테리아",
+        "규제"
+      ],
+      "score": null
+    },
+    {
+      "id": "e7ea760358b6aa017adec3807ed5928e7b097100",
+      "category": "cultured_meat",
+      "title": "파스타 리스테리아 발병 육 포함 리콜",
+      "source": "AAP Red Book",
+      "url": "https://publications.aap.org/redbook/resources/32538/Red-Book-Online-Outbreaks-Listeria-Outbreak-Linked",
+      "published_at": "2026-02-21T00:00:00.000Z",
+      "summary": "준비 파스타 식사 리스테리아 발병 2026년 2월 12일 종료, 육 포함 제품 리콜로 배양육 개발사 안전 주의 필요.[6]",
+      "highlights": [],
+      "tags": [
+        "배양육",
+        "파스타",
+        "육리콜"
+      ],
+      "score": null
+    },
+    {
+      "id": "f4211950c1f1a8f14091a80b7604f3206c5b36bd",
+      "category": "cultured_meat",
+      "title": "하와이 등 파스타 리스테리아 사망",
+      "source": "Marler Blog",
+      "url": "https://www.marlerblog.com/case-news/pasta-listeria-outbreak-over-after-deaths-in-hawaii-illinois-michigan-oregon-texas-and-utah/",
+      "published_at": "2026-01-29T00:00:00.000Z",
+      "summary": "하와이, 일리노이 등 6개 주 사망 발생한 파스타 리스테리아 발병 종료, 육 혼합 제품 리콜로 배양육 산업 영향.[7]",
+      "highlights": [],
+      "tags": [
+        "배양육",
+        "리스테리아",
+        "사망"
+      ],
+      "score": null
+    },
+    {
+      "id": "32fbe0f0512bae1756bd52f530fe12bb500b0b37",
+      "category": "cultured_meat",
+      "title": "웰슬리 팜스 연어 리스테리아 리콜",
       "source": "FDA",
       "url": "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/slade-gorton-co-inc-recalls-one-lot-wellsley-farms-farm-raised-atlantic-salmon-sold-bjs-wholesale",
-      "published_at": "2026-02-01T00:00:00.000Z",
-      "summary": "Slade Gorton이 BJ’s Wholesale Club 판매 Wellsley Farms 연어 2lb 백(로트 3896) 리스테리아 오염으로 회수. FDA 샘플 검사 발견, 질환 보고 없음.",
+      "published_at": "2026-02-21T00:00:00.000Z",
+      "summary": "Slade Gorton이 BJ's Wholesale 연어 1로트 리스테리아 검출로 리콜, 배양육 대체 수산물 안전 이슈 부각.[8]",
       "highlights": [],
       "tags": [
-        "리스테리아",
+        "배양육",
         "연어",
-        "회수"
+        "리콜"
       ],
       "score": null
     },
     {
-      "id": "c31f018e13137021f27b2119fc18890d98a39ef7",
+      "id": "1fd1f2d612d0fe6739a9fb9c43526fcebd67ea20",
       "category": "cultured_meat",
-      "title": "배양육 시장 확대를 위한 규제 완화 논의",
-      "source": "Food Navigator",
-      "url": "https://www.foodnavigator.com/Article/2026/02/20/cultured-meat-regulatory-updates",
-      "published_at": "2026-02-20T00:00:00.000Z",
-      "summary": "미국 FDA가 배양육 상업화 가속화 위한 새 가이드라인 발표. 유럽에서도 싱가포르 모델 따라 안전성 검증 간소화. 시장 규모 2030년 250억 달러 전망.",
-      "highlights": [],
-      "tags": [
-        "배양육",
-        "규제",
-        "승인"
-      ],
-      "score": null
-    },
-    {
-      "id": "62c1bf25727c2756d2434946ffe8f8ece3a22417",
-      "category": "cultured_meat",
-      "title": "이스라엘 Aleph Farms 우주 배양육 성공",
-      "source": "SpaceNews",
-      "url": "https://spacenews.com/2026/02/19/aleph-farms-space-cultured-meat/",
-      "published_at": "2026-02-19T00:00:00.000Z",
-      "summary": "Aleph Farms가 ISS에서 첫 우주 배양 스테이크 생산 성공. 지구 중력 없는 환경서 세포 배양 최적화. 상용화 2027년 목표.",
-      "highlights": [],
-      "tags": [
-        "배양육",
-        "우주",
-        "기술"
-      ],
-      "score": null
-    },
-    {
-      "id": "410781c674b360a29e0d95d72803f03a7af14177",
-      "category": "cultured_meat",
-      "title": "UPSIDE Foods 치킨 너겟 FDA 최종 승인",
-      "source": "Reuters",
-      "url": "https://www.reuters.com/business/upside-foods-chicken-nuggets-approved-2026-02-18/",
-      "published_at": "2026-02-18T00:00:00.000Z",
-      "summary": "UPSIDE Foods 배양 치킨 너겟 미국 내 레스토랑 판매 최종 승인. 소비자 테스트서 85% 만족도. 가격 2026년 말 kg당 50달러 예상.",
-      "highlights": [],
-      "tags": [
-        "배양육",
-        "치킨",
-        "승인"
-      ],
-      "score": null
-    },
-    {
-      "id": "59edd4f11ac89d20f736727538e64e15f47692a9",
-      "category": "cultured_meat",
-      "title": "배양 소고기 영국 시장 진입",
-      "source": "BBC",
-      "url": "https://www.bbc.com/news/science-environment-2026-02-17-cultured-beef",
-      "published_at": "2026-02-17T00:00:00.000Z",
-      "summary": "영국 FSA가 배양 소고기 안전 인증 첫 부여. Mosa Meat 제품 시판 준비. 동물 복지 향상 강조.",
-      "highlights": [],
-      "tags": [
-        "배양육",
-        "소고기",
-        "영국"
-      ],
-      "score": null
-    },
-    {
-      "id": "f05a51387e9a41b433823c75584f73207488e586",
-      "category": "cultured_meat",
-      "title": "배양육 탄소 배출 90% 감소 연구 결과",
-      "source": "Nature",
-      "url": "https://www.nature.com/articles/s41586-026-02115-8",
+      "title": "Boar’s Head 델리 육 리스테리아 대응",
+      "source": "Food Safety",
+      "url": "https://www.food-safety.com/articles/11056-regulatory-response-to-boars-head-mcdonalds-outbreaks-reveal-areas-for-improvement",
       "published_at": "2026-02-21T00:00:00.000Z",
-      "summary": "최신 연구 배양육 전통 육류 대비 온실가스 90% 적음 확인. 스케일업 시 가격 경쟁력 확보 가능.",
+      "summary": "700만 파운드 델리 육 리콜 후 USDA 델리 오염 방지 강화, 배양육 RTE 제품 규제 모델로 활용.[5]",
       "highlights": [],
       "tags": [
         "배양육",
-        "환경",
-        "탄소"
+        "델리",
+        "규제"
       ],
       "score": null
     },
     {
-      "id": "f92bb321866dabf19f50948d0901145f93429114",
-      "category": "high_end_audio",
-      "title": "Bang & Olufsen Beolab 90i 플래그십 스피커 출시",
-      "source": "What Hi-Fi",
-      "url": "https://www.whathifi.com/news/bang-olufsen-beolab-90i-launch",
-      "published_at": "2026-02-20T00:00:00.000Z",
-      "summary": "B&O Beolab 90i 무선 액티브 스피커 공개, AI 룸 보정 탑재. 가격 $90,000, 초고해상도 사운드.",
-      "highlights": [],
-      "tags": [
-        "하이엔드",
-        "스피커",
-        "신제품"
-      ],
-      "score": null
-    },
-    {
-      "id": "4d3448ba702e7b21c0d611152764a9ecb143a25c",
-      "category": "high_end_audio",
-      "title": "McIntosh MA12000 하이브리드 앰프 리뷰",
-      "source": "Stereophile",
-      "url": "https://www.stereophile.com/content/mcintosh-ma12000-review-2026",
-      "published_at": "2026-02-19T00:00:00.000Z",
-      "summary": "McIntosh MA12000 350W 통합 앰프, 아날로그-디지털 완벽 융합 호평. 노이즈 플로어 -120dB.",
-      "highlights": [],
-      "tags": [
-        "앰프",
-        "하이브리드",
-        "리뷰"
-      ],
-      "score": null
-    },
-    {
-      "id": "47de33583fb8651c9305c06334f570e37a12aad4",
-      "category": "high_end_audio",
-      "title": "Wilson Audio Alexx V 업그레이드 발표",
-      "source": "The Absolute Sound",
-      "url": "https://www.theabsolutesound.com/articles/wilson-audio-alexx-v-2026/",
-      "published_at": "2026-02-18T00:00:00.000Z",
-      "summary": "Wilson Alexx V 드라이버 재설계로 해상도 20% 향상. 가격 $150,000대.",
-      "highlights": [],
-      "tags": [
-        "스피커",
-        "윌슨",
-        "업그레이드"
-      ],
-      "score": null
-    },
-    {
-      "id": "e1b9f8e8d5ebf95f52b7400883f923d322286506",
-      "category": "high_end_audio",
-      "title": "dCS Rossini Apex DAC 새 버전",
-      "source": "Hi-Fi News",
-      "url": "https://www.hifinews.com/content/dcs-rossini-apex-dac-update",
-      "published_at": "2026-02-17T00:00:00.000Z",
-      "summary": "dCS Rossini Apex V2 펌웨어 업데이트, DSD512 지원 강화. 스트리밍 성능 최적화.",
-      "highlights": [],
-      "tags": [
-        "DAC",
-        "디시",
-        "업데이트"
-      ],
-      "score": null
-    },
-    {
-      "id": "5b508ed45d003de3fddb888bf257dfd71b9a620b",
-      "category": "high_end_audio",
-      "title": "Focal Utopia EVO 헤드폰 BE 플레처 발표",
-      "source": "SoundStage",
-      "url": "https://www.soundstagehifi.com/index.php/equipment-reviews/2026-focal-utopia-evo-be",
+      "id": "59665f39be408d1a71a84ef0b438a048e9b41143",
+      "category": "global_biz",
+      "title": "글로벌 리스테리아 발병 다국적 리콜",
+      "source": "CDC",
+      "url": "https://www.cdc.gov/listeria/outbreaks/chicken-fettuccine-alfredo-06-25/timeline.html",
       "published_at": "2026-02-21T00:00:00.000Z",
-      "summary": "Focal Utopia EVO BE 플레처 에디션, 베릴륨 드라이버 업그레이드. $6,000.",
+      "summary": "다국적 파스타 제품 리콜로 글로벌 식품 공급망 영향, 비즈니스 리스크 강조.[4]",
       "highlights": [],
       "tags": [
-        "헤드폰",
-        "포컬",
-        "BE"
+        "글로벌",
+        "비즈니스",
+        "리스테리아"
       ],
       "score": null
     },
     {
-      "id": "29e80e7472825d11668b5a052d73ce798bc5759e",
-      "category": "computer_ai",
-      "title": "NVIDIA Blackwell B300 AI 칩셋 공개",
-      "source": "AnandTech",
-      "url": "https://www.anandtech.com/show/2026/nvidia-blackwell-b300",
-      "published_at": "2026-02-20T00:00:00.000Z",
-      "summary": "NVIDIA B300 100만 토큰 초당 처리, 에너지 효율 4배 향상. 데이터센터용 출시.",
-      "highlights": [],
-      "tags": [
-        "AI",
-        "칩",
-        "NVIDIA"
-      ],
-      "score": null
-    },
-    {
-      "id": "c1adda5917f1852343220328e29d066b12bd54f0",
-      "category": "computer_ai",
-      "title": "OpenAI GPT-5 베타 릴리스",
-      "source": "TechCrunch",
-      "url": "https://techcrunch.com/2026/02/19/openai-gpt5-beta/",
-      "published_at": "2026-02-19T00:00:00.000Z",
-      "summary": "GPT-5 멀티모달 기능 강화, 환각 현상 70% 감소. 기업 사용자 우선 제공.",
-      "highlights": [],
-      "tags": [
-        "AI",
-        "챗GPT",
-        "베타"
-      ],
-      "score": null
-    },
-    {
-      "id": "a3cacf60c276757e7000c4a586376c966612a91b",
-      "category": "computer_ai",
-      "title": "Apple M6 칩 Mac Pro 탑재",
-      "source": "MacRumors",
-      "url": "https://www.macrumors.com/2026/02/18/apple-m6-mac-pro/",
-      "published_at": "2026-02-18T00:00:00.000Z",
-      "summary": "M6 칩 64코어 GPU, AI 가속기 내장. Mac Pro 2026 하반기 출시 예정.",
-      "highlights": [],
-      "tags": [
-        "애플",
-        "M6",
-        "맥프로"
-      ],
-      "score": null
-    },
-    {
-      "id": "b63be8702cb66618ea440a8839f29f071839a13c",
-      "category": "computer_ai",
-      "title": "Google Quantum AI 오류 수정 획기적 진보",
-      "source": "MIT Technology Review",
-      "url": "https://www.technologyreview.com/2026/02/17/google-quantum-breakthrough/",
-      "published_at": "2026-02-17T00:00:00.000Z",
-      "summary": "Google Sycamore 프로세서 오류율 0.1% 달성. 실용적 퀀텀 컴퓨팅 2년 내.",
-      "highlights": [],
-      "tags": [
-        "퀀텀",
-        "구글",
-        "AI"
-      ],
-      "score": null
-    },
-    {
-      "id": "0700369bf34babec084d7b80f990b762e98204e1",
-      "category": "computer_ai",
-      "title": "AMD Ryzen AI 400 시리즈 노트북 CPU",
-      "source": "Tom's Hardware",
-      "url": "https://www.tomshardware.com/pc-components/cpus/amd-ryzen-ai-400-2026",
+      "id": "fc3be89f84cc7106afc4d166d5141fe93db2f18f",
+      "category": "global_biz",
+      "title": "USDA 국제 육 규제 강화",
+      "source": "Food Safety",
+      "url": "https://www.food-safety.com/articles/11056-regulatory-response-to-boars-head-mcdonalds-outbreaks-reveal-areas-for-improvement",
       "published_at": "2026-02-21T00:00:00.000Z",
-      "summary": "Ryzen AI 400 NPU 80 TOPS, 배터리 20시간 지속. CES 2026 프리뷰.",
+      "summary": "Boar’s Head 사태로 USDA 글로벌 기준 강화, 국제 무역 영향 예상.[5]",
       "highlights": [],
       "tags": [
-        "AMD",
-        "라이젠",
-        "노트북"
+        "글로벌",
+        "비즈니스",
+        "규제"
       ],
       "score": null
     },
     {
-      "id": "a5ae3915bc789d424de267b36fa94c4e5acb16a6",
+      "id": "1c21dda80997329b1cf64fcf4edbccb7c9cf8ade",
       "category": "global_biz",
-      "title": "Tesla Cybercab 로보택시 대량 생산 시작",
-      "source": "Bloomberg",
-      "url": "https://www.bloomberg.com/news/tesla-cybercab-2026-02-20",
-      "published_at": "2026-02-20T00:00:00.000Z",
-      "summary": "Tesla Cybercab 연 100만대 생산 개시. FSD v13 탑재, 가격 $25,000.",
+      "title": "FDA 국제 리콜 협력",
+      "source": "FDA",
+      "url": "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/slade-gorton-co-inc-recalls-one-lot-wellsley-farms-farm-raised-atlantic-salmon-sold-bjs-wholesale",
+      "published_at": "2026-02-21T00:00:00.000Z",
+      "summary": "연어 리콜로 글로벌 수산 비즈니스 안전 검사 강화.[8]",
       "highlights": [],
       "tags": [
-        "테슬라",
-        "로보택시",
-        "생산"
+        "글로벌",
+        "비즈니스",
+        "리콜"
       ],
       "score": null
     },
     {
-      "id": "d194de2baf47d5a8dfb97a58a6a8185697365e2e",
+      "id": "fdefedb4b1e3e72347679bf3f2c689fd0e1afd9c",
       "category": "global_biz",
-      "title": "Samsung Galaxy S27 Ultra 카메라 혁신",
-      "source": "SamMobile",
-      "url": "https://www.sammobile.com/news/galaxy-s27-ultra-camera-2026/",
-      "published_at": "2026-02-19T00:00:00.000Z",
-      "summary": "S27 Ultra 1인치 센서 탑재, 320MP 줌. 글로벌 출시 2026 Q4.",
+      "title": "다주 리스테리아 비즈니스 영향",
+      "source": "Food Safety News",
+      "url": "https://www.foodsafetynews.com/2026/02/listeria-outbreak-traced-to-pasta-meals-is-over/",
+      "published_at": "2026-02-21T00:00:00.000Z",
+      "summary": "19개 주 발병 종료로 식품 기업 다수 리콜, 글로벌 공급망 재검토 필요.[1]",
       "highlights": [],
       "tags": [
-        "삼성",
-        "갤럭시",
-        "카메라"
-      ],
-      "score": null
-    },
-    {
-      "id": "ea25ff069eeec1326e5598efedb1acc4219db6cb",
-      "category": "global_biz",
-      "title": "Boeing 777X 첫 상업 비행 승인",
-      "source": "Reuters",
-      "url": "https://www.reuters.com/business/boeing-777x-approval-2026-02-18/",
-      "published_at": "2026-02-18T00:00:00.000Z",
-      "summary": "FAA 777X 인증 완료, 2026년 말 첫 비행. 연료 효율 20% 향상.",
-      "highlights": [],
-      "tags": [
-        "보잉",
-        "777X",
-        "항공"
-      ],
-      "score": null
-    },
-    {
-      "id": "1da80995ec2b28fd5cdea246752952edf2639f88",
-      "category": "global_biz",
-      "title": "Alibaba AI 클라우드 아시아 1위",
-      "source": "CNBC",
-      "url": "https://www.cnbc.com/2026/02/17/alibaba-cloud-ai-asia.html",
-      "published_at": "2026-02-17T00:00:00.000Z",
-      "summary": "Alibaba Cloud AI 매출 50% 성장, 아시아 시장 점유율 35%. Q4 실적 호조.",
-      "highlights": [],
-      "tags": [
-        "알리바바",
-        "클라우드",
-        "AI"
+        "글로벌",
+        "비즈니스",
+        "발병"
       ],
       "score": null
     }

@@ -121,6 +121,15 @@ fi
 echo "🌅 $(date '+%Y-%m-%d %H:%M:%S') - Daily Bridge 자동 생성 시작..."
 "$PYTHON_BIN" news_hub.py
 
+# Claude 의사결정 인사이트 보강 (news.json 유지 업데이트)
+if [ -f "$SCRIPT_DIR/tools/enrich_with_claude.py" ] && [ -f "$SCRIPT_DIR/data/normalized/news.json" ]; then
+    echo "🧠 $(date '+%Y-%m-%d %H:%M:%S') - Claude 인사이트 보강 실행..."
+    "$PYTHON_BIN" "$SCRIPT_DIR/tools/enrich_with_claude.py" \
+        --in "$SCRIPT_DIR/data/normalized/news.json" \
+        --out "$SCRIPT_DIR/data/normalized/news.json" \
+        --max-enrich "${CLAUDE_ENRICH_MAX_ITEMS:-20}" || true
+fi
+
 # 대시보드 동기화 보강: 최신 news.json -> dashboard_data.json 반영
 echo "🔄 $(date '+%Y-%m-%d %H:%M:%S') - dashboard 동기화 실행..."
 "$PYTHON_BIN" sync_top_news.py

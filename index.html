@@ -97,6 +97,16 @@
       .news-item.saved { border-left-color:var(--accent-yellow); background:rgba(255,235,59,0.1); }
       .news-title { font-size:1rem; margin-bottom:8px; line-height:1.4; }
       .news-summary { color: var(--text-secondary); font-size:.88rem; line-height:1.45; margin-bottom:10px; }
+      .decision-panel { margin:10px 0 8px; padding:10px; border:1px solid var(--border-color); border-radius:10px; background:rgba(255,255,255,0.03); }
+      .decision-row { display:flex; flex-wrap:wrap; gap:6px; margin-bottom:8px; }
+      .decision-chip { font-size:.74rem; border:1px solid var(--border-color); border-radius:999px; padding:3px 8px; color:var(--text-secondary); }
+      .decision-chip.ts-urgent { color:var(--accent-pink); border-color:var(--accent-pink); }
+      .decision-chip.ts-short { color:var(--accent-yellow); border-color:var(--accent-yellow); }
+      .decision-chip.ts-medium,
+      .decision-chip.ts-mid { color:var(--accent-cyan); border-color:var(--accent-cyan); }
+      .decision-chip.ts-long,
+      .decision-chip.ts-low { color:var(--accent-green); border-color:var(--accent-green); }
+      .decision-next { font-size:.82rem; line-height:1.4; color:var(--text-primary); }
       .news-tags { display:flex; gap:6px; flex-wrap:wrap; margin-top: 8px; }
       .tag { font-size:.75rem; color: var(--text-secondary); border:1px solid var(--border-color); padding:3px 8px; border-radius:999px; }
       .news-meta { display:flex; justify-content:space-between; align-items:center; gap:10px; margin-top:10px; }
@@ -214,6 +224,6 @@
       <div id="scrapbookContent"></div>
     </div>
 
-    <script src="./app.js?v=20260221-1148"></script>
+    <script src="./app.js?v=20260221-1220"></script>
   </body>
 </html>

@@ -232,6 +232,31 @@
 
     const summary = it.summary || (it.highlights && it.highlights.length ? it.highlights[0] : "");
     const tagsHtml = (it.tags || []).slice(0, 5).map((t) => `<span class="tag">${escapeHtml(t)}</span>`).join("");
+    const decision = (it && typeof it.decision === "object" && it.decision) ? it.decision : null;
+
+    const impact = decision && Number.isFinite(Number(decision.impact_score))
+      ? Number(decision.impact_score).toFixed(1)
+      : "-";
+    const confidence = decision && Number.isFinite(Number(decision.confidence))
+      ? Number(decision.confidence).toFixed(2)
+      : "-";
+    const timeSensitivity = decision && decision.time_sensitivity
+      ? String(decision.time_sensitivity).toUpperCase()
+      : "LOW";
+    const nextAction = decision && decision.next_action
+      ? String(decision.next_action).trim()
+      : "";
+
+    const decisionHtml = decision ? `
+      <div class="decision-panel">
+        <div class="decision-row">
+          <span class="decision-chip">Impact ${escapeHtml(impact)}</span>
+          <span class="decision-chip">Confidence ${escapeHtml(confidence)}</span>
+          <span class="decision-chip ts-${escapeHtml(timeSensitivity.toLowerCase())}">${escapeHtml(timeSensitivity)}</span>
+        </div>
+        ${nextAction ? `<div class="decision-next">🧭 ${escapeHtml(nextAction)}</div>` : ""}
+      </div>
+    ` : "";
 
     const sourceText = [
       it.source ? `📰 ${it.source}` : "📰",
@@ -242,6 +267,7 @@
     div.innerHTML = `
       <div class="news-title">${escapeHtml(it.title)}</div>
       ${summary ? `<div class="news-summary">${escapeHtml(summary)}</div>` : ""}
+      ${decisionHtml}
       ${tagsHtml ? `<div class="news-tags">${tagsHtml}</div>` : ""}
       <div class="news-meta">
         <span class="news-source" title="${escapeHtml(sourceText)}">${escapeHtml(sourceText)}</span>
