@@ -113,6 +113,7 @@ function normalizeFromJson(raw) {
     const source = String(it.source || it.publisher || "").trim();
 
     if (!title) continue;
+    if (!url || !/^https?:\/\//i.test(url)) continue;
 
     const published_at = normalizeDate(it.published_at || it.published || it.date || null);
     const summary = it.summary ? String(it.summary).trim() : "";
@@ -290,6 +291,7 @@ function parseNumberedItem(buffer, category) {
   const title = String(buffer.title).trim();
 
   if (!title) return null;
+  if (!url || !/^https?:\/\//i.test(url)) return null;
 
   return {
     id: makeId(category, title, url, source),
@@ -344,6 +346,7 @@ function parseBullet(body, category) {
   source = String(source).trim();
 
   if (!title) return null;
+  if (!url || !/^https?:\/\//i.test(url)) return null;
 
   return {
     id: makeId(category, title, url, source),

@@ -35,6 +35,8 @@ PROMPT_TEMPLATE = """
   - 🤖 Computer & AI 5개
   - 🌍 Global Biz 4개
 - 각 항목은 한 줄에 "제목 | 매체/기관 | URL | 날짜(YYYY-MM-DD) | tags=… | summary=…" 형식으로.
+- URL은 반드시 실제 기사 원문 `https://...` 전체 주소를 넣어야 함.
+- `(링크 없음)`, `N/A`, 검색 링크, 홈페이지만 넣는 것 금지.
 - 전체 결과는 Markdown 문서 하나로 출력.
 - 맨 위에는 오늘 날짜를 제목으로 넣어줘.
 

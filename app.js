@@ -58,7 +58,6 @@
       toggleSave,
       removeSaved,
       openLink,
-      openItem,
     };
 
     wireEvents();
@@ -247,7 +246,9 @@
       <div class="news-meta">
         <span class="news-source" title="${escapeHtml(sourceText)}">${escapeHtml(sourceText)}</span>
         <div class="news-actions">
-          <button class="action-btn" onclick="WaveTree.openItem('${escapeJs(it.id)}')">열기</button>
+          ${it.url
+            ? `<button class="action-btn" onclick="WaveTree.openLink('${escapeJs(it.url)}')">열기</button>`
+            : `<button class="action-btn" disabled title="원문 링크 없음">링크없음</button>`}
           <button class="action-btn ${isSaved ? "saved-btn" : ""}" onclick="WaveTree.toggleSave('${escapeJs(it.id)}')">
             ${isSaved ? "✓ 저장됨" : "+ 저장"}
           </button>
@@ -374,7 +375,9 @@
         <div class="scrapbook-title">${escapeHtml(s.title)}</div>
         <div class="scrapbook-date">📅 ${escapeHtml(formatKST(new Date(s.savedAt)))}</div>
         <div style="display:flex; gap:8px; margin-top:10px;">
-          <button class="action-btn" onclick="WaveTree.openItem('${escapeJs(s.id)}')">열기</button>
+          ${s.url
+            ? `<button class="action-btn" onclick="WaveTree.openLink('${escapeJs(s.url)}')">열기</button>`
+            : `<button class="action-btn" disabled title="원문 링크 없음">링크없음</button>`}
           <button class="remove-btn" onclick="WaveTree.removeSaved('${escapeJs(s.id)}')">✕ 삭제</button>
         </div>
       </div>
@@ -389,22 +392,6 @@
     try {
       window.open(url, "_blank", "noopener,noreferrer");
     } catch {}
-  }
-
-  function openItem(itemId) {
-    const found = allItems.find((x) => x.id === itemId) || saved.find((x) => x.id === itemId);
-    if (!found) return;
-
-    const directUrl = found.url ? String(found.url).trim() : "";
-    if (directUrl) {
-      openLink(directUrl);
-      return;
-    }
-
-    const query = [found.title || "", found.source || ""].join(" ").trim();
-    if (!query) return;
-    const searchUrl = `https://www.google.com/search?q=${encodeURIComponent(query)}`;
-    openLink(searchUrl);
   }
 
   // ---------- utils ----------
