@@ -132,6 +132,7 @@ def resolve_news_json_path():
         env_path,
         DEFAULT_NEWS_JSON,
         os.path.join(BASE_DIR, "data", "news.json"),
+        os.path.join(WORKSPACE_ROOT, "woonmok.github.io", "wave-tree-news-hub", "data", "normalized", "news.json"),
         os.path.join(WORKSPACE_ROOT, "woonmok.github.io", "news.json"),
     ]
 
@@ -145,20 +146,26 @@ def resolve_news_json_path():
 
     best_path = existing[0]
     best_time = datetime.min.replace(tzinfo=timezone.utc)
+    best_count = -1
 
     for path in existing:
         generated_at = None
+        item_count = 0
         try:
             with open(path, "r", encoding="utf-8") as f:
                 data = json.load(f)
             generated_at = _parse_generated_at(data)
+            item_count = len(data.get("items", [])) if isinstance(data, dict) else 0
         except Exception:
             generated_at = None
+            item_count = 0
 
         if generated_at is None:
             generated_at = datetime.fromtimestamp(os.path.getmtime(path), tz=timezone.utc)
 
-        if generated_at > best_time:
+        # 1) 아이템 수 많은 파일 우선, 2) 동률이면 최신 generated_at 우선
+        if (item_count > best_count) or (item_count == best_count and generated_at > best_time):
+            best_count = item_count
             best_time = generated_at
             best_path = path
 
@@ -186,16 +193,52 @@ def load_top_news():
             if published and published.astimezone(timezone.utc).date() == today_date:
                 today_items.append(item)
 
-        # 오늘 뉴스가 2개 미만이면 전체 뉴스에서 최신순으로 가져오기
-        if len(today_items) < 2:
-            target_items = items
-        else:
-            target_items = today_items
-        
         # 최신순 (published_at 기준, 없으면 빈 문자열)
-        sorted_items = sorted(target_items, key=lambda x: (x.get("published_at") or ""), reverse=True)
-        
-        return sorted_items[:2]
+        sorted_today = sorted(today_items, key=lambda x: (x.get("published_at") or ""), reverse=True)
+        sorted_all = sorted(items, key=lambda x: (x.get("published_at") or ""), reverse=True)
+
+        def pick_top2_with_diversity(candidates, fallback):
+            if not candidates:
+                candidates = fallback
+            if not candidates:
+                return []
+
+            first = candidates[0]
+            first_category = first.get("category")
+            second = None
+
+            # 두 번째 뉴스는 가능하면 다른 카테고리로 선택
+            for item in candidates[1:]:
+                if item.get("category") and item.get("category") != first_category:
+                    second = item
+                    break
+
+            # 오늘 뉴스에서 못 찾으면 전체 뉴스에서 다른 카테고리 탐색
+            if second is None:
+                for item in fallback:
+                    if item.get("id") == first.get("id"):
+                        continue
+                    if item.get("category") and item.get("category") != first_category:
+                        second = item
+                        break
+
+            # 그래도 없으면 단순 최신 2건
+            if second is None:
+                for item in candidates[1:]:
+                    if item.get("id") != first.get("id"):
+                        second = item
+                        break
+            if second is None:
+                for item in fallback:
+                    if item.get("id") != first.get("id"):
+                        second = item
+                        break
+
+            return [first, second] if second else [first]
+
+        # 오늘자 우선, 단 카테고리 다양성 우선 적용
+        candidate_pool = sorted_today if len(sorted_today) >= 2 else sorted_all
+        return pick_top2_with_diversity(candidate_pool, sorted_all)[:2]
     except Exception as e:
         print(f"Error loading news: {e}")
         return []
