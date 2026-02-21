@@ -196,7 +196,6 @@
       if (filter !== "all" && filter !== catKey) return;
 
       const items = groups[catKey] || [];
-      if (filter === "all" && items.length === 0) return;
       const def = CATEGORY[catKey];
 
       const catDiv = document.createElement("div");

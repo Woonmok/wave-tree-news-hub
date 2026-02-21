@@ -56,23 +56,33 @@ PROMPT_TEMPLATE = """
 
 
 def run_pipeline(output_path: str) -> None:
+    normalized_path = os.path.join(BASE_DIR, "data", "normalized", "news.json")
+
     normalize = [
         "node",
         os.path.join(BASE_DIR, "scripts", "normalize.js"),
         "--in",
         output_path,
         "--out",
-        os.path.join(BASE_DIR, "data", "normalized", "news.json"),
+        normalized_path,
     ]
     subprocess.run(normalize, cwd=BASE_DIR, check=True)
+
+    backfill = [
+        sys.executable,
+        os.path.join(BASE_DIR, "tools", "backfill_missing_categories.py"),
+        "--file",
+        normalized_path,
+    ]
+    subprocess.run(backfill, cwd=BASE_DIR, check=True)
 
     enrich = [
         sys.executable,
         os.path.join(BASE_DIR, "tools", "enrich_with_claude.py"),
         "--in",
-        os.path.join(BASE_DIR, "data", "normalized", "news.json"),
+        normalized_path,
         "--out",
-        os.path.join(BASE_DIR, "data", "normalized", "news.json"),
+        normalized_path,
         "--max-enrich",
         str(os.getenv("CLAUDE_ENRICH_MAX_ITEMS", "20")),
     ]
