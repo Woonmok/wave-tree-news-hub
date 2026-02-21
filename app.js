@@ -113,8 +113,12 @@
   }
 
   function bootstrapTimestamp() {
-    const now = new Date();
-    el.timestamp.textContent = formatKST(now);
+    const renderNow = () => {
+      const now = new Date();
+      el.timestamp.textContent = formatKST(now);
+    };
+    renderNow();
+    setInterval(renderNow, 1000);
   }
 
   function renderProcessorSummary() {
