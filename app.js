@@ -8,7 +8,10 @@
   "use strict";
 
   const CONFIG = {
-    dataUrl: "./data/normalized/news.json",
+    dataUrl:
+      location.hostname.endsWith("github.io")
+        ? "https://raw.githubusercontent.com/Woonmok/woonmok.github.io/main/wave-tree-news-hub/data/normalized/news.json"
+        : "./data/normalized/news.json",
     savedStorageKey: "waveTreeSavedNews.v1",
     maxPerCategory: 40, // UI에서 카테고리 당 렌더 상한(원하면 늘리세요)
   };
