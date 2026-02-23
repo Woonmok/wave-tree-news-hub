@@ -171,9 +171,25 @@ def validate_process_news_shape(module: ast.Module) -> None:
 
 
 def validate_schema_function_runtime() -> None:
-    namespace = {"__file__": str(NEWS_HUB_PATH), "__name__": "contract_check__"}
     source = NEWS_HUB_PATH.read_text(encoding="utf-8")
-    code = compile(source, str(NEWS_HUB_PATH), "exec")
+    module = ast.parse(source)
+
+    fn_node = find_function(module, "validate_news_items_schema")
+    if not fn_node:
+        fail("validate_news_items_schema 함수가 없습니다")
+
+    class _DummyLogger:
+        def warning(self, *_args, **_kwargs):
+            return None
+
+    isolated_module = ast.Module(body=[fn_node], type_ignores=[])
+    ast.fix_missing_locations(isolated_module)
+
+    namespace = {
+        "REQUIRED_KEYS": EXPECTED_REQUIRED_KEYS,
+        "logger": _DummyLogger(),
+    }
+    code = compile(isolated_module, str(NEWS_HUB_PATH), "exec")
     exec(code, namespace)
 
     validate_fn = namespace.get("validate_news_items_schema")
