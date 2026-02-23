@@ -576,110 +576,137 @@ def update_dashboard(news_data_list):
         logger.error("   ⚠️ Dashboard 업데이트 오류: %s", str(e))
 
 
-# 6. 메인 실행 함수
-def process_news(use_local_analysis=True):
-    """뉴스 필터링 및 분석 메인 함수 + Daily_Bridge.md 생성"""
-    news_list = fetch_news()
-    processed_count = 0
-    skipped_count = 0
+def filter_and_analyze(news_list, use_local_analysis=True):
+    """뉴스를 필터링/분석하여 후속 단계용 리스트를 구성한다."""
     processed_news_data = []
-    
+    skipped_count = 0
+
     logger.info("=" * 60)
     logger.info("🛰️ 외부 정보 감지 시스템 가동 중...")
     logger.info("=" * 60)
     logger.info("📋 감지 키워드 (%d개): %s...", len(KEYWORDS), ", ".join(KEYWORDS[:5]))
     logger.info("🚫 제외 키워드 (%d개): %s\n", len(EXCLUDE_KEYWORDS), ", ".join(EXCLUDE_KEYWORDS))
-    
+
     for idx, news in enumerate(news_list, 1):
         logger.info("\n[%d/%d] 처리 중...", idx, len(news_list))
         logger.info("   📝 뉴스: %s...", news[:60])
-        
-        # 키워드 필터링
+
         is_relevant, result = filter_by_keywords(news)
-        
         if not is_relevant:
             logger.info("   ✗ 건너뜀: %s", result)
             skipped_count += 1
             continue
-        
+
         matched_keywords = result
         logger.info("   ✓ 필터 통과!")
         logger.info("   🎯 감지된 키워드: %s", ", ".join(matched_keywords))
-        
-        # 로컬 분석
+
         analysis = None
-        try:
-            logger.info("   🔄 로컬 분석 진행 중...")
-            analysis = analyze_importance(news, matched_keywords)
-            logger.info("   ✅ 분석 완료")
-        except Exception as e:
-            logger.error("   ⚠️ 분석 오류: %s", str(e))
-        
-        # Markdown 저장
-        try:
-            save_to_radar(news, matched_keywords, analysis)
-            logger.info("   💾 Markdown 저장 완료")
-        except Exception as e:
-            logger.error("   ⚠️ 저장 오류: %s", str(e))
-        
-        # JSON 저장
-        try:
-            save_to_json({
-                "text": news,
-                "keywords": matched_keywords,
-                "analysis": analysis or ""
-            })
-            logger.info("   💾 JSON 저장 완료")
-        except Exception as e:
-            logger.error("   ⚠️ JSON 저장 오류: %s", str(e))
-        
-        # Daily Bridge 생성용 데이터 수집
+        if use_local_analysis:
+            try:
+                logger.info("   🔄 로컬 분석 진행 중...")
+                analysis = analyze_importance(news, matched_keywords)
+                logger.info("   ✅ 분석 완료")
+            except Exception as e:
+                logger.error("   ⚠️ 분석 오류: %s", str(e))
+
         processed_news_data.append({
             "text": news,
             "keywords": matched_keywords,
             "analysis": analysis,
             "category": classify_news_category(news, matched_keywords),
         })
-        
-        processed_count += 1
-    
-    # Daily_Bridge.md 생성 (핵심!)
+
+    return processed_news_data, skipped_count
+
+
+def persist(processed_news_data):
+    """분석 결과를 파일로 저장하고 관련 아티팩트를 수집한다."""
+    artifacts = {
+        "radar_saved": 0,
+        "json_saved": 0,
+        "bridge_path": None,
+        "news_sync_ok": False,
+    }
+
+    for item in processed_news_data:
+        try:
+            save_to_radar(item["text"], item["keywords"], item.get("analysis"))
+            artifacts["radar_saved"] += 1
+            logger.info("   💾 Markdown 저장 완료")
+        except Exception as e:
+            logger.error("   ⚠️ 저장 오류: %s", str(e))
+
+        try:
+            save_to_json({
+                "text": item["text"],
+                "keywords": item["keywords"],
+                "analysis": item.get("analysis") or "",
+            })
+            artifacts["json_saved"] += 1
+            logger.info("   💾 JSON 저장 완료")
+        except Exception as e:
+            logger.error("   ⚠️ JSON 저장 오류: %s", str(e))
+
     logger.info("\n%s", "=" * 60)
     logger.info("🌉 Daily Bridge 생성 중...")
     logger.info("%s", "=" * 60)
-    bridge_path = create_daily_bridge(processed_news_data)
+    artifacts["bridge_path"] = create_daily_bridge(processed_news_data)
 
-    # News Hub 데이터 소스는 canonical news.json(23개) 기준으로 유지
-    sync_news_hub_source_from_canonical()
-    
-    # Dashboard 업데이트
+    artifacts["news_sync_ok"] = sync_news_hub_source_from_canonical()
+    return artifacts
+
+
+def publish(processed_news_data, artifacts):
+    """저장된 결과를 대시보드/웹으로 발행한다."""
     logger.info("\n%s", "=" * 60)
     logger.info("📊 Dashboard 업데이트 중...")
     logger.info("%s", "=" * 60)
-    update_dashboard(processed_news_data)
-    
-    # Intelligence Hub 업데이트 (index.html)
+    try:
+        update_dashboard(processed_news_data)
+        artifacts["dashboard_ok"] = True
+    except Exception as e:
+        artifacts["dashboard_ok"] = False
+        logger.error("   ⚠️ Dashboard 업데이트 오류: %s", str(e))
+
     logger.info("\n%s", "=" * 60)
     logger.info("🌐 Intelligence Hub 업데이트 중...")
     logger.info("%s", "=" * 60)
     try:
         from sync_top_news import sync_to_html
+
         sync_to_html()
+        artifacts["html_ok"] = True
         logger.info("   ✅ Intelligence Hub 업데이트 완료")
     except Exception as e:
+        artifacts["html_ok"] = False
         logger.error("   ⚠️ Intelligence Hub 업데이트 오류: %s", str(e))
-    
+
+
+def summary(processed_news_data, skipped_count, artifacts):
+    """실행 결과를 요약 로그로 남긴다."""
     logger.info("\n%s", "=" * 60)
     logger.info("✅ 분석 완료. 모든 파일이 업데이트되었습니다.")
-    logger.info("   ✓ 저장됨: %d개", processed_count)
+    logger.info("   ✓ 저장됨: %d개", len(processed_news_data))
     logger.info("   ✗ 건너뜀: %d개", skipped_count)
     logger.info("   📁 생성 파일:")
-    logger.info("      - Project_Radar.md (Antigravity 동기화)")
-    logger.info("      - detected_news.json (API 연동)")
-    logger.info("      - Daily_Bridge.md ⭐ (VS Code ↔ Antigravity 브릿지)")
-    logger.info("      - dashboard_data.json ⭐ (대시보드 동기화)")
-    logger.info("      - index.html Intelligence Hub ⭐ (웹사이트 동기화)")
+    logger.info("      - Project_Radar.md (Antigravity 동기화, %d건)", artifacts.get("radar_saved", 0))
+    logger.info("      - detected_news.json (API 연동, %d건)", artifacts.get("json_saved", 0))
+    logger.info("      - Daily_Bridge.md ⭐ (VS Code ↔ Antigravity 브릿지): %s", artifacts.get("bridge_path"))
+    logger.info("      - dashboard_data.json ⭐ (대시보드 동기화): %s", artifacts.get("dashboard_ok", False))
+    logger.info("      - index.html Intelligence Hub ⭐ (웹사이트 동기화): %s", artifacts.get("html_ok", False))
+    logger.info("      - news.json canonical sync: %s", artifacts.get("news_sync_ok", False))
     logger.info("%s", "=" * 60)
+
+
+# 6. 메인 실행 함수
+def process_news(use_local_analysis=True):
+    """오케스트레이터: 실행 순서 제어 + 최종 요약 출력만 담당"""
+    news_list = fetch_news()
+    processed_news_data, skipped_count = filter_and_analyze(news_list, use_local_analysis=use_local_analysis)
+    artifacts = persist(processed_news_data)
+    publish(processed_news_data, artifacts)
+    summary(processed_news_data, skipped_count, artifacts)
 
 
 # 실행
