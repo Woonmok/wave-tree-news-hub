@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+ROOT_DIR="$(cd "$(dirname "$0")/.." && pwd)"
+cd "$ROOT_DIR"
+
+echo "[pre-commit] process contract check..."
+python3 tools/check_process_contract.py
+
+echo "[pre-commit] python syntax smoke check..."
+python3 -m py_compile \
+  news_hub.py \
+  sync_top_news.py \
+  ../woonmok.github.io/antigravity.py \
+  ../woonmok.github.io/monitor_intelligence.py
+
+echo "[pre-commit] all checks passed"
