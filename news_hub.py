@@ -2,10 +2,12 @@
 # news_hub.py (로컬 규칙 기반 뉴스 분석 + Daily Bridge)
 import os
 import re
+import logging
 from dotenv import load_dotenv
 from datetime import datetime
 import json
 import shutil
+import tempfile
 import requests
 
 # .env 파일 로드
@@ -41,6 +43,89 @@ CATEGORY_RULES = {
     "computer_ai": ["ai", "gpu", "blackwell", "computer", "인프라"],
     "global_biz": ["규제", "시장", "정책", "관세", "수출", "비즈니스", "투자", "글로벌", "market", "regulation", "policy", "trade", "economy", "approval"],
 }
+
+REQUIRED_KEYS = {"id", "category", "title", "summary"}
+
+logging.basicConfig(
+    level=getattr(logging, os.getenv("LOG_LEVEL", "INFO").upper(), logging.INFO),
+    format="%(asctime)s | %(levelname)s | %(message)s",
+)
+logger = logging.getLogger(__name__)
+
+
+def atomic_write_json(file_path, data, ensure_ascii=False, indent=2):
+    """JSON 파일을 원자적으로 저장하고 디스크 반영까지 보장한다."""
+    target_path = os.path.abspath(file_path)
+    target_dir = os.path.dirname(target_path) or "."
+    os.makedirs(target_dir, exist_ok=True)
+
+    tmp_path = None
+    try:
+        with tempfile.NamedTemporaryFile(
+            mode="w",
+            encoding="utf-8",
+            dir=target_dir,
+            prefix=f".{os.path.basename(target_path)}.",
+            suffix=".tmp",
+            delete=False,
+        ) as f:
+            tmp_path = f.name
+            json.dump(data, f, ensure_ascii=ensure_ascii, indent=indent)
+            f.flush()
+            os.fsync(f.fileno())
+
+        os.replace(tmp_path, target_path)
+
+        try:
+            dir_fd = os.open(target_dir, os.O_RDONLY)
+            try:
+                os.fsync(dir_fd)
+            finally:
+                os.close(dir_fd)
+        except OSError:
+            pass
+
+    except Exception:
+        if tmp_path and os.path.exists(tmp_path):
+            try:
+                os.remove(tmp_path)
+            except OSError:
+                pass
+        raise
+
+
+def validate_news_items_schema(items, context="news.json"):
+    """REQUIRED_KEYS 기준으로 뉴스 아이템 스키마를 검증하고 유효 항목만 반환한다."""
+    valid_items = []
+    invalid_count = 0
+
+    if not isinstance(items, list):
+        logger.warning("%s: items가 list가 아닙니다. 빈 목록으로 처리합니다.", context)
+        return [], 0
+
+    for idx, item in enumerate(items):
+        if not isinstance(item, dict):
+            invalid_count += 1
+            logger.warning("%s: items[%d]가 dict가 아닙니다. 제외합니다.", context, idx)
+            continue
+
+        missing = REQUIRED_KEYS - set(item.keys())
+        if missing:
+            invalid_count += 1
+            logger.warning(
+                "%s: items[%d] 필수 키 누락(%s). 제외합니다.",
+                context,
+                idx,
+                ", ".join(sorted(missing)),
+            )
+            continue
+
+        valid_items.append(item)
+
+    if invalid_count:
+        logger.warning("%s: 스키마 불일치 %d건 제외", context, invalid_count)
+
+    return valid_items, invalid_count
 
 
 def score_news(news_text, matched_keywords):
@@ -136,7 +221,7 @@ def create_daily_bridge(news_data_list):
     이 파일이 VS Code ↔ Antigravity 연결점
     """
     if not news_data_list:
-        print("   ⚠️ 분석할 뉴스가 없습니다.")
+        logger.warning("   ⚠️ 분석할 뉴스가 없습니다.")
         return
     
     timestamp = datetime.now().strftime("%Y년 %m월 %d일 %H:%M:%S")
@@ -253,16 +338,16 @@ def create_daily_bridge(news_data_list):
     try:
         with open(DAILY_BRIDGE_PATH, "w", encoding="utf-8") as f:
             f.write(full_content)
-        print(f"   ✅ Daily_Bridge.md 생성 완료: {DAILY_BRIDGE_PATH}")
+        logger.info("   ✅ Daily_Bridge.md 생성 완료: %s", DAILY_BRIDGE_PATH)
         return DAILY_BRIDGE_PATH
     except Exception as e:
-        print(f"   ⚠️ Daily_Bridge.md 저장 실패: {str(e)}")
+        logger.error("   ⚠️ Daily_Bridge.md 저장 실패: %s", str(e))
         return None
 
 
 def append_daily_bridge_to_news_json(bridge_path, category="global_biz"):
     if not bridge_path or not os.path.exists(bridge_path):
-        print("   ⚠️ Daily Bridge 파일이 없어 news.json 추가를 건너뜁니다.")
+        logger.warning("   ⚠️ Daily Bridge 파일이 없어 news.json 추가를 건너뜁니다.")
         return False
 
     news_json_path = os.path.join(BASE_DIR, "data", "normalized", "news.json")
@@ -271,7 +356,7 @@ def append_daily_bridge_to_news_json(bridge_path, category="global_biz"):
         with open(bridge_path, "r", encoding="utf-8") as f:
             content = f.read()
     except Exception as e:
-        print(f"   ⚠️ Daily Bridge 읽기 실패: {str(e)}")
+        logger.error("   ⚠️ Daily Bridge 읽기 실패: %s", str(e))
         return False
 
     date_match = re.search(r"(\d{4})년\s*(\d{2})월\s*(\d{2})일", content)
@@ -307,9 +392,9 @@ def append_daily_bridge_to_news_json(bridge_path, category="global_biz"):
         else:
             data = {"generated_at": datetime.now().isoformat(), "items": []}
 
-        items = data.get("items", [])
+        items, _ = validate_news_items_schema(data.get("items", []), context=news_json_path)
         if any(str(item.get("id")) == bridge_id for item in items):
-            print("   ℹ️ Daily Bridge가 이미 news.json에 존재합니다.")
+            logger.info("   ℹ️ Daily Bridge가 이미 news.json에 존재합니다.")
             return False
 
         items.insert(0, {
@@ -328,14 +413,12 @@ def append_daily_bridge_to_news_json(bridge_path, category="global_biz"):
         data["generated_at"] = datetime.now().isoformat()
         data["items"] = items
 
-        os.makedirs(os.path.dirname(news_json_path), exist_ok=True)
-        with open(news_json_path, "w", encoding="utf-8") as f:
-            json.dump(data, f, ensure_ascii=False, indent=2)
+        atomic_write_json(news_json_path, data, ensure_ascii=False, indent=2)
 
-        print(f"   ✅ Daily Bridge가 news.json에 추가되었습니다: {news_json_path}")
+        logger.info("   ✅ Daily Bridge가 news.json에 추가되었습니다: %s", news_json_path)
         return True
     except Exception as e:
-        print(f"   ⚠️ news.json 추가 실패: {str(e)}")
+        logger.error("   ⚠️ news.json 추가 실패: %s", str(e))
         return False
 
 
@@ -354,8 +437,9 @@ def sync_news_hub_source_from_canonical():
         try:
             with open(candidate, "r", encoding="utf-8") as f:
                 loaded = json.load(f)
-            items = loaded.get("items", [])
+            items, _ = validate_news_items_schema(loaded.get("items", []), context=candidate)
             if isinstance(items, list) and len(items) >= 20:
+                loaded["items"] = items
                 chosen_data = loaded
                 chosen_path = candidate
                 break
@@ -363,17 +447,15 @@ def sync_news_hub_source_from_canonical():
             continue
 
     if not chosen_data:
-        print("   ⚠️ canonical news.json을 찾지 못해 기존 normalized/news.json 유지")
+        logger.warning("   ⚠️ canonical news.json을 찾지 못해 기존 normalized/news.json 유지")
         return False
 
     try:
-        os.makedirs(os.path.dirname(target_path), exist_ok=True)
-        with open(target_path, "w", encoding="utf-8") as f:
-            json.dump(chosen_data, f, ensure_ascii=False, indent=2)
-        print(f"   ✅ normalized/news.json 동기화 완료: {chosen_path} ({len(chosen_data.get('items', []))}개)")
+        atomic_write_json(target_path, chosen_data, ensure_ascii=False, indent=2)
+        logger.info("   ✅ normalized/news.json 동기화 완료: %s (%d개)", chosen_path, len(chosen_data.get("items", [])))
         return True
     except Exception as e:
-        print(f"   ⚠️ normalized/news.json 동기화 실패: {str(e)}")
+        logger.error("   ⚠️ normalized/news.json 동기화 실패: %s", str(e))
         return False
 
 
@@ -399,9 +481,9 @@ def save_to_radar(news_text, matched_keywords, analysis=None):
     # Antigravity로 자동 동기화
     try:
         shutil.copy2(radar_file, ANTIGRAVITY_PATH)
-        print(f"   🔄 Antigravity 동기화 완료: {ANTIGRAVITY_PATH}")
+        logger.info("   🔄 Antigravity 동기화 완료: %s", ANTIGRAVITY_PATH)
     except Exception as e:
-        print(f"   ⚠️ Antigravity 동기화 실패: {str(e)}")
+        logger.error("   ⚠️ Antigravity 동기화 실패: %s", str(e))
 
 
 # 5. JSON으로도 저장 (API 연동 용)
@@ -422,8 +504,7 @@ def save_to_json(news_data):
         "analysis": news_data.get("analysis", "")
     })
     
-    with open(json_file, "w", encoding="utf-8") as f:
-        json.dump(data, f, ensure_ascii=False, indent=2)
+    atomic_write_json(json_file, data, ensure_ascii=False, indent=2)
 
 
 # Dashboard 업데이트 함수
@@ -439,7 +520,7 @@ def update_dashboard(news_data_list):
         DASHBOARD_PATH = os.path.join(workspace_root, "woonmok.github.io", "dashboard_data.json")
     
     if not news_data_list:
-        print("   ⚠️ 업데이트할 뉴스가 없습니다.")
+        logger.warning("   ⚠️ 업데이트할 뉴스가 없습니다.")
         return
     
     try:
@@ -487,13 +568,12 @@ def update_dashboard(news_data_list):
         dashboard_data["last_updated"] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         
         # 저장
-        with open(DASHBOARD_PATH, 'w', encoding='utf-8') as f:
-            json.dump(dashboard_data, f, ensure_ascii=False, indent=2)
+        atomic_write_json(DASHBOARD_PATH, dashboard_data, ensure_ascii=False, indent=2)
         
-        print(f"   ✅ Dashboard 업데이트 완료: {len(top_news)}개 뉴스")
+        logger.info("   ✅ Dashboard 업데이트 완료: %d개 뉴스", len(top_news))
         
     except Exception as e:
-        print(f"   ⚠️ Dashboard 업데이트 오류: {str(e)}")
+        logger.error("   ⚠️ Dashboard 업데이트 오류: %s", str(e))
 
 
 # 6. 메인 실행 함수
@@ -504,43 +584,43 @@ def process_news(use_local_analysis=True):
     skipped_count = 0
     processed_news_data = []
     
-    print("=" * 60)
-    print("🛰️ 외부 정보 감지 시스템 가동 중...")
-    print("=" * 60)
-    print(f"📋 감지 키워드 ({len(KEYWORDS)}개): {', '.join(KEYWORDS[:5])}...")
-    print(f"🚫 제외 키워드 ({len(EXCLUDE_KEYWORDS)}개): {', '.join(EXCLUDE_KEYWORDS)}\n")
+    logger.info("=" * 60)
+    logger.info("🛰️ 외부 정보 감지 시스템 가동 중...")
+    logger.info("=" * 60)
+    logger.info("📋 감지 키워드 (%d개): %s...", len(KEYWORDS), ", ".join(KEYWORDS[:5]))
+    logger.info("🚫 제외 키워드 (%d개): %s\n", len(EXCLUDE_KEYWORDS), ", ".join(EXCLUDE_KEYWORDS))
     
     for idx, news in enumerate(news_list, 1):
-        print(f"\n[{idx}/{len(news_list)}] 처리 중...")
-        print(f"   📝 뉴스: {news[:60]}...")
+        logger.info("\n[%d/%d] 처리 중...", idx, len(news_list))
+        logger.info("   📝 뉴스: %s...", news[:60])
         
         # 키워드 필터링
         is_relevant, result = filter_by_keywords(news)
         
         if not is_relevant:
-            print(f"   ✗ 건너뜀: {result}")
+            logger.info("   ✗ 건너뜀: %s", result)
             skipped_count += 1
             continue
         
         matched_keywords = result
-        print(f"   ✓ 필터 통과!")
-        print(f"   🎯 감지된 키워드: {', '.join(matched_keywords)}")
+        logger.info("   ✓ 필터 통과!")
+        logger.info("   🎯 감지된 키워드: %s", ", ".join(matched_keywords))
         
         # 로컬 분석
         analysis = None
         try:
-            print(f"   🔄 로컬 분석 진행 중...")
+            logger.info("   🔄 로컬 분석 진행 중...")
             analysis = analyze_importance(news, matched_keywords)
-            print(f"   ✅ 분석 완료")
+            logger.info("   ✅ 분석 완료")
         except Exception as e:
-            print(f"   ⚠️ 분석 오류: {str(e)}")
+            logger.error("   ⚠️ 분석 오류: %s", str(e))
         
         # Markdown 저장
         try:
             save_to_radar(news, matched_keywords, analysis)
-            print(f"   💾 Markdown 저장 완료")
+            logger.info("   💾 Markdown 저장 완료")
         except Exception as e:
-            print(f"   ⚠️ 저장 오류: {str(e)}")
+            logger.error("   ⚠️ 저장 오류: %s", str(e))
         
         # JSON 저장
         try:
@@ -549,9 +629,9 @@ def process_news(use_local_analysis=True):
                 "keywords": matched_keywords,
                 "analysis": analysis or ""
             })
-            print(f"   💾 JSON 저장 완료")
+            logger.info("   💾 JSON 저장 완료")
         except Exception as e:
-            print(f"   ⚠️ JSON 저장 오류: {str(e)}")
+            logger.error("   ⚠️ JSON 저장 오류: %s", str(e))
         
         # Daily Bridge 생성용 데이터 수집
         processed_news_data.append({
@@ -564,42 +644,42 @@ def process_news(use_local_analysis=True):
         processed_count += 1
     
     # Daily_Bridge.md 생성 (핵심!)
-    print("\n" + "=" * 60)
-    print("🌉 Daily Bridge 생성 중...")
-    print("=" * 60)
+    logger.info("\n%s", "=" * 60)
+    logger.info("🌉 Daily Bridge 생성 중...")
+    logger.info("%s", "=" * 60)
     bridge_path = create_daily_bridge(processed_news_data)
 
     # News Hub 데이터 소스는 canonical news.json(23개) 기준으로 유지
     sync_news_hub_source_from_canonical()
     
     # Dashboard 업데이트
-    print("\n" + "=" * 60)
-    print("📊 Dashboard 업데이트 중...")
-    print("=" * 60)
+    logger.info("\n%s", "=" * 60)
+    logger.info("📊 Dashboard 업데이트 중...")
+    logger.info("%s", "=" * 60)
     update_dashboard(processed_news_data)
     
     # Intelligence Hub 업데이트 (index.html)
-    print("\n" + "=" * 60)
-    print("🌐 Intelligence Hub 업데이트 중...")
-    print("=" * 60)
+    logger.info("\n%s", "=" * 60)
+    logger.info("🌐 Intelligence Hub 업데이트 중...")
+    logger.info("%s", "=" * 60)
     try:
         from sync_top_news import sync_to_html
         sync_to_html()
-        print("   ✅ Intelligence Hub 업데이트 완료")
+        logger.info("   ✅ Intelligence Hub 업데이트 완료")
     except Exception as e:
-        print(f"   ⚠️ Intelligence Hub 업데이트 오류: {str(e)}")
+        logger.error("   ⚠️ Intelligence Hub 업데이트 오류: %s", str(e))
     
-    print("\n" + "=" * 60)
-    print(f"✅ 분석 완료. 모든 파일이 업데이트되었습니다.")
-    print(f"   ✓ 저장됨: {processed_count}개")
-    print(f"   ✗ 건너뜀: {skipped_count}개")
-    print(f"   📁 생성 파일:")
-    print(f"      - Project_Radar.md (Antigravity 동기화)")
-    print(f"      - detected_news.json (API 연동)")
-    print(f"      - Daily_Bridge.md ⭐ (VS Code ↔ Antigravity 브릿지)")
-    print(f"      - dashboard_data.json ⭐ (대시보드 동기화)")
-    print(f"      - index.html Intelligence Hub ⭐ (웹사이트 동기화)")
-    print("=" * 60)
+    logger.info("\n%s", "=" * 60)
+    logger.info("✅ 분석 완료. 모든 파일이 업데이트되었습니다.")
+    logger.info("   ✓ 저장됨: %d개", processed_count)
+    logger.info("   ✗ 건너뜀: %d개", skipped_count)
+    logger.info("   📁 생성 파일:")
+    logger.info("      - Project_Radar.md (Antigravity 동기화)")
+    logger.info("      - detected_news.json (API 연동)")
+    logger.info("      - Daily_Bridge.md ⭐ (VS Code ↔ Antigravity 브릿지)")
+    logger.info("      - dashboard_data.json ⭐ (대시보드 동기화)")
+    logger.info("      - index.html Intelligence Hub ⭐ (웹사이트 동기화)")
+    logger.info("%s", "=" * 60)
 
 
 # 실행

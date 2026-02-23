@@ -4,6 +4,7 @@
 import json
 import os
 import re
+import tempfile
 import urllib.parse
 import urllib.request
 from datetime import datetime, timezone
@@ -16,6 +17,45 @@ TARGET_HTML = os.getenv(
     "TARGET_HTML_PATH",
     os.path.join(WORKSPACE_ROOT, "woonmok.github.io", "index.html"),
 )
+
+
+def atomic_write_json(file_path, payload):
+    target_path = os.path.abspath(file_path)
+    target_dir = os.path.dirname(target_path) or "."
+    os.makedirs(target_dir, exist_ok=True)
+
+    tmp_path = None
+    try:
+        with tempfile.NamedTemporaryFile(
+            mode="w",
+            encoding="utf-8",
+            dir=target_dir,
+            prefix=f".{os.path.basename(target_path)}.",
+            suffix=".tmp",
+            delete=False,
+        ) as f:
+            tmp_path = f.name
+            json.dump(payload, f, ensure_ascii=False, indent=2)
+            f.flush()
+            os.fsync(f.fileno())
+
+        os.replace(tmp_path, target_path)
+
+        try:
+            dir_fd = os.open(target_dir, os.O_RDONLY)
+            try:
+                os.fsync(dir_fd)
+            finally:
+                os.close(dir_fd)
+        except OSError:
+            pass
+    except Exception:
+        if tmp_path and os.path.exists(tmp_path):
+            try:
+                os.remove(tmp_path)
+            except OSError:
+                pass
+        raise
 
 
 def _read_env_file(path):
@@ -349,8 +389,7 @@ def update_dashboard_json(top_news):
         ]
         dashboard["last_updated"] = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%S")
 
-        with open(DASHBOARD_JSON, "w", encoding="utf-8") as f:
-            json.dump(dashboard, f, ensure_ascii=False, indent=2)
+        atomic_write_json(DASHBOARD_JSON, dashboard)
         print("✅ dashboard_data.json intelligence 필드 동기화 완료!")
         return True
     except Exception as e:
