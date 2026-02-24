@@ -71,8 +71,7 @@
 
     fetchData()
       .then(() => {
-        const updatedLabel = generatedAt ? formatShortKST(generatedAt.toISOString()) : "-";
-        el.dataStatus.textContent = `data: ${allItems.length.toLocaleString()} items · updated ${updatedLabel}`;
+        el.dataStatus.textContent = `data: ${allItems.length.toLocaleString()} items`;
         el.dataStatus.style.opacity = "1";
         render();
       })
