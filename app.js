@@ -32,7 +32,7 @@
   let saved = loadSaved(); // array of saved objects
   let filter = "all";
   let q = "";
-  let sortMode = "published_desc";
+  let sortMode = "ingested_desc";
 
   // ---------- DOM ----------
   const el = {};
@@ -71,7 +71,8 @@
 
     fetchData()
       .then(() => {
-        el.dataStatus.textContent = `data: ${allItems.length.toLocaleString()} items`;
+        const updatedLabel = generatedAt ? formatShortKST(generatedAt.toISOString()) : "-";
+        el.dataStatus.textContent = `data: ${allItems.length.toLocaleString()} items · updated ${updatedLabel}`;
         el.dataStatus.style.opacity = "1";
         render();
       })
@@ -102,7 +103,7 @@
 
     // sort
     el.sortSelect.addEventListener("change", () => {
-      sortMode = el.sortSelect.value || "published_desc";
+      sortMode = el.sortSelect.value || "ingested_desc";
       render();
     });
 
@@ -320,10 +321,14 @@
   function compareBySortMode(a, b, mode) {
     const pa = a.published_at ? Date.parse(a.published_at) : 0;
     const pb = b.published_at ? Date.parse(b.published_at) : 0;
+    const ia = a.decision_generated_at ? Date.parse(a.decision_generated_at) : 0;
+    const ib = b.decision_generated_at ? Date.parse(b.decision_generated_at) : 0;
     const sa = (typeof a.score === "number") ? a.score : -1;
     const sb = (typeof b.score === "number") ? b.score : -1;
 
     switch (mode) {
+      case "ingested_desc":
+        return (ib - ia) || (pb - pa) || (sb - sa);
       case "published_asc":
         return pa - pb || sb - sa;
       case "score_desc":
