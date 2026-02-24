@@ -2,7 +2,8 @@
 import os
 import sys
 import subprocess
-from datetime import date
+import json
+from datetime import date, datetime, timedelta, timezone
 from dotenv import load_dotenv
 from perplexity import Perplexity
 
@@ -92,8 +93,80 @@ def run_pipeline(output_path: str) -> None:
     subprocess.run(sync, cwd=BASE_DIR, check=True)
 
 
+def load_json_safe(path: str):
+    try:
+        with open(path, "r", encoding="utf-8") as f:
+            return json.load(f)
+    except Exception:
+        return None
+
+
+def parse_iso_to_kst_date(value: str):
+    if not value:
+        return None
+    text = str(value).strip()
+    if text.endswith("Z"):
+        text = text[:-1] + "+00:00"
+    try:
+        dt = datetime.fromisoformat(text)
+    except Exception:
+        return None
+    if dt.tzinfo is None:
+        dt = dt.replace(tzinfo=timezone.utc)
+    kst = timezone(timedelta(hours=9))
+    return dt.astimezone(kst).date()
+
+
+def extract_ids(news_data):
+    if not isinstance(news_data, dict):
+        return set()
+    items = news_data.get("items", [])
+    if not isinstance(items, list):
+        return set()
+    ids = set()
+    for item in items:
+        if isinstance(item, dict) and item.get("id"):
+            ids.add(str(item.get("id")))
+    return ids
+
+
+def is_fresh_for_today(news_data, today_str: str, min_fresh_items: int = 5) -> bool:
+    if not isinstance(news_data, dict):
+        return False
+
+    today = date.fromisoformat(today_str)
+
+    generated_at = parse_iso_to_kst_date(news_data.get("generated_at"))
+    if generated_at != today:
+        return False
+
+    items = news_data.get("items", [])
+    if not isinstance(items, list):
+        return False
+
+    fresh_count = 0
+    for item in items:
+        if not isinstance(item, dict):
+            continue
+        item_date = parse_iso_to_kst_date(item.get("decision_generated_at"))
+        if item_date == today:
+            fresh_count += 1
+
+    return fresh_count >= min_fresh_items
+
+
 def main() -> int:
     today = date.today().strftime("%Y-%m-%d")
+    normalized_path = os.path.join(BASE_DIR, "data", "normalized", "news.json")
+    before_data = load_json_safe(normalized_path)
+    before_ids = extract_ids(before_data)
+
+    force_refresh = os.getenv("PERPLEXITY_FORCE_REFRESH", "").strip().lower() in {"1", "true", "yes", "on"}
+    if not force_refresh and is_fresh_for_today(before_data, today):
+        print(f"ℹ️ skip: today({today}) data already fresh, Perplexity API call skipped")
+        print("added=0")
+        return 0
+
     prompt = PROMPT_TEMPLATE.format(today=today)
 
     client = Perplexity(api_key=API_KEY)
@@ -117,6 +190,14 @@ def main() -> int:
         f.write(md_text)
 
     run_pipeline(OUT_PATH)
+    after_data = load_json_safe(normalized_path)
+    after_ids = extract_ids(after_data)
+    added_count = len(after_ids - before_ids)
+
+    print(f"added={added_count}")
+    if added_count == 0:
+        print("⚠️ warning: Perplexity run finished but no new IDs were added")
+
     print(f"✅ Saved: {OUT_PATH}")
     return 0
 
