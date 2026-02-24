@@ -423,15 +423,17 @@ def append_daily_bridge_to_news_json(bridge_path, category="global_biz"):
 
 
 def sync_news_hub_source_from_canonical():
-    target_path = os.path.join(BASE_DIR, "data", "normalized", "news.json")
-    source_candidates = [
-        os.path.join(os.path.abspath(os.path.join(BASE_DIR, "..")), "woonmok.github.io", "news.json"),
-        target_path,
-    ]
+    normalized_path = os.path.join(BASE_DIR, "data", "normalized", "news.json")
+    canonical_path = os.path.join(
+        os.path.abspath(os.path.join(BASE_DIR, "..")),
+        "woonmok.github.io",
+        "news.json",
+    )
 
-    chosen_data = None
-    chosen_path = None
-    for candidate in source_candidates:
+    candidates = [normalized_path, canonical_path]
+    valid_sources = []
+
+    for candidate in candidates:
         if not os.path.exists(candidate):
             continue
         try:
@@ -440,22 +442,27 @@ def sync_news_hub_source_from_canonical():
             items, _ = validate_news_items_schema(loaded.get("items", []), context=candidate)
             if isinstance(items, list) and len(items) >= 20:
                 loaded["items"] = items
-                chosen_data = loaded
-                chosen_path = candidate
-                break
+                valid_sources.append((candidate, loaded, os.path.getmtime(candidate)))
         except Exception:
             continue
 
-    if not chosen_data:
-        logger.warning("   ⚠️ canonical news.json을 찾지 못해 기존 normalized/news.json 유지")
+    if not valid_sources:
+        logger.warning("   ⚠️ 동기화 가능한 news.json이 없어 기존 상태를 유지합니다")
         return False
 
+    chosen_path, chosen_data, _ = max(valid_sources, key=lambda item: item[2])
+
     try:
-        atomic_write_json(target_path, chosen_data, ensure_ascii=False, indent=2)
-        logger.info("   ✅ normalized/news.json 동기화 완료: %s (%d개)", chosen_path, len(chosen_data.get("items", [])))
+        atomic_write_json(normalized_path, chosen_data, ensure_ascii=False, indent=2)
+        atomic_write_json(canonical_path, chosen_data, ensure_ascii=False, indent=2)
+        logger.info(
+            "   ✅ news.json 양방향 동기화 완료: source=%s (items=%d)",
+            chosen_path,
+            len(chosen_data.get("items", [])),
+        )
         return True
     except Exception as e:
-        logger.error("   ⚠️ normalized/news.json 동기화 실패: %s", str(e))
+        logger.error("   ⚠️ news.json 양방향 동기화 실패: %s", str(e))
         return False
 
 

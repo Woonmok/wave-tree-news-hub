@@ -31,6 +31,7 @@ print('✅ quality gate passed:', len(items), dict(counts))
 PY
 
 cp "$BASE/data/normalized/news.json" "$DEPLOY/wave-tree-news-hub/data/normalized/news.json"
+cp "$BASE/data/normalized/news.json" "$DEPLOY/news.json"
 cp "$BASE/app.js" "$DEPLOY/wave-tree-news-hub/app.js"
 cp "$BASE/index.html" "$DEPLOY/wave-tree-news-hub/index.html"
 
@@ -38,6 +39,7 @@ cd "$DEPLOY"
 
 git add \
   wave-tree-news-hub/data/normalized/news.json \
+  news.json \
   wave-tree-news-hub/app.js \
   wave-tree-news-hub/index.html \
   index.html \
