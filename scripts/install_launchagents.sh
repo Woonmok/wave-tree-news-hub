@@ -6,6 +6,9 @@ NEWS_HUB_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
 WORKSPACE_ROOT="${WAVETREE_WORKSPACE_ROOT:-$(cd "$NEWS_HUB_DIR/.." && pwd)}"
 WOONMOK_DIR="${WAVETREE_WOONMOK_DIR:-$WORKSPACE_ROOT/woonmok.github.io}"
 LAUNCH_AGENTS_DIR="$HOME/Library/LaunchAgents"
+FORCE_LOAD_DEPRECATED="${FORCE_LOAD_DEPRECATED:-0}"
+NGROK_CONFIG_PATH="${NGROK_CONFIG_PATH:-$HOME/Library/Application Support/ngrok/ngrok.yml}"
+NGROK_TUNNEL_NAME="${NGROK_TUNNEL_NAME:-wave-tree-news-hub}"
 
 mkdir -p "$LAUNCH_AGENTS_DIR"
 
@@ -38,6 +41,25 @@ action_load() {
   launchctl load "$plist_dest" >/dev/null 2>&1 || true
 }
 
+is_deprecated_external_agent() {
+  local name="$1"
+  case "$name" in
+    com.wavetree.dailybridge.plist|com.wavetree.perplexity-auto.plist|com.wavetree.fswatch.plist|com.wavetree.news-sync.plist|com.wavetree.news-sync-loop.plist)
+      return 0
+      ;;
+    *)
+      return 1
+      ;;
+  esac
+}
+
+has_ngrok_tunnel() {
+  local cfg="$1"
+  local tunnel="$2"
+  [[ -f "$cfg" ]] || return 1
+  grep -Eq "^[[:space:]]*${tunnel}:[[:space:]]*$" "$cfg"
+}
+
 enable_label_if_disabled() {
   local label="$1"
   if [[ -z "$label" ]]; then
@@ -67,6 +89,22 @@ for plist_src in "${PLISTS[@]}"; do
       echo "[skip] backup_server.js missing: $plist_name"
       continue
     fi
+  fi
+
+  if [[ "$plist_name" == "com.ngrok.plist" ]]; then
+    if ! has_ngrok_tunnel "$NGROK_CONFIG_PATH" "$NGROK_TUNNEL_NAME"; then
+      [[ -n "$label" ]] && launchctl unload "$plist_dest" >/dev/null 2>&1 || true
+      cp "$plist_src" "$plist_dest"
+      echo "[skip] ngrok tunnel missing in config: $NGROK_TUNNEL_NAME ($NGROK_CONFIG_PATH)"
+      continue
+    fi
+  fi
+
+  if is_deprecated_external_agent "$plist_name" && [[ "$FORCE_LOAD_DEPRECATED" != "1" ]]; then
+    [[ -n "$label" ]] && launchctl unload "$plist_dest" >/dev/null 2>&1 || true
+    cp "$plist_src" "$plist_dest"
+    echo "[skip] deprecated on external volume: $plist_name (set FORCE_LOAD_DEPRECATED=1 to load)"
+    continue
   fi
 
   cp "$plist_src" "$plist_dest"
