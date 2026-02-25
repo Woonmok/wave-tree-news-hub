@@ -27,6 +27,8 @@ PLISTS=(
   "$WOONMOK_DIR/com.wavetree.news-sync-loop.plist"
 )
 
+BACKUP_SERVER_JS="$NEWS_HUB_DIR/backup_server.js"
+
 echo "[install_launchagents] workspace: $WORKSPACE_ROOT"
 echo "[install_launchagents] news-hub:  $NEWS_HUB_DIR"
 echo "[install_launchagents] woonmok:   $WOONMOK_DIR"
@@ -34,6 +36,19 @@ echo "[install_launchagents] woonmok:   $WOONMOK_DIR"
 action_load() {
   local plist_dest="$1"
   launchctl load "$plist_dest" >/dev/null 2>&1 || true
+}
+
+enable_label_if_disabled() {
+  local label="$1"
+  if [[ -z "$label" ]]; then
+    return 0
+  fi
+
+  local disabled
+  disabled=$(launchctl print-disabled "gui/$(id -u)" | grep -F "\"$label\" =>" || true)
+  if echo "$disabled" | grep -q "disabled"; then
+    launchctl enable "gui/$(id -u)/$label" >/dev/null 2>&1 || true
+  fi
 }
 
 for plist_src in "${PLISTS[@]}"; do
@@ -46,7 +61,16 @@ for plist_src in "${PLISTS[@]}"; do
   plist_dest="$LAUNCH_AGENTS_DIR/$plist_name"
   label="$(/usr/libexec/PlistBuddy -c 'Print :Label' "$plist_src" 2>/dev/null || true)"
 
+  if [[ "$plist_name" == "com.wavetree.backup-server.plist" || "$plist_name" == "com.wavetree.scrapbook-backup.plist" ]]; then
+    if [[ ! -f "$BACKUP_SERVER_JS" ]]; then
+      [[ -n "$label" ]] && launchctl unload "$plist_dest" >/dev/null 2>&1 || true
+      echo "[skip] backup_server.js missing: $plist_name"
+      continue
+    fi
+  fi
+
   cp "$plist_src" "$plist_dest"
+  enable_label_if_disabled "$label"
   action_load "$plist_dest"
 
   if [[ -n "$label" ]] && launchctl list | grep -q "$label"; then
