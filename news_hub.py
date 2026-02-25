@@ -3,12 +3,17 @@
 import os
 import re
 import logging
-from dotenv import load_dotenv
 from datetime import datetime
 import json
 import shutil
 import tempfile
 import requests
+
+try:
+    from dotenv import load_dotenv
+except ImportError:
+    def load_dotenv(*args, **kwargs):
+        return False
 
 # .env 파일 로드
 load_dotenv()

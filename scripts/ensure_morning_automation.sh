@@ -1,8 +1,9 @@
 #!/bin/bash
 set -Eeuo pipefail
 
-BASE="/Volumes/AI_DATA_CENTRE/AI_WORKSPACE/wave-tree-news-hub"
-DEPLOY="/Volumes/AI_DATA_CENTRE/AI_WORKSPACE/woonmok.github.io"
+SCRIPT_DIR=$(cd "$(dirname "$0")" && pwd)
+BASE="$(cd "$SCRIPT_DIR/.." && pwd)"
+DEPLOY="$(cd "$BASE/../woonmok.github.io" && pwd)"
 LOG_DIR="$BASE/logs"
 STATE_DIR="$BASE/.state"
 LOCK_FILE="$STATE_DIR/ensure_morning_automation.lock"

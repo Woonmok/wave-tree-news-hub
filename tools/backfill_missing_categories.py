@@ -6,8 +6,13 @@ import os
 import re
 from datetime import datetime, timezone
 
-from dotenv import load_dotenv
 from perplexity import Perplexity
+
+try:
+    from dotenv import load_dotenv
+except ImportError:
+    def load_dotenv(*args, **kwargs):
+        return False
 
 TARGET_COUNTS = {
     "listeria_free": 4,

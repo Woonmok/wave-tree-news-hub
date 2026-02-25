@@ -1,8 +1,9 @@
 #!/bin/bash
 set -Eeuo pipefail
 
-BASE="/Volumes/AI_DATA_CENTRE/AI_WORKSPACE/wave-tree-news-hub"
-DEPLOY="/Volumes/AI_DATA_CENTRE/AI_WORKSPACE/woonmok.github.io"
+SCRIPT_DIR=$(cd "$(dirname "$0")" && pwd)
+BASE="$SCRIPT_DIR"
+DEPLOY="$(cd "$SCRIPT_DIR/../woonmok.github.io" && pwd)"
 LOG_DIR="$BASE/logs"
 RUN_DATE=$(date '+%Y-%m-%d')
 LOG_FILE="$LOG_DIR/cron_publish_${RUN_DATE}.log"
@@ -12,12 +13,17 @@ exec >> "$LOG_FILE" 2>&1
 
 echo "===== $(date '+%Y-%m-%d %H:%M:%S') publish start ====="
 
-/bin/bash "$BASE/run_perplexity_auto.sh"
+if /bin/bash "$BASE/run_perplexity_auto.sh"; then
+  echo "✅ run_perplexity_auto.sh 완료"
+else
+  echo "⚠️ run_perplexity_auto.sh 실패 - 기존 normalized/news.json 기준으로 계속 진행"
+fi
 
-/usr/bin/python3 - <<'PY'
+BASE_DIR="$BASE" /usr/bin/python3 - <<'PY'
 import json, sys
+import os
 from collections import Counter
-p='/Volumes/AI_DATA_CENTRE/AI_WORKSPACE/wave-tree-news-hub/data/normalized/news.json'
+p=os.path.join(os.environ['BASE_DIR'],'data','normalized','news.json')
 with open(p,'r',encoding='utf-8') as f:
   d=json.load(f)
 items=d.get('items',[])
@@ -47,8 +53,16 @@ git add \
 
 if ! git diff --cached --quiet; then
   git commit -m "auto: 7am news publish $(date '+%Y-%m-%d %H:%M')"
-  git push origin main
-  echo "✅ auto publish pushed"
+  if git push origin main; then
+    echo "✅ auto publish pushed"
+  else
+    echo "⚠️ git push 실패 - remote 변경사항 rebase 후 재시도"
+    if git pull --rebase origin main && git push origin main; then
+      echo "✅ auto publish pushed (rebase)"
+    else
+      echo "⚠️ auto publish push 최종 실패 - 로컬 커밋만 유지"
+    fi
+  fi
 else
   echo "ℹ️ no publish changes"
 fi
