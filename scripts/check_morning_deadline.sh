@@ -1,8 +1,12 @@
 #!/bin/bash
 set -Eeuo pipefail
 
-BASE="/Volumes/AI_DATA_CENTRE/AI_WORKSPACE/wave-tree-news-hub"
-DEPLOY="/Volumes/AI_DATA_CENTRE/AI_WORKSPACE/woonmok.github.io"
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+PROJECT_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
+WORKSPACE_ROOT="${WAVETREE_WORKSPACE_ROOT:-$(cd "$PROJECT_ROOT/.." && pwd)}"
+
+BASE="$PROJECT_ROOT"
+DEPLOY="${WAVETREE_DEPLOY_DIR:-$WORKSPACE_ROOT/woonmok.github.io}"
 LOG_DIR="$BASE/logs"
 TODAY=$(date '+%Y-%m-%d')
 NOW=$(date '+%Y-%m-%d %H:%M:%S')

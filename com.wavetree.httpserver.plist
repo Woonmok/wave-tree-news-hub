@@ -7,12 +7,9 @@
     
     <key>ProgramArguments</key>
     <array>
-        <string>/usr/bin/python3</string>
-        <string>-m</string>
-        <string>http.server</string>
-        <string>8000</string>
-        <string>--directory</string>
-        <string>/Volumes/AI_DATA_CENTRE/AI_WORKSPACE/wave-tree-news-hub</string>
+        <string>/bin/zsh</string>
+        <string>-lc</string>
+        <string>NEWS_HUB_DIR="${WAVETREE_NEWS_HUB_DIR:-${WAVETREE_WORKSPACE_ROOT:-$HOME/AI_WORKSPACE}/wave-tree-news-hub}"; exec /usr/bin/python3 -m http.server 8000 --directory "$NEWS_HUB_DIR"</string>
     </array>
     
     <key>RunAtLoad</key>

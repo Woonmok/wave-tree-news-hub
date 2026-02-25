@@ -1,8 +1,12 @@
 #!/bin/bash
 set -Eeuo pipefail
 
-BASE="/Volumes/AI_DATA_CENTRE/AI_WORKSPACE/wave-tree-news-hub"
-DEPLOY="/Volumes/AI_DATA_CENTRE/AI_WORKSPACE/woonmok.github.io"
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+PROJECT_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
+WORKSPACE_ROOT="${WAVETREE_WORKSPACE_ROOT:-$(cd "$PROJECT_ROOT/.." && pwd)}"
+
+BASE="$PROJECT_ROOT"
+DEPLOY="${WAVETREE_DEPLOY_DIR:-$WORKSPACE_ROOT/woonmok.github.io}"
 LOG_DIR="$BASE/logs"
 TODAY=$(date '+%Y-%m-%d')
 NOW=$(date '+%Y-%m-%d %H:%M:%S')
@@ -53,7 +57,7 @@ send_telegram_status() {
   [ -s "$dashboard_json" ] && dash_flag="✅"
 
   local anti_status="NOT RUNNING"
-  if pgrep -af '/Volumes/AI_DATA_CENTRE/AI_WORKSPACE/woonmok.github.io/antigravity.py' >/dev/null 2>&1; then
+  if pgrep -af "python.*$DEPLOY/antigravity.py" >/dev/null 2>&1; then
     anti_status="RUNNING"
   fi
 
@@ -105,8 +109,8 @@ send_telegram_status() {
 
   echo
   echo "[2] Process status"
-  if pgrep -af '/Volumes/AI_DATA_CENTRE/AI_WORKSPACE/woonmok.github.io/antigravity.py' >/dev/null 2>&1; then
-    pgrep -af '/Volumes/AI_DATA_CENTRE/AI_WORKSPACE/woonmok.github.io/antigravity.py'
+  if pgrep -af "python.*$DEPLOY/antigravity.py" >/dev/null 2>&1; then
+    pgrep -af "python.*$DEPLOY/antigravity.py"
   else
     echo "antigravity: NOT RUNNING"
   fi

@@ -6,18 +6,19 @@
 	<string>com.wavetree.fswatch</string>
 	<key>ProgramArguments</key>
 	<array>
-		<string>/bin/bash</string>
-		<string>/Volumes/AI_DATA_CENTRE/AI_WORKSPACE/wave-tree-news-hub/scripts/auto_sync_news_fswatch.sh</string>
+		<string>/bin/zsh</string>
+		<string>-lc</string>
+		<string>NEWS_HUB_DIR="${WAVETREE_NEWS_HUB_DIR:-${WAVETREE_WORKSPACE_ROOT:-$HOME/AI_WORKSPACE}/wave-tree-news-hub}"; exec /bin/bash "$NEWS_HUB_DIR/scripts/auto_sync_news_fswatch.sh"</string>
 	</array>
 	<key>KeepAlive</key>
 	<true/>
 	<key>RunAtLoad</key>
 	<true/>
 	<key>StandardOutPath</key>
-	<string>/Volumes/AI_DATA_CENTRE/AI_WORKSPACE/wave-tree-news-hub/logs/fswatch.log</string>
+	<string>/tmp/wavetree-fswatch.log</string>
 	<key>StandardErrorPath</key>
-	<string>/Volumes/AI_DATA_CENTRE/AI_WORKSPACE/wave-tree-news-hub/logs/fswatch_error.log</string>
+	<string>/tmp/wavetree-fswatch-error.log</string>
 	<key>WorkingDirectory</key>
-	<string>/Volumes/AI_DATA_CENTRE/AI_WORKSPACE/wave-tree-news-hub</string>
+	<string>/tmp</string>
 </dict>
 </plist>

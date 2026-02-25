@@ -9,6 +9,8 @@ npm-debug.log*
 
 # Python environments & cache
 .venv/
+.venv312/
+.venv-*/
 venv/
 __pycache__/
 *.py[cod]

@@ -7,13 +7,13 @@
     
     <key>ProgramArguments</key>
     <array>
-        <string>/usr/bin/env</string>
-        <string>node</string>
-        <string>/Volumes/AI_DATA_CENTRE/AI_WORKSPACE/wave-tree-news-hub/backup_server.js</string>
+        <string>/bin/zsh</string>
+        <string>-lc</string>
+        <string>NEWS_HUB_DIR="${WAVETREE_NEWS_HUB_DIR:-${WAVETREE_WORKSPACE_ROOT:-$HOME/AI_WORKSPACE}/wave-tree-news-hub}"; export BACKUP_DIR="$NEWS_HUB_DIR/data/scrapbook"; export SYNC_DIR="$NEWS_HUB_DIR/data/scrapbook"; exec node "$NEWS_HUB_DIR/backup_server.js"</string>
     </array>
     
     <key>WorkingDirectory</key>
-    <string>/Volumes/AI_DATA_CENTRE/AI_WORKSPACE/wave-tree-news-hub</string>
+    <string>/tmp</string>
     
     <key>RunAtLoad</key>
     <true/>
@@ -22,17 +22,13 @@
     <true/>
     
     <key>StandardOutPath</key>
-    <string>/Users/seunghoonoh/Library/Logs/wave-tree-news-hub/backup-server.log</string>
+    <string>/tmp/wavetree-backup-server.log</string>
     
     <key>StandardErrorPath</key>
-    <string>/Users/seunghoonoh/Library/Logs/wave-tree-news-hub/backup-server.error.log</string>
+    <string>/tmp/wavetree-backup-server-error.log</string>
     
     <key>EnvironmentVariables</key>
     <dict>
-        <key>BACKUP_DIR</key>
-        <string>/Volumes/AI_DATA_CENTRE/AI_WORKSPACE/wave-tree-news-hub/data/scrapbook</string>
-        <key>SYNC_DIR</key>
-        <string>/Volumes/AI_DATA_CENTRE/AI_WORKSPACE/wave-tree-news-hub/data/scrapbook</string>
         <key>PATH</key>
         <string>/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin</string>
     </dict>

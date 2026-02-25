@@ -1,7 +1,9 @@
 #!/bin/bash
 set -Eeuo pipefail
 
-WORKSPACE_ROOT="${WORKSPACE_ROOT:-/Volumes/AI_WORKSPACE/projects}"
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+PROJECT_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
+WORKSPACE_ROOT="${WAVETREE_WORKSPACE_ROOT:-$(cd "$PROJECT_ROOT/.." && pwd)}"
 NEWS_HUB="$WORKSPACE_ROOT/wave-tree-news-hub"
 WOONMOK="$WORKSPACE_ROOT/woonmok.github.io"
 
