@@ -4,6 +4,7 @@
 import json
 import os
 import re
+import subprocess
 import tempfile
 import urllib.parse
 import urllib.request
@@ -131,8 +132,32 @@ def send_sync_notification(top_news, html_success, dash_success):
                 print("✅ Telegram Top2 동기화 알림 전송 완료")
                 return True
     except Exception as e:
+        err_text = str(e)
+        if "CERTIFICATE_VERIFY_FAILED" in err_text:
+            if _send_telegram_via_curl(token, chat_id, msg):
+                print("✅ Telegram Top2 동기화 알림 전송 완료(curl fallback)")
+                return True
         print(f"⚠️ Telegram 알림 전송 실패: {e}")
     return False
+
+
+def _send_telegram_via_curl(token, chat_id, message):
+    cmd = [
+        "curl",
+        "-fsS",
+        "-X",
+        "POST",
+        f"https://api.telegram.org/bot{token}/sendMessage",
+        "-d",
+        f"chat_id={chat_id}",
+        "--data-urlencode",
+        f"text={message}",
+    ]
+    try:
+        proc = subprocess.run(cmd, capture_output=True, text=True, timeout=12)
+        return proc.returncode == 0
+    except Exception:
+        return False
 
 
 def _parse_generated_at(data):
