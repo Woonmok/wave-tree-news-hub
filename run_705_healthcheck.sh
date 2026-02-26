@@ -48,6 +48,32 @@ latest_log_or_empty() {
     echo "${file:-}"
 }
 
+latest_dated_log_or_empty() {
+    local pattern="$1"
+    local file
+    local base_name
+    local log_date
+
+    while IFS= read -r file; do
+        [ -n "$file" ] || continue
+        base_name=$(basename "$file")
+        log_date=$(echo "$base_name" | sed -nE 's/.*_([0-9]{4}-[0-9]{2}-[0-9]{2})\.log$/\1/p')
+
+        # 날짜가 파일명에 없거나 형식이 다르면 무시
+        [ -n "$log_date" ] || continue
+
+        # 미래 날짜 로그(모의 테스트 파일 등)는 헬스체크 판정에서 제외
+        if [[ "$log_date" > "$RUN_DATE" ]]; then
+            continue
+        fi
+
+        echo "$file"
+        return 0
+    done < <(ls -1t $pattern 2>/dev/null || true)
+
+    echo ""
+}
+
 extract_recent_error_lines() {
     local file_path="$1"
     [ -f "$file_path" ] || return 0
@@ -64,14 +90,14 @@ ok_publish=0
 ok_daily=0
 ok_antigravity=0
 
-publish_log=$(latest_log_or_empty "$SCRIPT_DIR/logs/cron_publish_*.log")
+publish_log=$(latest_dated_log_or_empty "$SCRIPT_DIR/logs/cron_publish_*.log")
 if [ -n "$publish_log" ]; then
     if grep -qE "✅ auto publish pushed|ℹ️ no publish changes|===== .* publish end =====" "$publish_log"; then
         ok_publish=1
     fi
 fi
 
-daily_log=$(latest_log_or_empty "$SCRIPT_DIR/logs/dailybridge_${RUN_DATE}.log")
+daily_log=$(latest_dated_log_or_empty "$SCRIPT_DIR/logs/dailybridge_*.log")
 if [ -n "$daily_log" ] && [ -f "$SCRIPT_DIR/data/daily_bridge_${RUN_DATE}.json" ]; then
     if grep -q "✅ .* - 완료!" "$daily_log"; then
         ok_daily=1
@@ -103,7 +129,7 @@ if [ "$status_icon" = "⚠️" ]; then
         fi
     fi
 
-    daily_err_log=$(latest_log_or_empty "$SCRIPT_DIR/logs/dailybridge_error_*.log")
+    daily_err_log=$(latest_dated_log_or_empty "$SCRIPT_DIR/logs/dailybridge_error_*.log")
     if [ "$ok_daily" -ne 1 ] && [ -n "$daily_err_log" ]; then
         daily_err=$(extract_recent_error_lines "$daily_err_log")
         if [ -n "$daily_err" ]; then
