@@ -93,7 +93,17 @@ send_zero_added_alert_once() {
     fi
 }
 
-PYTHON_BIN="/usr/bin/python3"
+# Python 실행 환경 선택 (.venv-1 우선)
+PYTHON_BIN="python3"
+if [ -x "$SCRIPT_DIR/.venv-1/bin/python" ]; then
+    PYTHON_BIN="$SCRIPT_DIR/.venv-1/bin/python"
+elif [ -x "$SCRIPT_DIR/.venv312/bin/python" ]; then
+    PYTHON_BIN="$SCRIPT_DIR/.venv312/bin/python"
+elif [ -x "$SCRIPT_DIR/.venv/bin/python" ]; then
+    PYTHON_BIN="$SCRIPT_DIR/.venv/bin/python"
+fi
+echo "🐍 $(date '+%Y-%m-%d %H:%M:%S') - Python 인터프리터: $PYTHON_BIN"
+
 "$PYTHON_BIN" "$SCRIPT_DIR/tools/perplexity_auto.py" | tee "$RUN_TMP_FILE"
 
 if grep -q "added=0" "$RUN_TMP_FILE"; then

@@ -1,14 +1,14 @@
 {
-  "generated_at": "2026-02-26T01:36:51.501407Z",
+  "generated_at": "2026-02-26T01:48:42.874585Z",
   "items": [
     {
-      "id": "c409f5fbe797e7e4acbb8cda41a126293a5ace48",
+      "id": "1d5684c246320082eff89b3f6e478175cf289574",
       "category": "listeria_free",
-      "title": "파스타 식사 리스테리아 발병 종료 선언",
+      "title": "파스타 식사 리스테리아 발병 종료",
       "source": "Food Safety News",
       "url": "https://www.foodsafetynews.com/2026/02/listeria-outbreak-traced-to-pasta-meals-is-over/",
-      "published_at": "2026-02-25T00:00:00.000Z",
-      "summary": "FDA가 파스타 식사 관련 치명적 리스테리아 발병을 종료 선언했다. 19개 주 28명 감염, 7명 사망, 1건 태아 손실 발생. Nate’s Fine Foods 파스타가 원인으로 밝혀져 다수 제품 회수 완료.",
+      "published_at": "2026-02-26T00:00:00.000Z",
+      "summary": "FDA가 Nate’s Fine Foods 파스타 식사로 인한 치명적 리스테리아 발병을 공식 종료 선언. 19개 주 28명 감염, 7명 사망, 임산부 1명 태아 손실 발생. Walmart, Kroger 등 다수 매장 제품 리콜 후 조사 마무리.[1]",
       "highlights": [],
       "tags": [
         "리스테리아",
@@ -18,84 +18,55 @@
       "score": null,
       "decision": {
         "impact_score": 7.5,
-        "impact_reason": "식품 리스테리아 발병 사건이 국제 규제 강화와 소비자 신뢰 악화를 초래하여 무균 기술 기반 식품 수출 시 통관 심사 강화 및 단가 인하 압력이 증가할 것으로 예상됨.",
-        "confidence": 0.82,
-        "confidence_basis": "미국 FDA의 공식 발표로 규제 강화 가능성이 높고, 대규모 리콜 사례가 식품업계 전반의 안전 기준 상향 트렌드를 가속화할 것으로 판단됨.",
-        "next_action": "무균 버섯 제품의 미국/EU 수출 시 추가 안전 인증(FSMA, BRC 등) 및 제3자 검증 강화 계획을 수립하고 바이어에 사전 공지하기.",
-        "time_sensitivity": "SHORT",
-        "opportunity": "리스테리아 무균 처리 기술을 보유한 Farmerstree는 규제 강화 환경에서 안전성 프리미엄을 차별화 포인트로 마케팅하여 고가 시장 진입 기회 확대 가능.",
-        "risk": "규제 강화에 따른 수출 통관 지연 및 추가 비용 부담이 발생할 수 있으며, 식품 안전 이슈에 대한 소비자 신뢰 회복 기간이 6~12개월 지속될 가능성."
+        "impact_reason": "미국 주요 리스테리아 사건의 종료 선언으로 식품안전 규제 강화 압력이 일시적으로 완화되지만, 사망자 7명의 심각성으로 인해 향후 수출입 기준은 더욱 엄격해질 가능성이 높다.",
+        "confidence": 0.78,
+        "confidence_basis": "대규모 리콜 사건의 공식 종료는 확실하나, 규제 정책 변화의 시점과 강도는 예측 불확실성이 존재한다.",
+        "next_action": "FDA 규제 동향 모니터링 및 무균 버섯 기술의 HACCP/FSMA 컴플라이언스 재점검을 즉시 실시하라.",
+        "time_sensitivity": "IMMEDIATE",
+        "opportunity": "리스테리아 무균 생산 기술을 차별화 마케팅 요소로 활용하여 규제 강화 시점의 신뢰도 기반 수출 경쟁력 확보가 가능하다.",
+        "risk": "향후 FDA의 강화된 검사 기준으로 통관 지연, 비용 증가, 한국산 생산시설에 대한 역차별적 규제 강화 위험이 존재한다."
       },
       "mode": "decision",
       "status": "PENDING_ACTION",
-      "decision_generated_at": "2026-02-25T02:41:49.046375+00:00"
+      "decision_generated_at": "2026-02-26T01:46:59.696343+00:00"
     },
     {
-      "id": "5cf323d93f8fb69a24be01cee880f5198ba27768",
+      "id": "55654bc4b9e3979588da919368ea26bd5984be4e",
       "category": "listeria_free",
-      "title": "웰슬리 팜스 연어 리스테리아 오염 회수",
-      "source": "FDA",
-      "url": "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/slade-gorton-co-inc-recalls-one-lot-wellsley-farms-farm-raised-atlantic-salmon-sold-bjs-wholesale",
-      "published_at": "2026-02-25T00:00:00.000Z",
-      "summary": "Slade Gorton이 BJ’s Wholesale Club 판매 웰슬리 팜스 연어 1롯(3896) 리스테리아 오염으로 회수. FDA 샘플 검사 발견, 질환 보고 없음. 임산부 등 고위험군 주의.",
+      "title": "치킨 페투치네 알프레도 리스테리아 발병 타임라인",
+      "source": "CDC",
+      "url": "https://www.cdc.gov/listeria/outbreaks/chicken-fettuccine-alfredo-06-25/timeline.html",
+      "published_at": "2026-02-26T00:00:00.000Z",
+      "summary": "FreshRealm 치킨 페투치네 알프레도 식사로 인한 multistate 리스테리아 발병 종료, 리콜 제품 판매 중단. 17명 감염 확인, 실제 환자 수 더 많을 수 있음. 증상 발생 후 3-4주 지연 보고 가능.[2]",
       "highlights": [],
       "tags": [
         "리스테리아",
-        "연어",
-        "회수"
+        "파스타",
+        "발병"
       ],
       "score": null,
       "decision": {
-        "impact_score": 6.5,
-        "impact_reason": "연어와 버섯은 다른 카테고리이지만, 리스테리아 리콜 사례는 식품 안전 규제 강화 추세를 신호하며 수출입 검사 기준 상향과 소비자 신뢰도 약화를 초래할 수 있습니다.",
-        "confidence": 0.72,
-        "confidence_basis": "버섯과 연어 카테고리 차이로 직접 영향은 제한적이나, FDA 리콜 빈도 증가는 전반적 식품 안전 기준 강화의 신호로 해석됨.",
-        "next_action": "무균 버섯 제품의 미생물 검사 기록 및 인증서를 정리하고, 수출 거래처에 식품안전 관리 수준을 사전 안내하는 문서화 전략을 수립하세요.",
-        "time_sensitivity": "MEDIUM",
-        "opportunity": "리스테리아 리콜 사례는 무균 기술의 차별성을 강조할 수 있는 마케팅 기회로, 규제 강화 시대에 안전 프리미엄 포지셔닝을 강화할 수 있습니다.",
-        "risk": "식품 안전 리콜 확대 추세는 전체 농산물 수출에 대한 규제 심화와 통관 지연을 초래할 가능성이 높으며, 특히 신규 브랜드의 신뢰도 구축을 더욱 어렵게 만들 수 있습니다."
+        "impact_score": 7.5,
+        "impact_reason": "리스테리아 발병으로 인한 대규모 리콜이 규제 기관의 무균 식품 감시를 강화시키며, 버섯 제품도 유사 식품으로 분류되어 통관 지연 및 검사 비용 증가 위험이 높다. 브랜드 신뢰도 하락으로 프리미엄 수출 단가 유지가 어려워질 가능성이 크다.",
+        "confidence": 0.78,
+        "confidence_basis": "FDA/CDC의 과거 리콜 후 규제 강화 패턴과 한국 수출 식품의 통관 기준 상향 사례를 기반으로 함.",
+        "next_action": "현재 무균 공정의 HACCP/FSMA 인증 현황을 점검하고, 수출처 바이어들에게 식품안전성 검증 자료를 선제적으로 제공하는 신뢰 회복 전략을 수립하라.",
+        "time_sensitivity": "IMMEDIATE",
+        "opportunity": "리스테리아 발병이 산업 표준화를 강제하는 기간에 자사의 식품안전 우위를 마케팅하여 프리미엄 포지셔닝 강화 가능.",
+        "risk": "규제 강화 시 설비 개선/재인증 비용 부담과 수출 통관 지연에 따른 현금흐름 악화 및 경쟁사 대비 가격 경쟁력 약화."
       },
       "mode": "decision",
       "status": "PENDING_ACTION",
-      "decision_generated_at": "2026-02-25T02:41:59.198880+00:00"
+      "decision_generated_at": "2026-02-26T01:47:04.901689+00:00"
     },
     {
-      "id": "882ef7418015ba133b709a6bfbe2ee3f72aeb51d",
+      "id": "604fdf04f9e315a14ff26ad461054288bad72052",
       "category": "listeria_free",
-      "title": "크림 치즈 assorted 플레이버 리스테리아 회수",
-      "source": "FDA",
-      "url": "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/made-fresh-salads-inc-recalls-assorted-flavors-cream-cheese-because-possible-health-risk",
-      "published_at": "2026-02-25T00:00:00.000Z",
-      "summary": "Made Fresh Salads가 assorted 크림 치즈(만료 2026-02-27까지) 리스테리아 오염 가능성으로 회수. 취약계층 치명적 위험, 건강인도 단기 증상 발생 가능.",
-      "highlights": [],
-      "tags": [
-        "리스테리아",
-        "크림치즈",
-        "회수"
-      ],
-      "score": null,
-      "decision": {
-        "impact_score": 5.0,
-        "impact_reason": "'크림 치즈 assorted 플레이버 리스테리아 회수' 이슈는 사업 운영에 중간 수준의 영향 가능성이 있어 추적이 필요합니다.",
-        "confidence": 0.55,
-        "confidence_basis": "자동 보조 추론 결과로, 추가 데이터 검증 시 신뢰도가 상승합니다.",
-        "next_action": "관련 리콜·통관 공지 모니터링을 강화하고 무균 공정 안전성 자료를 즉시 업데이트하세요.",
-        "time_sensitivity": "MEDIUM",
-        "opportunity": "선제 대응 시 시장/운영 리스크를 줄이고 실행 속도를 높일 수 있습니다.",
-        "risk": "모니터링 지연 시 비용 증가 또는 일정 지연으로 이어질 수 있습니다."
-      },
-      "mode": "decision",
-      "status": "PENDING_ACTION",
-      "decision_generated_at": "2026-02-25T02:42:04.239561+00:00"
-    },
-    {
-      "id": "8452d2ce95315bae15879868e3b4a8cf872a8da9",
-      "category": "listeria_free",
-      "title": "샐러드 포장 제품 지속 리스테리아 오염 위험",
+      "title": "포장 샐러드 지속 리스테리아 오염",
       "source": "IDSE",
       "url": "https://www.idse.net/Bacterial-Infections/Article/02-26/continued-listeria-contamination-salads/79761",
       "published_at": "2026-02-21T00:00:00.000Z",
-      "summary": "장기 리스테리아 발병이 포장 샐러드의 지속 오염 위험 강조. 여러 발병 사례 통해 제조 과정 개선 필요성 제기. 소비자 주의 촉구.",
+      "summary": "포장 샐러드 장기 리스테리아 발병 지속 강조, 오염 위험성 지적. 2026년 2월 21일 기준 두 발병 사례 분석. 포장 식품 안전 관리 필요성 강조.[4]",
       "highlights": [],
       "tags": [
         "리스테리아",
@@ -104,153 +75,153 @@
       ],
       "score": null,
       "decision": {
-        "impact_score": 5.0,
-        "impact_reason": "'샐러드 포장 제품 지속 리스테리아 오염 위험' 이슈는 사업 운영에 중간 수준의 영향 가능성이 있어 추적이 필요합니다.",
-        "confidence": 0.55,
-        "confidence_basis": "자동 보조 추론 결과로, 추가 데이터 검증 시 신뢰도가 상승합니다.",
-        "next_action": "관련 리콜·통관 공지 모니터링을 강화하고 무균 공정 안전성 자료를 즉시 업데이트하세요.",
-        "time_sensitivity": "MEDIUM",
-        "opportunity": "선제 대응 시 시장/운영 리스크를 줄이고 실행 속도를 높일 수 있습니다.",
-        "risk": "모니터링 지연 시 비용 증가 또는 일정 지연으로 이어질 수 있습니다."
+        "impact_score": 7.5,
+        "impact_reason": "포장 샐러드의 지속적 리스테리아 오염 사례는 무균 버섯 기술 기반 식품의 안전성 차별화 포지셀링을 강화하지만, 동시에 전체 포장 식품 카테고리에 대한 규제 강화와 소비자 신뢰 악화를 초래할 수 있습니다.",
+        "confidence": 0.78,
+        "confidence_basis": "포장 식품 리스테리아 발병은 미국 내 사례이나 한국 수입식품 안전 기준 강화와 수출 시장 규제 확대로 이어질 가능성이 높습니다.",
+        "next_action": "무균 버섯 제품의 리스테리아 불검출 입증 자료와 HACCP 인증 현황을 정리하여 수출국 규제 기관 및 바이어에 대한 차별화 메시지 개발을 시작하세요.",
+        "time_sensitivity": "IMMEDIATE",
+        "opportunity": "포장 식품 안전 우려 고조로 무균 기술 기반 제품의 프리미엄 포지셀링과 B2B 수출 계약 체결 기회가 증대됩니다.",
+        "risk": "규제 강화로 수출 통관 시간 연장, 단가 하락 압박, 그리고 포장 식품 전반에 대한 소비자 회피 심화로 판매량 감소 위험이 있습니다."
       },
       "mode": "decision",
       "status": "PENDING_ACTION",
-      "decision_generated_at": "2026-02-25T02:41:54.273757+00:00"
+      "decision_generated_at": "2026-02-26T01:47:15.126243+00:00"
     },
     {
-      "id": "bedf6fd8da697f70d6c285c3c8946d1b0ac6722c",
-      "category": "cultured_meat",
-      "title": "싱가포르 배양육 첫 수출 성공",
-      "source": "Reuters",
-      "url": "https://www.reuters.com/business/singapore-cultured-meat-export-milestone-2026-02-25/",
-      "published_at": "2026-02-25T00:00:00.000Z",
-      "summary": "싱가포르 배양 닭고기 Eat Just社가 미국 첫 수출. 안전 인증 완료로 글로벌 공급망 확대. 가격 경쟁력 강화 중.",
+      "id": "9559829ce36dfa591cd30fabf7aab3310a9dfdb2",
+      "category": "listeria_free",
+      "title": "웰슬리 팜스 연어 리스테리아 리콜",
+      "source": "FDA",
+      "url": "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/slade-gorton-co-inc-recalls-one-lot-wellsley-farms-farm-raised-atlantic-salmon-sold-bjs-wholesale",
+      "published_at": "2026-02-26T00:00:00.000Z",
+      "summary": "Slade Gorton이 BJ’s Wholesale Club 판매 웰슬리 팜스 양식 대서양 연어 2lb 백(로트 3896) 리콜. FDA 샘플에서 리스테리아 검출, DE/MD/NJ 등 7개 주 1월31일~2월7일 판매. 질병 보고 없음.[6]",
       "highlights": [],
       "tags": [
-        "배양육",
-        "수출",
-        "싱가포르"
+        "리스테리아",
+        "연어",
+        "리콜"
       ],
       "score": null,
       "decision": {
-        "impact_score": 7.5,
-        "impact_reason": "싱가포르 배양육의 미국 수출 성공은 규제 선례를 제시하며 Wave Tree의 글로벌 진출 경로를 명확히 한다. 동시에 선발주자의 가격 경쟁력 강화는 Wave Tree의 차별화 전략 수립을 촉구한다.",
+        "impact_score": 6.5,
+        "impact_reason": "양식 수산물의 리스테리아 리콜은 식품 안전 규제 강화 신호이며, 무균 버섯 제품의 안전성 우위 마케팅 기회는 있으나 수출국의 전반적 식품 검사 강화로 통관 난이도 상승 예상.",
         "confidence": 0.78,
-        "confidence_basis": "Eat Just의 실제 상용화 진전은 배양육 시장의 현실성을 증명하나, Wave Tree의 균사체 기반 모델과의 직접 경쟁 정도는 기술 차별성에 따라 변동성이 있다.",
-        "next_action": "미국 FDA 인증 경로 분석 및 싱가포르 규제 승인 사례 벤치마킹을 통해 Wave Tree의 6~12개월 규제 전략을 재정의해야 한다.",
-        "time_sensitivity": "IMMEDIATE",
-        "opportunity": "싱가포르 규제 프레임워크 성공으로 아시아 진출 시 참고 가능한 사례 확보 및 한국 식약처 협상 근거 마련.",
-        "risk": "선발주자의 글로벌 공급망 선점으로 Wave Tree의 시장 진입 타이밍이 지연될 경우 원가 경쟁력 격차 심화 우려."
+        "confidence_basis": "FDA 공식 리콜이지만 웰슬리팜스 제품으로 국내 버섯 사업과의 직접 경쟁은 제한적이고, 규제 강화 추세는 명확함.",
+        "next_action": "현재 수출 제품의 미생물 검사 강화 및 관련 인증 상태 점검, 미국 바이어에게 무균 생산 프로세스 우월성 커뮤니케이션 전략 수립.",
+        "time_sensitivity": "SHORT",
+        "opportunity": "리스테리아 리콜로 인한 미국 바이어들의 안전성 우위 제품 선호도 상승으로 무균 버섯의 프리미엄 포지셔닝 강화 가능.",
+        "risk": "미국의 신선식품 검사 기준 강화는 한국산 제품 통관 시간 연장 및 부분 샘플 검사 확률 상승으로 물류 비용 및 시간 소요 증가."
       },
       "mode": "decision",
       "status": "PENDING_ACTION",
-      "decision_generated_at": "2026-02-25T02:42:14.326340+00:00"
+      "decision_generated_at": "2026-02-26T01:47:10.314630+00:00"
     },
     {
-      "id": "e010b4c22d77448222c94e440059d027084ec345",
+      "id": "060ebb52e50b0ad4fec2a4d60b7ac632ba988899",
       "category": "cultured_meat",
-      "title": "유럽연합 배양육 승인 첫 사례",
-      "source": "Euractiv",
-      "url": "https://www.euractiv.com/section/agriculture/news/eu-approves-first-cultured-meat-product-2026/",
-      "published_at": "2026-02-23T00:00:00.000Z",
-      "summary": "EU가 Mosa Meat 배양 소고기 첫 승인. 동물 복지·환경 이점 강조. 2026년 말 유럽 시장 진입 예정.",
-      "highlights": [],
-      "tags": [
-        "배양육",
-        "EU",
-        "승인"
-      ],
-      "score": null,
-      "decision": {
-        "impact_score": 7.5,
-        "impact_reason": "EU 규제 승인 선례는 한국 식품의약품안전처의 배양육 승인 경로를 앞당길 가능성을 높이며, Wave Tree의 균사체 기반 제품도 국제 기준 수립 기회를 제공한다.",
-        "confidence": 0.78,
-        "confidence_basis": "EU 승인 사례는 글로벌 규제 트렌드를 명확히 하지만, 한국 규제당국의 독립적 판단 시점은 여전히 불확실하다.",
-        "next_action": "한국 식약처와의 규제 로드맵 회의를 즉시 개최하여 EU 승인 사례를 기반으로 한국 허가 일정 단축 방안을 협의해야 한다.",
-        "time_sensitivity": "IMMEDIATE",
-        "opportunity": "EU 승인으로 글로벌 신뢰도 상승하면 국내 투자자·바이어들의 심사역 우호도 증대되고 국제 협력 제안 증가 가능성이 높다.",
-        "risk": "Mosa Meat 같은 글로벌 대형사의 2026년 유럽 시장 진입으로 Wave Tree의 시장 선점 창 좁혀질 수 있으며, 가격 경쟁 심화 위험이 있다."
-      },
-      "mode": "decision",
-      "status": "PENDING_ACTION",
-      "decision_generated_at": "2026-02-25T02:42:19.024830+00:00"
-    },
-    {
-      "id": "bb129e99470b002da3f1027b3fda0fb45b1b0479",
-      "category": "cultured_meat",
-      "title": "배양육 시장 2026 전망: 규제 완화 가속",
+      "title": "2025년 배양육 규제 진전",
       "source": "Food Navigator",
-      "url": "https://www.foodnavigator.com/Article/2026/02/24/cultured-meat-regulatory-breakthroughs-2026",
-      "published_at": "2026-02-24T00:00:00.000Z",
-      "summary": "미국 FDA가 배양육 상용화 규제 완화, 2026년 시장 규모 2배 성장 예상. Upside Foods 등 기업 대량 생산 시작. 지속가능 단백질 대안 부상.",
+      "url": "https://www.foodnavigator.com/Article/2026/02/25/cultured-meat-regulatory-wins-in-2025",
+      "published_at": "2026-02-25T00:00:00.000Z",
+      "summary": "2025년 배양육 상업화 첫 승인 국가 증가, 싱가포르·이스라엘 이어 미국 일부 주 허가. 안전성 데이터 축적으로 EU 검토 가속. 시장 규모 2030년 10억 달러 전망.[web:1]",
       "highlights": [],
       "tags": [
         "배양육",
         "규제",
-        "시장"
+        "승인"
+      ],
+      "score": null,
+      "decision": {
+        "impact_score": 8.2,
+        "impact_reason": "글로벌 규제 진전으로 배양육 시장 진입 장벽 급속 완화되고 있으며, 2030년 10억 달러 시장 전망은 Wave Tree의 균사체 기반 제품 상용화 가능성을 크게 높인다.",
+        "confidence": 0.85,
+        "confidence_basis": "미국, EU 등 주요 시장의 규제 진행 중이나 한국의 배양육 규제 일정이 명확하지 않아 확도에 제한이 있다.",
+        "next_action": "싱가포르·미국 규제 승인 기업들의 인증 절차 및 비용 구조를 벤치마킹하고, 한국 식약처와의 규제 협의 로드맵을 즉시 수립해야 한다.",
+        "time_sensitivity": "IMMEDIATE",
+        "opportunity": "글로벌 규제 선례 증가로 한국 승인 가능성이 높아지고 있으며, 조기 시장 진입 시 아시아 거점으로서의 경쟁 우위 확보 가능.",
+        "risk": "규제 승인 시차와 한국 정부 인허가 지연 가능성이 높으며, 글로벌 대기업의 선제적 시장 점유로 가격 경쟁 심화 우려가 있다."
+      },
+      "mode": "decision",
+      "status": "PENDING_ACTION",
+      "decision_generated_at": "2026-02-26T01:47:23.916305+00:00"
+    },
+    {
+      "id": "e1aefbb42231e6e20630579bf2707fd3cbe78d6f",
+      "category": "cultured_meat",
+      "title": "UPSIDE Foods 배양 닭고기 확대 생산",
+      "source": "Reuters",
+      "url": "https://www.reuters.com/business/upside-foods-scales-cultured-chicken-production-2026-02-24/",
+      "published_at": "2026-02-24T00:00:00.000Z",
+      "summary": "UPSIDE Foods가 배양 닭고기 공장 증설 발표, 연간 100만 파운드 생산 목표. 비용 50% 절감 기술 도입. 레스토랑 공급 확대 중.[web:2]",
+      "highlights": [],
+      "tags": [
+        "배양육",
+        "생산",
+        "닭고기"
       ],
       "score": null,
       "decision": {
         "impact_score": 7.5,
-        "impact_reason": "미국 FDA의 규제 완화와 2026년 시장 2배 성장 전망은 Wave Tree의 균사체 기반 대체육 사업의 글로벌 진출 타이밍을 앞당기는 긍정 신호다. 다만 한국 시장의 규제 현황과 별개의 이슈로, 국내 진출 전략과는 구분해야 한다.",
-        "confidence": 0.75,
-        "confidence_basis": "FDA 규제 완화는 확실하나, Wave Tree의 균사체 기술이 미국 규제 기준에 부합하는지와 한국 규제 진행 속도는 별개의 변수다.",
-        "next_action": "미국 및 글로벌 규제 동향을 반영한 제품 표준화 로드맵을 수립하고, 동시에 한국 식약처와의 규제 협의 진행 속도를 가속화해야 한다.",
-        "time_sensitivity": "MEDIUM",
-        "opportunity": "글로벌 규제 선례 사례(Upside Foods 등)를 분석하여 한국 식약처 설득 자료로 활용할 수 있으며, 투자자에게 시장 성장성을 강조한 후속 투자 유치 기회가 생긴다.",
-        "risk": "미국 시장 성장이 가속화되면 대형 식품회사들의 M&A 및 협력 수요가 증가하여 Wave Tree 같은 스타트업의 협상력이 약화될 수 있다."
+        "impact_reason": "UPSIDE Foods의 비용 50% 절감 기술과 대규모 상용화는 배양육 시장의 가격 경쟁력을 급속도로 높여 Wave Tree의 균사체 기반 대체육 포지셔닝을 재평가하게 만든다. 한국 규제 승인 전에 글로벌 경쟁사의 기술/비용 우위가 확대되는 위협이다.",
+        "confidence": 0.85,
+        "confidence_basis": "공개된 생산 규모, 원가 절감율, 상용화 진행 상황이 구체적이므로 시장 영향력 평가의 신뢰도가 높다.",
+        "next_action": "Wave Tree의 차별화 포인트(비용, 규제 진입 속도, 영양가, 생산 효율성)를 UPSIDE Foods 기술과 직접 비교 분석하고 한국 규제 승인 일정 단축 전략을 수립해야 한다.",
+        "time_sensitivity": "IMMEDIATE",
+        "opportunity": "배양육 공장 구축 인프라, 원가 절감 기술 라이선싱, 한국 규제 진입 속도를 활용한 초기 시장 선점 가능성이 있다.",
+        "risk": "글로벌 배양육 기업의 비용 우위 확대로 Wave Tree의 균사체 기반 대체육의 가격 경쟁력이 상대적으로 약화될 수 있다."
       },
       "mode": "decision",
       "status": "PENDING_ACTION",
-      "decision_generated_at": "2026-02-25T02:42:09.266938+00:00"
+      "decision_generated_at": "2026-02-26T01:47:28.969653+00:00"
     },
     {
-      "id": "66820b74e2c3ecbdc056e48095b892d0677b3767",
+      "id": "bfd10c51c5352a4ba4f146c93bf6c2f30863a1eb",
       "category": "cultured_meat",
-      "title": "중국 배양육 공장 가동 개시",
-      "source": "South China Morning Post",
-      "url": "https://www.scmp.com/news/china/science/article/2026/02/25/china-cultured-meat-factory-launch",
-      "published_at": "2026-02-25T00:00:00.000Z",
-      "summary": "중국 DC Foods가 아시아 최대 배양육 공장 가동. 연 1만톤 생산 목표. 국내 시장 독점 전략.",
+      "title": "배양육 투자 열풍 지속",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/02/26/cultured-meat-funding-boom/",
+      "published_at": "2026-02-26T00:00:00.000Z",
+      "summary": "2026년 배양육 스타트업 5억 달러 투자 유치, Believer Meats 등 선두. 아시아 시장 진출 가속화 중.[web:5]",
       "highlights": [],
       "tags": [
         "배양육",
-        "중국",
-        "공장"
+        "투자",
+        "스타트업"
       ],
       "score": null,
       "decision": {
-        "impact_score": 5.0,
-        "impact_reason": "'중국 배양육 공장 가동 개시' 이슈는 사업 운영에 중간 수준의 영향 가능성이 있어 추적이 필요합니다.",
-        "confidence": 0.55,
-        "confidence_basis": "자동 보조 추론 결과로, 추가 데이터 검증 시 신뢰도가 상승합니다.",
-        "next_action": "규제·인증 체크리스트를 갱신하고 상용화 일정 리스크를 주간 단위로 재평가하세요.",
-        "time_sensitivity": "MEDIUM",
-        "opportunity": "선제 대응 시 시장/운영 리스크를 줄이고 실행 속도를 높일 수 있습니다.",
-        "risk": "모니터링 지연 시 비용 증가 또는 일정 지연으로 이어질 수 있습니다."
+        "impact_score": 7.5,
+        "impact_reason": "배양육 시장의 글로벌 투자 확대와 아시아 진출 가속화는 Wave Tree의 균사체 기반 대체육에 대한 투자 유인을 높이나, 선두 기업들의 자금 집중화로 경쟁 심화 위험이 동시에 증가.",
+        "confidence": 0.78,
+        "confidence_basis": "2026년 투자 규모와 시장 동향은 확실하나, Wave Tree의 기술 경쟁력과 아시아 시장 포지셔닝에 대한 구체적 정보 부족.",
+        "next_action": "Believer Meats 등 주요 선두 기업의 아시아 진출 전략과 규제 대응 현황을 분석하여 Wave Tree의 시장 차별성과 펀딩 피치 업데이트 필요.",
+        "time_sensitivity": "SHORT",
+        "opportunity": "글로벌 배양육 투자 열풍과 아시아 시장 진출 가속화로 Wave Tree의 균사체 기술 기반 차별화된 포지셔닝이 투자자에게 높은 관심을 받을 수 있는 시기.",
+        "risk": "Believer Meats 등 글로벌 거대 기업들의 아시아 진출과 대규모 자금 유치로 기술 및 자본력 격차가 확대되어 Wave Tree의 경쟁 우위 약화 가능성."
       },
       "mode": "decision",
       "status": "PENDING_ACTION",
-      "decision_generated_at": "2026-02-25T02:42:29.572636+00:00"
+      "decision_generated_at": "2026-02-26T01:47:19.528009+00:00"
     },
     {
-      "id": "c1fb5f871b0289f51d9d25f2e785d46abf330543",
+      "id": "64f3828289d23bf952364332dc9e67588431c346",
       "category": "cultured_meat",
-      "title": "배양육 비용 절감 기술 혁신",
+      "title": "배양육 가격 경쟁력 확보",
       "source": "MIT Technology Review",
-      "url": "https://www.technologyreview.com/2026/02/22/cultured-meat-cost-breakthrough/",
-      "published_at": "2026-02-22T00:00:00.000Z",
-      "summary": "바이오리액터 효율화로 배양육 생산 비용 50% 하락. 스타트업 Believer Meats 상용화 임박. 전통 육류 대체 가속.",
+      "url": "https://www.technologyreview.com/2026/02/23/cultured-meat-cost-breakthrough/",
+      "published_at": "2026-02-23T00:00:00.000Z",
+      "summary": "최신 바이오리액터 기술로 배양 소고기 kg당 10달러 돌파, 전통 육류와 경쟁 가능. 스타트업 Mosa Meat 주도. 지속가능성 강조.[web:3]",
       "highlights": [],
       "tags": [
         "배양육",
-        "비용",
+        "가격",
         "기술"
       ],
       "score": null,
       "decision": {
         "impact_score": 5.0,
-        "impact_reason": "'배양육 비용 절감 기술 혁신' 이슈는 사업 운영에 중간 수준의 영향 가능성이 있어 추적이 필요합니다.",
+        "impact_reason": "'배양육 가격 경쟁력 확보' 이슈는 사업 운영에 중간 수준의 영향 가능성이 있어 추적이 필요합니다.",
         "confidence": 0.55,
         "confidence_basis": "자동 보조 추론 결과로, 추가 데이터 검증 시 신뢰도가 상승합니다.",
         "next_action": "규제·인증 체크리스트를 갱신하고 상용화 일정 리스크를 주간 단위로 재평가하세요.",
@@ -260,142 +231,142 @@
       },
       "mode": "decision",
       "status": "PENDING_ACTION",
-      "decision_generated_at": "2026-02-25T02:42:24.345147+00:00"
+      "decision_generated_at": "2026-02-26T01:47:33.821934+00:00"
     },
     {
-      "id": "0a7c9ca073f0adc186b34aafe249522f5f143610",
-      "category": "high_end_audio",
-      "title": "스트리밍 서비스 하이레즈 오디오 업그레이드",
-      "source": "The Verge",
-      "url": "https://www.theverge.com/2026/2/25/hi-res-audio-streaming-update",
-      "published_at": "2026-02-25T00:00:00.000Z",
-      "summary": "Qobuz·Tidal 24비트/192kHz 전곡 지원 확대. 하이엔드 사용자 편의 증대. 구독자 20% 증가.",
+      "id": "f05b9fd1b413e714efb8e3d502d9717bcdb7ad80",
+      "category": "cultured_meat",
+      "title": "Good Meat 배양육 FDA 최종 승인",
+      "source": "Bloomberg",
+      "url": "https://www.bloomberg.com/news/good-meat-fda-full-approval-cultured-meat-2026-02-22",
+      "published_at": "2026-02-22T00:00:00.000Z",
+      "summary": "Good Meat 배양 닭고기 FDA 완전 승인 획득, 상업 판매 임박. 2025년 시범 후 안전성 재확인. 환경 영향 90% 감소 데이터 제시.[web:4]",
       "highlights": [],
       "tags": [
-        "스트리밍",
-        "하이레즈",
-        "오디오"
+        "배양육",
+        "FDA",
+        "승인"
       ],
       "score": null,
       "decision": {
-        "impact_score": 7.5,
-        "impact_reason": "하이레즈 오디오 스트리밍의 주류화로 DARS 기술의 시장 수용성이 크게 향상되며, THE EIGHT GATES의 프리미엄 오디오 포지셔닝이 강화된다.",
-        "confidence": 0.78,
-        "confidence_basis": "주요 스트리밍 플랫폼의 구독자 20% 증가는 명확한 시장 수요를 보여주지만, 한국 시장 적용 가능성은 추가 검증 필요.",
-        "next_action": "Qobuz·Tidal의 24비트/192kHz 기술 스펙과 DARS 호환성을 검증하고, 프리미엄 스트리밍 서비스와의 파트너십 협상을 즉시 개시하라.",
-        "time_sensitivity": "IMMEDIATE",
-        "opportunity": "하이레즈 오디오의 글로벌 표준화로 THE EIGHT GATES를 차별화된 프리미엄 제품으로 마케팅 가능하며, B2B 스트리밍 서비스 제휴 수익화 기회 창출.",
-        "risk": "스트리밍 서비스의 자체 기술 고도화로 독자적 하이레즈 솔루션 개발 가능성이 있어 DARS의 차별성 침식 우려."
+        "impact_score": 5.0,
+        "impact_reason": "'Good Meat 배양육 FDA 최종 승인' 이슈는 사업 운영에 중간 수준의 영향 가능성이 있어 추적이 필요합니다.",
+        "confidence": 0.55,
+        "confidence_basis": "자동 보조 추론 결과로, 추가 데이터 검증 시 신뢰도가 상승합니다.",
+        "next_action": "규제·인증 체크리스트를 갱신하고 상용화 일정 리스크를 주간 단위로 재평가하세요.",
+        "time_sensitivity": "MEDIUM",
+        "opportunity": "선제 대응 시 시장/운영 리스크를 줄이고 실행 속도를 높일 수 있습니다.",
+        "risk": "모니터링 지연 시 비용 증가 또는 일정 지연으로 이어질 수 있습니다."
       },
       "mode": "decision",
       "status": "PENDING_ACTION",
-      "decision_generated_at": "2026-02-25T02:42:47.691512+00:00"
+      "decision_generated_at": "2026-02-26T01:47:38.978758+00:00"
     },
     {
-      "id": "e98d630405839b4a6fe11310f0ea0cae51819244",
+      "id": "654084aaf245ff8ebf82712d9acbf928418fc4a2",
       "category": "high_end_audio",
-      "title": "무선 이어폰 플래그십 리뷰",
-      "source": "SoundGuys",
-      "url": "https://www.soundguys.com/best-wireless-earbuds-2026-high-end-45678/",
-      "published_at": "2026-02-25T00:00:00.000Z",
-      "summary": "Bowers & Wilkins Pi8 무선 이어폰 최고 성능. 노이즈 캔슬링·LDAC 코덱 탑재. 가격대 400달러.",
+      "title": "Bang & Olufsen Beolab 90 출시",
+      "source": "What Hi-Fi?",
+      "url": "https://www.whathifi.com/news/bang-olufsen-beolab-90-flagship-speakers",
+      "published_at": "2026-02-26T00:00:00.000Z",
+      "summary": "B&O 플래그십 Beolab 90 무선 스피커 공개, AI 음향 최적화 탑재. 가격 10만 달러, 2026년 여름 출시 예정.[web:6]",
       "highlights": [],
       "tags": [
-        "이어폰",
-        "무선",
-        "하이엔드"
+        "하이엔드오디오",
+        "스피커",
+        "신제품"
       ],
       "score": null,
       "decision": {
         "impact_score": 6.5,
-        "impact_reason": "고가 플래그십 세그먼트에서 노이즈 캔슬링과 LDAC 코덱이 표준화되고 있으며, THE EIGHT GATES/DARS의 기술 차별화 전략 재검토가 필요함을 시사한다.",
+        "impact_reason": "프리미엄 오디오 시장에서 AI 음향 최적화가 표준화되는 신호로, THE EIGHT GATES의 차별화 전략 재검토 필요. 10만 달러 고가 세그먼트 선점으로 프리미엄 포지셔닝 경쟁 심화.",
         "confidence": 0.72,
-        "confidence_basis": "주요 경쟁사 제품 사양 공개이지만 한국 창업사의 구체적인 기술 스펙 미비로 직접 비교 분석 불가",
-        "next_action": "Bowers & Wilkins Pi8의 노이즈 캔슬링 알고리즘, LDAC 구현 방식, 가격대별 수익성 분석을 통해 THE EIGHT GATES/DARS의 경쟁 포지셔닝을 재평가하기",
+        "confidence_basis": "B&O는 프리미엄 오디오 시장의 글로벌 리더이며 2026년 출시는 중기 로드맵 수립에 충분한 시간을 제공.",
+        "next_action": "DARS의 AI 음향 최적화 기술과 B&O Beolab 90의 경쟁 기능을 상세 비교 분석하고 차별화 포인트 정의.",
         "time_sensitivity": "MEDIUM",
-        "opportunity": "프리미엄 세그먼트 소비자 기대치 상향으로 DARS 기술의 음질 차별화 가치가 증대될 가능성",
-        "risk": "400달러 가격대 플래그십 수요가 포화되면서 중저가 세그먼트로의 프리미엄 기술 하향 이동 가속화"
+        "opportunity": "AI 음향 최적화의 대중화 추세 속에서 한국형 오디오 브랜드의 가성비 프리미엄 포지셔닝 시장 진입 기회 확대.",
+        "risk": "글로벌 럭셔리 브랜드의 AI 기술 투자로 기술 진입장벽 상승 및 브랜드 가치 평가 경쟁 심화."
       },
       "mode": "decision",
       "status": "PENDING_ACTION",
-      "decision_generated_at": "2026-02-25T02:42:38.483274+00:00"
+      "decision_generated_at": "2026-02-26T01:47:43.277423+00:00"
     },
     {
-      "id": "dc37b80f5f503c5f6150d00403b30c346334cb76",
+      "id": "2f0cb2d9b4eb140f99c923a7a1c0902834cfe3dc",
       "category": "high_end_audio",
-      "title": "홈 시어터 사운드바 혁신",
-      "source": "CNET",
-      "url": "https://www.cnet.com/tech/home-entertainment/new-high-end-soundbar-2026/",
-      "published_at": "2026-02-24T00:00:00.000Z",
-      "summary": "Sonos Arc Ultra 16채널 사운드바 출시. Dolby Atmos 완벽 구현. 가격 1,000달러.",
-      "highlights": [],
-      "tags": [
-        "사운드바",
-        "홈시어터",
-        "하이엔드"
-      ],
-      "score": null,
-      "decision": {
-        "impact_score": 6.2,
-        "impact_reason": "프리미엄 멀티채널 사운드바의 고급화 추세는 DARS의 공간음향 기술 차별화 필요성을 강조하며, 1,000달러 가격대는 고급 오디오 시장의 수익성을 증명한다.",
-        "confidence": 0.72,
-        "confidence_basis": "Sonos의 시장 지배력과 Dolby Atmos 표준화는 확실하나, THE EIGHT GATES/DARS와의 직접 경쟁 관계 명확도가 낮음.",
-        "next_action": "Sonos Arc Ultra의 16채널 구현 기술과 DARS의 음향 알고리즘 비교 분석을 통해 차별화 포인트(처리 효율성, 가격 경쟁력, IP 강도)를 재검토하라.",
-        "time_sensitivity": "MEDIUM",
-        "opportunity": "프리미엄 사운드바 시장의 성장 확인으로 DARS의 고급 공간음향 솔루션을 OEM/B2B 파트너십으로 전개할 기회 증대.",
-        "risk": "Sonos 같은 기존 강자들의 기술 고도화로 신규 진입 기업의 시장 점유율 확보 난도가 상승할 가능성."
-      },
-      "mode": "decision",
-      "status": "PENDING_ACTION",
-      "decision_generated_at": "2026-02-25T02:42:52.093709+00:00"
-    },
-    {
-      "id": "0fb9a5227af7110a26253737a3d9b59e3d636ae8",
-      "category": "high_end_audio",
-      "title": "새 하이엔드 DAC 칩셋 공개",
-      "source": "What Hi-Fi?",
-      "url": "https://www.whathifi.com/news/new-high-end-dac-chipset-revealed-2026",
-      "published_at": "2026-02-24T00:00:00.000Z",
-      "summary": "ESS Sabre ES9039PRO 칩셋 출시, 16비트 초고해상도 지원. 오디오필 대상 가격 500달러. 음질 혁신 평가.",
-      "highlights": [],
-      "tags": [
-        "하이엔드",
-        "오디오",
-        "DAC"
-      ],
-      "score": null,
-      "decision": {
-        "impact_score": 5.0,
-        "impact_reason": "'새 하이엔드 DAC 칩셋 공개' 이슈는 사업 운영에 중간 수준의 영향 가능성이 있어 추적이 필요합니다.",
-        "confidence": 0.55,
-        "confidence_basis": "자동 보조 추론 결과로, 추가 데이터 검증 시 신뢰도가 상승합니다.",
-        "next_action": "신제품 스펙·가격·유통 채널을 벤치마킹해 다음 제품 로드맵 우선순위를 조정하세요.",
-        "time_sensitivity": "MEDIUM",
-        "opportunity": "선제 대응 시 시장/운영 리스크를 줄이고 실행 속도를 높일 수 있습니다.",
-        "risk": "모니터링 지연 시 비용 증가 또는 일정 지연으로 이어질 수 있습니다."
-      },
-      "mode": "decision",
-      "status": "PENDING_ACTION",
-      "decision_generated_at": "2026-02-25T02:42:34.485854+00:00"
-    },
-    {
-      "id": "1141450e384b436088819639cee6c669f1f8a34b",
-      "category": "high_end_audio",
-      "title": "빈티지 앰프 재출시 붐",
-      "source": "Stereophile",
-      "url": "https://www.stereophile.com/content/vintage-amp-reissues-2026-trend",
+      "title": "dCS Rossini Apex DAC 신모델",
+      "source": "Hi-Fi News",
+      "url": "https://www.hifinews.com/content/dcs-rossini-apex-dac-update",
       "published_at": "2026-02-23T00:00:00.000Z",
-      "summary": "McIntosh·Marantz 클래식 앰프 재생산. 아날로그 사운드 선호 증가. 컬렉터 시장 호황.",
+      "summary": "dCS Rossini Apex DAC 펌웨어 업그레이드, Ring DAC 기술 강화. 스트리밍 음질 최상위.[web:9]",
       "highlights": [],
       "tags": [
-        "앰프",
-        "빈티지",
-        "하이엔드"
+        "하이엔드오디오",
+        "DAC",
+        "신기술"
+      ],
+      "score": null,
+      "decision": {
+        "impact_score": 6.5,
+        "impact_reason": "프리미엄 DAC 기술 업그레이드는 고급 오디오 시장의 기준을 상향 조정하며, THE EIGHT GATES와 DARS의 음질 경쟁력 평가 필요성을 증대시킨다.",
+        "confidence": 0.72,
+        "confidence_basis": "dCS의 시장 영향력은 제한적이나 Ring DAC 기술 강화는 업계 표준 진화 신호로 해석된다.",
+        "next_action": "현재 제품의 DAC 성능 벤치마킹 및 펌웨어/알고리즘 개선으로 음질 격차 최소화 전략 수립이 필요하다.",
+        "time_sensitivity": "MEDIUM",
+        "opportunity": "프리미엄 세그먼트의 기술 트렌드 분석을 통해 중상급 제품의 차별화 포인트 강화 가능성.",
+        "risk": "고가 DAC의 기술 진화 속도가 빠를 경우, 가격 대비 성능 비교에서 제품의 상대적 가치가 하락할 수 있다."
+      },
+      "mode": "decision",
+      "status": "PENDING_ACTION",
+      "decision_generated_at": "2026-02-26T01:47:56.266966+00:00"
+    },
+    {
+      "id": "e05a2c9e1353311c83844df988246044106efe67",
+      "category": "high_end_audio",
+      "title": "Focal Utopia 헤드폰 2026 에디션",
+      "source": "SoundStage!",
+      "url": "https://www.soundstagehifi.com/headphones/focal-utopia-2026-edition",
+      "published_at": "2026-02-22T00:00:00.000Z",
+      "summary": "Focal Utopia 신에디션 베릴륨 드라이버 채택, 무선 지원 추가. 5천 달러.[web:10]",
+      "highlights": [],
+      "tags": [
+        "하이엔드오디오",
+        "헤드폰",
+        "에디션"
+      ],
+      "score": null,
+      "decision": {
+        "impact_score": 6.5,
+        "impact_reason": "프리미엄 헤드폰 시장의 무선화 트렌드가 가속화되고 있으며, 고급 드라이버 기술 경쟁이 심화되고 있음을 보여줍니다. THE EIGHT GATES의 고음질 오디오 기술 차별화 전략 재검토가 필요합니다.",
+        "confidence": 0.72,
+        "confidence_basis": "프리미엄 오디오 시장의 명확한 무선화 방향성과 드라이버 기술 고도화 경향이 관찰되나, DARS 구체적 경쟁력 정보 부족으로 신뢰도 제한",
+        "next_action": "Focal의 무선 기술 스택과 베릴륨 드라이버 성능 벤치마킹을 통해 DARS의 음질/기술 우위 영역 재정의 및 차별화 포지셔닝 수립",
+        "time_sensitivity": "MEDIUM",
+        "opportunity": "무선 기술과 고급 드라이버 기술의 결합이 프리미엄 시장 표준화되기 전에 THE EIGHT GATES의 독자적 음질 표준화 IP 확보 가능성",
+        "risk": "글로벌 프리미엄 오디오 브랜드의 기술/가격 경쟁 심화로 한국 신규 브랜드의 시장 진입장벽 상승 우려"
+      },
+      "mode": "decision",
+      "status": "PENDING_ACTION",
+      "decision_generated_at": "2026-02-26T01:48:00.943644+00:00"
+    },
+    {
+      "id": "8380d4bc4e058371fa12c1a1d4be0bffd2ece713",
+      "category": "high_end_audio",
+      "title": "Wilson Audio Alexia V 업그레이드",
+      "source": "The Absolute Sound",
+      "url": "https://www.theabsolutesound.com/articles/wilson-audio-alexia-v-upgrade/",
+      "published_at": "2026-02-24T00:00:00.000Z",
+      "summary": "Wilson Alexia V 신버전, 해상도·다이내믹스 대폭 향상. 8만 달러 쌍 가격.[web:8]",
+      "highlights": [],
+      "tags": [
+        "하이엔드오디오",
+        "스피커",
+        "업그레이드"
       ],
       "score": null,
       "decision": {
         "impact_score": 5.0,
-        "impact_reason": "'빈티지 앰프 재출시 붐' 이슈는 사업 운영에 중간 수준의 영향 가능성이 있어 추적이 필요합니다.",
+        "impact_reason": "'Wilson Audio Alexia V 업그레이드' 이슈는 사업 운영에 중간 수준의 영향 가능성이 있어 추적이 필요합니다.",
         "confidence": 0.55,
         "confidence_basis": "자동 보조 추론 결과로, 추가 데이터 검증 시 신뢰도가 상승합니다.",
         "next_action": "신제품 스펙·가격·유통 채널을 벤치마킹해 다음 제품 로드맵 우선순위를 조정하세요.",
@@ -405,268 +376,297 @@
       },
       "mode": "decision",
       "status": "PENDING_ACTION",
-      "decision_generated_at": "2026-02-25T02:42:43.426491+00:00"
+      "decision_generated_at": "2026-02-26T01:47:52.543529+00:00"
     },
     {
-      "id": "db0ef6c56f84b9ad6e65b4ad24e94f2b69281691",
-      "category": "computer_ai",
-      "title": "엔비디아 Blackwell AI 칩 대량 출하",
-      "source": "TechCrunch",
-      "url": "https://techcrunch.com/2026/02/25/nvidia-blackwell-shipping/",
+      "id": "c1b0c895f430893d4ddb40326074b0aef99c296f",
+      "category": "high_end_audio",
+      "title": "McIntosh MX120 통합 앰프 리뷰",
+      "source": "Stereophile",
+      "url": "https://www.stereophile.com/content/mcintosh-mx120-review",
       "published_at": "2026-02-25T00:00:00.000Z",
-      "summary": "Blackwell GB200 AI 칩 대량 생산 시작. 30배 성능 향상. 데이터센터 수요 폭증.",
+      "summary": "McIntosh MX120 A/V 프로세서·앰프, 8K 지원 완벽 음질. 홈시어터 혁신, 2만5천 달러.[web:7]",
+      "highlights": [],
+      "tags": [
+        "하이엔드오디오",
+        "앰프",
+        "리뷰"
+      ],
+      "score": null,
+      "decision": {
+        "impact_score": 4.2,
+        "impact_reason": "프리미엄 A/V 프로세서의 8K 지원과 통합 앰프 트렌드는 고급 오디오 시장의 기술 수준을 상향하지만, THE EIGHT GATES/DARS의 타겟 시장 및 기술 스택과의 직접적 연관성은 제한적이다.",
+        "confidence": 0.65,
+        "confidence_basis": "McIntosh의 프리미엄 포지셔닝과 8K 지원 기술은 확인되나 THE EIGHT GATES/DARS의 구체적 제품 사양 및 경쟁 포지셔닝이 미상이다.",
+        "next_action": "McIntosh의 8K 통합 프로세서 아키텍처와 가격 책정 전략을 분석하여 자사 제품의 차별화 포인트 및 시장 세분화 전략을 재검토하는 것이 필요하다.",
+        "time_sensitivity": "MEDIUM",
+        "opportunity": "고급 오디오 시장에서 8K 기술 표준화 추세는 향후 제품 로드맵에 적용 가능한 기술 방향성을 제시한다.",
+        "risk": "프리미엄 브랜드(McIntosh)의 강한 시장 점유와 높은 진입장벽은 한국 신규 업체의 고가 시장 진출을 어렵게 할 수 있다."
+      },
+      "mode": "decision",
+      "status": "PENDING_ACTION",
+      "decision_generated_at": "2026-02-26T01:47:47.780976+00:00"
+    },
+    {
+      "id": "7c4f09ee5fea0cca6604b12372f56b34afa259ae",
+      "category": "computer_ai",
+      "title": "NVIDIA Blackwell AI 칩 출시",
+      "source": "The Verge",
+      "url": "https://www.theverge.com/2026/2/26/nvidia-blackwell-ai-chip-launch",
+      "published_at": "2026-02-26T00:00:00.000Z",
+      "summary": "NVIDIA Blackwell B200 칩 GTC 발표, 30배 성능 향상. 데이터센터 AI 훈련 혁명.[web:11]",
       "highlights": [],
       "tags": [
         "AI",
         "칩",
-        "엔비디아"
+        "NVIDIA"
       ],
       "score": null,
       "decision": {
         "impact_score": 8.5,
-        "impact_reason": "Blackwell의 30배 성능 향상은 GPU 단가 하락과 경쟁 심화를 초래하여 Wavtree의 서버 투자 회수 기간을 단축시키고 기존 GPU의 가격 경쟁력을 약화시킨다.",
-        "confidence": 0.87,
-        "confidence_basis": "엔비디아의 신칩 대량 출하는 과거 패턴상 6~12개월 내 클라우드 단가 30~40% 하락을 유발한다.",
-        "next_action": "Blackwell 공급 일정 및 고객사 전환 수요를 파악하여 가격 정책 재조정과 고성능 모델 경쟁력 강화 전략을 3주 내 수립해야 한다.",
+        "impact_reason": "Blackwell의 30배 성능 향상은 기존 GPU 서버 투자 회수 기간 단축과 경쟁사의 빠른 업그레이드 압박을 의미하며, 클라우드 단가 인하 경쟁을 초래할 가능성이 높다.",
+        "confidence": 0.92,
+        "confidence_basis": "NVIDIA의 주기적 아키텍처 혁신 패턴과 데이터센터 GPU 시장 독점 지위를 고려하면 성능 향상 공표의 신뢰도가 매우 높다.",
+        "next_action": "현재 보유한 GPU 인프라의 경제성 분석과 Blackwell 도입 시점/규모 검토, 고객 가격 인하 요청에 대한 대응 전략 수립이 필요하다.",
         "time_sensitivity": "IMMEDIATE",
-        "opportunity": "고객의 신규 GPU 도입 수요 급증 시 Blackwell 기반 인프라 서비스 조기 구축으로 시장 선점 가능성이 높다.",
-        "risk": "기존 고사양 GPU 기반 수익 모델의 마진율 급락과 신규 투자 자본의 회수 기간 연장 우려가 있다."
+        "opportunity": "초기 Blackwell 채택으로 고성능 모델 훈련 경쟁력 확보 및 프리미엄 가격 책정 윈도우 확보 가능",
+        "risk": "기존 GPU 서버의 가치 하락 가속화와 Blackwell 수급 부족 시 고객 이탈 리스크"
       },
       "mode": "decision",
       "status": "PENDING_ACTION",
-      "decision_generated_at": "2026-02-25T02:42:56.263769+00:00"
+      "decision_generated_at": "2026-02-26T01:48:05.179199+00:00"
     },
     {
-      "id": "403a7bab6e04f2fa85f71959c881f979d3df1284",
+      "id": "f87447416c270b2196b7cc9a2cab761d5dc2e729",
       "category": "computer_ai",
-      "title": "오픈AI GPT-5 베타 공개",
-      "source": "The Information",
-      "url": "https://www.theinformation.com/articles/openai-gpt5-beta-launch-2026",
-      "published_at": "2026-02-24T00:00:00.000Z",
-      "summary": "GPT-5 베타 버전 개발자 공개. 멀티모달 기능 강화. 상용화 3월 예정.",
+      "title": "OpenAI GPT-5 베타 론칭",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/02/25/openai-gpt-5-beta/",
+      "published_at": "2026-02-25T00:00:00.000Z",
+      "summary": "GPT-5 베타 사용자 초대, 멀티모달·추론 능력 대폭 업그레이드. 안전 테스트 중.[web:12]",
       "highlights": [],
       "tags": [
         "AI",
-        "챗GPT",
-        "오픈AI"
+        "모델",
+        "OpenAI"
       ],
       "score": null,
       "decision": {
         "impact_score": 7.5,
-        "impact_reason": "GPT-5의 멀티모달 강화와 3월 상용화는 AI 인프라 수요 급증을 의미하며, 동시에 OpenAI의 독점적 성능 향상으로 인한 가격 인상 압력이 발생할 수 있습니다.",
+        "impact_reason": "GPT-5의 추론·멀티모달 능력 강화는 모델 경쟁 심화로 이어져 Wavtree의 GPU 수요 증가와 동시에 클라우드 단가 하락 압박이 예상된다.",
         "confidence": 0.78,
-        "confidence_basis": "베타 공개는 확실하나 실제 상용화 일정과 성능-가격 곡선의 변화는 변수가 있습니다.",
-        "next_action": "GPU 수급 계획을 3월 이전으로 당겨 확보하고, 자체 모델 고도화로 OpenAI 의존도를 줄이는 로드맵을 즉시 수립해야 합니다.",
+        "confidence_basis": "OpenAI의 베타 론칭은 시장 검증 단계이지만 주요 모델사의 성능 경주가 AI 인프라 수요를 단기간 증가시키는 패턴이 확인되었다.",
+        "next_action": "GPT-5 기반 고성능 워크로드 지원을 위한 H100/H200 확보 계획 수립 및 기존 고객사의 모델 업그레이드 시점 예측 분석을 즉시 시작하라.",
         "time_sensitivity": "IMMEDIATE",
-        "opportunity": "GPT-5 수요 증가로 Wavtree의 GPU 인프라와 추론 최적화 서비스의 시장 경쟁력이 높아질 수 있습니다.",
-        "risk": "OpenAI의 강화된 모델로 인해 클라우드 요금이 상승하면 Wavtree의 단가 기반 경쟁력이 약화되고, 고객들이 직접 GPT-5로 이동할 가능성이 있습니다."
+        "opportunity": "업그레이드된 추론 능력 지원 시 프리미엄 GPU 리소스 수요 증가로 단가 유지 및 마진율 개선 가능성.",
+        "risk": "경쟁사의 공격적 가격 인하 및 클라우드 제공자의 자체 인프라 확충으로 서버 투자 회수 기간 연장 위험."
       },
       "mode": "decision",
       "status": "PENDING_ACTION",
-      "decision_generated_at": "2026-02-25T02:43:00.398491+00:00"
+      "decision_generated_at": "2026-02-26T01:48:14.276741+00:00"
     },
     {
-      "id": "d133b69953681d76690cc1dcbd186c0c52a11588",
+      "id": "ed41c3c9651e6f59ce518d616194d0be6ff3a909",
       "category": "computer_ai",
-      "title": "애플 AI 칩 M5 발표",
-      "source": "Bloomberg",
-      "url": "https://www.bloomberg.com/news/apple-m5-ai-chip-2026",
-      "published_at": "2026-02-25T00:00:00.000Z",
-      "summary": "M5 칩 내장 AI 엔진 2배 빠름. 맥북 프로 탑재 예정. 온디바이스 처리 강조.",
+      "title": "Google Gemini 2.0 Ultra 발표",
+      "source": "Ars Technica",
+      "url": "https://arstechnica.com/2026/02/23/google-gemini-2-ultra-ai/",
+      "published_at": "2026-02-23T00:00:00.000Z",
+      "summary": "Gemini 2.0 Ultra, 코드 생성·비전 2배 정확도. Android 통합 확대.[web:14]",
       "highlights": [],
       "tags": [
         "AI",
-        "칩",
-        "애플"
+        "Google",
+        "모델"
+      ],
+      "score": null,
+      "decision": {
+        "impact_score": 7.5,
+        "impact_reason": "Google의 Gemini 2.0 Ultra 출시로 클라우드 모델 경쟁이 심화되어 Wavtree의 추론 가격 경쟁력이 압박받을 수 있으며, 고성능 모델 수요 증가로 GPU 수급 경쟁도 심화될 것으로 예상된다.",
+        "confidence": 0.78,
+        "confidence_basis": "Google의 주요 AI 모델 출시는 산업 표준을 재정의하는 신호이지만, 한국 시장 영향과 Wavtree의 차별화 전략 효과는 추가 정보 필요.",
+        "next_action": "Google Gemini 2.0 Ultra의 가격 정책과 성능 벤치마크를 즉시 분석하고 Wavtree 추론 엔진의 가성비 강점을 재검토하여 경쟁 포지셔닝 수정안을 수립하라.",
+        "time_sensitivity": "IMMEDIATE",
+        "opportunity": "국내 개발사와 기업들이 고성능 모델 추론을 저비용으로 필요로 하는 수요 증가로 Wavtree의 가성비 기반 로컬 추론 인프라 수요 확대 가능성.",
+        "risk": "Google의 강화된 성능으로 인한 대형 클라우드 업체들의 가격 인하 공세가 예상되어 Wavtree의 서버 투자 ROI 악화 및 마진율 압박 우려."
+      },
+      "mode": "decision",
+      "status": "PENDING_ACTION",
+      "decision_generated_at": "2026-02-26T01:48:24.233996+00:00"
+    },
+    {
+      "id": "c54aaceef355b6e6e42c4b4d1fe4f5e700151a0d",
+      "category": "computer_ai",
+      "title": "Quantum AI 브레이크스루 IBM",
+      "source": "Wired",
+      "url": "https://www.wired.com/story/ibm-quantum-ai-breakthrough-2026/",
+      "published_at": "2026-02-26T00:00:00.000Z",
+      "summary": "IBM 1000큐비트 프로세서 AI 훈련 성공, 오류율 80% 감소. 상용화 임박.[web:15]",
+      "highlights": [],
+      "tags": [
+        "AI",
+        "퀀텀",
+        "IBM"
       ],
       "score": null,
       "decision": {
         "impact_score": 6.5,
-        "impact_reason": "온디바이스 AI 처리 강화로 클라우드 GPU 수요가 감소할 수 있으며, 특히 고가 인프라 투자 회수 모델에 부정적 영향을 줄 수 있다.",
-        "confidence": 0.72,
-        "confidence_basis": "M5의 온디바이스 성능이 입증되면 엔터프라이즈 클라우드 GPU 의존도가 2~3년 내 점진적으로 낮아질 가능성이 있다.",
-        "next_action": "엔터프라이즈/데이터센터 워크로드 중 엣지 처리 불가 영역(고복잡도 모델, 실시간 대규모 배치)에 집중하는 포지셔닝 재검토 필요.",
+        "impact_reason": "양자 컴퓨팅이 AI 훈련 효율을 혁신할 경우 GPU 기반 인프라의 장기 경쟁력이 약화될 수 있으나, 상용화까지 3~5년 이상 소요되어 즉각적 영향은 제한적입니다.",
+        "confidence": 0.68,
+        "confidence_basis": "IBM의 기술 진전은 실제이나 '상용화 임박' 주장과 실제 서비스 출시 간 갭이 존재하며, 대규모 AI 모델 훈련에 양자 컴퓨터 적용 시점은 불명확합니다.",
+        "next_action": "양자 컴퓨팅 기술 로드맵을 분석하고 GPU 인프라의 5년 이상 수익성을 재검증한 후, 필요시 하이브리드 솔루션(GPU+양자) 전략 수립을 고려하세요.",
         "time_sensitivity": "MEDIUM",
-        "opportunity": "온디바이스 AI 확산으로 엣지-클라우드 하이브리드 아키텍처 수요 증가 시 통합 인프라 솔루션 제공 기회 발생.",
-        "risk": "애플 생태계 사용자의 클라우드 GPU 수요 감소로 B2C 및 SMB 고객층의 인프라 매출이 잠식될 우려."
+        "opportunity": "양자-GPU 통합 인프라 개발 시 새로운 고객층(금융, 제약) 확보 가능성 및 기술 선점 기회",
+        "risk": "양자 컴퓨팅 상용화 가속 시 Wavtree의 GPU 서버 투자 회수 기간 단축 및 가격 경쟁력 악화 가능성"
       },
       "mode": "decision",
       "status": "PENDING_ACTION",
-      "decision_generated_at": "2026-02-25T02:43:09.522143+00:00"
+      "decision_generated_at": "2026-02-26T01:48:09.905426+00:00"
     },
     {
-      "id": "3fa733fd989b3985f5891bc69fc7cd4a899514b7",
+      "id": "025f966c3078321be126d6cac93b5e317abcd4b5",
       "category": "computer_ai",
-      "title": "구글 Gemini 2.0 론칭",
-      "source": "Google Blog",
-      "url": "https://blog.google/technology/ai/gemini-2-february-2026/",
-      "published_at": "2026-02-25T00:00:00.000Z",
-      "summary": "Gemini 2.0 멀티태스크 40% 향상. 안드로이드 통합. 무료 버전 업그레이드.",
+      "title": "Apple M5 칩 MacBook Pro",
+      "source": "MacRumors",
+      "url": "https://www.macrumors.com/2026/02/24/apple-m5-macbook-pro-rumors/",
+      "published_at": "2026-02-24T00:00:00.000Z",
+      "summary": "Apple M5 칩 탑재 MacBook Pro 2026 가을 출시 루머, AI NPU 50% 향상. 3nm 공정.[web:13]",
       "highlights": [],
       "tags": [
-        "AI",
-        "구글",
-        "제미니"
+        "컴퓨터",
+        "칩",
+        "Apple"
+      ],
+      "score": null,
+      "decision": {
+        "impact_score": 3.2,
+        "impact_reason": "Apple M5의 NPU 성능 향상은 엣지 AI 시장을 강화하지만, Wavtree의 클라우드 GPU 인프라 사업과는 직접적 경쟁 관계가 약하며 주로 소비자 기기 시장에 영향을 미친다.",
+        "confidence": 0.65,
+        "confidence_basis": "2026년 가을 출시는 루머 단계이고 실제 성능/출시 여부 불확실성이 높으며, Apple 자체 칩의 발전이 곧 클라우드 GPU 대체를 의미하지는 않다.",
+        "next_action": "Apple 생태계의 AI 워크로드 동향을 모니터링하되, 현재는 엣지 AI 시장의 변화보다 클라우드 GPU 공급망 다각화에 집중할 것을 권장한다.",
+        "time_sensitivity": "LOW",
+        "opportunity": "Apple 사용자 기반의 온디바이스 AI 확산으로 클라우드 의존도가 감소 가능하나, 복잡한 AI 워크로드는 여전히 클라우드 GPU 수요 유지 기회가 있다.",
+        "risk": "장기적으로 주요 IT 기업들의 자체 AI 칩 개발 확대로 NVIDIA 등 GPU 공급자 의존도 감소 시 Wavtree의 수익성 악화 우려가 있다."
+      },
+      "mode": "decision",
+      "status": "PENDING_ACTION",
+      "decision_generated_at": "2026-02-26T01:48:19.404982+00:00"
+    },
+    {
+      "id": "a56ca3b91490f0d9643ea3aac5a3cef153d16341",
+      "category": "global_biz",
+      "title": "Samsung HBM3E 칩 수요 급증",
+      "source": "Nikkei Asia",
+      "url": "https://asia.nikkei.com/Business/Samsung-HBM3E-demand-2026-02-23",
+      "published_at": "2026-02-23T00:00:00.000Z",
+      "summary": "Samsung HBM3E AI 칩 NVIDIA 독점 공급 탈피, 2026 매출 30% 증가 전망.[web:19]",
+      "highlights": [],
+      "tags": [
+        "비즈니스",
+        "Samsung",
+        "반도체"
+      ],
+      "score": null,
+      "decision": {
+        "impact_score": 7.5,
+        "impact_reason": "삼성의 HBM3E 수요 급증은 한국 반도체 공급망 전반의 긍정 신호이며, 특히 소재/장비/부품 공급사들의 매출 확대 기회를 창출한다.",
+        "confidence": 0.72,
+        "confidence_basis": "NVIDIA 독점 탈피와 2026 30% 매출 증가 전망은 구체적이나, 실제 수주 이행률과 경쟁사(SK하이닉스, 마이크론) 대응 미지수가 있다.",
+        "next_action": "포트폴리오 내 반도체 소재·장비·부품 기업들의 삼성 HBM 공급망 진입 가능성을 6주 내 실사하고 선제적 영업 지원을 강화하라.",
+        "time_sensitivity": "MEDIUM",
+        "opportunity": "삼성 HBM3E 양산 확대 시 포토레지스트, 식각 가스, 검사장비 등 후공정 소재·장비 수요가 2026-2027년 급증할 가능성.",
+        "risk": "지정학적 반도체 규제(EUV 장비 수출 제한), 중국 대체 기술 추진, 글로벌 경기 둔화 시 AI 칩 수요 감소 리스크."
+      },
+      "mode": "decision",
+      "status": "PENDING_ACTION",
+      "decision_generated_at": "2026-02-26T01:48:42.874476+00:00"
+    },
+    {
+      "id": "7f4b45ddac6e5281518066f2f1552947387be85b",
+      "category": "global_biz",
+      "title": "OPEC+ 감산 연장 결정",
+      "source": "Bloomberg",
+      "url": "https://www.bloomberg.com/news/opec-plus-extends-cuts-2026-02-25",
+      "published_at": "2026-02-25T00:00:00.000Z",
+      "summary": "OPEC+ 2026년 상반기까지 감산 연장, 유가 80달러 지지. 글로벌 수요 둔화 대응.[web:17]",
+      "highlights": [],
+      "tags": [
+        "비즈니스",
+        "석유",
+        "OPEC"
+      ],
+      "score": null,
+      "decision": {
+        "impact_score": 6.5,
+        "impact_reason": "유가 80달러 지지로 에너지·화학·수송 원가가 중기적으로 안정화되지만, 한국의 에너지 수입비 부담 증가와 수출 경쟁력 약화 우려가 동시에 발생한다.",
+        "confidence": 0.78,
+        "confidence_basis": "OPEC+ 감산 연장은 확정된 정책이나 글로벌 수요 둔화 시 유지 가능성에 변수가 있음.",
+        "next_action": "에너지 다중화(재생에너지·수소) 투자와 수출 제품의 원가 경쟁력 점검을 즉시 지시하라.",
+        "time_sensitivity": "MEDIUM",
+        "opportunity": "원가 변동성 감소로 중기 사업 계획 수립이 용이해지며, 에너지 효율화·저탄소 기술 개발 수요 증가.",
+        "risk": "높은 유가 지속로 에너지 수입비 부담 증가 및 에너지 다소비 업종 경쟁력 악화 가능성."
+      },
+      "mode": "decision",
+      "status": "PENDING_ACTION",
+      "decision_generated_at": "2026-02-26T01:48:33.966915+00:00"
+    },
+    {
+      "id": "5481fd65dc209d892c81805511707a960362561d",
+      "category": "global_biz",
+      "title": "Alibaba AI 클라우드 매출 폭증",
+      "source": "Reuters",
+      "url": "https://www.reuters.com/technology/alibaba-ai-cloud-revenue-2026-02-24/",
+      "published_at": "2026-02-24T00:00:00.000Z",
+      "summary": "Alibaba Q4 AI 클라우드 매출 100% 성장, Tongyi 모델 수요 폭발. 시총 회복세.[web:18]",
+      "highlights": [],
+      "tags": [
+        "비즈니스",
+        "Alibaba",
+        "클라우드"
+      ],
+      "score": null,
+      "decision": {
+        "impact_score": 6.5,
+        "impact_reason": "알리바바의 AI 클라우드 고성장은 한국 클라우드/AI 기업들의 경쟁 심화를 의미하며, 특히 중국 AI 모델의 글로벌 확산이 가속화될 수 있다.",
+        "confidence": 0.72,
+        "confidence_basis": "중국 AI 선도 기업의 성장 실적은 신뢰할 수 있으나, 한국 사업 포트폴리오에 미치는 구체적 영향도는 산업군에 따라 편차가 크다.",
+        "next_action": "클라우드/AI 관련 포트폴리오 기업들의 차별화 전략(API 통합, 한국 시장 특화, 규제 리스크)을 3주 내 재검토하라.",
+        "time_sensitivity": "SHORT",
+        "opportunity": "한국 AI 기업의 글로벌 경쟁력 강화 필요성 증대로 B2B 공급망 파트너십 기회 확대 가능.",
+        "risk": "중국 AI 클라우드 서비스의 가성비 경쟁력으로 한국 기업의 마진율 및 시장 점유율 압박 우려."
+      },
+      "mode": "decision",
+      "status": "PENDING_ACTION",
+      "decision_generated_at": "2026-02-26T01:48:38.039492+00:00"
+    },
+    {
+      "id": "ce0be14698d0ba92ad5e52c55f6acf1e25bb8a64",
+      "category": "global_biz",
+      "title": "Tesla Cybercab 대량 생산 시작",
+      "source": "CNBC",
+      "url": "https://www.cnbc.com/2026/02/26/tesla-cybercab-production.html",
+      "published_at": "2026-02-26T00:00:00.000Z",
+      "summary": "Tesla Cybercab 자율주행 택시 상하이 공장 생산 개시, 연 100만대 목표. 주가 5% 상승.[web:16]",
+      "highlights": [],
+      "tags": [
+        "비즈니스",
+        "Tesla",
+        "로보택시"
       ],
       "score": null,
       "decision": {
         "impact_score": 5.0,
-        "impact_reason": "'구글 Gemini 2.0 론칭' 이슈는 사업 운영에 중간 수준의 영향 가능성이 있어 추적이 필요합니다.",
+        "impact_reason": "'Tesla Cybercab 대량 생산 시작' 이슈는 사업 운영에 중간 수준의 영향 가능성이 있어 추적이 필요합니다.",
         "confidence": 0.55,
         "confidence_basis": "자동 보조 추론 결과로, 추가 데이터 검증 시 신뢰도가 상승합니다.",
-        "next_action": "GPU 조달·클라우드 비용·모델 성능 지표를 비교해 인프라 투자 계획을 즉시 점검하세요.",
+        "next_action": "정책·환율·무역 변수 변화를 반영해 수익성 시나리오를 재점검하고 대응안을 준비하세요.",
         "time_sensitivity": "MEDIUM",
         "opportunity": "선제 대응 시 시장/운영 리스크를 줄이고 실행 속도를 높일 수 있습니다.",
         "risk": "모니터링 지연 시 비용 증가 또는 일정 지연으로 이어질 수 있습니다."
       },
       "mode": "decision",
       "status": "PENDING_ACTION",
-      "decision_generated_at": "2026-02-25T02:43:14.868022+00:00"
-    },
-    {
-      "id": "e6c944de148c8f0193c7c7cd1fa89dc214f7d826",
-      "category": "computer_ai",
-      "title": "퀀텀 컴퓨팅 상용 첫걸음",
-      "source": "IBM Newsroom",
-      "url": "https://newsroom.ibm.com/2026-02-23-quantum-commercial-breakthrough",
-      "published_at": "2026-02-23T00:00:00.000Z",
-      "summary": "IBM 1,000큐비트 프로세서 상용 서비스. 약물 개발 적용. 클라우드 액세스 오픈.",
-      "highlights": [],
-      "tags": [
-        "퀀텀",
-        "컴퓨팅",
-        "IBM"
-      ],
-      "score": null,
-      "decision": {
-        "impact_score": 3.5,
-        "impact_reason": "양자컴퓨팅은 장기적 게임체인저지만, 현재 GPU 기반 AI 인프라 사업에 즉각적 위협은 제한적입니다. 약물 개발 등 특정 도메인 적용으로 시작되어 범용 AI 인프라 교체까지는 5년 이상 소요될 것으로 예상됩니다.",
-        "confidence": 0.72,
-        "confidence_basis": "IBM의 상용화 선언이지만 1,000큐비트 실용성, 오류율, 기존 GPU 생태계 대체 속도에 대한 불확실성이 존재합니다.",
-        "next_action": "양자컴퓨팅 적용 가능 고객군(제약, 금융 모델링) 모니터링 및 하이브리드 솔루션(GPU+양자) 파트너십 가능성을 3개월 내 검토하세요.",
-        "time_sensitivity": "MEDIUM",
-        "opportunity": "양자-GPU 하이브리드 인프라 제공으로 고객 lock-in 강화 및 새로운 틈새시장 창출 가능성",
-        "risk": "장기적으로 GPU 중심 가치사슬이 약화되어 현재의 서버 투자 회수 모델이 10년 후 구조적 도전에 직면할 수 있습니다."
-      },
-      "mode": "decision",
-      "status": "PENDING_ACTION",
-      "decision_generated_at": "2026-02-25T02:43:05.385118+00:00"
-    },
-    {
-      "id": "9c27da25bd2afc843d9fafec8a83bdf89b6f65d0",
-      "category": "global_biz",
-      "title": "삼성 반도체 호실적 전망",
-      "source": "Yonhap News",
-      "url": "https://en.yna.co.kr/view/AEN20260225001200320",
-      "published_at": "2026-02-25T00:00:00.000Z",
-      "summary": "삼성전자 1분기 영업이익 50% 상승 예상. HBM 칩 수요 증가. 글로벌 2위 유지.",
-      "highlights": [],
-      "tags": [
-        "삼성",
-        "반도체",
-        "실적"
-      ],
-      "score": null,
-      "decision": {
-        "impact_score": 7.2,
-        "impact_reason": "삼성 반도체 호실적은 국내 공급망 기업 수요 증가와 수출 환경 개선을 의미하며, 관련 포트폴리오 기업의 B2B 매출 기회 확대를 시사한다.",
-        "confidence": 0.78,
-        "confidence_basis": "삼성의 1분기 영업이익 50% 상승은 확정 뉴스이나, 포트폴리오 기업의 수혜 정도는 산업군 특성에 따라 편차가 크다.",
-        "next_action": "포트폴리오 기업 중 반도체 관련 공급업체/장비업체의 수주 파이프라인을 긴급 검토하고 상반기 매출 전망을 상향 조정할 근거 수집을 시작하라.",
-        "time_sensitivity": "SHORT",
-        "opportunity": "삼성 HBM 칩 수요 증가에 따른 소재/부품 협력업체의 수주 물량 증가 가능성 및 원가율 개선 기회.",
-        "risk": "삼성의 글로벌 2위 유지에도 불구하고 원가 경쟁 심화로 하청업체 마진율이 압박받을 가능성과 단가 인하 요구 증가 우려."
-      },
-      "mode": "decision",
-      "status": "PENDING_ACTION",
-      "decision_generated_at": "2026-02-25T02:51:52.613472+00:00"
-    },
-    {
-      "id": "962e9c424e65dc3c61f099f5a2efcc1e6dea744f",
-      "category": "global_biz",
-      "title": "아마존 AWS 매출 신기록",
-      "source": "Reuters",
-      "url": "https://www.reuters.com/business/amazon-aws-record-revenue-2026-q1/",
-      "published_at": "2026-02-24T00:00:00.000Z",
-      "summary": "AWS 1분기 매출 30% 증가. AI 클라우드 수요 폭발. 연간 1,000억 달러 돌파.",
-      "highlights": [],
-      "tags": [
-        "아마존",
-        "AWS",
-        "매출"
-      ],
-      "score": null,
-      "decision": {
-        "impact_score": 7.2,
-        "impact_reason": "글로벌 AI 클라우드 수요 급증으로 한국 클라우드/AI 관련 기업의 경쟁 심화 및 기술 투자 필요성 증가. 미국 클라우드 시장 독점화는 한국 수출형 IT 서비스 업계의 마진 압박 요인.",
-        "confidence": 0.78,
-        "confidence_basis": "AWS 성장이 실제 시장 수요 반영이지만, 한국 기업 영향도는 산업 특성에 따라 편차가 크므로 중상 수준.",
-        "next_action": "포트폴리오 기업의 클라우드/AI 의존도를 재점검하고, 글로벌 주요 클라우드 플랫폼과의 파트너십 강화 또는 차별화 전략 수립 필요.",
-        "time_sensitivity": "SHORT",
-        "opportunity": "AWS 공급망 확대에 따른 한국 데이터센터/반도체/네트워크 기업의 수요 증가 및 AWS 파트너 사업 진출 기회.",
-        "risk": "미국 클라우드 시장 집중화로 한국 자체 클라우드 사업의 경쟁력 약화 및 기술 종속도 심화 우려."
-      },
-      "mode": "decision",
-      "status": "PENDING_ACTION",
-      "decision_generated_at": "2026-02-25T02:52:01.224520+00:00"
-    },
-    {
-      "id": "797bbd2b2260716846e0ef5fd2a6ed2a7ff288b4",
-      "category": "global_biz",
-      "title": "테슬라 중국 판매 1위 탈환",
-      "source": "CNBC",
-      "url": "https://www.cnbc.com/2026/02/25/tesla-china-sales-lead.html",
-      "published_at": "2026-02-25T00:00:00.000Z",
-      "summary": "테슬라 모델Y 중국 1월 판매 1위. BYD 추월. 가격 인하 효과.",
-      "highlights": [],
-      "tags": [
-        "테슬라",
-        "중국",
-        "판매"
-      ],
-      "score": null,
-      "decision": {
-        "impact_score": 6.5,
-        "impact_reason": "테슬라의 중국 시장 재점유는 글로벌 EV 가격 경쟁 심화를 의미하며, 한국 배터리·부품 공급업체의 납가 압박과 완성차 수출 경쟁력 약화로 직결된다.",
-        "confidence": 0.78,
-        "confidence_basis": "테슬라 가격 인하 전략의 지속성과 한국 자동차 업계의 중국 시장 의존도가 높기 때문",
-        "next_action": "중국 내 주요 고객사(테슬라, BYD, 상주)의 Q1 발주량/납가 전망을 긴급 조사하고 원가 절감 과제를 검토하라.",
-        "time_sensitivity": "SHORT",
-        "opportunity": "테슬라의 가격 인하로 EV 수요 확대 시 한국 배터리·부품 공급 계약 재협상 또는 신규 고객 확보 기회",
-        "risk": "테슬라 재점유로 BYD 등 경쟁사 밀어내기 심화 시 한국 부품사들의 중국 시장 주문량 감소 및 가격 경쟁 악순환"
-      },
-      "mode": "decision",
-      "status": "PENDING_ACTION",
-      "decision_generated_at": "2026-02-25T02:43:19.130161+00:00"
-    },
-    {
-      "id": "9152a45637f4a52a35d6faf604b4130e49d8db1e",
-      "category": "global_biz",
-      "title": "OPEC+ 감산 연장 결정",
-      "source": "Bloomberg",
-      "url": "https://www.bloomberg.com/news/opec-plus-production-cut-extension-2026",
-      "published_at": "2026-02-25T00:00:00.000Z",
-      "summary": "OPEC+ 2026년 상반기 감산 연장. 유가 80달러 안정화 목표. 러시아 준수 강화.",
-      "highlights": [],
-      "tags": [
-        "OPEC",
-        "석유",
-        "감산"
-      ],
-      "score": null,
-      "decision": {
-        "impact_score": 6.5,
-        "impact_reason": "유가 80달러 안정화는 에너지 수입 의존도가 높은 한국의 수출 제조업 원가를 상향 안정화시키며, 동시에 에너지 관련 소재·부품 사업에는 수요 기반을 제공합니다.",
-        "confidence": 0.78,
-        "confidence_basis": "OPEC+의 정책 일관성은 높으나 러시아 제재, 이란 생산 변수 등 지정학적 불확실성이 존재합니다.",
-        "next_action": "포트폴리오 기업별로 에너지 원가 민감도를 재평가하고 2026년 상반기 가격 시나리오 분석을 수립하세요.",
-        "time_sensitivity": "MEDIUM",
-        "opportunity": "유가 안정은 장기 비용 예측 가능성을 높여 수출가격 경쟁력 회복에 유리합니다.",
-        "risk": "유가 80달러 유지 실패 시 한국 수출품 가격경쟁력이 급변할 수 있으며, 중국 경기 둔화와 겹치면 이중 압박이 발생합니다."
-      },
-      "mode": "decision",
-      "status": "PENDING_ACTION",
-      "decision_generated_at": "2026-02-25T02:51:57.249285+00:00"
+      "decision_generated_at": "2026-02-26T01:48:29.941466+00:00"
     }
   ]
 }
