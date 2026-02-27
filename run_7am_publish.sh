@@ -41,15 +41,24 @@ cp "$BASE/data/normalized/news.json" "$DEPLOY/news.json"
 cp "$BASE/app.js" "$DEPLOY/wave-tree-news-hub/app.js"
 cp "$BASE/index.html" "$DEPLOY/wave-tree-news-hub/index.html"
 
+# GitHub Pages source가 docs/로 바뀌어도 반영되도록 mirror 유지
+mkdir -p "$DEPLOY/docs"
+cp "$DEPLOY/index.html" "$DEPLOY/docs/index.html"
+cp "$DEPLOY/dashboard_data.json" "$DEPLOY/docs/dashboard_data.json"
+cp "$DEPLOY/news.json" "$DEPLOY/docs/news.json"
+
 cd "$DEPLOY"
 
 git add \
   wave-tree-news-hub/data/normalized/news.json \
   news.json \
+  docs/news.json \
   wave-tree-news-hub/app.js \
   wave-tree-news-hub/index.html \
   index.html \
-  dashboard_data.json || true
+  docs/index.html \
+  dashboard_data.json \
+  docs/dashboard_data.json || true
 
 if ! git diff --cached --quiet; then
   git commit -m "auto: 7am news publish $(date '+%Y-%m-%d %H:%M')"

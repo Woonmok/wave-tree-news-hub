@@ -194,47 +194,18 @@ def resolve_news_json_path():
         print(f"   ⚠️ NEWS_JSON_PATH 파일이 없어 자동 탐색으로 전환: {env_path}")
 
     candidates = [
-        env_path,
         DEFAULT_NEWS_JSON,
         os.path.join(BASE_DIR, "data", "news.json"),
         os.path.join(WORKSPACE_ROOT, "woonmok.github.io", "wave-tree-news-hub", "data", "normalized", "news.json"),
         os.path.join(WORKSPACE_ROOT, "woonmok.github.io", "news.json"),
     ]
 
-    existing = []
+    # 우선순위 경로에서 첫 번째로 존재하는 파일을 사용 (결정론적 선택)
     for candidate in candidates:
         if candidate and os.path.exists(candidate):
-            existing.append(candidate)
+            return candidate
 
-    if not existing:
-        return DEFAULT_NEWS_JSON
-
-    best_path = existing[0]
-    best_time = datetime.min.replace(tzinfo=timezone.utc)
-    best_count = -1
-
-    for path in existing:
-        generated_at = None
-        item_count = 0
-        try:
-            with open(path, "r", encoding="utf-8") as f:
-                data = json.load(f)
-            generated_at = _parse_generated_at(data)
-            item_count = len(data.get("items", [])) if isinstance(data, dict) else 0
-        except Exception:
-            generated_at = None
-            item_count = 0
-
-        if generated_at is None:
-            generated_at = datetime.fromtimestamp(os.path.getmtime(path), tz=timezone.utc)
-
-        # 1) 아이템 수 많은 파일 우선, 2) 동률이면 최신 generated_at 우선
-        if (item_count > best_count) or (item_count == best_count and generated_at > best_time):
-            best_count = item_count
-            best_time = generated_at
-            best_path = path
-
-    return best_path
+    return DEFAULT_NEWS_JSON
 
 def load_top_news():
     """news.json에서 오늘자 우선 Top 2 뉴스 로드 (없으면 최신순 fallback)"""
