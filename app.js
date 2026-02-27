@@ -280,7 +280,7 @@
         <span class="news-source" title="${escapeHtml(sourceText)}">${escapeHtml(sourceText)}</span>
         <div class="news-actions">
           ${it.url
-            ? `<button class="action-btn" onclick="WaveTree.openLink('${escapeJs(it.url)}')">열기</button>`
+            ? `<a class="action-btn" href="${escapeHtml(it.url)}" target="_blank" rel="noopener noreferrer">열기</a>`
             : `<button class="action-btn" disabled title="원문 링크 없음">링크없음</button>`}
           <button class="action-btn ${isSaved ? "saved-btn" : ""}" onclick="WaveTree.toggleSave('${escapeJs(it.id)}')">
             ${isSaved ? "✓ 저장됨" : "+ 저장"}
@@ -413,7 +413,7 @@
         <div class="scrapbook-date">📅 ${escapeHtml(formatKST(new Date(s.savedAt)))}</div>
         <div style="display:flex; gap:8px; margin-top:10px;">
           ${s.url
-            ? `<button class="action-btn" onclick="WaveTree.openLink('${escapeJs(s.url)}')">열기</button>`
+            ? `<a class="action-btn" href="${escapeHtml(s.url)}" target="_blank" rel="noopener noreferrer">열기</a>`
             : `<button class="action-btn" disabled title="원문 링크 없음">링크없음</button>`}
           <button class="remove-btn" onclick="WaveTree.removeSaved('${escapeJs(s.id)}')">✕ 삭제</button>
         </div>
