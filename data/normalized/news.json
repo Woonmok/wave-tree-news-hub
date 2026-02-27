@@ -151,33 +151,6 @@
       "decision_generated_at": "2026-02-27T01:45:03.414504+00:00"
     },
     {
-      "id": "8ac7265699d93725f34a01f3ac0e0429c6fb9c44",
-      "category": "cultured_meat",
-      "title": "티센바이오팜, 배양육 세포 수 '실제 고기와 동일' 세계 최초 구현",
-      "source": "바이오타임즈",
-      "url": "https://www.biotimes.co.kr/news/articleView.html?idxno=26154",
-      "published_at": "2025-11-01T00:00:00.000Z",
-      "summary": "티센바이오팜이 조직공학 기술로 배양육에서 실제 고기와 동일한 세포 수를 세계 최초 구현했다.",
-      "highlights": [],
-      "tags": [
-        "생산기술"
-      ],
-      "score": null,
-      "decision": {
-        "impact_score": 7.5,
-        "impact_reason": "경쟁사의 세포 밀도 기술 돌파로 배양육 상용화 경쟁이 가속화되며, Wave Tree의 균사체 기반 대체육 차별성 강조 필요성이 높아졌다.",
-        "confidence": 0.78,
-        "confidence_basis": "기술 돌파 뉴스는 확실하나, Wave Tree의 구체적 기술 수준과 시장 포지셔닝 미확인으로 상대적 영향도 평가에 제약이 있음.",
-        "next_action": "티센바이오팜의 기술 로드맵 분석 및 자사 균사체 기술의 원가/속도 경쟁력을 정량화한 비교분석 자료를 3주 내 확보하라.",
-        "time_sensitivity": "MEDIUM",
-        "opportunity": "배양육 기술 검증 속도가 빨라져 규제당국 신뢰도가 상승하면, Wave Tree의 바이오미디어 사업 진입장벽 완화 가능성이 높아진다.",
-        "risk": "대형 자본과 조직공학 인프라를 갖춘 경쟁사의 기술 선도로 투자자 관심 분산 및 자금조달 난이도 상승 위험이 존재한다."
-      },
-      "mode": "decision",
-      "status": "PENDING_ACTION",
-      "decision_generated_at": "2026-02-27T01:44:53.558006+00:00"
-    },
-    {
       "id": "e8f6b3c39760ddd6c11cc74f08460b8d7f497925",
       "category": "cultured_meat",
       "title": "가축에서 추출한 세포 배양해 만든 고기, 대체단백질!",

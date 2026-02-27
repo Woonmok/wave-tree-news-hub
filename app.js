@@ -271,6 +271,9 @@
       (typeof it.score === "number") ? `· score ${it.score.toFixed(2)}` : "",
     ].filter(Boolean).join(" ");
 
+    const normalizedUrl = normalizeUrl(it.url);
+    const fallbackSearchUrl = buildSearchUrl(it.title, it.source);
+
     div.innerHTML = `
       <div class="news-title">${escapeHtml(it.title)}</div>
       ${summary ? `<div class="news-summary">${escapeHtml(summary)}</div>` : ""}
@@ -279,9 +282,10 @@
       <div class="news-meta">
         <span class="news-source" title="${escapeHtml(sourceText)}">${escapeHtml(sourceText)}</span>
         <div class="news-actions">
-          ${it.url
-            ? `<a class="action-btn" href="${escapeHtml(it.url)}" target="_blank" rel="noopener noreferrer">열기</a>`
+          ${normalizedUrl
+            ? `<a class="action-btn" href="${escapeHtml(normalizedUrl)}" target="_blank" rel="noopener noreferrer">열기</a>`
             : `<button class="action-btn" disabled title="원문 링크 없음">링크없음</button>`}
+          <a class="action-btn" href="${escapeHtml(fallbackSearchUrl)}" target="_blank" rel="noopener noreferrer" title="원문이 안 열리면 검색으로 확인">검색</a>
           <button class="action-btn ${isSaved ? "saved-btn" : ""}" onclick="WaveTree.toggleSave('${escapeJs(it.id)}')">
             ${isSaved ? "✓ 저장됨" : "+ 저장"}
           </button>
@@ -406,19 +410,24 @@
     // newest saved first
     const list = saved.slice().sort((a, b) => Date.parse(b.savedAt) - Date.parse(a.savedAt));
 
-    el.scrapbookContent.innerHTML = list.map((s) => `
+    el.scrapbookContent.innerHTML = list.map((s) => {
+      const normalizedUrl = normalizeUrl(s.url);
+      const fallbackSearchUrl = buildSearchUrl(s.title, s.source);
+      return `
       <div class="scrapbook-item">
         <div class="scrapbook-category">${escapeHtml(s.categoryTitle || s.category)}</div>
         <div class="scrapbook-title">${escapeHtml(s.title)}</div>
         <div class="scrapbook-date">📅 ${escapeHtml(formatKST(new Date(s.savedAt)))}</div>
         <div style="display:flex; gap:8px; margin-top:10px;">
-          ${s.url
-            ? `<a class="action-btn" href="${escapeHtml(s.url)}" target="_blank" rel="noopener noreferrer">열기</a>`
+          ${normalizedUrl
+            ? `<a class="action-btn" href="${escapeHtml(normalizedUrl)}" target="_blank" rel="noopener noreferrer">열기</a>`
             : `<button class="action-btn" disabled title="원문 링크 없음">링크없음</button>`}
+          <a class="action-btn" href="${escapeHtml(fallbackSearchUrl)}" target="_blank" rel="noopener noreferrer" title="원문이 안 열리면 검색으로 확인">검색</a>
           <button class="remove-btn" onclick="WaveTree.removeSaved('${escapeJs(s.id)}')">✕ 삭제</button>
         </div>
       </div>
-    `).join("");
+    `;
+    }).join("");
   }
 
   function toggleScrapbook() {
@@ -429,6 +438,28 @@
     try {
       window.open(url, "_blank", "noopener,noreferrer");
     } catch {}
+  }
+
+  function normalizeUrl(url) {
+    if (!url) return null;
+    const trimmed = String(url).trim();
+    if (!trimmed) return null;
+    const m = trimmed.match(/https?:\/\/[^\s"'<>`]+/i);
+    if (!m) return null;
+    let candidate = m[0];
+    candidate = candidate.replace(/[),.;!?]+$/g, "");
+    try {
+      const parsed = new URL(candidate);
+      if (parsed.protocol !== "http:" && parsed.protocol !== "https:") return null;
+      return parsed.toString();
+    } catch {
+      return null;
+    }
+  }
+
+  function buildSearchUrl(title, source) {
+    const query = [title || "", source || ""].join(" ").trim();
+    return `https://duckduckgo.com/?q=${encodeURIComponent(query)}`;
   }
 
   // ---------- utils ----------

@@ -73,6 +73,15 @@ def run_pipeline(output_path: str) -> None:
     ]
     subprocess.run(normalize, cwd=BASE_DIR, check=True)
 
+    validate_urls = [
+        sys.executable,
+        os.path.join(BASE_DIR, "tools", "validate_news_urls.py"),
+        "--file",
+        normalized_path,
+        "--check-http",
+    ]
+    subprocess.run(validate_urls, cwd=BASE_DIR, check=True)
+
     backfill = [
         sys.executable,
         os.path.join(BASE_DIR, "tools", "backfill_missing_categories.py"),
@@ -80,6 +89,8 @@ def run_pipeline(output_path: str) -> None:
         normalized_path,
     ]
     subprocess.run(backfill, cwd=BASE_DIR, check=True)
+
+    subprocess.run(validate_urls, cwd=BASE_DIR, check=True)
 
     enrich = [
         sys.executable,
