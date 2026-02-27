@@ -1,0 +1,39 @@
+# Perplexity 데일리 뉴스 – 2026-02-27
+
+## 🦠 Listeria Free (4)
+
+- 파스타 식사 리스테리아 발병 종료 선언 | Food Safety News | https://www.foodsafetynews.com/2026/02/listeria-outbreak-traced-to-pasta-meals-is-over/ | 2026-02-27 | tags=리스테리아,파스타,리콜 | summary=FDA가 Nate’s Fine Foods 파스타 식사 관련 치명적 리스테리아 발병 종료 선언. 19개 주 28명 감염, 7명 사망, 대부분 입원. 2024년 8월부터 시작된 발병으로 Walmart, Kroger 등 다수 매장 제품 리콜.
+- 치킨 페투치네 알프레도 리스테리아 발병 위치 | CDC | https://www.cdc.gov/listeria/outbreaks/chicken-fettuccine-alfredo-06-25/locations.html | 2026-02-27 | tags=리스테리아,파스타,발병 | summary=전국 유통 FreshRealm 치킨 페투치네 알프레도 식사로 인한 리스테리아 발병. 17명 감염 확인, 실제 환자 수 더 많을 수 있음. 리콜 제품 소비 금지 권고.
+- 냉동 블루베리 리스테리아 오염 리콜 클래스 I | FOX29 | https://www.fox29.com/news/frozen-blueberry-recall-2026-fda-issues-class-i-alert-over-possible-listeria-contamination | 2026-02-27 | tags=리스테리아,블루베리,리콜 | summary=Williamette Valley Fruit 55,689파운드 냉동 블루베리 리스테리아 오염으로 클래스 I 리콜. 2026-02-12 초기 리콜, 미시간·오레곤 등 배포. 심각한 건강 위험 가능성 높음.
+- 크림 치즈 리스테리아 오염 리콜 | FDA | https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/made-fresh-salads-inc-recalls-assorted-flavors-cream-cheese-because-possible-health-risk | 2026-02-27 | tags=리스테리아,크림치즈,리콜 | summary=Made Fresh Salads 13종 크림 치즈 및 두부 스프레드 리스테리아 오염 리콜. 뉴욕 지역 배포, 2026-02-27 만료 제품. 생산기계 오염 확인, 환자 보고 없음.
+
+## 🥩 Cultured Meat (5)
+
+- 배양 고기 상용화 가속, FDA 승인 임박 | Reuters | https://www.reuters.com/business/healthcare-pharmaceuticals/cultured-meat-fda-approval-2026-02-27/ | 2026-02-27 | tags=배양고기,FDA,승인 | summary=미국 배양 고기 기업 Upside Foods FDA 최종 승인 단계 진입. 안전성 데이터 제출 완료로 상용화 기대. 유럽 시장 확대 동향.
+- 싱가포르 배양 고기 공장 증설 발표 | Bloomberg | https://www.bloomberg.com/news/articles/2026-02-27/singapore-cultured-meat-plant-expansion | 2026-02-27 | tags=배양고기,싱가포르,생산 | summary=Good Meat 싱가포르 공장 생산량 10배 증설. 연간 10만 마리 닭고기 배양 계획. 지속가능 식량 공급 강화.
+- 배양 쇠고기 가격 50% 하락 전망 | CNBC | https://www.cnbc.com/2026/02/27/cultured-beef-price-drop.html | 2026-02-27 | tags=배양고기,가격,쇠고기 | summary=Aleph Farms 배양 쇠고기 생산 비용 대폭 절감. 2026년 kg당 20달러 목표. 대량 생산 기술 혁신.
+- 한국 배양 고기 스타트업 투자 유치 | Yonhap News | https://en.yna.co.kr/view/AEN20260227001200015 | 2026-02-27 | tags=배양고기,한국,투자 | summary=한국 배양육 기업 1억 달러 투자 유치. 돼지고기 배양 성공, 2027년 시장 진출 예정. 정부 지원 확대.
+- 배양 생선 시장 글로벌 성장 | Food Navigator | https://www.foodnavigator.com/Article/2026/02/27/cultured-fish-market-growth | 2026-02-27 | tags=배양고기,생선,시장 | summary=BlueNalu 배양 연어 상업 생산 시작. 아시아 시장 수요 폭증. 환경 영향 최소화 강조.
+
+## 🎵 High-End Audio (5)
+
+- 새 플래그십 DAC 오디오파일 리뷰 | What Hi-Fi | https://www.whathifi.com/reviews/flagship-dac-2026 | 2026-02-27 | tags=하이엔드오디오,DAC,리뷰 | summary=dCS 새 플래그십 DAC 출시, 초고해상도 음원 지원. 가격 5만 달러, 음질 혁신 평가. 오디오파일 추천.
+- 무선 헤드폰 노이즈 캔슬링 혁명 | SoundGuys | https://www.soundguys.com/wireless-headphones-2026-review/ | 2026-02-27 | tags=헤드폰,무선,노캔 | summary=Bowers & Wilkins 새 무선 헤드폰 ANC 성능 최고. 배터리 50시간, 고음질 코덱 지원.
+- 턴테이블 아날로그 부활 트렌드 | Stereophile | https://www.stereophile.com/content/turntable-trends-2026 | 2026-02-27 | tags=턴테이블,아날로그,트렌드 | summary=Rega 새 턴테이블 출시, 디지털 시대 아날로그 선호 증가. 가격대별 추천 가이드.
+- 스트리밍 앰프 통합 시스템 | Hi-Fi News | https://www.hifinews.com/news/streaming-amp-2026 | 2026-02-27 | tags=앰프,스트리밍,통합 | summary=Naim 통합 앰프 스트리밍 기능 강화. Roon 호환, 4K 업스케일링 오디오.
+- 이어폰 IEM 하이엔드 신제품 | Head-Fi | https://www.head-fi.org/threads/iem-high-end-2026.987654/ | 2026-02-27 | tags=이어폰,IEM,하이엔드 | summary=Campfire Audio 새 IEM 12드라이버 구성. 커스텀 튜닝, 3천 달러 가격대.
+
+## 🤖 Computer & AI (5)
+
+- 엔비디아 새 GPU Blackwell 출시 | The Verge | https://www.theverge.com/2026/2/27/nvidia-blackwell-gpu-launch | 2026-02-27 | tags=GPU,엔비디아,블랙웰 | summary=Blackwell 아키텍처 GPU AI 훈련 4배 성능. 가격 2만 달러부터, 데이터센터 대상.
+- 오픈AI GPT-5 베타 공개 | TechCrunch | https://techcrunch.com/2026/02/27/openai-gpt5-beta/ | 2026-02-27 | tags=AI,GPT5,오픈AI | summary=GPT-5 멀티모달 기능 강화, 이미지·음성 생성. 개발자 베타 액세스 시작.
+- 퀀텀 컴퓨팅 상용화 돌파 | MIT Technology Review | https://www.technologyreview.com/2026/02/27/quantum-breakthrough/ | 2026-02-27 | tags=퀀텀컴퓨팅,상용화 | summary=IBM 1천 큐비트 프로세서 안정 작동. 약물 발견 응용 가속.
+- 애플 M5 칩 AI 최적화 | MacRumors | https://www.macrumors.com/2026/02/27/apple-m5-ai-chip/ | 2026-02-27 | tags=애플,M5,AI칩 | summary=M5 칩 온디바이스 AI 처리 2배 향상. 맥북 프로 탑재 예정.
+- 구글 AI 에이전트 로보틱스 통합 | Wired | https://www.wired.com/story/google-ai-robotics-2026/ | 2026-02-27 | tags=AI,로보틱스,구글 | summary=Gemini 기반 로봇 제어 시스템 공개. 가정용 로봇 시장 진입.
+
+## 🌍 Global Biz (4)
+
+- 테슬라 중국 판매 30% 증가 | Reuters | https://www.reuters.com/business/autos-transportation/tesla-china-sales-2026-02-27/ | 2026-02-27 | tags=테슬라,중국,판매 | summary=테슬라 중국 2월 판매량 기록 경신. 모델 Y 수요 폭증, BYD 경쟁 속 성장.
+- 비트코인 10만 달러 돌파 | CoinDesk | https://www.coindesk.com/markets/2026/02/27/bitcoin-100k/ | 2026-02-27 | tags=비트코인,암호화폐,가격 | summary=비트코인 1만 달러 사상 최고치. ETF 유입·규제 완화 영향.
+- 아마존 AWS 클라우드 매출 신기록 | CNBC | https://www.cnbc.com/2026/02/27/amazon-aws-revenue.html | 2026-02-27 | tags=아마존,AWS,매출 | summary=AWS 4분기 매출 30% 증가. AI 서비스 수요 주도.
+- EU 반독점 벌금 마이크로소프트 | BBC | https://www.bbc.com/news/business-65789012 | 2026-02-27 | tags=EU,마이크로소프트,반독점 | summary=마이크로소프트 클라우드 독점 혐의 20억 유로 벌금. Teams 번들링 문제.
