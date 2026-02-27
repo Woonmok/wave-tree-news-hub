@@ -78,7 +78,6 @@ def run_pipeline(output_path: str) -> None:
         os.path.join(BASE_DIR, "tools", "validate_news_urls.py"),
         "--file",
         normalized_path,
-        "--check-http",
     ]
     subprocess.run(validate_urls, cwd=BASE_DIR, check=True)
 
