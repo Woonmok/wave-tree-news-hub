@@ -140,8 +140,15 @@ INGEST_SCRIPT="$SCRIPT_DIR/tools/ingest_daily_bridge.js"
 if [ -f "$INGEST_SCRIPT" ]; then
     NODE_BIN="node"
     if ! command -v "$NODE_BIN" >/dev/null 2>&1; then
-        echo "⚠️ $(date '+%Y-%m-%d %H:%M:%S') - node 실행 파일을 찾을 수 없어 JSON 생성을 건너뜁니다"
-        exit 0
+        # cron 환경에서는 nvm 경로가 빠질 수 있어 fallback 탐색
+        NVM_NODE=$(ls -1 "$HOME"/.nvm/versions/node/*/bin/node 2>/dev/null | tail -n 1 || true)
+        if [ -n "$NVM_NODE" ] && [ -x "$NVM_NODE" ]; then
+            NODE_BIN="$NVM_NODE"
+            echo "ℹ️ $(date '+%Y-%m-%d %H:%M:%S') - nvm node fallback 사용: $NODE_BIN"
+        else
+            echo "⚠️ $(date '+%Y-%m-%d %H:%M:%S') - node 실행 파일을 찾을 수 없어 JSON 생성을 건너뜁니다"
+            exit 0
+        fi
     fi
     BRIDGE_DATE=$(date '+%Y-%m-%d')
     OUT_JSON="$SCRIPT_DIR/data/daily_bridge_${BRIDGE_DATE}.json"
