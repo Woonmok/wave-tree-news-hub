@@ -186,6 +186,34 @@ def _parse_published_at(item):
         return None
 
 
+def _parse_decision_generated_at(item):
+    raw = item.get("decision_generated_at")
+    if not raw:
+        return None
+    try:
+        parsed = datetime.fromisoformat(str(raw).replace("Z", "+00:00"))
+        if parsed.tzinfo is None:
+            parsed = parsed.replace(tzinfo=timezone.utc)
+        return parsed
+    except Exception:
+        return None
+
+
+def _sort_key_for_top(item):
+    decision_dt = _parse_decision_generated_at(item)
+    published_dt = _parse_published_at(item)
+
+    decision_key = (
+        decision_dt.astimezone(timezone.utc).isoformat() if decision_dt else ""
+    )
+    published_key = (
+        published_dt.astimezone(timezone.utc).isoformat() if published_dt else ""
+    )
+
+    # 우선순위: decision_generated_at(최신 의사결정) > published_at(기사 발행일)
+    return (decision_key, published_key)
+
+
 def resolve_news_json_path():
     env_path = os.getenv("NEWS_JSON_PATH", "").strip()
     if env_path:
@@ -225,13 +253,22 @@ def load_top_news():
 
         today_items = []
         for item in items:
+            decision_generated = _parse_decision_generated_at(item)
             published = _parse_published_at(item)
-            if published and published.astimezone(timezone.utc).date() == today_date:
+            decision_is_today = (
+                decision_generated
+                and decision_generated.astimezone(timezone.utc).date() == today_date
+            )
+            published_is_today = (
+                published and published.astimezone(timezone.utc).date() == today_date
+            )
+
+            if decision_is_today or published_is_today:
                 today_items.append(item)
 
-        # 최신순 (published_at 기준, 없으면 빈 문자열)
-        sorted_today = sorted(today_items, key=lambda x: (x.get("published_at") or ""), reverse=True)
-        sorted_all = sorted(items, key=lambda x: (x.get("published_at") or ""), reverse=True)
+        # 최신순 (decision_generated_at 우선, 없으면 published_at)
+        sorted_today = sorted(today_items, key=_sort_key_for_top, reverse=True)
+        sorted_all = sorted(items, key=_sort_key_for_top, reverse=True)
 
         def pick_top2_with_diversity(candidates, fallback):
             if not candidates:
