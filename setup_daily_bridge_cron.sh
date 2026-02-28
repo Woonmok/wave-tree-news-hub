@@ -10,7 +10,7 @@ DAILY_SCRIPT_PATH="$SCRIPT_DIR/run_daily_bridge.sh"
 HEALTHCHECK_SCRIPT_PATH="$SCRIPT_DIR/run_705_healthcheck.sh"
 RECONCILE_SCRIPT_PATH="$SCRIPT_DIR/run_710_reconcile.sh"
 MISSED_GUARD_SCRIPT_PATH="$SCRIPT_DIR/run_missed_jobs_guard.sh"
-ANTIGRAVITY_SCRIPT_PATH="/Volumes/AI_WORKSPACE/projects/woonmok.github.io/scripts/ensure_antigravity.sh"
+ANTIGRAVITY_SCRIPT_PATH="$SCRIPT_DIR/../woonmok.github.io/scripts/ensure_antigravity.sh"
 
 PUBLISH_CRON_TIME="50 6 * * *"
 DAILY_CRON_TIME="0 7 * * *"
@@ -19,12 +19,12 @@ RECONCILE_CRON_TIME="10 7 * * *"
 ANTIGRAVITY_CRON_TIME="*/2 * * * *"
 MISSED_GUARD_CRON_TIME="*/10 * * * *"
 
-PUBLISH_CRON_CMD="/bin/bash $PUBLISH_SCRIPT_PATH"
-DAILY_CRON_CMD="/bin/bash $DAILY_SCRIPT_PATH"
-HEALTHCHECK_CRON_CMD="/bin/bash $HEALTHCHECK_SCRIPT_PATH"
-RECONCILE_CRON_CMD="/bin/bash $RECONCILE_SCRIPT_PATH"
-ANTIGRAVITY_CRON_CMD="/bin/zsh $ANTIGRAVITY_SCRIPT_PATH"
-MISSED_GUARD_CRON_CMD="/bin/bash $MISSED_GUARD_SCRIPT_PATH"
+PUBLISH_CRON_CMD="/bin/bash $PUBLISH_SCRIPT_PATH >> $SCRIPT_DIR/logs/cron_publish.log 2>&1"
+DAILY_CRON_CMD="/bin/bash $DAILY_SCRIPT_PATH >> $SCRIPT_DIR/logs/cron_daily_bridge.log 2>&1"
+HEALTHCHECK_CRON_CMD="/bin/bash $HEALTHCHECK_SCRIPT_PATH >> $SCRIPT_DIR/logs/cron_healthcheck.log 2>&1"
+RECONCILE_CRON_CMD="/bin/bash $RECONCILE_SCRIPT_PATH >> $SCRIPT_DIR/logs/cron_reconcile.log 2>&1"
+ANTIGRAVITY_CRON_CMD="/bin/zsh $ANTIGRAVITY_SCRIPT_PATH >> $SCRIPT_DIR/../woonmok.github.io/logs/ensure_antigravity_cron.log 2>&1"
+MISSED_GUARD_CRON_CMD="/bin/bash $MISSED_GUARD_SCRIPT_PATH >> $SCRIPT_DIR/logs/cron_missed_guard.log 2>&1"
 
 PUBLISH_CRON_LINE="$PUBLISH_CRON_TIME $PUBLISH_CRON_CMD"
 DAILY_CRON_LINE="$DAILY_CRON_TIME $DAILY_CRON_CMD"
@@ -37,7 +37,14 @@ chmod +x "$PUBLISH_SCRIPT_PATH" "$DAILY_SCRIPT_PATH" "$HEALTHCHECK_SCRIPT_PATH" 
 [ -f "$ANTIGRAVITY_SCRIPT_PATH" ] && chmod +x "$ANTIGRAVITY_SCRIPT_PATH"
 
 CURRENT_CRON=$(crontab -l 2>/dev/null || true)
-FILTERED=$(printf "%s\n" "$CURRENT_CRON" | grep -F -v "$PUBLISH_SCRIPT_PATH" | grep -F -v "$DAILY_SCRIPT_PATH" | grep -F -v "$HEALTHCHECK_SCRIPT_PATH" | grep -F -v "$RECONCILE_SCRIPT_PATH" | grep -F -v "$MISSED_GUARD_SCRIPT_PATH" | grep -F -v "$ANTIGRAVITY_SCRIPT_PATH" || true)
+FILTERED=$(printf "%s\n" "$CURRENT_CRON" \
+  | grep -F -v "$PUBLISH_SCRIPT_PATH" \
+  | grep -F -v "$DAILY_SCRIPT_PATH" \
+  | grep -F -v "$HEALTHCHECK_SCRIPT_PATH" \
+  | grep -F -v "$RECONCILE_SCRIPT_PATH" \
+  | grep -F -v "$MISSED_GUARD_SCRIPT_PATH" \
+  | grep -E -v 'ensure_antigravity\.sh' \
+  || true)
 
 {
   printf "%s\n" "$FILTERED" | sed '/^[[:space:]]*$/d'
