@@ -94,15 +94,23 @@ for cmd in cp mkdir date tee; do
     fi
 done
 
-# Python 실행 환경 선택 (.venv-1 우선)
+# Python 실행 환경 선택 (.venv-1 우선, 실행 가능 여부 검증)
 PYTHON_BIN="python3"
-if [ -x "$SCRIPT_DIR/.venv-1/bin/python" ]; then
-    PYTHON_BIN="$SCRIPT_DIR/.venv-1/bin/python"
-elif [ -x "$SCRIPT_DIR/.venv312/bin/python" ]; then
-    PYTHON_BIN="$SCRIPT_DIR/.venv312/bin/python"
-elif [ -x "$SCRIPT_DIR/.venv/bin/python" ]; then
-    PYTHON_BIN="$SCRIPT_DIR/.venv/bin/python"
-fi
+for candidate in \
+    "$SCRIPT_DIR/.venv-1/bin/python" \
+    "$SCRIPT_DIR/.venv312/bin/python" \
+    "$SCRIPT_DIR/.venv/bin/python" \
+    "python3"
+do
+    if command -v "$candidate" >/dev/null 2>&1 || [ -x "$candidate" ]; then
+        if "$candidate" --version >/dev/null 2>&1; then
+            PYTHON_BIN="$candidate"
+            break
+        else
+            echo "⚠️ $(date '+%Y-%m-%d %H:%M:%S') - Python 후보 실행 실패, 건너뜀: $candidate"
+        fi
+    fi
+done
 echo "🐍 $(date '+%Y-%m-%d %H:%M:%S') - Python 인터프리터: $PYTHON_BIN"
 
 # 백업: perplexity.txt를 날짜별로 저장

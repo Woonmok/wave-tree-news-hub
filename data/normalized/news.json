@@ -1,36 +1,6 @@
 {
-  "generated_at": "2026-02-27T02:12:29.912734Z",
+  "generated_at": "2026-02-28T02:22:46.745291Z",
   "items": [
-    {
-      "id": "cde23bd3cf2b522df22e1283f91b6b624572cc02",
-      "category": "listeria_free",
-      "title": "Listeria outbreak traced to pasta meals is over",
-      "source": "Food Safety News",
-      "url": "https://www.foodsafetynews.com/2026/02/listeria-outbreak-traced-to-pasta-meals-is-over/",
-      "published_at": "2026-02-27T00:00:00.000Z",
-      "summary": "FDA가 파스타 식사와 연결된 리스테리아 발병 종료를 공식 선언했습니다. 이번 발병은 19개 주에서 28명을 감염시켰고 7명이 사망했으며, 임산부 1명의 태아 사망까지 초래했습니다.",
-      "highlights": [],
-      "tags": [
-        "Listeria",
-        "식품안전",
-        "리콜",
-        "FDA공고"
-      ],
-      "score": null,
-      "decision": {
-        "impact_score": 7.2,
-        "impact_reason": "파스타 식품의 리스테리아 대규모 발병(사망 7명)은 식품안전 규제 강화와 소비자 신뢰 악화를 초래하며, 특히 무균 기술 기반 식품 수출 시 통관 기준 상향과 단가 인하 압박을 가중시킬 것으로 예상됩니다.",
-        "confidence": 0.78,
-        "confidence_basis": "FDA 공식 선언된 대규모 발병 사례이나 파스타와 버섯 제품의 직접 연관성은 제한적이므로 중상 수준의 신뢰도를 적용했습니다.",
-        "next_action": "미국 수출 고객사에 즉시 무균 기술의 안전성 입증 자료와 인증서를 선제적으로 제공하고, 규제 변화 모니터링 체계를 강화하세요.",
-        "time_sensitivity": "SHORT",
-        "opportunity": "고도의 무균 처리 기술을 차별화 마케팅 포인트로 활용하여 안전 프리미엄 가격대를 정당화할 수 있는 시장 기회가 생겼습니다.",
-        "risk": "규제 강화로 인한 통관 비용 증가와 수출 단가 인하 압박이 심화될 가능성이 높으며, 버섯류 식품에 대한 소비자 신뢰도 일시적 하락 위험이 존재합니다."
-      },
-      "mode": "decision",
-      "status": "PENDING_ACTION",
-      "decision_generated_at": "2026-02-27T01:44:28.204376+00:00"
-    },
     {
       "id": "7811b19632aff97c9e984212c3ae7d69e1b0e654",
       "category": "listeria_free",
@@ -92,6 +62,36 @@
       "decision_generated_at": "2026-02-27T01:44:37.696444+00:00"
     },
     {
+      "id": "cde23bd3cf2b522df22e1283f91b6b624572cc02",
+      "category": "listeria_free",
+      "title": "Listeria outbreak traced to pasta meals is over",
+      "source": "Food Safety News",
+      "url": "https://www.foodsafetynews.com/2026/02/listeria-outbreak-traced-to-pasta-meals-is-over/",
+      "published_at": "2026-02-27T00:00:00.000Z",
+      "summary": "FDA가 파스타 식사와 연결된 리스테리아 발병 종료를 공식 선언했습니다. 이번 발병은 19개 주에서 28명을 감염시켰고 7명이 사망했으며, 임산부 1명의 태아 사망까지 초래했습니다.",
+      "highlights": [],
+      "tags": [
+        "Listeria",
+        "식품안전",
+        "리콜",
+        "FDA공고"
+      ],
+      "score": null,
+      "decision": {
+        "impact_score": 7.2,
+        "impact_reason": "파스타 식품의 리스테리아 대규모 발병(사망 7명)은 식품안전 규제 강화와 소비자 신뢰 악화를 초래하며, 특히 무균 기술 기반 식품 수출 시 통관 기준 상향과 단가 인하 압박을 가중시킬 것으로 예상됩니다.",
+        "confidence": 0.78,
+        "confidence_basis": "FDA 공식 선언된 대규모 발병 사례이나 파스타와 버섯 제품의 직접 연관성은 제한적이므로 중상 수준의 신뢰도를 적용했습니다.",
+        "next_action": "미국 수출 고객사에 즉시 무균 기술의 안전성 입증 자료와 인증서를 선제적으로 제공하고, 규제 변화 모니터링 체계를 강화하세요.",
+        "time_sensitivity": "SHORT",
+        "opportunity": "고도의 무균 처리 기술을 차별화 마케팅 포인트로 활용하여 안전 프리미엄 가격대를 정당화할 수 있는 시장 기회가 생겼습니다.",
+        "risk": "규제 강화로 인한 통관 비용 증가와 수출 단가 인하 압박이 심화될 가능성이 높으며, 버섯류 식품에 대한 소비자 신뢰도 일시적 하락 위험이 존재합니다."
+      },
+      "mode": "decision",
+      "status": "PENDING_ACTION",
+      "decision_generated_at": "2026-02-27T01:44:28.204376+00:00"
+    },
+    {
       "id": "ec28a74f8af6b8c9305b3ff0fa7805bc2a76b003",
       "category": "listeria_free",
       "title": "Listeria Outbreak Update: 27 Illnesses and 6 Deaths Linked to Packaged Meals",
@@ -120,77 +120,6 @@
       "mode": "decision",
       "status": "PENDING_ACTION",
       "decision_generated_at": "2026-02-27T01:44:43.014095+00:00"
-    },
-    {
-      "id": "6d73cc4d7f9b53baf38f058d0b1e75602530bfaf",
-      "category": "cultured_meat",
-      "title": "대체 단백질 개발 글로벌 유니콘 스타트업 - 트리플라잇",
-      "source": "triplelight.co",
-      "url": "https://www.triplelight.co/insight/4450",
-      "published_at": "2025-12-01T00:00:00.000Z",
-      "summary": "전 세계 대체 단백질 시장이 급성장하며 2023년 6조 9700억 원 규모로 추정되며, 2020-2021년 투자 받은 스타트업 중 52%가 식물성 기반이다. 발효 기술 기반 유니콘 기업이 상위권을 차지하며 Nature's Fynd와 New Age Meats 등 배양육 기업 동향을 소개한다.",
-      "highlights": [],
-      "tags": [
-        "투자",
-        "기업 동향"
-      ],
-      "score": null
-    },
-    {
-      "id": "248e3fa87fd3f083cf16af736cbf21d98e08f94e",
-      "category": "cultured_meat",
-      "title": "[미국] 배양육 스타트업, 텍사스 판매 금지에 소송 제기",
-      "source": "KATI",
-      "url": "https://m.kati.net/board/exportNewsView.do?board_seq=103535&menu_dept2=35&menu_dept3=71",
-      "published_at": "2025-11-15T00:00:00.000Z",
-      "summary": "미국 배양육 스타트업 와일드타입과 업사이드 푸즈가 텍사스 주의 배양 단백질 판매 금지 조치에 반발해 소송을 제기했다.",
-      "highlights": [],
-      "tags": [
-        "규제"
-      ],
-      "score": null,
-      "decision": {
-        "impact_score": 5.0,
-        "impact_reason": "'[미국] 배양육 스타트업, 텍사스 판매 금지에 소송 제기' 이슈는 사업 운영에 중간 수준의 영향 가능성이 있어 추적이 필요합니다.",
-        "confidence": 0.55,
-        "confidence_basis": "자동 보조 추론 결과로, 추가 데이터 검증 시 신뢰도가 상승합니다.",
-        "next_action": "규제·인증 체크리스트를 갱신하고 상용화 일정 리스크를 주간 단위로 재평가하세요.",
-        "time_sensitivity": "MEDIUM",
-        "opportunity": "선제 대응 시 시장/운영 리스크를 줄이고 실행 속도를 높일 수 있습니다.",
-        "risk": "모니터링 지연 시 비용 증가 또는 일정 지연으로 이어질 수 있습니다."
-      },
-      "mode": "decision",
-      "status": "PENDING_ACTION",
-      "decision_generated_at": "2026-02-27T01:44:48.289575+00:00"
-    },
-    {
-      "id": "fe5374f620e0d40022e32b27242da2af31c85d22",
-      "category": "cultured_meat",
-      "title": "다나그린, '지지체 기반 어류 배양육' 싱가포르 식품청 인허가 신청 완료",
-      "source": "동아일보",
-      "url": "https://www.donga.com/news/Economy/article/all/20251001/132505975/1",
-      "published_at": "2025-10-01T00:00:00.000Z",
-      "summary": "다나그린이 식물성 단백질 지지체 기술로 어류 배양육의 싱가포르 인허가를 신청하고 2026년까지 생산량을 10배 확대한다. 고가 소태아혈청 대체 기술로 단가를 낮춘다.",
-      "highlights": [],
-      "tags": [
-        "규제",
-        "생산기술",
-        "상용화"
-      ],
-      "score": null,
-      "decision": {
-        "impact_score": 5.0,
-        "impact_reason": "'다나그린, '지지체 기반 어류 배양육' 싱가포르 식품청 인허가 신청 완료' 이슈는 사업 운영에 중간 수준의 영향 가능성이 있어 추적이 필요합니다.",
-        "confidence": 0.55,
-        "confidence_basis": "자동 보조 추론 결과로, 추가 데이터 검증 시 신뢰도가 상승합니다.",
-        "next_action": "규제·인증 체크리스트를 갱신하고 상용화 일정 리스크를 주간 단위로 재평가하세요.",
-        "time_sensitivity": "MEDIUM",
-        "opportunity": "선제 대응 시 시장/운영 리스크를 줄이고 실행 속도를 높일 수 있습니다.",
-        "risk": "모니터링 지연 시 비용 증가 또는 일정 지연으로 이어질 수 있습니다."
-      },
-      "mode": "decision",
-      "status": "PENDING_ACTION",
-      "decision_generated_at": "2026-02-27T01:44:58.352646+00:00"
     },
     {
       "id": "d92f1bd3a1bf686719793c5fb154b67b174d00c5",
@@ -251,6 +180,90 @@
       "decision_generated_at": "2026-02-27T01:45:08.607410+00:00"
     },
     {
+      "id": "6d73cc4d7f9b53baf38f058d0b1e75602530bfaf",
+      "category": "cultured_meat",
+      "title": "대체 단백질 개발 글로벌 유니콘 스타트업 - 트리플라잇",
+      "source": "triplelight.co",
+      "url": "https://www.triplelight.co/insight/4450",
+      "published_at": "2025-12-01T00:00:00.000Z",
+      "summary": "전 세계 대체 단백질 시장이 급성장하며 2023년 6조 9700억 원 규모로 추정되며, 2020-2021년 투자 받은 스타트업 중 52%가 식물성 기반이다. 발효 기술 기반 유니콘 기업이 상위권을 차지하며 Nature's Fynd와 New Age Meats 등 배양육 기업 동향을 소개한다.",
+      "highlights": [],
+      "tags": [
+        "투자",
+        "기업 동향"
+      ],
+      "score": null,
+      "decision": {
+        "impact_score": 7.2,
+        "impact_reason": "글로벌 대체 단백질 시장의 급성장(6조 9700억 원)과 발효 기술 기반 유니콘 기업의 부상은 Wave Tree의 균사체 기반 사업 모델의 시장성을 강화한다. 다만 식물성 기반(52%)이 주류인 점에서 균사체 차별성 강조 필요성을 시사한다.",
+        "confidence": 0.75,
+        "confidence_basis": "시장 규모 데이터는 명확하나, Wave Tree의 구체적 포지셔닝과 경쟁력에 대한 직접 정보 부재.",
+        "next_action": "Nature's Fynd, New Age Meats 등 발효/배양 기술 선도사와의 파트너십 또는 투자 유치 경로 분석을 통해 국내 규제 환경에서의 상용화 일정을 재점검해야 한다.",
+        "time_sensitivity": "SHORT",
+        "opportunity": "발효 기술 기반 기업들의 글로벌 성공 사례는 균사체의 발효 생산 효율성 강조 시 투자자 신뢰도 상승의 근거가 될 수 있다.",
+        "risk": "식물성 기반 스타트업이 투자의 52%를 차지한 점에서 균사체 기반 제품의 규제 승인 및 소비자 수용 불확실성이 상대적으로 높다."
+      },
+      "mode": "decision",
+      "status": "PENDING_ACTION",
+      "decision_generated_at": "2026-02-28T02:22:31.033789+00:00"
+    },
+    {
+      "id": "248e3fa87fd3f083cf16af736cbf21d98e08f94e",
+      "category": "cultured_meat",
+      "title": "[미국] 배양육 스타트업, 텍사스 판매 금지에 소송 제기",
+      "source": "KATI",
+      "url": "https://m.kati.net/board/exportNewsView.do?board_seq=103535&menu_dept2=35&menu_dept3=71",
+      "published_at": "2025-11-15T00:00:00.000Z",
+      "summary": "미국 배양육 스타트업 와일드타입과 업사이드 푸즈가 텍사스 주의 배양 단백질 판매 금지 조치에 반발해 소송을 제기했다.",
+      "highlights": [],
+      "tags": [
+        "규제"
+      ],
+      "score": null,
+      "decision": {
+        "impact_score": 5.0,
+        "impact_reason": "'[미국] 배양육 스타트업, 텍사스 판매 금지에 소송 제기' 이슈는 사업 운영에 중간 수준의 영향 가능성이 있어 추적이 필요합니다.",
+        "confidence": 0.55,
+        "confidence_basis": "자동 보조 추론 결과로, 추가 데이터 검증 시 신뢰도가 상승합니다.",
+        "next_action": "규제·인증 체크리스트를 갱신하고 상용화 일정 리스크를 주간 단위로 재평가하세요.",
+        "time_sensitivity": "MEDIUM",
+        "opportunity": "선제 대응 시 시장/운영 리스크를 줄이고 실행 속도를 높일 수 있습니다.",
+        "risk": "모니터링 지연 시 비용 증가 또는 일정 지연으로 이어질 수 있습니다."
+      },
+      "mode": "decision",
+      "status": "PENDING_ACTION",
+      "decision_generated_at": "2026-02-27T01:44:48.289575+00:00"
+    },
+    {
+      "id": "fe5374f620e0d40022e32b27242da2af31c85d22",
+      "category": "cultured_meat",
+      "title": "다나그린, '지지체 기반 어류 배양육' 싱가포르 식품청 인허가 신청 완료",
+      "source": "동아일보",
+      "url": "https://www.donga.com/news/Economy/article/all/20251001/132505975/1",
+      "published_at": "2025-10-01T00:00:00.000Z",
+      "summary": "다나그린이 식물성 단백질 지지체 기술로 어류 배양육의 싱가포르 인허가를 신청하고 2026년까지 생산량을 10배 확대한다. 고가 소태아혈청 대체 기술로 단가를 낮춘다.",
+      "highlights": [],
+      "tags": [
+        "규제",
+        "생산기술",
+        "상용화"
+      ],
+      "score": null,
+      "decision": {
+        "impact_score": 5.0,
+        "impact_reason": "'다나그린, '지지체 기반 어류 배양육' 싱가포르 식품청 인허가 신청 완료' 이슈는 사업 운영에 중간 수준의 영향 가능성이 있어 추적이 필요합니다.",
+        "confidence": 0.55,
+        "confidence_basis": "자동 보조 추론 결과로, 추가 데이터 검증 시 신뢰도가 상승합니다.",
+        "next_action": "규제·인증 체크리스트를 갱신하고 상용화 일정 리스크를 주간 단위로 재평가하세요.",
+        "time_sensitivity": "MEDIUM",
+        "opportunity": "선제 대응 시 시장/운영 리스크를 줄이고 실행 속도를 높일 수 있습니다.",
+        "risk": "모니터링 지연 시 비용 증가 또는 일정 지연으로 이어질 수 있습니다."
+      },
+      "mode": "decision",
+      "status": "PENDING_ACTION",
+      "decision_generated_at": "2026-02-27T01:44:58.352646+00:00"
+    },
+    {
       "id": "308a01ea8941eee993081cdc3e3512685569b4d4",
       "category": "high_end_audio",
       "title": "디아이의 ODE, 2026 국가 소비자중심 브랜드 대상 하이엔드 오디오 부문 6년 연속 수상",
@@ -276,22 +289,6 @@
       "mode": "decision",
       "status": "PENDING_ACTION",
       "decision_generated_at": "2026-02-27T01:45:12.885156+00:00"
-    },
-    {
-      "id": "f5d085072cb287e3f8bf067e5be32e0af4a58c55",
-      "category": "high_end_audio",
-      "title": "2026년 2월 4번째 오디오 정보 및 신제품 개발 소식",
-      "source": "Audio Journal",
-      "url": "http://audiojournal.co.kr/bbs/zboard.php?id=ydlee_info&page=1&sn1=on&divpage=1&sn=on&ss=off&sc=off&select_arrange=headnum&desc=asc&no=899",
-      "published_at": "2026-02-04T00:00:00.000Z",
-      "summary": "덴마크 Børresen Acoustics의 MB8 Gold Signature 스피커시스템 개발 정보 등 최신 하이엔드 오디오 제품 뉴스를 수집합니다.",
-      "highlights": [],
-      "tags": [
-        "신제품",
-        "플래그십",
-        "스피커"
-      ],
-      "score": null
     },
     {
       "id": "6138b7a1eec0ff101d6f9810d7c03d5985efba34",
@@ -323,22 +320,6 @@
       "decision_generated_at": "2026-02-27T01:45:17.604568+00:00"
     },
     {
-      "id": "641e7946dc2e0dffef6a65eaefe16694a3a13f98",
-      "category": "high_end_audio",
-      "title": "2026년 2월 2번째 오디오 정보 및 신제품 개발 소식",
-      "source": "Audio Journal",
-      "url": "http://audiojournal.co.kr/bbs/zboard.php?id=ydlee_info&page=1&sn1=&divpage=1&sn=off&ss=on&sc=on&select_arrange=headnum&desc=asc&no=895",
-      "published_at": "2026-02-02T00:00:00.000Z",
-      "summary": "Esoteric N-05XE 네트워크 플레이어/DAC/프리앰프와 S-05XE 클래스 A 파워앰프가 2026년 3월부터 출시될 예정이며, 각종 하이엔드 오디오 신제품 정보를 제공합니다.",
-      "highlights": [],
-      "tags": [
-        "신제품",
-        "하이엔드 앰프",
-        "DAC"
-      ],
-      "score": null
-    },
-    {
       "id": "e157877a9e59db5beb7333f34ede462da476cb08",
       "category": "high_end_audio",
       "title": "Hi-Fi Audio News January 2026 Industry News",
@@ -353,35 +334,78 @@
         "하이파이 스트리밍",
         "플래그십 신제품"
       ],
-      "score": null
-    },
-    {
-      "id": "968eccc56e3a63b4ee71cd6fd5fbb245d1f37560",
-      "category": "computer_ai",
-      "title": "사이냅 OCR IX 성능 수치 공개, \"GPU 하나로 분당 500장\"",
-      "source": "elec4",
-      "url": "https://elec4.co.kr/contents/article_detail?article_idx=35844&s_cate=27",
-      "published_at": "2026-02-27T00:00:00.000Z",
-      "summary": "사이냅소프트가 1월 출시한 사이냅 OCR IX의 성능을 공개하며 GPU 하나로 분당 500장 처리 가능하다고 밝혔다. OCR 엔진의 고성능 처리 능력이 강조됐다.",
-      "highlights": [],
-      "tags": [
-        "GPU",
-        "모델 릴리즈"
-      ],
       "score": null,
       "decision": {
         "impact_score": 6.5,
-        "impact_reason": "OCR 특화 경쟁자의 GPU 효율성 공개로 Wavtree의 일반 AI 인프라 서비스 차별화 필요성이 증대되었으며, 단가 경쟁 압박이 예상된다.",
+        "impact_reason": "합리적 가격의 하이엔드 오디오 시장이 확대되면서 THE EIGHT GATES의 프리미엄 포지셔닝 전략을 재검토해야 하며, WiiM 같은 스마트 스피커의 성장은 DARS의 음질 차별성 강조 필요성을 증대시킨다.",
         "confidence": 0.72,
-        "confidence_basis": "OCR은 틈새시장이나 사이냅의 성능 공개는 GPU당 처리량 경쟁의 업계 기준 변화를 시사한다.",
-        "next_action": "Wavtree의 주력 AI 워크로드별 GPU 효율성 벤치마크를 긴급 재평가하고 가격 정책 검토를 추진하라.",
-        "time_sensitivity": "MEDIUM",
-        "opportunity": "OCR 외 고부가 AI 모델(LLM, Vision)의 처리 효율성으로 차별화하여 프리미엄 세그먼트 확보 가능",
-        "risk": "경쟁사의 하드웨어 최적화 사례 공개로 Wavtree 고객의 단가 인하 요구 및 이탈 가능성 증가"
+        "confidence_basis": "2026년 실시간 업계 동향이지만 한국 시장 적용성과 THE EIGHT GATES/DARS의 구체적 경쟁 포지셔닝 정보 부재로 중간 수준의 확신도.",
+        "next_action": "WiiM Sound Lite와 DALI 소닉 시리즈의 가격대, 음질 스펙, 타겟층을 분석하여 DARS의 차별화 포인트(음질, 기능, 가격)를 재정의하는 경쟁력 분석을 실시하라.",
+        "time_sensitivity": "SHORT",
+        "opportunity": "합리적 가격 하이엔드 시장의 성장으로 DARS가 프리미엄-미드급 사이의 '스마트+음질' 포지셔닝으로 신규 고객층 확보 가능.",
+        "risk": "기존 업체들의 공격적인 신제품 출시로 음질 기술과 가격 경쟁력이 동시에 필요하며, 한정된 자원으로 차별화 유지 난제."
       },
       "mode": "decision",
       "status": "PENDING_ACTION",
-      "decision_generated_at": "2026-02-27T01:45:21.680950+00:00"
+      "decision_generated_at": "2026-02-28T02:22:46.745188+00:00"
+    },
+    {
+      "id": "641e7946dc2e0dffef6a65eaefe16694a3a13f98",
+      "category": "high_end_audio",
+      "title": "2026년 2월 2번째 오디오 정보 및 신제품 개발 소식",
+      "source": "Audio Journal",
+      "url": "http://audiojournal.co.kr/bbs/zboard.php?id=ydlee_info&page=1&sn1=&divpage=1&sn=off&ss=on&sc=on&select_arrange=headnum&desc=asc&no=895",
+      "published_at": "2026-02-02T00:00:00.000Z",
+      "summary": "Esoteric N-05XE 네트워크 플레이어/DAC/프리앰프와 S-05XE 클래스 A 파워앰프가 2026년 3월부터 출시될 예정이며, 각종 하이엔드 오디오 신제품 정보를 제공합니다.",
+      "highlights": [],
+      "tags": [
+        "신제품",
+        "하이엔드 앰프",
+        "DAC"
+      ],
+      "score": null,
+      "decision": {
+        "impact_score": 5.0,
+        "impact_reason": "'2026년 2월 2번째 오디오 정보 및 신제품 개발 소식' 이슈는 사업 운영에 중간 수준의 영향 가능성이 있어 추적이 필요합니다.",
+        "confidence": 0.55,
+        "confidence_basis": "자동 보조 추론 결과로, 추가 데이터 검증 시 신뢰도가 상승합니다.",
+        "next_action": "신제품 스펙·가격·유통 채널을 벤치마킹해 다음 제품 로드맵 우선순위를 조정하세요.",
+        "time_sensitivity": "MEDIUM",
+        "opportunity": "선제 대응 시 시장/운영 리스크를 줄이고 실행 속도를 높일 수 있습니다.",
+        "risk": "모니터링 지연 시 비용 증가 또는 일정 지연으로 이어질 수 있습니다."
+      },
+      "mode": "decision",
+      "status": "PENDING_ACTION",
+      "decision_generated_at": "2026-02-28T02:22:40.996006+00:00"
+    },
+    {
+      "id": "f5d085072cb287e3f8bf067e5be32e0af4a58c55",
+      "category": "high_end_audio",
+      "title": "2026년 2월 4번째 오디오 정보 및 신제품 개발 소식",
+      "source": "Audio Journal",
+      "url": "http://audiojournal.co.kr/bbs/zboard.php?id=ydlee_info&page=1&sn1=on&divpage=1&sn=on&ss=off&sc=off&select_arrange=headnum&desc=asc&no=899",
+      "published_at": "2026-02-04T00:00:00.000Z",
+      "summary": "덴마크 Børresen Acoustics의 MB8 Gold Signature 스피커시스템 개발 정보 등 최신 하이엔드 오디오 제품 뉴스를 수집합니다.",
+      "highlights": [],
+      "tags": [
+        "신제품",
+        "플래그십",
+        "스피커"
+      ],
+      "score": null,
+      "decision": {
+        "impact_score": 3.5,
+        "impact_reason": "덴마크 고가 하이엔드 스피커 개발은 프리미엄 오디오 시장 트렌드를 보여주지만, THE EIGHT GATES/DARS의 핵심 기술(공간음향, 신호처리)과의 직접적 연계는 제한적입니다.",
+        "confidence": 0.45,
+        "confidence_basis": "뉴스가 제품 개발 소식만 제공하고 기술 사양이나 혁신 내용이 불명확하여 사업 영향도 평가의 정확성이 낮습니다.",
+        "next_action": "MB8 Gold Signature의 기술 스펙 및 음향 알고리즘을 구체적으로 조사하여 DARS 차별성 검증 필요합니다.",
+        "time_sensitivity": "MEDIUM",
+        "opportunity": "하이엔드 오디오 시장의 지속적 수요와 프리미엄 가격대 수용성이 증명되고 있어, 고부가가치 기술 수익화 전략 참고 가능합니다.",
+        "risk": "글로벌 유명 오디오 기업들의 신제품 개발 가속화로 기술 경쟁이 심화될 수 있으며, 한국 스타트업의 시장진입 난이도가 상승할 우려가 있습니다."
+      },
+      "mode": "decision",
+      "status": "PENDING_ACTION",
+      "decision_generated_at": "2026-02-28T02:22:35.487416+00:00"
     },
     {
       "id": "427d787f1eb0201ed40df9eda2a110ad23970371",
@@ -412,34 +436,6 @@
       "mode": "decision",
       "status": "PENDING_ACTION",
       "decision_generated_at": "2026-02-27T01:45:25.708224+00:00"
-    },
-    {
-      "id": "9f86583943a6de4fa549aae7962bc861d904c211",
-      "category": "computer_ai",
-      "title": "정부 확보 GPU 1만 장, 산·학·연에 푼다…\"AI혁신 본격 지원\"",
-      "source": "한국 정부 뉴스",
-      "url": "https://www.korea.kr/news/policyNewsView.do?newsId=148956711",
-      "published_at": "2026-02-20T00:00:00.000Z",
-      "summary": "정부가 확보한 GPU 1만 장을 내년 2월부터 산학연에 배분해 AI 혁신을 지원한다. 국내 AI 생태계 조성을 위한 국가적 차원의 인프라 제공이 시작된다.",
-      "highlights": [],
-      "tags": [
-        "GPU",
-        "AI 인프라"
-      ],
-      "score": null,
-      "decision": {
-        "impact_score": 5.0,
-        "impact_reason": "'정부 확보 GPU 1만 장, 산·학·연에 푼다…\"AI혁신 본격 지원\"' 이슈는 사업 운영에 중간 수준의 영향 가능성이 있어 추적이 필요합니다.",
-        "confidence": 0.55,
-        "confidence_basis": "자동 보조 추론 결과로, 추가 데이터 검증 시 신뢰도가 상승합니다.",
-        "next_action": "GPU 조달·클라우드 비용·모델 성능 지표를 비교해 인프라 투자 계획을 즉시 점검하세요.",
-        "time_sensitivity": "MEDIUM",
-        "opportunity": "선제 대응 시 시장/운영 리스크를 줄이고 실행 속도를 높일 수 있습니다.",
-        "risk": "모니터링 지연 시 비용 증가 또는 일정 지연으로 이어질 수 있습니다."
-      },
-      "mode": "decision",
-      "status": "PENDING_ACTION",
-      "decision_generated_at": "2026-02-27T01:45:30.636796+00:00"
     },
     {
       "id": "4c587356dc2044e2c6a45d551d7095e0b9f85dcf",
@@ -499,88 +495,60 @@
       "decision_generated_at": "2026-02-27T01:45:39.809209+00:00"
     },
     {
-      "id": "637f3abc5accacedca19730b90ed154db57cd907",
-      "category": "global_biz",
-      "title": "'26 월간 국내외 경제 및 산업 동향 2월호",
-      "source": "KOTRA",
-      "url": "https://dream.kotra.or.kr/dream/cms/news/actionOutNewsDetail.do?SITE_NO=2&MENU_ID=3400&CONTENTS_NO=1&pTmplateCd=NT2317&pDataId=26022507000064734133&pUntyDsetId=GD0046&gbn=Out",
-      "published_at": "2026-02-25T00:00:00.000Z",
-      "summary": "2월 미달러화 약세 기조 속 원/달러 환율 동향을 분석하며 국내외 경제 상황을 요약한다.",
+      "id": "968eccc56e3a63b4ee71cd6fd5fbb245d1f37560",
+      "category": "computer_ai",
+      "title": "사이냅 OCR IX 성능 수치 공개, \"GPU 하나로 분당 500장\"",
+      "source": "elec4",
+      "url": "https://elec4.co.kr/contents/article_detail?article_idx=35844&s_cate=27",
+      "published_at": "2026-02-27T00:00:00.000Z",
+      "summary": "사이냅소프트가 1월 출시한 사이냅 OCR IX의 성능을 공개하며 GPU 하나로 분당 500장 처리 가능하다고 밝혔다. OCR 엔진의 고성능 처리 능력이 강조됐다.",
       "highlights": [],
       "tags": [
-        "환율",
-        "거시경제"
+        "GPU",
+        "모델 릴리즈"
       ],
       "score": null,
       "decision": {
         "impact_score": 6.5,
-        "impact_reason": "미달러화 약세는 수출기업의 환차익을 제한하고 수입 원가 부담을 증가시키는 양극화 효과를 만든다. 금리/환율/보조금 교차영향 분석이 필수적이다.",
+        "impact_reason": "OCR 특화 경쟁자의 GPU 효율성 공개로 Wavtree의 일반 AI 인프라 서비스 차별화 필요성이 증대되었으며, 단가 경쟁 압박이 예상된다.",
         "confidence": 0.72,
-        "confidence_basis": "KOTRA 공식 월간 동향 자료이나 구체적 수치 및 전망 기간이 제시되지 않아 확도가 중간 수준이다.",
-        "next_action": "포트폴리오 기업들의 환노출 정도(수출/수입 비중)를 재점검하고 환율 헤징 전략 재검토 회의를 소집하라.",
-        "time_sensitivity": "SHORT",
-        "opportunity": "원화 약세 시 수입 중간재를 조달하는 수출기업의 가격 경쟁력 제고 가능성이 있다.",
-        "risk": "달러 약세가 역전될 경우 환차손 발생 및 수출 수익성 급락 위험이 존재한다."
-      },
-      "mode": "decision",
-      "status": "PENDING_ACTION",
-      "decision_generated_at": "2026-02-27T01:45:43.856933+00:00"
-    },
-    {
-      "id": "66e66d07b4d23fd1958b80a5c1e1562775d88030",
-      "category": "global_biz",
-      "title": "2026년 2월 23일 금융시장 동향",
-      "source": "KBthink",
-      "url": "https://kbthink.com/investment/trend/daily/260223.html",
-      "published_at": "2026-02-23T00:00:00.000Z",
-      "summary": "미국 대법원의 트럼프 행정부 상호관세 위법 판결로 시장 불확실성이 해소되며 증시가 상승 마감했다.",
-      "highlights": [],
-      "tags": [
-        "무역규제",
-        "글로벌 정책 변화"
-      ],
-      "score": null,
-      "decision": {
-        "impact_score": 7.2,
-        "impact_reason": "미국 관세 정책 불확실성 해소로 수출 기업의 환경이 개선되며, 한국 기업의 미국 시장 진출 전략 수립이 용이해진다. 글로벌 공급망 재편 시 한국의 역할 증대 가능성이 높아진다.",
-        "confidence": 0.72,
-        "confidence_basis": "법원 판결이 확정되었으나 향후 정책 재추진 가능성과 실제 산업 영향 파급까지의 시간차가 존재한다.",
-        "next_action": "미국 관세 정책 안정화 시나리오에 기반한 수출 포트폴리오 재조정 및 달러 환율 헤징 전략 검토를 진행하라.",
-        "time_sensitivity": "SHORT",
-        "opportunity": "관세 불확실성 해소로 미국 수출 기업들의 투자 심리 회복 및 한국산 부품·소재 수입 수요 증가 가능성.",
-        "risk": "법원 판결이 행정부 정책 방향을 완전히 구속하지 못할 수 있으며, 재협상이나 우회 관세 부과 리스크가 남아있다."
-      },
-      "mode": "decision",
-      "status": "PENDING_ACTION",
-      "decision_generated_at": "2026-02-27T01:45:48.153601+00:00"
-    },
-    {
-      "id": "b9048b651f57aa6480833fe5550b5c9f82414e00",
-      "category": "global_biz",
-      "title": "2026년 2월 월간환율전망(K-SURE FX Market Monthly)",
-      "source": "K-SURE",
-      "url": "https://www.ksure.or.kr/rh-fx/bbs/i-506/detail.do?ntt_sn=38241",
-      "published_at": "2026-02-06T00:00:00.000Z",
-      "summary": "2026년 2월 환율 시장 전망을 제시하며, 글로벌 경제와 정책 변수에 주목한다.",
-      "highlights": [],
-      "tags": [
-        "환율",
-        "글로벌 정책"
-      ],
-      "score": null,
-      "decision": {
-        "impact_score": 6.5,
-        "impact_reason": "2026년 2월 환율 변동성은 수출입 기업의 원가/수익성과 해외 차입금 관리에 직접 영향을 미치며, 글로벌 금리/정책 불확실성이 포트폴리오 전반의 자금조달 비용과 환헤징 전략을 결정한다.",
-        "confidence": 0.72,
-        "confidence_basis": "K-SURE 공식 월간 전망이나 구체적 수치 부재로 정책 방향성 해석에 의존",
-        "next_action": "2월 환율 변동 시나리오별(약달러/강달러) 수출입 손익분기점과 차입금 환위험을 정량화한 후 헤징 규모 결정",
+        "confidence_basis": "OCR은 틈새시장이나 사이냅의 성능 공개는 GPU당 처리량 경쟁의 업계 기준 변화를 시사한다.",
+        "next_action": "Wavtree의 주력 AI 워크로드별 GPU 효율성 벤치마크를 긴급 재평가하고 가격 정책 검토를 추진하라.",
         "time_sensitivity": "MEDIUM",
-        "opportunity": "약달러 시나리오 시 수출 경쟁력 강화 및 원화 자산의 상대적 가치 상승으로 부채 비율 개선 가능",
-        "risk": "Fed 금리인상 연장 또는 글로벌 리스크 회피 심화 시 급속 강달러 전환으로 환손실과 해외 차입금 상환 부담 증가"
+        "opportunity": "OCR 외 고부가 AI 모델(LLM, Vision)의 처리 효율성으로 차별화하여 프리미엄 세그먼트 확보 가능",
+        "risk": "경쟁사의 하드웨어 최적화 사례 공개로 Wavtree 고객의 단가 인하 요구 및 이탈 가능성 증가"
       },
       "mode": "decision",
       "status": "PENDING_ACTION",
-      "decision_generated_at": "2026-02-27T01:45:52.819671+00:00"
+      "decision_generated_at": "2026-02-27T01:45:21.680950+00:00"
+    },
+    {
+      "id": "9f86583943a6de4fa549aae7962bc861d904c211",
+      "category": "computer_ai",
+      "title": "정부 확보 GPU 1만 장, 산·학·연에 푼다…\"AI혁신 본격 지원\"",
+      "source": "한국 정부 뉴스",
+      "url": "https://www.korea.kr/news/policyNewsView.do?newsId=148956711",
+      "published_at": "2026-02-20T00:00:00.000Z",
+      "summary": "정부가 확보한 GPU 1만 장을 내년 2월부터 산학연에 배분해 AI 혁신을 지원한다. 국내 AI 생태계 조성을 위한 국가적 차원의 인프라 제공이 시작된다.",
+      "highlights": [],
+      "tags": [
+        "GPU",
+        "AI 인프라"
+      ],
+      "score": null,
+      "decision": {
+        "impact_score": 5.0,
+        "impact_reason": "'정부 확보 GPU 1만 장, 산·학·연에 푼다…\"AI혁신 본격 지원\"' 이슈는 사업 운영에 중간 수준의 영향 가능성이 있어 추적이 필요합니다.",
+        "confidence": 0.55,
+        "confidence_basis": "자동 보조 추론 결과로, 추가 데이터 검증 시 신뢰도가 상승합니다.",
+        "next_action": "GPU 조달·클라우드 비용·모델 성능 지표를 비교해 인프라 투자 계획을 즉시 점검하세요.",
+        "time_sensitivity": "MEDIUM",
+        "opportunity": "선제 대응 시 시장/운영 리스크를 줄이고 실행 속도를 높일 수 있습니다.",
+        "risk": "모니터링 지연 시 비용 증가 또는 일정 지연으로 이어질 수 있습니다."
+      },
+      "mode": "decision",
+      "status": "PENDING_ACTION",
+      "decision_generated_at": "2026-02-27T01:45:30.636796+00:00"
     },
     {
       "id": "4709f1e3e908a45b3d104cfce220bab18d3e8955",
@@ -611,6 +579,90 @@
       "mode": "decision",
       "status": "PENDING_ACTION",
       "decision_generated_at": "2026-02-27T01:45:57.463457+00:00"
+    },
+    {
+      "id": "66e66d07b4d23fd1958b80a5c1e1562775d88030",
+      "category": "global_biz",
+      "title": "2026년 2월 23일 금융시장 동향",
+      "source": "KBthink",
+      "url": "https://kbthink.com/investment/trend/daily/260223.html",
+      "published_at": "2026-02-23T00:00:00.000Z",
+      "summary": "미국 대법원의 트럼프 행정부 상호관세 위법 판결로 시장 불확실성이 해소되며 증시가 상승 마감했다.",
+      "highlights": [],
+      "tags": [
+        "무역규제",
+        "글로벌 정책 변화"
+      ],
+      "score": null,
+      "decision": {
+        "impact_score": 7.2,
+        "impact_reason": "미국 관세 정책 불확실성 해소로 수출 기업의 환경이 개선되며, 한국 기업의 미국 시장 진출 전략 수립이 용이해진다. 글로벌 공급망 재편 시 한국의 역할 증대 가능성이 높아진다.",
+        "confidence": 0.72,
+        "confidence_basis": "법원 판결이 확정되었으나 향후 정책 재추진 가능성과 실제 산업 영향 파급까지의 시간차가 존재한다.",
+        "next_action": "미국 관세 정책 안정화 시나리오에 기반한 수출 포트폴리오 재조정 및 달러 환율 헤징 전략 검토를 진행하라.",
+        "time_sensitivity": "SHORT",
+        "opportunity": "관세 불확실성 해소로 미국 수출 기업들의 투자 심리 회복 및 한국산 부품·소재 수입 수요 증가 가능성.",
+        "risk": "법원 판결이 행정부 정책 방향을 완전히 구속하지 못할 수 있으며, 재협상이나 우회 관세 부과 리스크가 남아있다."
+      },
+      "mode": "decision",
+      "status": "PENDING_ACTION",
+      "decision_generated_at": "2026-02-27T01:45:48.153601+00:00"
+    },
+    {
+      "id": "637f3abc5accacedca19730b90ed154db57cd907",
+      "category": "global_biz",
+      "title": "'26 월간 국내외 경제 및 산업 동향 2월호",
+      "source": "KOTRA",
+      "url": "https://dream.kotra.or.kr/dream/cms/news/actionOutNewsDetail.do?SITE_NO=2&MENU_ID=3400&CONTENTS_NO=1&pTmplateCd=NT2317&pDataId=26022507000064734133&pUntyDsetId=GD0046&gbn=Out",
+      "published_at": "2026-02-25T00:00:00.000Z",
+      "summary": "2월 미달러화 약세 기조 속 원/달러 환율 동향을 분석하며 국내외 경제 상황을 요약한다.",
+      "highlights": [],
+      "tags": [
+        "환율",
+        "거시경제"
+      ],
+      "score": null,
+      "decision": {
+        "impact_score": 6.5,
+        "impact_reason": "미달러화 약세는 수출기업의 환차익을 제한하고 수입 원가 부담을 증가시키는 양극화 효과를 만든다. 금리/환율/보조금 교차영향 분석이 필수적이다.",
+        "confidence": 0.72,
+        "confidence_basis": "KOTRA 공식 월간 동향 자료이나 구체적 수치 및 전망 기간이 제시되지 않아 확도가 중간 수준이다.",
+        "next_action": "포트폴리오 기업들의 환노출 정도(수출/수입 비중)를 재점검하고 환율 헤징 전략 재검토 회의를 소집하라.",
+        "time_sensitivity": "SHORT",
+        "opportunity": "원화 약세 시 수입 중간재를 조달하는 수출기업의 가격 경쟁력 제고 가능성이 있다.",
+        "risk": "달러 약세가 역전될 경우 환차손 발생 및 수출 수익성 급락 위험이 존재한다."
+      },
+      "mode": "decision",
+      "status": "PENDING_ACTION",
+      "decision_generated_at": "2026-02-27T01:45:43.856933+00:00"
+    },
+    {
+      "id": "b9048b651f57aa6480833fe5550b5c9f82414e00",
+      "category": "global_biz",
+      "title": "2026년 2월 월간환율전망(K-SURE FX Market Monthly)",
+      "source": "K-SURE",
+      "url": "https://www.ksure.or.kr/rh-fx/bbs/i-506/detail.do?ntt_sn=38241",
+      "published_at": "2026-02-06T00:00:00.000Z",
+      "summary": "2026년 2월 환율 시장 전망을 제시하며, 글로벌 경제와 정책 변수에 주목한다.",
+      "highlights": [],
+      "tags": [
+        "환율",
+        "글로벌 정책"
+      ],
+      "score": null,
+      "decision": {
+        "impact_score": 6.5,
+        "impact_reason": "2026년 2월 환율 변동성은 수출입 기업의 원가/수익성과 해외 차입금 관리에 직접 영향을 미치며, 글로벌 금리/정책 불확실성이 포트폴리오 전반의 자금조달 비용과 환헤징 전략을 결정한다.",
+        "confidence": 0.72,
+        "confidence_basis": "K-SURE 공식 월간 전망이나 구체적 수치 부재로 정책 방향성 해석에 의존",
+        "next_action": "2월 환율 변동 시나리오별(약달러/강달러) 수출입 손익분기점과 차입금 환위험을 정량화한 후 헤징 규모 결정",
+        "time_sensitivity": "MEDIUM",
+        "opportunity": "약달러 시나리오 시 수출 경쟁력 강화 및 원화 자산의 상대적 가치 상승으로 부채 비율 개선 가능",
+        "risk": "Fed 금리인상 연장 또는 글로벌 리스크 회피 심화 시 급속 강달러 전환으로 환손실과 해외 차입금 상환 부담 증가"
+      },
+      "mode": "decision",
+      "status": "PENDING_ACTION",
+      "decision_generated_at": "2026-02-27T01:45:52.819671+00:00"
     }
   ]
 }
