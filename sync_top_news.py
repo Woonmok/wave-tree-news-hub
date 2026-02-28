@@ -20,6 +20,69 @@ TARGET_HTML = os.getenv(
 )
 
 
+def get_html_targets():
+    targets = [os.path.abspath(TARGET_HTML)]
+    repo_root = os.path.dirname(targets[0])
+    docs_html = os.path.join(repo_root, "docs", "index.html")
+    if os.path.exists(docs_html):
+        targets.append(os.path.abspath(docs_html))
+
+    deduped = []
+    seen = set()
+    for path in targets:
+        if path in seen:
+            continue
+        seen.add(path)
+        deduped.append(path)
+    return deduped
+
+
+def get_dashboard_targets():
+    primary = os.path.abspath(
+        os.getenv(
+            "DASHBOARD_DATA_PATH",
+            os.path.join(WORKSPACE_ROOT, "woonmok.github.io", "dashboard_data.json"),
+        )
+    )
+    targets = [primary]
+    repo_root = os.path.dirname(primary)
+    docs_dashboard = os.path.join(repo_root, "docs", "dashboard_data.json")
+    if os.path.exists(docs_dashboard):
+        targets.append(os.path.abspath(docs_dashboard))
+
+    deduped = []
+    seen = set()
+    for path in targets:
+        if path in seen:
+            continue
+        seen.add(path)
+        deduped.append(path)
+    return deduped
+
+
+def get_news_json_targets():
+    primary = os.path.abspath(
+        os.getenv(
+            "DEPLOY_NEWS_JSON_PATH",
+            os.path.join(WORKSPACE_ROOT, "woonmok.github.io", "news.json"),
+        )
+    )
+    targets = [primary]
+    repo_root = os.path.dirname(primary)
+    docs_news = os.path.join(repo_root, "docs", "news.json")
+    if os.path.exists(docs_news):
+        targets.append(os.path.abspath(docs_news))
+
+    deduped = []
+    seen = set()
+    for path in targets:
+        if path in seen:
+            continue
+        seen.add(path)
+        deduped.append(path)
+    return deduped
+
+
 def atomic_write_json(file_path, payload):
     target_path = os.path.abspath(file_path)
     target_dir = os.path.dirname(target_path) or "."
@@ -365,69 +428,80 @@ def generate_news_html(top_news):
 
 def update_html(news_html):
     """index.html 업데이트 - Intelligence Hub 섹션에 주입"""
-    try:
-        with open(TARGET_HTML, "r", encoding="utf-8") as f:
-            content = f.read()
-        
-        # 먼저 기존 news-item들을 모두 제거하고 빈 상태로 복원
-        pattern_clean = r'<div class="section-content" id="intelligence-hub-content">.*?</div>\s*</section>'
-        
-        replacement_clean = '''<div class="section-content" id="intelligence-hub-content">
+    ok = True
+    for target_html in get_html_targets():
+        try:
+            with open(target_html, "r", encoding="utf-8") as f:
+                content = f.read()
+
+            pattern_clean = r'<div class="section-content" id="intelligence-hub-content">.*?</div>\s*</section>'
+            replacement_clean = '''<div class="section-content" id="intelligence-hub-content">
                 </div>
             </section>'''
-        
-        content_clean = re.sub(pattern_clean, replacement_clean, content, count=1, flags=re.DOTALL)
-        
-        # 이제 새로운 뉴스를 주입
-        pattern_inject = r'(<div class="section-content" id="intelligence-hub-content">\s*)(\s*</div>)'
-        
-        replacement_inject = f'\\1{news_html}\\2'
-        
-        new_content = re.sub(pattern_inject, replacement_inject, content_clean, count=1, flags=re.DOTALL)
-        
-        with open(TARGET_HTML, "w", encoding="utf-8") as f:
-            f.write(new_content)
-        
-        print("✅ The Wave Tree Project 업데이트 완료!")
-        return True
-        
-    except Exception as e:
-        print(f"❌ 업데이트 실패: {e}")
-        return False
+            content_clean = re.sub(pattern_clean, replacement_clean, content, count=1, flags=re.DOTALL)
+
+            pattern_inject = r'(<div class="section-content" id="intelligence-hub-content">\s*)(\s*</div>)'
+            replacement_inject = f'\\1{news_html}\\2'
+            new_content = re.sub(pattern_inject, replacement_inject, content_clean, count=1, flags=re.DOTALL)
+
+            with open(target_html, "w", encoding="utf-8") as f:
+                f.write(new_content)
+
+            print(f"✅ The Wave Tree Project 업데이트 완료: {target_html}")
+        except Exception as e:
+            ok = False
+            print(f"❌ 업데이트 실패({target_html}): {e}")
+    return ok
 
 
 def update_dashboard_json(top_news):
     """dashboard_data.json의 intelligence 필드를 탑 뉴스 2개로 갱신"""
-    DASHBOARD_JSON = os.getenv(
-        "DASHBOARD_DATA_PATH",
-        os.path.join(WORKSPACE_ROOT, "woonmok.github.io", "dashboard_data.json"),
-    )
+    ok = True
+    for dashboard_path in get_dashboard_targets():
+        try:
+            with open(dashboard_path, "r", encoding="utf-8") as f:
+                dashboard = json.load(f)
+
+            dashboard["intelligence_backup"] = dashboard.get("intelligence", [])
+            dashboard["intelligence"] = [
+                {
+                    "title": n.get("title", ""),
+                    "summary": n.get("summary", ""),
+                    "tag": n.get("category", ""),
+                    "score": str(n.get("score", "")),
+                    "url": n.get("url", "")
+                }
+                for n in top_news
+            ]
+            dashboard["last_updated"] = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%S")
+
+            atomic_write_json(dashboard_path, dashboard)
+            print(f"✅ dashboard_data.json intelligence 필드 동기화 완료: {dashboard_path}")
+        except Exception as e:
+            ok = False
+            print(f"❌ dashboard_data.json 동기화 실패({dashboard_path}): {e}")
+    return ok
+
+
+def mirror_news_json_source(news_json_path):
+    """선택된 뉴스 소스를 deploy root/docs news.json으로 동기화"""
+    ok = True
     try:
-        with open(DASHBOARD_JSON, "r", encoding="utf-8") as f:
-            dashboard = json.load(f)
-
-        # 기존 intelligence 필드 백업(선택)
-        dashboard["intelligence_backup"] = dashboard.get("intelligence", [])
-
-        # 탑 뉴스 2개를 intelligence 필드에 맞게 변환
-        dashboard["intelligence"] = [
-            {
-                "title": n.get("title", ""),
-                "summary": n.get("summary", ""),
-                "tag": n.get("category", ""),
-                "score": str(n.get("score", "")),
-                "url": n.get("url", "")
-            }
-            for n in top_news
-        ]
-        dashboard["last_updated"] = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%S")
-
-        atomic_write_json(DASHBOARD_JSON, dashboard)
-        print("✅ dashboard_data.json intelligence 필드 동기화 완료!")
-        return True
+        with open(news_json_path, "r", encoding="utf-8") as f:
+            payload = json.load(f)
     except Exception as e:
-        print(f"❌ dashboard_data.json 동기화 실패: {e}")
+        print(f"❌ news.json 소스 로드 실패({news_json_path}): {e}")
         return False
+
+    for target in get_news_json_targets():
+        try:
+            atomic_write_json(target, payload)
+            print(f"✅ news.json 동기화 완료: {target}")
+        except Exception as e:
+            ok = False
+            print(f"❌ news.json 동기화 실패({target}): {e}")
+
+    return ok
 
 
 def sync_to_html():
@@ -436,6 +510,7 @@ def sync_to_html():
     
     # Top 2 뉴스 로드
     top_news = load_top_news()
+    news_json_path = resolve_news_json_path()
     print(f"   📰 로드된 뉴스: {len(top_news)}개")
 
     if len(top_news) == 0:
@@ -451,13 +526,14 @@ def sync_to_html():
     
     # dashboard_data.json intelligence 필드 동기화
     dash_success = update_dashboard_json(top_news)
+    news_success = mirror_news_json_source(news_json_path)
     
-    if success and dash_success:
+    if success and dash_success and news_success:
         print("   🎉 Intelligence Hub 동기화 완료!")
     elif success:
-        print("   ⚠️ index.html만 동기화, dashboard_data.json 실패")
+        print("   ⚠️ index.html 동기화 완료, 일부 데이터 동기화 실패")
     elif dash_success:
-        print("   ⚠️ dashboard_data.json만 동기화, index.html 실패")
+        print("   ⚠️ dashboard_data.json 동기화 완료, 일부 동기화 실패")
     else:
         print("   ⚠️ 동기화 모두 실패")
 
@@ -471,6 +547,7 @@ def main():
     
     # Top 2 뉴스 로드
     top_news = load_top_news()
+    news_json_path = resolve_news_json_path()
     print(f"📰 로드된 뉴스: {len(top_news)}개")
 
     if len(top_news) == 0:
@@ -486,13 +563,14 @@ def main():
     
     # dashboard_data.json intelligence 필드 동기화
     dash_success = update_dashboard_json(top_news)
+    news_success = mirror_news_json_source(news_json_path)
     
-    if html_success and dash_success:
-        print("🎉 index.html + dashboard_data.json 동기화 완료!")
+    if html_success and dash_success and news_success:
+        print("🎉 index.html + dashboard_data.json + news.json 동기화 완료!")
     elif html_success:
-        print("⚠️ index.html만 동기화, dashboard_data.json 실패")
+        print("⚠️ index.html 동기화 완료, 일부 데이터 동기화 실패")
     elif dash_success:
-        print("⚠️ dashboard_data.json만 동기화, index.html 실패")
+        print("⚠️ dashboard_data.json 동기화 완료, 일부 동기화 실패")
     else:
         print("⚠️ 동기화 모두 실패")
 
