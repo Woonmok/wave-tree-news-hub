@@ -5,8 +5,10 @@ import json
 import os
 import re
 from datetime import datetime, timezone
+from urllib.parse import urlparse
 
 from perplexity import Perplexity
+import requests
 
 try:
     from dotenv import load_dotenv
@@ -22,24 +24,46 @@ TARGET_COUNTS = {
     "global_biz": 4,
 }
 
+MAX_AGE_DAYS = {
+    "listeria_free": 21,
+    "cultured_meat": 14,
+    "high_end_audio": 14,
+    "computer_ai": 10,
+    "global_biz": 10,
+}
+
+SEARCH_HOSTS = {
+    "google.com",
+    "bing.com",
+    "duckduckgo.com",
+    "search.naver.com",
+    "search.daum.net",
+    "news.google.com",
+}
+
 PROMPTS = {
-    "listeria_free": """최근 30일 이내 리스테리아/식품안전 뉴스만 수집해. 주제: 리콜, FDA/CDC 경보, 발병 보고, 오염 조사.
+    "listeria_free": """최신순 우선으로 최근 21일 이내 리스테리아/식품안전 뉴스만 수집해. 가능하면 오늘/어제 기사를 우선.
+주제: 리콜, FDA/CDC 경보, 발병 보고, 오염 조사.
 반드시 실제 기사 원문 URL(https://...)만 사용.
 JSON 배열만 출력:
 [{"title":"", "source":"", "url":"https://...", "published_at":"YYYY-MM-DD", "tags":["",""], "summary":"한국어 1~2문장"}]""",
-    "cultured_meat": """최근 45일 이내 배양육/대체단백질 뉴스만 수집해. 주제: 투자, 규제, 상용화, 생산기술, 기업 동향.
+    "cultured_meat": """최신순 우선으로 최근 14일 이내 배양육/대체단백질 뉴스만 수집해. 가능하면 오늘/어제 기사를 우선.
+주제: 투자, 규제, 상용화, 생산기술, 기업 동향.
 반드시 실제 기사 원문 URL(https://...)만 사용.
 JSON 배열만 출력:
 [{"title":"", "source":"", "url":"https://...", "published_at":"YYYY-MM-DD", "tags":["",""], "summary":"한국어 1~2문장"}]""",
-    "high_end_audio": """최근 45일 이내 High-End Audio 뉴스만 수집해. 주제: DAC, 하이엔드 앰프, 하이파이 스트리밍, 오디오 쇼/전시회, 플래그십 신제품.
+    "high_end_audio": """최신순 우선으로 최근 14일 이내 High-End Audio 뉴스만 수집해. 가능하면 오늘/어제 기사를 우선.
+주제: DAC, 하이엔드 앰프, 하이파이 스트리밍, 오디오 쇼/전시회, 플래그십 신제품.
 반드시 실제 기사 원문 URL(https://...)만 사용.
 JSON 배열만 출력:
 [{"title":"", "source":"", "url":"https://...", "published_at":"YYYY-MM-DD", "tags":["",""], "summary":"한국어 1~2문장"}]""",
-    "computer_ai": """최근 45일 이내 Computer & AI 뉴스만 수집해. 주제: GPU, AI 인프라, 데이터센터, 모델 릴리즈, 클라우드 단가/정책.
+    "computer_ai": """최신순 우선으로 최근 10일 이내 Computer & AI 뉴스만 수집해. 가능하면 오늘/어제 기사를 우선.
+주제: GPU, AI 인프라, 데이터센터, 모델 릴리즈, 클라우드 단가/정책.
 반드시 실제 기사 원문 URL(https://...)만 사용.
 JSON 배열만 출력:
 [{"title":"", "source":"", "url":"https://...", "published_at":"YYYY-MM-DD", "tags":["",""], "summary":"한국어 1~2문장"}]""",
-    "global_biz": """최근 45일 이내 글로벌 비즈니스/정책/무역/거시경제 뉴스만 수집해. 주제: 환율, 무역규제, 금리, 공급망, 글로벌 정책 변화.
+    "global_biz": """최신순 우선으로 최근 10일 이내 글로벌 비즈니스/정책/무역/거시경제 뉴스만 수집해. 가능하면 오늘/어제 기사를 우선.
+주제: 환율, 무역규제, 금리, 공급망, 글로벌 정책 변화.
 반드시 실제 기사 원문 URL(https://...)만 사용.
 JSON 배열만 출력:
 [{"title":"", "source":"", "url":"https://...", "published_at":"YYYY-MM-DD", "tags":["",""], "summary":"한국어 1~2문장"}]""",
@@ -104,6 +128,64 @@ def normalize_published_at(raw: str) -> str:
     return datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")
 
 
+def parse_published_at(raw: str):
+    value = (raw or "").strip()
+    if not value:
+        return None
+    try:
+        dt = datetime.fromisoformat(value.replace("Z", "+00:00"))
+        if dt.tzinfo is None:
+            dt = dt.replace(tzinfo=timezone.utc)
+        return dt.astimezone(timezone.utc)
+    except Exception:
+        if re.match(r"^\d{4}-\d{2}-\d{2}$", value):
+            try:
+                return datetime.fromisoformat(value + "T00:00:00+00:00").astimezone(timezone.utc)
+            except Exception:
+                return None
+    return None
+
+
+def normalize_title_key(title: str) -> str:
+    return re.sub(r"\s+", " ", (title or "").strip().lower())
+
+
+def is_suspicious_url(url: str) -> bool:
+    try:
+        parsed = urlparse(url)
+    except Exception:
+        return True
+
+    if parsed.scheme not in {"http", "https"}:
+        return True
+    host = (parsed.netloc or "").lower()
+    if not host:
+        return True
+    if host.startswith("www."):
+        host = host[4:]
+
+    if any(host == h or host.endswith(f".{h}") for h in SEARCH_HOSTS):
+        return True
+    if (parsed.path or "") in {"", "/"}:
+        return True
+    return False
+
+
+def probe_http_alive(url: str, timeout: int = 8) -> bool:
+    headers = {"User-Agent": "WaveTreeNewsBot/1.0 (+backfill)"}
+    try:
+        resp = requests.head(url, timeout=timeout, allow_redirects=True, headers=headers)
+        status = int(getattr(resp, "status_code", 0) or 0)
+        return 200 <= status < 400
+    except Exception:
+        try:
+            resp = requests.get(url, timeout=timeout, allow_redirects=True, headers=headers)
+            status = int(getattr(resp, "status_code", 0) or 0)
+            return 200 <= status < 400
+        except Exception:
+            return True
+
+
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--file", required=True, help="Target normalized news.json")
@@ -150,6 +232,11 @@ def main() -> int:
 
     existing_ids = {it.get("id") for it in items if isinstance(it, dict)}
     existing_urls = {it.get("url") for it in items if isinstance(it, dict) and it.get("url")}
+    existing_title_keys = {
+        normalize_title_key(str(it.get("title") or ""))
+        for it in items
+        if isinstance(it, dict) and it.get("title")
+    }
 
     client = Perplexity(api_key=api_key)
 
@@ -165,7 +252,7 @@ def main() -> int:
             if len(by_cat[cat]) >= need:
                 break
 
-            excluded_urls = [it.get("url") for it in by_cat[cat] if it.get("url")]
+            excluded_urls = [u for u in existing_urls if isinstance(u, str)]
             excluded_urls = [u for u in excluded_urls if isinstance(u, str)][:20]
             user_prompt = PROMPTS[cat] + "\n" + (
                 "이미 수집된 URL(재사용 금지):\n" + "\n".join(f"- {u}" for u in excluded_urls)
@@ -199,7 +286,24 @@ def main() -> int:
                 url = str(x.get("url", "")).strip()
                 if not title or not re.match(r"^https?://", url):
                     continue
+                if is_suspicious_url(url):
+                    continue
+                if not probe_http_alive(url):
+                    continue
                 if url in existing_urls:
+                    continue
+                title_key = normalize_title_key(title)
+                if title_key in existing_title_keys:
+                    continue
+
+                published_raw = str(x.get("published_at", "")).strip()
+                published_dt = parse_published_at(published_raw)
+                if published_dt is None:
+                    published_dt = datetime.now(timezone.utc)
+
+                max_age_days = MAX_AGE_DAYS.get(cat, 14)
+                age_days = (datetime.now(timezone.utc) - published_dt).days
+                if age_days > max_age_days:
                     continue
 
                 item = {
@@ -208,7 +312,7 @@ def main() -> int:
                     "title": title,
                     "source": source,
                     "url": url,
-                    "published_at": normalize_published_at(str(x.get("published_at", ""))),
+                    "published_at": normalize_published_at(published_raw),
                     "summary": str(x.get("summary", "")).strip(),
                     "highlights": [],
                     "tags": [str(t) for t in (x.get("tags") or [])][:5] if isinstance(x.get("tags"), list) else [],
@@ -221,6 +325,7 @@ def main() -> int:
                 by_cat[cat].append(item)
                 existing_ids.add(item["id"])
                 existing_urls.add(url)
+                existing_title_keys.add(title_key)
                 added += 1
 
     # Rebuild ordered output with fixed per-category caps
