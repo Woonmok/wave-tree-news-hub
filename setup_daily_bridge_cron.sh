@@ -5,6 +5,7 @@
 set -Eeuo pipefail
 
 SCRIPT_DIR=$(cd "$(dirname "$0")" && pwd)
+CRON_LOG_DIR="${HOME}/Library/Logs/wave-tree-news-hub-cron"
 PUBLISH_SCRIPT_PATH="$SCRIPT_DIR/run_7am_publish.sh"
 DAILY_SCRIPT_PATH="$SCRIPT_DIR/run_daily_bridge.sh"
 HEALTHCHECK_SCRIPT_PATH="$SCRIPT_DIR/run_705_healthcheck.sh"
@@ -23,15 +24,17 @@ MORNING_STATUS_0715_CRON_TIME="15 7 * * *"
 MORNING_STATUS_0725_CRON_TIME="25 7 * * *"
 MORNING_STATUS_0905_CRON_TIME="5 9 * * *"
 
-PUBLISH_CRON_CMD="/bin/bash $PUBLISH_SCRIPT_PATH >> $SCRIPT_DIR/logs/cron_publish.log 2>&1"
-DAILY_CRON_CMD="/bin/bash $DAILY_SCRIPT_PATH >> $SCRIPT_DIR/logs/cron_daily_bridge.log 2>&1"
-HEALTHCHECK_CRON_CMD="/bin/bash $HEALTHCHECK_SCRIPT_PATH >> $SCRIPT_DIR/logs/cron_healthcheck.log 2>&1"
-RECONCILE_CRON_CMD="/bin/bash $RECONCILE_SCRIPT_PATH >> $SCRIPT_DIR/logs/cron_reconcile.log 2>&1"
-ANTIGRAVITY_CRON_CMD="/bin/zsh $ANTIGRAVITY_SCRIPT_PATH >> $SCRIPT_DIR/../woonmok.github.io/logs/ensure_antigravity_cron.log 2>&1"
-MISSED_GUARD_CRON_CMD="/bin/bash $MISSED_GUARD_SCRIPT_PATH >> $SCRIPT_DIR/logs/cron_missed_guard.log 2>&1"
-MORNING_STATUS_0715_CRON_CMD="/bin/bash $MORNING_STATUS_SCRIPT_PATH >> $SCRIPT_DIR/logs/report_morning_status_0715_cron.log 2>&1"
-MORNING_STATUS_0725_CRON_CMD="/bin/bash $MORNING_STATUS_SCRIPT_PATH >> $SCRIPT_DIR/logs/report_morning_status_cron.log 2>&1"
-MORNING_STATUS_0905_CRON_CMD="/bin/bash $MORNING_STATUS_SCRIPT_PATH"
+mkdir -p "$CRON_LOG_DIR"
+
+PUBLISH_CRON_CMD="/bin/bash $PUBLISH_SCRIPT_PATH >> $CRON_LOG_DIR/cron_publish.log 2>&1"
+DAILY_CRON_CMD="/bin/bash $DAILY_SCRIPT_PATH >> $CRON_LOG_DIR/cron_daily_bridge.log 2>&1"
+HEALTHCHECK_CRON_CMD="/bin/bash $HEALTHCHECK_SCRIPT_PATH >> $CRON_LOG_DIR/cron_healthcheck.log 2>&1"
+RECONCILE_CRON_CMD="/bin/bash $RECONCILE_SCRIPT_PATH >> $CRON_LOG_DIR/cron_reconcile.log 2>&1"
+ANTIGRAVITY_CRON_CMD="/bin/zsh $ANTIGRAVITY_SCRIPT_PATH >> $CRON_LOG_DIR/ensure_antigravity_cron.log 2>&1"
+MISSED_GUARD_CRON_CMD="/bin/bash $MISSED_GUARD_SCRIPT_PATH >> $CRON_LOG_DIR/cron_missed_guard.log 2>&1"
+MORNING_STATUS_0715_CRON_CMD="/bin/bash $MORNING_STATUS_SCRIPT_PATH >> $CRON_LOG_DIR/report_morning_status_0715_cron.log 2>&1"
+MORNING_STATUS_0725_CRON_CMD="/bin/bash $MORNING_STATUS_SCRIPT_PATH >> $CRON_LOG_DIR/report_morning_status_cron.log 2>&1"
+MORNING_STATUS_0905_CRON_CMD="/bin/bash $MORNING_STATUS_SCRIPT_PATH >> $CRON_LOG_DIR/report_morning_status_0905_cron.log 2>&1"
 
 PUBLISH_CRON_LINE="$PUBLISH_CRON_TIME $PUBLISH_CRON_CMD"
 DAILY_CRON_LINE="$DAILY_CRON_TIME $DAILY_CRON_CMD"
@@ -74,6 +77,7 @@ FILTERED=$(printf "%s\n" "$CURRENT_CRON" \
 
 echo "✅ cron 등록 완료"
 echo "- 스케줄: 매일 06:50 (publish), 07:00 (daily bridge), 07:05 (healthcheck), 07:10 (reconcile), 10분 주기 (missed-jobs guard), 2분 주기 (antigravity watchdog)"
+echo "- cron 로그 경로: $CRON_LOG_DIR"
 echo "- 명령1: $PUBLISH_CRON_CMD"
 echo "- 명령2: $DAILY_CRON_CMD"
 echo "- 명령3: $HEALTHCHECK_CRON_CMD"
