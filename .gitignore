@@ -103,6 +103,7 @@ update_news.py.save
 *~
 *.bak
 *.tmp
+*.pretest
 *.old
 *.orig
 
