@@ -278,6 +278,22 @@ def _sort_key_for_top(item):
     return (decision_key, published_key)
 
 
+def _is_within_last_hours(item, hours: int = 24) -> bool:
+    now_utc = datetime.now(timezone.utc)
+    cutoff = now_utc.timestamp() - (hours * 3600)
+
+    candidates = [
+        _parse_decision_generated_at(item),
+        _parse_published_at(item),
+    ]
+    for dt in candidates:
+        if dt is None:
+            continue
+        if dt.astimezone(timezone.utc).timestamp() >= cutoff:
+            return True
+    return False
+
+
 def sanitize_url(url_value):
     if not url_value:
         return ""
@@ -346,6 +362,8 @@ def load_top_news():
                 today_items.append(item)
 
         # 최신순 (decision_generated_at 우선, 없으면 published_at)
+        recent_24h_items = [item for item in items if _is_within_last_hours(item, 24)]
+        sorted_recent_24h = sorted(recent_24h_items, key=_sort_key_for_top, reverse=True)
         sorted_today = sorted(today_items, key=_sort_key_for_top, reverse=True)
         sorted_all = sorted(items, key=_sort_key_for_top, reverse=True)
 
@@ -388,8 +406,13 @@ def load_top_news():
 
             return [first, second] if second else [first]
 
-        # 오늘자 우선, 단 카테고리 다양성 우선 적용
-        candidate_pool = sorted_today if len(sorted_today) >= 2 else sorted_all
+        # 24시간 이내 최신 기사 우선 → 오늘자 → 전체 최신순
+        if len(sorted_recent_24h) >= 2:
+            candidate_pool = sorted_recent_24h
+        elif len(sorted_today) >= 2:
+            candidate_pool = sorted_today
+        else:
+            candidate_pool = sorted_all
         return pick_top2_with_diversity(candidate_pool, sorted_all)[:2]
     except Exception as e:
         print(f"Error loading news: {e}")
