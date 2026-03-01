@@ -8,6 +8,7 @@ import subprocess
 import tempfile
 import urllib.parse
 import urllib.request
+import html
 from datetime import datetime, timezone
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -277,6 +278,21 @@ def _sort_key_for_top(item):
     return (decision_key, published_key)
 
 
+def sanitize_url(url_value):
+    if not url_value:
+        return ""
+    try:
+        value = str(url_value).strip()
+        parsed = urllib.parse.urlparse(value)
+        if parsed.scheme not in ("http", "https"):
+            return ""
+        if not parsed.netloc:
+            return ""
+        return parsed.geturl()
+    except Exception:
+        return ""
+
+
 def resolve_news_json_path():
     env_path = os.getenv("NEWS_JSON_PATH", "").strip()
     if env_path:
@@ -396,12 +412,12 @@ def generate_news_html(top_news):
     html_parts = []
     
     for news in top_news:
-        title = news.get("title", "제목 없음")
+        title = str(news.get("title", "제목 없음"))
         category = news.get("category", "")
         icon = category_icons.get(category, "📰")
         score = news.get("score")
-        summary = news.get("summary", "")
-        url = news.get("url", "")
+        summary = str(news.get("summary", ""))
+        url = sanitize_url(news.get("url", ""))
         
         score_display = f"Score: {score:.2f}" if score else "Score: -"
         
@@ -410,15 +426,20 @@ def generate_news_html(top_news):
             title = title[:75] + "..."
         
         summary_display = summary[:120] + "..." if len(summary) > 120 else summary
+
+        title_safe = html.escape(title)
+        summary_safe = html.escape(summary_display)
+        category_safe = html.escape(str(category))
+        url_safe = html.escape(url)
         
         html_item = f'''<div class="news-item">
-                        <div class="news-title">{icon} {title}</div>
-                        <div class="news-summary">{summary_display}</div>
+                        <div class="news-title">{icon} {title_safe}</div>
+                        <div class="news-summary">{summary_safe}</div>
                         <div class="news-meta">
-                            <span>{category}</span>
+                            <span>{category_safe}</span>
                             <span>{score_display}</span>
                         </div>
-                        {f'<a href="{url}" target="_blank" style="color: #00ccff; font-size: 0.75em;">원문</a>' if url else ''}
+                        {f'<a href="{url_safe}" target="_blank" rel="noopener noreferrer" style="color: #00ccff; font-size: 0.75em;">원문</a>' if url_safe else ''}
                     </div>'''
         
         html_parts.append(html_item)
@@ -469,7 +490,7 @@ def update_dashboard_json(top_news):
                     "summary": n.get("summary", ""),
                     "tag": n.get("category", ""),
                     "score": str(n.get("score", "")),
-                    "url": n.get("url", "")
+                    "url": sanitize_url(n.get("url", ""))
                 }
                 for n in top_news
             ]
