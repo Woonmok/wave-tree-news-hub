@@ -8,11 +8,13 @@ WORKSPACE_ROOT="${WAVETREE_WORKSPACE_ROOT:-$(cd "$PROJECT_ROOT/.." && pwd)}"
 BASE="$PROJECT_ROOT"
 DEPLOY="${WAVETREE_DEPLOY_DIR:-$WORKSPACE_ROOT/woonmok.github.io}"
 LOG_DIR="$BASE/logs"
+STATE_DIR="$BASE/.state"
 TODAY=$(date '+%Y-%m-%d')
 NOW=$(date '+%Y-%m-%d %H:%M:%S')
 OUT="$LOG_DIR/morning_status_${TODAY}.log"
+STATUS_STATE_FILE="$STATE_DIR/morning_status_telegram_${TODAY}.state"
 
-mkdir -p "$LOG_DIR"
+mkdir -p "$LOG_DIR" "$STATE_DIR"
 
 read_env_value() {
   local key="$1"
@@ -72,18 +74,60 @@ send_telegram_status() {
   fi
 
   local msg
-  msg="📊 Morning Status ${TODAY}
+  local is_problem=0
+  if [ "$done_flag" = "❌" ] || [ "$bridge_flag" = "❌" ] || [ "$log_flag" = "❌" ] || [ "$dash_flag" = "❌" ]; then
+    is_problem=1
+  fi
+
+  state_has_flag() {
+    local key="$1"
+    [ -f "$STATUS_STATE_FILE" ] || return 1
+    grep -q "^${key}=1$" "$STATUS_STATE_FILE"
+  }
+
+  state_set_flag() {
+    local key="$1"
+    if ! state_has_flag "$key"; then
+      echo "${key}=1" >> "$STATUS_STATE_FILE"
+    fi
+  }
+
+  if [ "$is_problem" -eq 1 ] && state_has_flag "sent_alert"; then
+    echo "[$NOW] telegram: skip (alert already sent today)" >> "$OUT"
+    return 0
+  fi
+
+  if [ "$is_problem" -eq 0 ] && state_has_flag "sent_ok"; then
+    echo "[$NOW] telegram: skip (daily ok already sent today)" >> "$OUT"
+    return 0
+  fi
+
+  if [ "$is_problem" -eq 1 ]; then
+    msg="🚨 Morning Automation Alert ${TODAY}
 - Done marker: ${done_flag}
 - Daily JSON: ${bridge_flag}
 - Daily Log: ${log_flag}
 - Dashboard: ${dash_flag}
 - Antigravity: ${anti_status}
 - Host: $(hostname)"
-
+  else
+    msg="✅ Morning Status ${TODAY}
+- Done marker: ${done_flag}
+- Daily JSON: ${bridge_flag}
+- Daily Log: ${log_flag}
+- Dashboard: ${dash_flag}
+- Antigravity: ${anti_status}
+- Host: $(hostname)"
+  fi
   if curl -fsS -X POST "https://api.telegram.org/bot${token}/sendMessage" \
       --data-urlencode "chat_id=${chat_id}" \
       --data-urlencode "text=${msg}" >/dev/null; then
     echo "[$NOW] telegram: sent" >> "$OUT"
+    if [ "$is_problem" -eq 1 ]; then
+      state_set_flag "sent_alert"
+    else
+      state_set_flag "sent_ok"
+    fi
   else
     echo "[$NOW] telegram: failed" >> "$OUT"
   fi

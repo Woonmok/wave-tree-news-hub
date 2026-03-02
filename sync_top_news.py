@@ -15,6 +15,8 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 WORKSPACE_ROOT = os.path.abspath(os.path.join(BASE_DIR, ".."))
 
 DEFAULT_NEWS_JSON = os.path.join(BASE_DIR, "data", "normalized", "news.json")
+STATE_DIR = os.path.join(BASE_DIR, ".state")
+SYNC_TELEGRAM_STATE_FILE = os.path.join(STATE_DIR, "sync_top_news_telegram_state.json")
 TARGET_HTML = os.getenv(
     "TARGET_HTML_PATH",
     os.path.join(WORKSPACE_ROOT, "woonmok.github.io", "index.html"),
@@ -162,21 +164,65 @@ def _get_telegram_credentials():
     return token, chat_id
 
 
-def send_sync_notification(top_news, html_success, dash_success):
+def _load_sync_telegram_state():
+    try:
+        with open(SYNC_TELEGRAM_STATE_FILE, "r", encoding="utf-8") as f:
+            data = json.load(f)
+        if isinstance(data, dict):
+            return data
+    except Exception:
+        pass
+    return {}
+
+
+def _save_sync_telegram_state(payload):
+    os.makedirs(STATE_DIR, exist_ok=True)
+    atomic_write_json(SYNC_TELEGRAM_STATE_FILE, payload)
+
+
+def _should_send_sync_notification(is_success):
+    today = datetime.now().strftime("%Y-%m-%d")
+    state = _load_sync_telegram_state()
+    last_date = str(state.get("last_sent_date", "")).strip()
+    last_status = str(state.get("last_sent_status", "")).strip()
+    current_status = "success" if is_success else "failure"
+
+    if last_date == today and last_status == current_status:
+        return False
+    return True
+
+
+def _mark_sync_notification_sent(is_success):
+    _save_sync_telegram_state(
+        {
+            "last_sent_date": datetime.now().strftime("%Y-%m-%d"),
+            "last_sent_status": "success" if is_success else "failure",
+            "updated_at": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+        }
+    )
+
+
+def send_sync_notification(top_news, html_success, dash_success, news_success):
     token, chat_id = _get_telegram_credentials()
     if not token or not chat_id:
         print("ℹ️ Telegram 알림 건너뜀: TELEGRAM_BOT_TOKEN/TELEGRAM_CHAT_ID 없음")
         return False
 
-    status = "성공" if (html_success and dash_success) else "부분 성공"
+    is_success = bool(top_news) and html_success and dash_success and news_success
+    if not _should_send_sync_notification(is_success):
+        print("ℹ️ Telegram 알림 건너뜀: 동일 상태 알림은 오늘 이미 발송됨")
+        return False
+
+    status = "성공" if is_success else "문제 발생"
     lines = [
-        f"✅ Intelligence Hub Top2 동기화 {status}",
+        f"{'✅' if is_success else '🚨'} Intelligence Hub Top2 동기화 {status}",
         f"- 시각: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}",
         f"- index.html: {'OK' if html_success else 'FAIL'}",
         f"- dashboard_data.json: {'OK' if dash_success else 'FAIL'}",
+        f"- news.json: {'OK' if news_success else 'FAIL'}",
     ]
 
-    if top_news:
+    if top_news and is_success:
         lines.append("- 오늘 Top2")
         for idx, item in enumerate(top_news[:2], 1):
             category = item.get("category", "-")
@@ -193,12 +239,14 @@ def send_sync_notification(top_news, html_success, dash_success):
         req = urllib.request.Request(url, data=payload, method="POST")
         with urllib.request.urlopen(req, timeout=10) as resp:
             if 200 <= resp.status < 300:
+                _mark_sync_notification_sent(is_success)
                 print("✅ Telegram Top2 동기화 알림 전송 완료")
                 return True
     except Exception as e:
         err_text = str(e)
         if "CERTIFICATE_VERIFY_FAILED" in err_text:
             if _send_telegram_via_curl(token, chat_id, msg):
+                _mark_sync_notification_sent(is_success)
                 print("✅ Telegram Top2 동기화 알림 전송 완료(curl fallback)")
                 return True
         print(f"⚠️ Telegram 알림 전송 실패: {e}")
@@ -559,7 +607,7 @@ def sync_to_html():
 
     if len(top_news) == 0:
         print("   ⚠️ 동기화 건너뜀: 뉴스 0건(기존 대시보드 유지)")
-        send_sync_notification(top_news, False, False)
+        send_sync_notification(top_news, False, False, False)
         return False
     
     # HTML 생성
@@ -581,7 +629,7 @@ def sync_to_html():
     else:
         print("   ⚠️ 동기화 모두 실패")
 
-    send_sync_notification(top_news, success, dash_success)
+    send_sync_notification(top_news, success, dash_success, news_success)
     
     return success
 
@@ -596,7 +644,7 @@ def main():
 
     if len(top_news) == 0:
         print("⚠️ 동기화 건너뜀: 뉴스 0건(기존 대시보드 유지)")
-        send_sync_notification(top_news, False, False)
+        send_sync_notification(top_news, False, False, False)
         return
     
     # HTML 생성
@@ -618,7 +666,7 @@ def main():
     else:
         print("⚠️ 동기화 모두 실패")
 
-    send_sync_notification(top_news, html_success, dash_success)
+    send_sync_notification(top_news, html_success, dash_success, news_success)
 
 
 if __name__ == "__main__":
