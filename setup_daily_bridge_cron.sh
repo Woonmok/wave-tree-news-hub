@@ -20,8 +20,6 @@ HEALTHCHECK_CRON_TIME="5 7 * * *"
 RECONCILE_CRON_TIME="10 7 * * *"
 ANTIGRAVITY_CRON_TIME="*/2 * * * *"
 MISSED_GUARD_CRON_TIME="*/10 * * * *"
-MORNING_STATUS_0715_CRON_TIME="15 7 * * *"
-MORNING_STATUS_0725_CRON_TIME="25 7 * * *"
 MORNING_STATUS_0905_CRON_TIME="5 9 * * *"
 
 mkdir -p "$CRON_LOG_DIR"
@@ -32,8 +30,6 @@ HEALTHCHECK_CRON_CMD="/bin/bash $HEALTHCHECK_SCRIPT_PATH >> $CRON_LOG_DIR/cron_h
 RECONCILE_CRON_CMD="/bin/bash $RECONCILE_SCRIPT_PATH >> $CRON_LOG_DIR/cron_reconcile.log 2>&1"
 ANTIGRAVITY_CRON_CMD="/bin/zsh $ANTIGRAVITY_SCRIPT_PATH >> $CRON_LOG_DIR/ensure_antigravity_cron.log 2>&1"
 MISSED_GUARD_CRON_CMD="/bin/bash $MISSED_GUARD_SCRIPT_PATH >> $CRON_LOG_DIR/cron_missed_guard.log 2>&1"
-MORNING_STATUS_0715_CRON_CMD="/bin/bash $MORNING_STATUS_SCRIPT_PATH >> $CRON_LOG_DIR/report_morning_status_0715_cron.log 2>&1"
-MORNING_STATUS_0725_CRON_CMD="/bin/bash $MORNING_STATUS_SCRIPT_PATH >> $CRON_LOG_DIR/report_morning_status_cron.log 2>&1"
 MORNING_STATUS_0905_CRON_CMD="/bin/bash $MORNING_STATUS_SCRIPT_PATH >> $CRON_LOG_DIR/report_morning_status_0905_cron.log 2>&1"
 
 PUBLISH_CRON_LINE="$PUBLISH_CRON_TIME $PUBLISH_CRON_CMD"
@@ -42,8 +38,6 @@ HEALTHCHECK_CRON_LINE="$HEALTHCHECK_CRON_TIME $HEALTHCHECK_CRON_CMD"
 RECONCILE_CRON_LINE="$RECONCILE_CRON_TIME $RECONCILE_CRON_CMD"
 ANTIGRAVITY_CRON_LINE="$ANTIGRAVITY_CRON_TIME $ANTIGRAVITY_CRON_CMD"
 MISSED_GUARD_CRON_LINE="$MISSED_GUARD_CRON_TIME $MISSED_GUARD_CRON_CMD"
-MORNING_STATUS_0715_CRON_LINE="$MORNING_STATUS_0715_CRON_TIME $MORNING_STATUS_0715_CRON_CMD"
-MORNING_STATUS_0725_CRON_LINE="$MORNING_STATUS_0725_CRON_TIME $MORNING_STATUS_0725_CRON_CMD"
 MORNING_STATUS_0905_CRON_LINE="$MORNING_STATUS_0905_CRON_TIME $MORNING_STATUS_0905_CRON_CMD"
 
 chmod +x "$PUBLISH_SCRIPT_PATH" "$DAILY_SCRIPT_PATH" "$HEALTHCHECK_SCRIPT_PATH" "$RECONCILE_SCRIPT_PATH" "$MISSED_GUARD_SCRIPT_PATH" "$MORNING_STATUS_SCRIPT_PATH"
@@ -51,12 +45,12 @@ chmod +x "$PUBLISH_SCRIPT_PATH" "$DAILY_SCRIPT_PATH" "$HEALTHCHECK_SCRIPT_PATH" 
 
 CURRENT_CRON=$(crontab -l 2>/dev/null || true)
 FILTERED=$(printf "%s\n" "$CURRENT_CRON" \
-  | grep -F -v "$PUBLISH_SCRIPT_PATH" \
-  | grep -F -v "$DAILY_SCRIPT_PATH" \
-  | grep -F -v "$HEALTHCHECK_SCRIPT_PATH" \
-  | grep -F -v "$RECONCILE_SCRIPT_PATH" \
-  | grep -F -v "$MISSED_GUARD_SCRIPT_PATH" \
-  | grep -F -v "$MORNING_STATUS_SCRIPT_PATH" \
+  | grep -E -v '/run_7am_publish\.sh' \
+  | grep -E -v '/run_daily_bridge\.sh' \
+  | grep -E -v '/run_705_healthcheck\.sh' \
+  | grep -E -v '/run_710_reconcile\.sh' \
+  | grep -E -v '/run_missed_jobs_guard\.sh' \
+  | grep -E -v '/report_morning_status\.sh' \
   | grep -E -v 'ensure_antigravity\.sh' \
   || true)
 
@@ -67,8 +61,6 @@ FILTERED=$(printf "%s\n" "$CURRENT_CRON" \
   printf "%s\n" "$HEALTHCHECK_CRON_LINE"
   printf "%s\n" "$RECONCILE_CRON_LINE"
   printf "%s\n" "$MISSED_GUARD_CRON_LINE"
-  printf "%s\n" "$MORNING_STATUS_0715_CRON_LINE"
-  printf "%s\n" "$MORNING_STATUS_0725_CRON_LINE"
   printf "%s\n" "$MORNING_STATUS_0905_CRON_LINE"
   if [ -f "$ANTIGRAVITY_SCRIPT_PATH" ]; then
     printf "%s\n" "$ANTIGRAVITY_CRON_LINE"
@@ -83,13 +75,11 @@ echo "- 명령2: $DAILY_CRON_CMD"
 echo "- 명령3: $HEALTHCHECK_CRON_CMD"
 echo "- 명령4: $RECONCILE_CRON_CMD"
 echo "- 명령5: $MISSED_GUARD_CRON_CMD"
-echo "- 명령6: $MORNING_STATUS_0715_CRON_CMD"
-echo "- 명령7: $MORNING_STATUS_0725_CRON_CMD"
-echo "- 명령8: $MORNING_STATUS_0905_CRON_CMD"
+echo "- 명령6: $MORNING_STATUS_0905_CRON_CMD"
 if [ -f "$ANTIGRAVITY_SCRIPT_PATH" ]; then
-  echo "- 명령9: $ANTIGRAVITY_CRON_CMD"
+  echo "- 명령7: $ANTIGRAVITY_CRON_CMD"
 else
-  echo "- 명령9: (건너뜀) antigravity watchdog 스크립트 없음: $ANTIGRAVITY_SCRIPT_PATH"
+  echo "- 명령7: (건너뜀) antigravity watchdog 스크립트 없음: $ANTIGRAVITY_SCRIPT_PATH"
 fi
 echo ""
 echo "📋 현재 crontab"
