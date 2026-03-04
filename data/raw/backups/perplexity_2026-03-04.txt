@@ -1,39 +1,18 @@
 # Perplexity 데일리 뉴스 – 2026-03-04
 
-## 🦠 Listeria Free (4)
+죄송하지만, 요청하신 형식으로 뉴스 브리핑을 작성할 수 없습니다.
 
-- Listeria Outbreak Update: 27 Illnesses and 6 Deaths Linked to Packaged Meals | ContagionLive | https://www.contagionlive.com/view/listeria-outbreak-update-27-illnesses-and-6-deaths-linked-to-packaged-meals | 2025-11-04 | tags=리스트리아,식중독,패키지식품 | summary=CDC 업데이트에 따르면 리스트리아 발병으로 27명 확진, 25명 입원, 6명 사망 발생하며 18개 주로 확산. FreshRealm 생산 알프레도 기반 식사와 관련, 냉장고 속 리콜 제품 확인 권고. 조사는 지속 중.[1]
-- Investigation Update: Prepared Pasta Meals Outbreak | CDC | https://www.cdc.gov/listeria/outbreaks/chicken-fettuccine-alfredo-06-25/investigation.html | 2026-02-01 | tags=리스트리아,파스타,발병조사 | summary=리스트리아 균주로 28명 감염, 19개 주 발생하며 FreshRealm 치킨 펫투치네 알프레도가 원인. 16명 입원, 3명 사망 및 태아 손실 보고. 추가 오염 여부 조사 중.[2]
-- Two More Deaths Reported in Listeria Outbreak Linked to Prepared Pasta Meals | Food-Safety.com | https://www.food-safety.com/articles/10839-two-more-deaths-reported-in-listeria-outbreak-linked-to-prepared-pasta-meals | 2026-02-13 | tags=리스트리아,사망,리콜 | summary=파스타 식사 관련 리스트리아 발병으로 27명 환자, 6명 사망 및 1건 태아 손실. Nate’s Fine Foods 리구니 페이스트라 균 검출, Walmart 등 유통. 2026년 2월 발병 종료 선언.[3]
-- Frozen Blueberry Recall Underscores FDA Compliance Obligations | JD Supra | https://www.jdsupra.com/legalnews/frozen-blueberry-recall-underscores-fda-7083408/ | 2026-03-03 | tags=리스트리아,블루베리,리콜 | summary=냉동 블루베리 리스트리아 오염으로 클래스 1 리콜 발령. FDA 규정 준수 강조하며 생산자 및 제조사 대상. 4개 주와 캐나다 유통 제품 영향.[6]
+제공된 검색 결과에는 다음과 같은 제약이 있습니다:
 
-## 🥩 Cultured Meat (5)
+1. **카테고리 부족**: 검색 결과가 주로 Listeria 관련 기사에만 집중되어 있으며, 요청하신 5개 카테고리(Listeria Free, Cultured Meat, High-End Audio, Computer & AI, Global Biz) 중 대부분의 카테고리에 해당하는 기사가 없습니다.
 
-- Cultured Meat Regulatory Progress in US | FDA | https://www.fda.gov/news-events/press-announcements/fda-progress-cultured-meat-regulation | 2026-03-03 | tags=배양육,규제,승인 | summary=미국 FDA가 배양육 안전성 평가 가속화 발표. 첫 상용화 제품 임상 데이터 제출 마감 임박. 환경 영향 최소화 강조하며 유럽 추격.[web:1]
-- Upside Foods Expands Cultured Chicken Production | Upside Foods | https://upsidefoods.com/news/production-expansion-2026 | 2026-03-02 | tags=배양육,치킨,생산 | summary=Upside Foods가 캘리포니아 공장 증설로 연간 10만 파운드 배양 치킨 생산. 레스토랑 공급 확대. 비용 30% 절감 달성.[web:2]
-- Good Meat Secures New Funding for Cultured Beef | Good Meat | https://goodmeat.co/press-releases/funding-round-2026 | 2026-03-01 | tags=배양육,투자,쇠고기 | summary=Good Meat 2억 달러 펀딩 유치로 배양 쇠고기 스테이크 개발 가속. 싱가포르·미국 시장 확대. 지속가능 육류 대안 부상.[web:3]
-- EU Approves First Cultured Meat Export | EFSA | https://www.efsa.europa.eu/en/news/cultured-meat-export-approval | 2026-02-28 | tags=배양육,EU,수출 | summary=EFSA가 첫 배양육 수출 허가. 아시아 시장 진출 본격화. 안전 기준 충족 확인.[web:4]
-- Believer Meats Scales Up Lab-Grown Pork | Believer Meats | https://believereats.com/updates/pork-scale-2026 | 2026-03-04 | tags=배양육,돼지고기,확장 | summary=이스라엘 Believer Meats가 배양 돼지고기 생산량 5배 증가. 이스라엘 식품청 승인 후 글로벌 공급망 구축 중.[web:5]
+2. **날짜 문제**: 제공된 기사들이 2025년 10월~2026년 2월 사이의 과거 기사이며, 오늘(2026-03-04)자 최신 뉴스가 아닙니다.
 
-## 🎵 High-End Audio (5)
+3. **URL 형식**: 검색 결과의 일부 항목이 구체적인 기사 상세 페이지 URL을 제공하지 않거나 불완전합니다.
 
-- Bang & Olufsen Unveils Beolab 90 Speaker | B&O | https://www.bang-olufsen.com/en/us/speakers/beolab-90 | 2026-03-03 | tags=하이엔드오디오,스피커,혁신 | summary=Bang & Olufsen Beolab 90 공개, AI 기반 음향 최적화와 모듈러 디자인. 가격 10만 달러대. 오디오필 대상 플래그십.[web:6]
-- Devialet Expert Pro Phantom Update | Devialet | https://www.devialet.com/en-us/expert-pro-phantom-2026 | 2026-03-02 | tags=하이엔드오디오,앰프,업데이트 | summary=Devialet Expert Pro Phantom 펌웨어 업그레이드로 SAM 기술 강화. 44.1kHz 고해상도 지원. 무선 하이파이 혁명.[web:7]
-- McIntosh MA12000 Hybrid Amp Launch | McIntosh | https://www.mcintoshlabs.com/products/amplifiers/MA12000 | 2026-03-01 | tags=하이엔드오디오,하이브리드앰프 | summary=McIntosh MA12000 하이브리드 통합 앰프 출시, 350W 출력과 진공관 프리앰프 탑재. 아날로그 팬 호평.[web:8]
-- Wilson Audio Alexia V3 Review | Stereophile | https://www.stereophile.com/content/wilson-audio-alexia-v3-review | 2026-02-28 | tags=하이엔드오디오,스피커,리뷰 | summary=Wilson Audio Alexia V3 스피커 리뷰, 초정밀 사운드스테이지 호평. 가격대 8만 달러. 업계 벤치마크.[web:9]
-- dCS Rossini Apex DAC Upgrade | dCS | https://www.dcsaudio.com/products/rossini-apex-dac | 2026-03-04 | tags=하이엔드오디오,DAC,업그레이드 | summary=dCS Rossini Apex DAC Ring DAC 기술 업그레이드. DSD512 네이티브 지원. 스트리밍 시대 플래그십.[web:10]
+**해결 방법:**
+- 각 카테고리별로 최신 뉴스를 검색하는 새로운 검색 요청이 필요합니다.
+- 오늘(2026-03-04)자 최신 기사들을 수집해야 합니다.
+- 완전한 기사 상세 페이지 URL이 필요합니다.
 
-## 🤖 Computer & AI (5)
-
-- NVIDIA Blackwell AI Chip Shortage Eases | NVIDIA | https://nvidianews.nvidia.com/news/blackwell-supply-update | 2026-03-03 | tags=AI,칩,공급 | summary=NVIDIA Blackwell B200 칩 생산 증가로 AI 데이터센터 공급 안정화. 가격 하락 전망. 훈련 속도 30배 향상.[web:11]
-- OpenAI GPT-5 Beta Release | OpenAI | https://openai.com/index/gpt-5-beta | 2026-03-02 | tags=AI,모델,출시 | summary=OpenAI GPT-5 베타 버전 공개, 멀티모달 기능 강화 및 환각 현상 50% 감소. 기업 API 우선 제공.[web:12]
-- AMD Ryzen AI 400 Series Launch | AMD | https://www.amd.com/en/products/processors/ryzen-ai-400 | 2026-03-01 | tags=컴퓨터,프로세서,AI | summary=AMD Ryzen AI 400 시리즈 노트북 CPU 출시, NPU 50TOPS 성능. 배터리 20% 연장. Copilot+ PC 경쟁.[web:13]
-- Google DeepMind AGI Milestone | DeepMind | https://deepmind.google/discover/agi-milestone-2026 | 2026-02-28 | tags=AI,AGI,연구 | summary=Google DeepMind AGI 경로 첫 이정표 달성, 자율 에이전트 테스트 성공. 윤리 가이드라인 강화.[web:14]
-- Apple Intelligence WWDC Preview | Apple | https://www.apple.com/newsroom/2026/03/intelligence-preview | 2026-03-04 | tags=AI,애플,소프트웨어 | summary=Apple Intelligence iOS 20 통합 프리뷰, 온디바이스 AI 처리 강조. Siri 업그레이드 대폭.[web:15]
-
-## 🌍 Global Biz (4)
-
-- TSMC US Fab Production Starts | TSMC | https://www.tsmc.com/english/aboutTSMC/news_events/press_releases/2026/us-fab-start | 2026-03-03 | tags=반도체,투자,미국 | summary=TSMC 애리조나 1공장 양산 개시, 4nm 공정 2만 장/월. CHIPS Act 지원으로 공급망 다각화.[web:16]
-- Boeing 737 MAX Orders Surge | Boeing | https://boeing.mediaroom.com/2026-03-03-orders-surge | 2026-03-02 | tags=항공,주문,회복 | summary=Boeing 737 MAX 200대 신규 주문, 아시아 항공사 중심. 생산량 월 38대 목표 달성 임박.[web:17]
-- Saudi Aramco Expands LNG Deals | Aramco | https://www.aramco.com/en/news-media/news/2026/lng-deals | 2026-03-01 | tags=에너지,LNG,계약 | summary=Aramco 유럽·아시아 LNG 장기 계약 20년치 체결. 재생에너지 전환 속 화석연료 안정 공급.[web:18]
-- Volkswagen ID.7 EV Sales Record | VW | https://www.volkswagen-newsroom.com/en/press-releases/id7-sales-2026-0304 | 2026-03-04 | tags=전기차,판매,유럽 | summary=Volkswagen ID.7 유럽 판매 1분기 기록 경신, 5만대 돌파. 가격 인하 효과로 테슬라 추격.[web:19]
+요청하신 형식의 뉴스 브리핑을 작성하시려면 위 카테고리별 최신 검색 결과를 제공해 주시면 감사하겠습니다.
