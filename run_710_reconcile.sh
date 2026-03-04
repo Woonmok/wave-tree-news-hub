@@ -150,7 +150,13 @@ echo "🔄 git push attempt"
 
   if ! git diff --cached --quiet; then
     git commit -m "auto: 7:10 reconcile $(date '+%Y-%m-%d %H:%M')"
-    git push origin main
+    if git push origin main; then
+      echo "✅ reconcile push success"
+    else
+      echo "⚠️ reconcile push 실패 - remote 변경사항 rebase 후 재시도"
+      git pull --rebase --autostash origin main
+      git push origin main
+    fi
   else
     echo "ℹ️ no changes to push"
   fi

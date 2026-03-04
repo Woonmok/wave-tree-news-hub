@@ -92,7 +92,9 @@ ok_antigravity=0
 
 publish_log=$(latest_dated_log_or_empty "$SCRIPT_DIR/logs/cron_publish_*.log")
 if [ -n "$publish_log" ]; then
-    if grep -qE "✅ auto publish pushed|ℹ️ no publish changes|===== .* publish end =====" "$publish_log"; then
+    if grep -qE "⚠️ auto publish push 최종 실패|Traceback|run_perplexity_auto\.sh 실패|git push 실패|fatal:" "$publish_log"; then
+        ok_publish=0
+    elif grep -qE "✅ auto publish pushed|ℹ️ no publish changes" "$publish_log"; then
         ok_publish=1
     fi
 fi

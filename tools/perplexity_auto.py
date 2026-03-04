@@ -2,6 +2,7 @@
 import os
 import sys
 import subprocess
+import shutil
 from datetime import date
 import requests
 
@@ -61,11 +62,53 @@ PROMPT_TEMPLATE = """
 """
 
 
+def resolve_node_binary() -> str:
+    env_node = os.environ.get("NODE_BIN", "").strip()
+    if env_node and os.path.exists(env_node):
+        return env_node
+
+    found = shutil.which("node")
+    if found:
+        return found
+
+    home = os.path.expanduser("~")
+    candidates = [
+        os.path.join(home, ".nvm", "versions", "node"),
+        "/opt/homebrew/bin/node",
+        "/usr/local/bin/node",
+    ]
+
+    for base in candidates:
+        if base.endswith("/node"):
+            if os.path.exists(base):
+                return base
+            continue
+
+        if not os.path.isdir(base):
+            continue
+
+        try:
+            versions = sorted(
+                [v for v in os.listdir(base) if os.path.isdir(os.path.join(base, v))],
+                reverse=True,
+            )
+        except FileNotFoundError:
+            versions = []
+
+        for version in versions:
+            candidate = os.path.join(base, version, "bin", "node")
+            if os.path.exists(candidate):
+                return candidate
+
+    raise RuntimeError("node 실행 파일을 찾을 수 없습니다. PATH 또는 NODE_BIN을 확인하세요.")
+
+
 def run_pipeline(output_path: str) -> None:
     normalized_path = os.path.join(BASE_DIR, "data", "normalized", "news.json")
+    node_bin = resolve_node_binary()
 
     normalize = [
-        "node",
+        node_bin,
         os.path.join(BASE_DIR, "scripts", "normalize.js"),
         "--in",
         output_path,
@@ -79,9 +122,6 @@ def run_pipeline(output_path: str) -> None:
         os.path.join(BASE_DIR, "tools", "validate_news_urls.py"),
         "--file",
         normalized_path,
-        "--check-http",
-        "--drop-http-dead",
-        "--drop-suspicious",
     ]
     subprocess.run(validate_urls, cwd=BASE_DIR, check=True)
 

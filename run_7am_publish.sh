@@ -66,7 +66,7 @@ if ! git diff --cached --quiet; then
     echo "✅ auto publish pushed"
   else
     echo "⚠️ git push 실패 - remote 변경사항 rebase 후 재시도"
-    if git pull --rebase origin main && git push origin main; then
+    if git pull --rebase --autostash origin main && git push origin main; then
       echo "✅ auto publish pushed (rebase)"
     else
       echo "⚠️ auto publish push 최종 실패 - 로컬 커밋만 유지"
