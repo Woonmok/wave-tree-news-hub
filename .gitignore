@@ -38,6 +38,7 @@ out/
 # Data (raw, backup, temp)
 data/raw/*.txt
 data/raw/*.json
+data/raw/backups/
 !data/raw/perplexity.sample.txt
 data/normalized/*.bak
 data/normalized/*.tmp
@@ -91,6 +92,7 @@ out/
 
 # Sensitive or generated files
 run-news-hub.sh
+.state/
 Project_Radar.md
 detected_news.json
 dashboard_data.json
