@@ -64,7 +64,7 @@ PROMPT_TEMPLATE = """
 
 def resolve_node_binary() -> str:
     env_node = os.environ.get("NODE_BIN", "").strip()
-    if env_node and os.path.exists(env_node):
+    if env_node and os.path.isfile(env_node) and os.access(env_node, os.X_OK):
         return env_node
 
     found = shutil.which("node")
@@ -72,32 +72,28 @@ def resolve_node_binary() -> str:
         return found
 
     home = os.path.expanduser("~")
-    candidates = [
-        os.path.join(home, ".nvm", "versions", "node"),
+    nvm_base = os.path.join(home, ".nvm", "versions", "node")
+    direct_binaries = [
         "/opt/homebrew/bin/node",
         "/usr/local/bin/node",
     ]
 
-    for base in candidates:
-        if base.endswith("/node"):
-            if os.path.exists(base):
-                return base
-            continue
+    for candidate in direct_binaries:
+        if os.path.isfile(candidate) and os.access(candidate, os.X_OK):
+            return candidate
 
-        if not os.path.isdir(base):
-            continue
-
+    if os.path.isdir(nvm_base):
         try:
             versions = sorted(
-                [v for v in os.listdir(base) if os.path.isdir(os.path.join(base, v))],
+                [v for v in os.listdir(nvm_base) if os.path.isdir(os.path.join(nvm_base, v))],
                 reverse=True,
             )
         except FileNotFoundError:
             versions = []
 
         for version in versions:
-            candidate = os.path.join(base, version, "bin", "node")
-            if os.path.exists(candidate):
+            candidate = os.path.join(nvm_base, version, "bin", "node")
+            if os.path.isfile(candidate) and os.access(candidate, os.X_OK):
                 return candidate
 
     raise RuntimeError("node 실행 파일을 찾을 수 없습니다. PATH 또는 NODE_BIN을 확인하세요.")

@@ -4,6 +4,7 @@ import hashlib
 import json
 import os
 import re
+import subprocess
 from datetime import datetime, timezone
 from urllib.parse import urlparse
 
@@ -241,6 +242,7 @@ def main() -> int:
     client = Perplexity(api_key=api_key)
 
     added = 0
+    fallback_added = 0
     for cat in ("listeria_free", "cultured_meat", "high_end_audio", "computer_ai", "global_biz"):
         need = TARGET_COUNTS[cat]
         have = len(by_cat.get(cat, []))
@@ -278,6 +280,10 @@ def main() -> int:
                 arr = extract_items_from_markdown(text)
 
             for x in arr:
+                if not isinstance(x, dict):
+                    # 모델이 숫자/문자 등 비구조 항목을 섞어줄 수 있어 방어적으로 무시한다.
+                    continue
+
                 if len(by_cat[cat]) >= need:
                     break
 
@@ -328,6 +334,84 @@ def main() -> int:
                 existing_title_keys.add(title_key)
                 added += 1
 
+    # 모델 응답이 불완전한 경우, 마지막 정상 데이터(news.json)로 슬롯을 채워 고정 카운트를 보장한다.
+    fallback_candidates = []
+
+    fallback_file = os.path.abspath(os.path.join(base_dir, "..", "woonmok.github.io", "news.json"))
+    if os.path.isfile(fallback_file):
+        try:
+            with open(fallback_file, "r", encoding="utf-8") as f:
+                fallback_data = json.load(f)
+            if isinstance(fallback_data, dict) and isinstance(fallback_data.get("items"), list):
+                fallback_candidates.extend([x for x in fallback_data["items"] if isinstance(x, dict)])
+        except Exception:
+            pass
+
+    # 현 파일이 이미 축소된 경우를 대비해, 마지막 커밋된 정상본도 fallback 소스로 사용한다.
+    try:
+        rel_path = os.path.relpath(os.path.abspath(args.file), start=base_dir)
+        result = subprocess.run(
+            ["git", "show", f"HEAD:{rel_path}"],
+            cwd=base_dir,
+            capture_output=True,
+            text=True,
+            check=True,
+        )
+        head_data = json.loads(result.stdout)
+        if isinstance(head_data, dict) and isinstance(head_data.get("items"), list):
+            fallback_candidates.extend([x for x in head_data["items"] if isinstance(x, dict)])
+    except Exception:
+        pass
+
+    fallback_by_cat = {cat: [] for cat in TARGET_COUNTS}
+    for item in fallback_candidates:
+        cat = item.get("category")
+        if cat in fallback_by_cat:
+            fallback_by_cat[cat].append(item)
+
+    for cat in ("listeria_free", "cultured_meat", "high_end_audio", "computer_ai", "global_biz"):
+        need = TARGET_COUNTS[cat]
+        if len(by_cat[cat]) >= need:
+            continue
+
+        for src in fallback_by_cat.get(cat, []):
+            if len(by_cat[cat]) >= need:
+                break
+
+            title = str(src.get("title", "")).strip()
+            source = str(src.get("source", "")).strip() or "Web"
+            url = str(src.get("url", "")).strip()
+            if not title or not re.match(r"^https?://", url):
+                continue
+            if url in existing_urls:
+                continue
+
+            title_key = normalize_title_key(title)
+            if title_key in existing_title_keys:
+                continue
+
+            item = dict(src)
+            item["category"] = cat
+            item["id"] = str(item.get("id") or make_id(cat, title, url, source))
+            item["source"] = source
+            item["title"] = title
+            item["url"] = url
+            item["published_at"] = normalize_published_at(str(item.get("published_at") or ""))
+            if not isinstance(item.get("tags"), list):
+                item["tags"] = []
+            if not isinstance(item.get("highlights"), list):
+                item["highlights"] = []
+
+            if item["id"] in existing_ids:
+                continue
+
+            items.append(item)
+            by_cat[cat].append(item)
+            existing_ids.add(item["id"])
+            existing_urls.add(url)
+            existing_title_keys.add(title_key)
+            fallback_added += 1
+
     # Rebuild ordered output with fixed per-category caps
     ordered = []
     for cat in ("listeria_free", "cultured_meat", "high_end_audio", "computer_ai", "global_biz"):
@@ -345,6 +429,7 @@ def main() -> int:
 
     counts = {cat: len([it for it in ordered if it.get("category") == cat]) for cat in TARGET_COUNTS}
     print(f"added={added}")
+    print(f"fallback_added={fallback_added}")
     print(counts)
     return 0
 

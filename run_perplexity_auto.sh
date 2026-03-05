@@ -114,7 +114,7 @@ echo "🐍 $(date '+%Y-%m-%d %H:%M:%S') - Python 인터프리터: $PYTHON_BIN"
 
 "$PYTHON_BIN" "$SCRIPT_DIR/tools/perplexity_auto.py" | tee "$RUN_TMP_FILE"
 
-if grep -q "added=0" "$RUN_TMP_FILE"; then
+if grep -Eq "^added=0$" "$RUN_TMP_FILE"; then
     if grep -q "data already fresh, Perplexity API call skipped" "$RUN_TMP_FILE"; then
         echo "ℹ️ $(date '+%Y-%m-%d %H:%M:%S') - added=0 (today fresh data, API skip)"
     else
