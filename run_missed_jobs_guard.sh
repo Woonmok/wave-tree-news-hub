@@ -13,6 +13,7 @@ LOG_DIR="$SCRIPT_DIR/logs"
 STATE_DIR="$SCRIPT_DIR/.state"
 RUN_DATE=$(date '+%Y-%m-%d')
 NOW_HM=$(date '+%H%M')
+NOW_HM_DEC=$((10#$NOW_HM))
 GUARD_LOG="$LOG_DIR/missed_jobs_guard_${RUN_DATE}.log"
 
 mkdir -p "$LOG_DIR" "$STATE_DIR"
@@ -43,7 +44,7 @@ health_ok() {
   grep -q "healthcheck publish=.* daily=.* antigravity=.*" "$f"
 }
 
-if [[ "$NOW_HM" -ge "0650" ]] && [ ! -f "$publish_done_file" ]; then
+if (( NOW_HM_DEC >= 650 )) && [ ! -f "$publish_done_file" ]; then
   if publish_ok; then
     touch "$publish_done_file"
     echo "[$(date '+%Y-%m-%d %H:%M:%S')] publish already done"
@@ -62,7 +63,7 @@ if [[ "$NOW_HM" -ge "0650" ]] && [ ! -f "$publish_done_file" ]; then
   fi
 fi
 
-if [[ "$NOW_HM" -ge "0700" ]] && [ ! -f "$daily_done_file" ]; then
+if (( NOW_HM_DEC >= 700 )) && [ ! -f "$daily_done_file" ]; then
   if daily_ok; then
     touch "$daily_done_file"
     echo "[$(date '+%Y-%m-%d %H:%M:%S')] daily already done"
@@ -81,7 +82,7 @@ if [[ "$NOW_HM" -ge "0700" ]] && [ ! -f "$daily_done_file" ]; then
   fi
 fi
 
-if [[ "$NOW_HM" -ge "0705" ]] && [ ! -f "$health_done_file" ]; then
+if (( NOW_HM_DEC >= 705 )) && [ ! -f "$health_done_file" ]; then
   if health_ok; then
     touch "$health_done_file"
     echo "[$(date '+%Y-%m-%d %H:%M:%S')] healthcheck already done"

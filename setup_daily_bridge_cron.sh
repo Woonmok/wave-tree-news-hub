@@ -5,6 +5,18 @@
 set -Eeuo pipefail
 
 SCRIPT_DIR=$(cd "$(dirname "$0")" && pwd)
+HOME_WORKSPACE_ROOT="${HOME}/AI_WORKSPACE"
+
+# Prefer the home workspace path for cron to avoid external-volume permission issues.
+if [ -d "$HOME_WORKSPACE_ROOT/wave-tree-news-hub" ]; then
+  SCRIPT_DIR="$HOME_WORKSPACE_ROOT/wave-tree-news-hub"
+fi
+
+WOONMOK_DIR="$SCRIPT_DIR/../woonmok.github.io"
+if [ -d "$HOME_WORKSPACE_ROOT/woonmok.github.io" ]; then
+  WOONMOK_DIR="$HOME_WORKSPACE_ROOT/woonmok.github.io"
+fi
+
 CRON_LOG_DIR="${HOME}/Library/Logs/wave-tree-news-hub-cron"
 PUBLISH_SCRIPT_PATH="$SCRIPT_DIR/run_7am_publish.sh"
 DAILY_SCRIPT_PATH="$SCRIPT_DIR/run_daily_bridge.sh"
@@ -12,7 +24,7 @@ HEALTHCHECK_SCRIPT_PATH="$SCRIPT_DIR/run_705_healthcheck.sh"
 RECONCILE_SCRIPT_PATH="$SCRIPT_DIR/run_710_reconcile.sh"
 MISSED_GUARD_SCRIPT_PATH="$SCRIPT_DIR/run_missed_jobs_guard.sh"
 MORNING_STATUS_SCRIPT_PATH="$SCRIPT_DIR/scripts/report_morning_status.sh"
-ANTIGRAVITY_SCRIPT_PATH="$SCRIPT_DIR/../woonmok.github.io/scripts/ensure_antigravity.sh"
+ANTIGRAVITY_SCRIPT_PATH="$WOONMOK_DIR/scripts/ensure_antigravity.sh"
 
 PUBLISH_CRON_TIME="50 6 * * *"
 DAILY_CRON_TIME="0 7 * * *"
