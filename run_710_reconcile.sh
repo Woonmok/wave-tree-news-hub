@@ -42,6 +42,50 @@ get_telegram_credentials() {
   echo "$token|$chat_id"
 }
 
+get_github_token() {
+  local token="${GITHUB_TOKEN:-${GH_TOKEN:-}}"
+
+  if [ -z "$token" ]; then
+    token="$(read_env_value GITHUB_TOKEN "$SCRIPT_DIR/.env" || true)"
+  fi
+  if [ -z "$token" ]; then
+    token="$(read_env_value GH_TOKEN "$SCRIPT_DIR/.env" || true)"
+  fi
+  if [ -z "$token" ]; then
+    token="$(read_env_value GITHUB_TOKEN "$DEPLOY_DIR/.env" || true)"
+  fi
+  if [ -z "$token" ]; then
+    token="$(read_env_value GH_TOKEN "$DEPLOY_DIR/.env" || true)"
+  fi
+
+  echo "$token"
+}
+
+push_with_token_fallback() {
+  local token="$1"
+  local askpass=""
+  [ -n "$token" ] || return 1
+
+  askpass=$(mktemp)
+  cat > "$askpass" <<'EOF'
+#!/bin/sh
+case "$1" in
+  *Username*) echo "x-access-token" ;;
+  *Password*) echo "$GITHUB_TOKEN" ;;
+  *) echo "" ;;
+esac
+EOF
+  chmod 700 "$askpass"
+
+  if GIT_TERMINAL_PROMPT=0 GIT_ASKPASS="$askpass" GITHUB_TOKEN="$token" git push origin main; then
+    rm -f "$askpass"
+    return 0
+  fi
+
+  rm -f "$askpass"
+  return 1
+}
+
 send_failure_alert() {
   local reason="$1"
   local creds token chat_id now_ts tail_log message
@@ -137,6 +181,7 @@ cp "$DEPLOY_DIR/news.json" "$DEPLOY_DIR/docs/news.json"
 echo "🔄 git push attempt"
 (
   cd "$DEPLOY_DIR"
+  GIT_TOKEN="$(get_github_token)"
   git add \
     wave-tree-news-hub/data/normalized/news.json \
     news.json \
@@ -153,9 +198,17 @@ echo "🔄 git push attempt"
     if git push origin main; then
       echo "✅ reconcile push success"
     else
-      echo "⚠️ reconcile push 실패 - remote 변경사항 rebase 후 재시도"
-      git pull --rebase --autostash origin main
-      git push origin main
+      echo "⚠️ reconcile push 실패 - token fallback 시도"
+      if push_with_token_fallback "$GIT_TOKEN"; then
+        echo "✅ reconcile push success (token fallback)"
+      elif [ -d .git/rebase-merge ] || [ -d .git/rebase-apply ]; then
+        echo "⚠️ rebase 진행 중 감지 - pull/rebase 재시도 건너뜀"
+        exit 1
+      else
+        echo "⚠️ reconcile push 실패 - remote 변경사항 rebase 후 재시도"
+        git pull --rebase --autostash origin main
+        git push origin main || push_with_token_fallback "$GIT_TOKEN"
+      fi
     fi
   else
     echo "ℹ️ no changes to push"

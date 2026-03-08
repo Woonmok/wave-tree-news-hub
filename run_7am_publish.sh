@@ -11,6 +11,55 @@ LOG_FILE="$LOG_DIR/cron_publish_${RUN_DATE}.log"
 mkdir -p "$LOG_DIR"
 exec >> "$LOG_FILE" 2>&1
 
+read_env_value() {
+  local key="$1"
+  local file="$2"
+  [ -f "$file" ] || return 1
+  grep -E "^${key}=" "$file" | tail -n 1 | cut -d '=' -f2- | sed -e 's/^"//' -e 's/"$//' -e "s/^'//" -e "s/'$//"
+}
+
+get_github_token() {
+  local token="${GITHUB_TOKEN:-${GH_TOKEN:-}}"
+  if [ -z "$token" ]; then
+    token="$(read_env_value GITHUB_TOKEN "$BASE/.env" || true)"
+  fi
+  if [ -z "$token" ]; then
+    token="$(read_env_value GH_TOKEN "$BASE/.env" || true)"
+  fi
+  if [ -z "$token" ]; then
+    token="$(read_env_value GITHUB_TOKEN "$DEPLOY/.env" || true)"
+  fi
+  if [ -z "$token" ]; then
+    token="$(read_env_value GH_TOKEN "$DEPLOY/.env" || true)"
+  fi
+  echo "$token"
+}
+
+push_with_token_fallback() {
+  local token="$1"
+  local askpass=""
+  [ -n "$token" ] || return 1
+
+  askpass=$(mktemp)
+  cat > "$askpass" <<'EOF'
+#!/bin/sh
+case "$1" in
+  *Username*) echo "x-access-token" ;;
+  *Password*) echo "$GITHUB_TOKEN" ;;
+  *) echo "" ;;
+esac
+EOF
+  chmod 700 "$askpass"
+
+  if GIT_TERMINAL_PROMPT=0 GIT_ASKPASS="$askpass" GITHUB_TOKEN="$token" git push origin main; then
+    rm -f "$askpass"
+    return 0
+  fi
+
+  rm -f "$askpass"
+  return 1
+}
+
 echo "===== $(date '+%Y-%m-%d %H:%M:%S') publish start ====="
 
 if /bin/bash "$BASE/run_perplexity_auto.sh"; then
@@ -49,6 +98,8 @@ cp "$DEPLOY/news.json" "$DEPLOY/docs/news.json"
 
 cd "$DEPLOY"
 
+GIT_TOKEN="$(get_github_token)"
+
 git add \
   wave-tree-news-hub/data/normalized/news.json \
   news.json \
@@ -65,9 +116,16 @@ if ! git diff --cached --quiet; then
   if git push origin main; then
     echo "✅ auto publish pushed"
   else
-    echo "⚠️ git push 실패 - remote 변경사항 rebase 후 재시도"
-    if git pull --rebase --autostash origin main && git push origin main; then
+    echo "⚠️ git push 실패 - token fallback 시도"
+    if push_with_token_fallback "$GIT_TOKEN"; then
+      echo "✅ auto publish pushed (token fallback)"
+    elif [ -d .git/rebase-merge ] || [ -d .git/rebase-apply ]; then
+      echo "⚠️ rebase 진행 중 감지 - pull/rebase 재시도 건너뜀"
+      echo "⚠️ auto publish push 최종 실패 - 로컬 커밋만 유지"
+    elif git pull --rebase --autostash origin main && git push origin main; then
       echo "✅ auto publish pushed (rebase)"
+    elif push_with_token_fallback "$GIT_TOKEN"; then
+      echo "✅ auto publish pushed (rebase+token fallback)"
     else
       echo "⚠️ auto publish push 최종 실패 - 로컬 커밋만 유지"
     fi
