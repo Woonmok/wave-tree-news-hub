@@ -61,6 +61,24 @@ get_github_token() {
   echo "$token"
 }
 
+get_github_keychain_credentials() {
+  local helper=""
+  local creds=""
+  local username=""
+  local password=""
+
+  helper="$(command -v git-credential-osxkeychain || true)"
+  [ -n "$helper" ] || return 1
+
+  creds="$(printf 'protocol=https\nhost=github.com\n\n' | "$helper" get 2>/dev/null || true)"
+  username="$(printf '%s\n' "$creds" | sed -n 's/^username=//p' | head -n 1)"
+  password="$(printf '%s\n' "$creds" | sed -n 's/^password=//p' | head -n 1)"
+
+  [ -n "$username" ] || return 1
+  [ -n "$password" ] || return 1
+  printf '%s|%s\n' "$username" "$password"
+}
+
 push_with_token_fallback() {
   local token="$1"
   local askpass=""
@@ -78,6 +96,35 @@ EOF
   chmod 700 "$askpass"
 
   if GIT_TERMINAL_PROMPT=0 GIT_ASKPASS="$askpass" GITHUB_TOKEN="$token" git push origin main; then
+    rm -f "$askpass"
+    return 0
+  fi
+
+  rm -f "$askpass"
+  return 1
+}
+
+push_with_keychain_fallback() {
+  local creds="$1"
+  local username="${creds%%|*}"
+  local password="${creds#*|}"
+  local askpass=""
+
+  [ -n "$username" ] || return 1
+  [ -n "$password" ] || return 1
+
+  askpass=$(mktemp)
+  cat > "$askpass" <<'EOF'
+#!/bin/sh
+case "$1" in
+  *Username*) echo "$GITHUB_USERNAME" ;;
+  *Password*) echo "$GITHUB_PASSWORD" ;;
+  *) echo "" ;;
+esac
+EOF
+  chmod 700 "$askpass"
+
+  if GIT_TERMINAL_PROMPT=0 GIT_ASKPASS="$askpass" GITHUB_USERNAME="$username" GITHUB_PASSWORD="$password" git push origin main; then
     rm -f "$askpass"
     return 0
   fi
@@ -182,6 +229,7 @@ echo "🔄 git push attempt"
 (
   cd "$DEPLOY_DIR"
   GIT_TOKEN="$(get_github_token)"
+  GIT_KEYCHAIN_CREDS="$(get_github_keychain_credentials || true)"
   git add \
     wave-tree-news-hub/data/normalized/news.json \
     news.json \
@@ -201,13 +249,15 @@ echo "🔄 git push attempt"
       echo "⚠️ reconcile push 실패 - token fallback 시도"
       if push_with_token_fallback "$GIT_TOKEN"; then
         echo "✅ reconcile push success (token fallback)"
+      elif push_with_keychain_fallback "$GIT_KEYCHAIN_CREDS"; then
+        echo "✅ reconcile push success (keychain fallback)"
       elif [ -d .git/rebase-merge ] || [ -d .git/rebase-apply ]; then
         echo "⚠️ rebase 진행 중 감지 - pull/rebase 재시도 건너뜀"
         exit 1
       else
         echo "⚠️ reconcile push 실패 - remote 변경사항 rebase 후 재시도"
         git pull --rebase --autostash origin main
-        git push origin main || push_with_token_fallback "$GIT_TOKEN"
+        git push origin main || push_with_token_fallback "$GIT_TOKEN" || push_with_keychain_fallback "$GIT_KEYCHAIN_CREDS"
       fi
     fi
   else
