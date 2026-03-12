@@ -21,7 +21,7 @@ API_KEY = os.environ.get("PERPLEXITY_API_KEY", "").strip()
 if not API_KEY:
     raise RuntimeError("PERPLEXITY_API_KEY 환경 변수가 설정되어 있지 않습니다.")
 
-MODEL = os.environ.get("PERPLEXITY_MODEL", "sonar-pro").strip()
+MODEL = os.environ.get("PERPLEXITY_MODEL", "sonar").strip()
 OUT_PATH = os.environ.get(
     "PERPLEXITY_OUTPUT_PATH",
     os.path.join(BASE_DIR, "data", "raw", "perplexity.txt"),
