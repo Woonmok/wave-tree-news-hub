@@ -196,7 +196,7 @@ def main() -> int:
     load_dotenv(os.path.join(base_dir, ".env"))
 
     api_key = os.getenv("PERPLEXITY_API_KEY", "").strip()
-    model = os.getenv("PERPLEXITY_MODEL", "sonar-pro").strip() or "sonar-pro"
+    model = os.getenv("PERPLEXITY_MODEL", "sonar").strip() or "sonar"
     if not api_key:
         raise RuntimeError("PERPLEXITY_API_KEY not set")
 
