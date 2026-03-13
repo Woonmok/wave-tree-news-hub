@@ -53,6 +53,65 @@ get_github_keychain_credentials() {
   printf '%s|%s\n' "$username" "$password"
 }
 
+can_use_github_ssh() {
+  local probe=""
+  probe="$(ssh -o BatchMode=yes -o ConnectTimeout=5 -o StrictHostKeyChecking=accept-new -T git@github.com 2>&1 || true)"
+  printf '%s\n' "$probe" | grep -q "successfully authenticated"
+}
+
+build_github_ssh_url() {
+  local remote_url="$1"
+  local path_part=""
+
+  case "$remote_url" in
+    git@github.com:*)
+      printf '%s\n' "$remote_url"
+      return 0
+      ;;
+    ssh://git@github.com/*)
+      path_part="${remote_url#ssh://git@github.com/}"
+      printf 'git@github.com:%s\n' "$path_part"
+      return 0
+      ;;
+    https://github.com/*)
+      path_part="${remote_url#https://github.com/}"
+      printf 'git@github.com:%s\n' "$path_part"
+      return 0
+      ;;
+    http://github.com/*)
+      path_part="${remote_url#http://github.com/}"
+      printf 'git@github.com:%s\n' "$path_part"
+      return 0
+      ;;
+  esac
+
+  return 1
+}
+
+configure_origin_push_url() {
+  local origin_url=""
+  local current_push_url=""
+  local ssh_url=""
+
+  origin_url="$(git remote get-url origin 2>/dev/null || true)"
+  [ -n "$origin_url" ] || return 1
+
+  ssh_url="$(build_github_ssh_url "$origin_url" || true)"
+  [ -n "$ssh_url" ] || return 1
+
+  if ! can_use_github_ssh; then
+    return 1
+  fi
+
+  current_push_url="$(git remote get-url --push origin 2>/dev/null || true)"
+  if [ "$current_push_url" != "$ssh_url" ]; then
+    git remote set-url --push origin "$ssh_url"
+  fi
+
+  echo "✅ origin push URL configured for SSH: $ssh_url"
+  return 0
+}
+
 push_with_token_fallback() {
   local token="$1"
   local askpass=""
@@ -147,6 +206,10 @@ cd "$DEPLOY"
 
 GIT_TOKEN="$(get_github_token)"
 GIT_KEYCHAIN_CREDS="$(get_github_keychain_credentials || true)"
+
+if ! configure_origin_push_url; then
+  echo "ℹ️ SSH push URL 자동 구성 건너뜀 - HTTPS fallback 사용"
+fi
 
 git add \
   wave-tree-news-hub/data/normalized/news.json \
