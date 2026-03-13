@@ -8,7 +8,7 @@ SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 SYNC_SCRIPT_PATH="$SCRIPT_DIR/scripts/sync_projects.sh"
 CRON_LOG_DIR="${HOME}/Library/Logs/wave-tree-news-hub-cron"
 
-MODE="forward"
+MODE="a2b"
 TARGET="all"
 SCHEDULE="*/20 * * * *"
 RUN_MODE="apply"
@@ -21,7 +21,7 @@ Usage:
   ./setup_sync_projects_cron.sh [options]
 
 Options:
-  --mode forward|reverse     Sync direction (default: forward)
+  --mode a2b|b2a|forward|reverse  Sync direction (default: a2b)
   --target all|hub|site      Sync target (default: all)
   --schedule "CRON_EXPR"     Cron schedule (default: */20 * * * *)
   --dry-run                  Register as dry-run mode
@@ -32,7 +32,7 @@ Options:
 
 Examples:
   ./setup_sync_projects_cron.sh
-  ./setup_sync_projects_cron.sh --mode forward --target all --schedule "*/10 * * * *"
+  ./setup_sync_projects_cron.sh --mode a2b --target all --schedule "*/10 * * * *"
   ./setup_sync_projects_cron.sh --dry-run --target hub
   ./setup_sync_projects_cron.sh --uninstall
 EOF
@@ -80,8 +80,14 @@ while [[ $# -gt 0 ]]; do
   esac
 done
 
-if [[ "$MODE" != "forward" && "$MODE" != "reverse" ]]; then
-  echo "❌ --mode는 forward 또는 reverse만 허용됩니다."
+if [[ "$MODE" == "forward" ]]; then
+  MODE="a2b"
+elif [[ "$MODE" == "reverse" ]]; then
+  MODE="b2a"
+fi
+
+if [[ "$MODE" != "a2b" && "$MODE" != "b2a" ]]; then
+  echo "❌ --mode는 a2b|b2a|forward|reverse만 허용됩니다."
   exit 1
 fi
 

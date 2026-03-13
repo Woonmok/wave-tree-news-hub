@@ -2,14 +2,15 @@
 
 set -euo pipefail
 
-BASE_DIR="/Volumes/AI_DATA_CENTRE/AI_WORKSPACE"
+ROOT_A="${SYNC_ROOT_A:-/Volumes/AI_WORKSPACE/projects}"
+ROOT_B="${SYNC_ROOT_B:-/Volumes/AI_DATA_CENTRE/AI_WORKSPACE}"
 
-ORIG_HUB="${BASE_DIR}/wave-tree-news-hub"
-ORIG_SITE="${BASE_DIR}/woonmok.github.io"
-PROJ_HUB="${BASE_DIR}/projects/wave-tree-news-hub"
-PROJ_SITE="${BASE_DIR}/projects/woonmok.github.io"
+A_HUB="${ROOT_A}/wave-tree-news-hub"
+A_SITE="${ROOT_A}/woonmok.github.io"
+B_HUB="${ROOT_B}/wave-tree-news-hub"
+B_SITE="${ROOT_B}/woonmok.github.io"
 
-MODE="forward"
+MODE="a2b"
 APPLY=false
 DELETE_MODE=false
 TARGET="all"
@@ -17,28 +18,34 @@ TARGET="all"
 usage() {
   cat <<'EOF'
 Usage:
-  sync_projects.sh [forward|reverse] [all|hub|site] [--apply] [--delete]
+  sync_projects.sh [a2b|b2a|forward|reverse] [all|hub|site] [--apply] [--delete]
 
 Options:
-  forward      original -> projects (default)
-  reverse      projects -> original
+  a2b          ROOT_A -> ROOT_B (default)
+  b2a          ROOT_B -> ROOT_A
+  forward      alias of a2b (backward-compatible)
+  reverse      alias of b2a (backward-compatible)
   all          sync both projects (default)
   hub          sync only wave-tree-news-hub
   site         sync only woonmok.github.io
   --apply      actually run sync (default is --dry-run)
   --delete     mirror delete (use carefully)
 
+Environment:
+  SYNC_ROOT_A  default: /Volumes/AI_WORKSPACE/projects
+  SYNC_ROOT_B  default: /Volumes/AI_DATA_CENTRE/AI_WORKSPACE
+
 Examples:
   sync_projects.sh
-  sync_projects.sh forward all --apply
-  sync_projects.sh reverse hub --apply
-  sync_projects.sh forward site --apply --delete
+  sync_projects.sh a2b all --apply
+  sync_projects.sh b2a hub --apply
+  SYNC_ROOT_A=/path/src SYNC_ROOT_B=/path/dst sync_projects.sh a2b site --apply --delete
 EOF
 }
 
 for arg in "$@"; do
   case "$arg" in
-    forward|reverse)
+    a2b|b2a|forward|reverse)
       MODE="$arg"
       ;;
     all|hub|site)
@@ -61,6 +68,12 @@ for arg in "$@"; do
       ;;
   esac
 done
+
+if [[ "$MODE" == "forward" ]]; then
+  MODE="a2b"
+elif [[ "$MODE" == "reverse" ]]; then
+  MODE="b2a"
+fi
 
 RSYNC_OPTS=(
   -avh
@@ -117,19 +130,21 @@ sync_pair() {
   rsync "${RSYNC_OPTS[@]}" "${EXCLUDES[@]}" "$src/" "$dst/"
 }
 
-if [[ "$MODE" == "forward" ]]; then
-  HUB_SRC="$ORIG_HUB"
-  HUB_DST="$PROJ_HUB"
-  SITE_SRC="$ORIG_SITE"
-  SITE_DST="$PROJ_SITE"
+if [[ "$MODE" == "a2b" ]]; then
+  HUB_SRC="$A_HUB"
+  HUB_DST="$B_HUB"
+  SITE_SRC="$A_SITE"
+  SITE_DST="$B_SITE"
 else
-  HUB_SRC="$PROJ_HUB"
-  HUB_DST="$ORIG_HUB"
-  SITE_SRC="$PROJ_SITE"
-  SITE_DST="$ORIG_SITE"
+  HUB_SRC="$B_HUB"
+  HUB_DST="$A_HUB"
+  SITE_SRC="$B_SITE"
+  SITE_DST="$A_SITE"
 fi
 
 echo "Mode   : $MODE"
+echo "ROOT_A : $ROOT_A"
+echo "ROOT_B : $ROOT_B"
 echo "Target : $TARGET"
 if $APPLY; then
   echo "Run    : apply"
