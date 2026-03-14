@@ -112,6 +112,11 @@ do
 done
 echo "🐍 $(date '+%Y-%m-%d %H:%M:%S') - Python 인터프리터: $PYTHON_BIN"
 
+PERPLEXITY_MODEL="${PERPLEXITY_MODEL:-$(read_env_value PERPLEXITY_MODEL "$SCRIPT_DIR/.env" || true)}"
+PERPLEXITY_MODEL="${PERPLEXITY_MODEL:-sonar}"
+export PERPLEXITY_MODEL
+echo "🧠 $(date '+%Y-%m-%d %H:%M:%S') - Perplexity 모델: $PERPLEXITY_MODEL"
+
 "$PYTHON_BIN" "$SCRIPT_DIR/tools/perplexity_auto.py" | tee "$RUN_TMP_FILE"
 
 if grep -Eq "^added=0$" "$RUN_TMP_FILE"; then
