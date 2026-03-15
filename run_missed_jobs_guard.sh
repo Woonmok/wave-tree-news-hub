@@ -45,7 +45,7 @@ health_ok() {
   grep -q "healthcheck publish=.* daily=.* antigravity=.*" "$f"
 }
 
-if [[ "$NOW_HM" -ge "0650" ]] && [ ! -f "$publish_done_file" ] && [ ! -f "$publish_attempt_file" ]; then
+if (( NOW_HM_DEC >= 650 )) && [ ! -f "$publish_done_file" ] && [ ! -f "$publish_attempt_file" ]; then
   if publish_ok; then
     touch "$publish_done_file"
     touch "$publish_attempt_file"
