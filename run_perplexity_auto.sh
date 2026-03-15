@@ -112,8 +112,11 @@ do
 done
 echo "🐍 $(date '+%Y-%m-%d %H:%M:%S') - Python 인터프리터: $PYTHON_BIN"
 
-PERPLEXITY_MODEL="${PERPLEXITY_MODEL:-$(read_env_value PERPLEXITY_MODEL "$SCRIPT_DIR/.env" || true)}"
-PERPLEXITY_MODEL="${PERPLEXITY_MODEL:-sonar}"
+CONFIGURED_MODEL="${PERPLEXITY_MODEL:-$(read_env_value PERPLEXITY_MODEL "$SCRIPT_DIR/.env" || true)}"
+if [ -n "${CONFIGURED_MODEL:-}" ] && [ "$CONFIGURED_MODEL" != "sonar" ]; then
+    echo "⚠️ $(date '+%Y-%m-%d %H:%M:%S') - PERPLEXITY_MODEL=$CONFIGURED_MODEL 무시, sonar 강제 사용"
+fi
+PERPLEXITY_MODEL="sonar"
 export PERPLEXITY_MODEL
 echo "🧠 $(date '+%Y-%m-%d %H:%M:%S') - Perplexity 모델: $PERPLEXITY_MODEL"
 

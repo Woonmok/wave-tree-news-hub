@@ -21,7 +21,9 @@ API_KEY = os.environ.get("PERPLEXITY_API_KEY", "").strip()
 if not API_KEY:
     raise RuntimeError("PERPLEXITY_API_KEY 환경 변수가 설정되어 있지 않습니다.")
 
-# sonar 고정 — sonar-pro 사용 방지 (비용 절감)
+RAW_MODEL = os.environ.get("PERPLEXITY_MODEL", "").strip().lower()
+if RAW_MODEL and RAW_MODEL != "sonar":
+    print(f"⚠️ PERPLEXITY_MODEL={RAW_MODEL} 무시, sonar 강제 사용")
 MODEL = "sonar"
 OUT_PATH = os.environ.get(
     "PERPLEXITY_OUTPUT_PATH",

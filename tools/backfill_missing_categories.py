@@ -196,7 +196,10 @@ def main() -> int:
     load_dotenv(os.path.join(base_dir, ".env"))
 
     api_key = os.getenv("PERPLEXITY_API_KEY", "").strip()
-    model = os.getenv("PERPLEXITY_MODEL", "sonar").strip() or "sonar"
+    raw_model = os.getenv("PERPLEXITY_MODEL", "").strip().lower()
+    if raw_model and raw_model != "sonar":
+        print(f"⚠️ PERPLEXITY_MODEL={raw_model} 무시, backfill sonar 강제 사용")
+    model = "sonar"
     if not api_key:
         raise RuntimeError("PERPLEXITY_API_KEY not set")
 
@@ -239,6 +242,7 @@ def main() -> int:
         if isinstance(it, dict) and it.get("title")
     }
 
+    print(f"backfill_model={model}")
     client = Perplexity(api_key=api_key)
 
     added = 0

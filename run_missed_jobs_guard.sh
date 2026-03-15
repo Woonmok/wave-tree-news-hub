@@ -22,6 +22,7 @@ exec >> "$GUARD_LOG" 2>&1
 echo "[$(date '+%Y-%m-%d %H:%M:%S')] guard tick start"
 
 publish_done_file="$STATE_DIR/publish_done_${RUN_DATE}.stamp"
+publish_attempt_file="$STATE_DIR/publish_attempted_${RUN_DATE}.stamp"
 daily_done_file="$STATE_DIR/daily_done_${RUN_DATE}.stamp"
 health_done_file="$STATE_DIR/health_done_${RUN_DATE}.stamp"
 
@@ -44,12 +45,14 @@ health_ok() {
   grep -q "healthcheck publish=.* daily=.* antigravity=.*" "$f"
 }
 
-if (( NOW_HM_DEC >= 650 )) && [ ! -f "$publish_done_file" ]; then
+if [[ "$NOW_HM" -ge "0650" ]] && [ ! -f "$publish_done_file" ] && [ ! -f "$publish_attempt_file" ]; then
   if publish_ok; then
     touch "$publish_done_file"
+    touch "$publish_attempt_file"
     echo "[$(date '+%Y-%m-%d %H:%M:%S')] publish already done"
   else
     echo "[$(date '+%Y-%m-%d %H:%M:%S')] publish missed -> run_7am_publish.sh"
+    touch "$publish_attempt_file"
     if /bin/bash "$SCRIPT_DIR/run_7am_publish.sh"; then
       if publish_ok; then
         touch "$publish_done_file"
