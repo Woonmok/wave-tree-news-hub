@@ -5,6 +5,13 @@
 set -Eeuo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+HOME_WORKSPACE_ROOT="${HOME}/AI_WORKSPACE"
+
+# cron에서는 외장 볼륨 경로 접근이 실패할 수 있어 홈 워크스페이스 경로를 우선 사용
+if [[ -d "$HOME_WORKSPACE_ROOT/wave-tree-news-hub" ]]; then
+  SCRIPT_DIR="$HOME_WORKSPACE_ROOT/wave-tree-news-hub"
+fi
+
 SYNC_SCRIPT_PATH="$SCRIPT_DIR/scripts/sync_projects.sh"
 CRON_LOG_DIR="${HOME}/Library/Logs/wave-tree-news-hub-cron"
 
