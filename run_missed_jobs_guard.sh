@@ -45,7 +45,7 @@ health_ok() {
   grep -q "healthcheck publish=.* daily=.* antigravity=.*" "$f"
 }
 
-if (( NOW_HM_DEC >= 650 )) && [ ! -f "$publish_done_file" ] && [ ! -f "$publish_attempt_file" ]; then
+if (( NOW_HM_DEC >= 700 )) && [ ! -f "$publish_done_file" ] && [ ! -f "$publish_attempt_file" ]; then
   if publish_ok; then
     touch "$publish_done_file"
     touch "$publish_attempt_file"
@@ -66,7 +66,7 @@ if (( NOW_HM_DEC >= 650 )) && [ ! -f "$publish_done_file" ] && [ ! -f "$publish_
   fi
 fi
 
-if (( NOW_HM_DEC >= 700 )) && [ ! -f "$daily_done_file" ]; then
+if (( NOW_HM_DEC >= 710 )) && [ ! -f "$daily_done_file" ]; then
   if daily_ok; then
     touch "$daily_done_file"
     echo "[$(date '+%Y-%m-%d %H:%M:%S')] daily already done"
