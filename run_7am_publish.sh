@@ -220,7 +220,13 @@ git add \
   index.html \
   docs/index.html \
   dashboard_data.json \
-  docs/dashboard_data.json || true
+  docs/dashboard_data.json \
+  Project_Radar.md \
+  todo_storage.json || true
+
+if compgen -G "wave-tree-news-hub/data/daily_bridge_*.json" > /dev/null; then
+  git add wave-tree-news-hub/data/daily_bridge_*.json || true
+fi
 
 if ! git diff --cached --quiet; then
   git commit -m "auto: 7am news publish $(date '+%Y-%m-%d %H:%M')"
