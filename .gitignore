@@ -40,6 +40,7 @@ data/raw/*.txt
 data/raw/*.json
 data/raw/backups/
 !data/raw/perplexity.sample.txt
+data/daily_bridge_*.json
 data/normalized/*.bak
 data/normalized/*.tmp
 *.bak
