@@ -45,6 +45,12 @@ health_ok() {
   grep -q "healthcheck publish=.* daily=.* antigravity=.*" "$f"
 }
 
+perplexity_ok() {
+  local f="$LOG_DIR/perplexity_auto_${RUN_DATE}.log"
+  [ -f "$f" ] || return 1
+  grep -qE "^added=[1-9]|✅ .* - 완료!" "$f"
+}
+
 if (( NOW_HM_DEC >= 700 )) && [ ! -f "$publish_done_file" ] && [ ! -f "$publish_attempt_file" ]; then
   if publish_ok; then
     touch "$publish_done_file"
@@ -100,6 +106,30 @@ if (( NOW_HM_DEC >= 705 )) && [ ! -f "$health_done_file" ]; then
       fi
     else
       echo "[$(date '+%Y-%m-%d %H:%M:%S')] healthcheck recovery failed"
+    fi
+  fi
+fi
+
+perplexity_done_file="$STATE_DIR/perplexity_done_${RUN_DATE}.stamp"
+perplexity_attempt_file="$STATE_DIR/perplexity_attempted_${RUN_DATE}.stamp"
+
+if (( NOW_HM_DEC >= 700 )) && [ ! -f "$perplexity_done_file" ] && [ ! -f "$perplexity_attempt_file" ]; then
+  if perplexity_ok; then
+    touch "$perplexity_done_file"
+    touch "$perplexity_attempt_file"
+    echo "[$(date '+%Y-%m-%d %H:%M:%S')] perplexity already done"
+  else
+    echo "[$(date '+%Y-%m-%d %H:%M:%S')] perplexity missed -> run_perplexity_auto.sh"
+    touch "$perplexity_attempt_file"
+    if /bin/bash "$SCRIPT_DIR/run_perplexity_auto.sh"; then
+      if perplexity_ok; then
+        touch "$perplexity_done_file"
+        echo "[$(date '+%Y-%m-%d %H:%M:%S')] perplexity recovery success"
+      else
+        echo "[$(date '+%Y-%m-%d %H:%M:%S')] perplexity recovery ran but verification failed"
+      fi
+    else
+      echo "[$(date '+%Y-%m-%d %H:%M:%S')] perplexity recovery failed"
     fi
   fi
 fi
