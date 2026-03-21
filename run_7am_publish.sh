@@ -166,6 +166,29 @@ EOF
   return 1
 }
 
+push_with_fallbacks() {
+  local token="$1"
+  local keychain_creds="$2"
+
+  if git push origin main; then
+    echo "✅ auto publish pushed"
+    return 0
+  fi
+
+  echo "⚠️ git push 실패 - token/keychain fallback 시도"
+  if push_with_token_fallback "$token"; then
+    echo "✅ auto publish pushed (token fallback)"
+    return 0
+  fi
+
+  if push_with_keychain_fallback "$keychain_creds"; then
+    echo "✅ auto publish pushed (keychain fallback)"
+    return 0
+  fi
+
+  return 1
+}
+
 echo "===== $(date '+%Y-%m-%d %H:%M:%S') publish start ====="
 
 if /bin/bash "$BASE/run_perplexity_auto.sh"; then
@@ -230,25 +253,27 @@ fi
 
 if ! git diff --cached --quiet; then
   git commit -m "auto: 7am news publish $(date '+%Y-%m-%d %H:%M')"
-  if git push origin main; then
-    echo "✅ auto publish pushed"
+  if push_with_fallbacks "$GIT_TOKEN" "$GIT_KEYCHAIN_CREDS"; then
+    :
   else
-    echo "⚠️ git push 실패 - token fallback 시도"
-    if push_with_token_fallback "$GIT_TOKEN"; then
-      echo "✅ auto publish pushed (token fallback)"
-    elif push_with_keychain_fallback "$GIT_KEYCHAIN_CREDS"; then
-      echo "✅ auto publish pushed (keychain fallback)"
-    elif [ -d .git/rebase-merge ] || [ -d .git/rebase-apply ]; then
+    if [ -d .git/rebase-merge ] || [ -d .git/rebase-apply ]; then
       echo "⚠️ rebase 진행 중 감지 - pull/rebase 재시도 건너뜀"
       echo "⚠️ auto publish push 최종 실패 - 로컬 커밋만 유지"
-    elif git pull --rebase --autostash origin main && git push origin main; then
-      echo "✅ auto publish pushed (rebase)"
-    elif push_with_token_fallback "$GIT_TOKEN"; then
-      echo "✅ auto publish pushed (rebase+token fallback)"
-    elif push_with_keychain_fallback "$GIT_KEYCHAIN_CREDS"; then
-      echo "✅ auto publish pushed (rebase+keychain fallback)"
     else
-      echo "⚠️ auto publish push 최종 실패 - 로컬 커밋만 유지"
+      echo "⚠️ git push 재시도 준비 - origin/main rebase 동기화 시도"
+      if git pull --rebase --autostash origin main; then
+        if git push origin main; then
+          echo "✅ auto publish pushed (rebase)"
+        elif push_with_token_fallback "$GIT_TOKEN"; then
+          echo "✅ auto publish pushed (rebase+token fallback)"
+        elif push_with_keychain_fallback "$GIT_KEYCHAIN_CREDS"; then
+          echo "✅ auto publish pushed (rebase+keychain fallback)"
+        else
+          echo "⚠️ auto publish push 최종 실패 - 로컬 커밋만 유지"
+        fi
+      else
+        echo "⚠️ rebase 동기화 실패 - 로컬 커밋만 유지"
+      fi
     fi
   fi
 else
