@@ -92,10 +92,11 @@ ok_antigravity=0
 
 publish_log=$(latest_dated_log_or_empty "$SCRIPT_DIR/logs/cron_publish_*.log")
 if [ -n "$publish_log" ]; then
-    if grep -qE "⚠️ auto publish push 최종 실패|Traceback|run_perplexity_auto\.sh 실패|git push 실패|fatal:" "$publish_log"; then
-        ok_publish=0
-    elif grep -qE "✅ auto publish pushed|ℹ️ no publish changes" "$publish_log"; then
+    publish_last_outcome=$(grep -E "⚠️ auto publish push 최종 실패|✅ auto publish pushed|ℹ️ no publish changes" "$publish_log" | tail -n 1 || true)
+    if echo "$publish_last_outcome" | grep -qE "✅ auto publish pushed|ℹ️ no publish changes"; then
         ok_publish=1
+    elif echo "$publish_last_outcome" | grep -q "⚠️ auto publish push 최종 실패"; then
+        ok_publish=0
     fi
 fi
 
