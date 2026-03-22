@@ -227,6 +227,15 @@ cp "$DEPLOY/news.json" "$DEPLOY/docs/news.json"
 
 cd "$DEPLOY"
 
+if [ -d .git/rebase-merge ] || [ -d .git/rebase-apply ]; then
+  echo "⚠️ stale rebase 감지 - 정리 시도"
+  if git rebase --abort; then
+    echo "✅ stale rebase 정리 완료"
+  else
+    echo "⚠️ stale rebase 정리 실패 - 기존 rebase 상태 유지"
+  fi
+fi
+
 GIT_TOKEN="$(get_github_token)"
 GIT_KEYCHAIN_CREDS="$(get_github_keychain_credentials || true)"
 

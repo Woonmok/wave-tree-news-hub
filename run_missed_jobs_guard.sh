@@ -29,7 +29,14 @@ health_done_file="$STATE_DIR/health_done_${RUN_DATE}.stamp"
 publish_ok() {
   local f="$LOG_DIR/cron_publish_${RUN_DATE}.log"
   [ -f "$f" ] || return 1
-  grep -qE "✅ auto publish pushed|ℹ️ no publish changes|===== .* publish end =====" "$f"
+  local last_outcome
+  last_outcome=$(grep -E "⚠️ auto publish push 최종 실패|✅ auto publish pushed|ℹ️ no publish changes" "$f" | tail -n 1 || true)
+
+  if echo "$last_outcome" | grep -qE "✅ auto publish pushed|ℹ️ no publish changes"; then
+    return 0
+  fi
+
+  return 1
 }
 
 daily_ok() {
